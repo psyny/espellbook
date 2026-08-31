@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "base_svg_filename": "illusion_level_1.svg",
+    "type": "school",
+    "school": "Illusion",
+    "level": 1,
+    "subtype": "illusion"
+  },
+  "entity_map": {
+    "entities": {
+      "10000085749": {
+        "id": "10000085749",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          3,
+          1
+        ]
+      },
+      "10000085751": {
+        "id": "10000085751",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          0,
+          4
+        ]
+      },
+      "10000085753": {
+        "id": "10000085753",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          2,
+          0
+        ]
+      },
+      "10000085754": {
+        "id": "10000085754",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          5,
+          0
+        ]
+      },
+      "10000085755": {
+        "id": "10000085755",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          2,
+          3
+        ]
+      },
+      "10000085756": {
+        "id": "10000085756",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          0,
+          1
+        ]
+      },
+      "10000085757": {
+        "id": "10000085757",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          2,
+          3
+        ]
+      },
+      "10000085758": {
+        "id": "10000085758",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          3,
+          4
+        ]
+      },
+      "10000085759": {
+        "id": "10000085759",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          4,
+          5
+        ]
+      },
+      "10000085760": {
+        "id": "10000085760",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          0,
+          5
+        ]
+      }
+    },
+    "groups": {
+      "10000085748": {
+        "id": "10000085748",
+        "category": "main",
+        "entities": [
+          "10000085749"
+        ],
+        "random_group": [
+          0,
+          0,
+          5
+        ]
+      },
+      "10000085750": {
+        "id": "10000085750",
+        "category": "sub",
+        "entities": [
+          "10000085751"
+        ],
+        "random_group": [
+          1,
+          0,
+          2
+        ]
+      },
+      "10000085752": {
+        "id": "10000085752",
+        "category": "sub",
+        "entities": [
+          "10000085753",
+          "10000085754",
+          "10000085755",
+          "10000085756",
+          "10000085757",
+          "10000085758",
+          "10000085759",
+          "10000085760"
+        ],
+        "random_group": [
+          2,
+          5,
+          1
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000085675",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000085688",
+        "x": 390.0,
+        "y": 500.0,
+        "rotation": 269.967,
+        "variable_rotation": true
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000085684",
+        "x": 610.0,
+        "y": 500.0,
+        "rotation": 90.0,
+        "variable_rotation": true
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000085680",
+        "x": 500.0,
+        "y": 390.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_s": [
+      {
+        "source_id": "10000085731",
+        "x": 500.1768,
+        "y": 331.5318,
+        "rotation": 0.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000085735",
+        "x": 331.5318,
+        "y": 499.8232,
+        "rotation": 270.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000085739",
+        "x": 499.8232,
+        "y": 668.4682,
+        "rotation": 180.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000085743",
+        "x": 668.4682,
+        "y": 500.1768,
+        "rotation": 90.0,
+        "variable_rotation": false
+      }
+    ],
+    "ornamentation_m": [
+      {
+        "source_id": "10000085698",
+        "x": 500.0,
+        "y": 432.5,
+        "rotation": 0.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085702",
+        "x": 547.7297,
+        "y": 452.2703,
+        "rotation": 45.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085706",
+        "x": 567.5,
+        "y": 500.0,
+        "rotation": 90.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085710",
+        "x": 547.7298,
+        "y": 547.7297,
+        "rotation": 135.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085714",
+        "x": 500.0,
+        "y": 567.5001,
+        "rotation": 180.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085718",
+        "x": 452.2703,
+        "y": 547.7298,
+        "rotation": 225.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085722",
+        "x": 432.5,
+        "y": 500.0001,
+        "rotation": 270.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085726",
+        "x": 452.2703,
+        "y": 452.2703,
+        "rotation": 315.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_l": [
+      {
+        "source_id": "10000085693",
+        "x": 500.0,
+        "y": 610.0,
+        "rotation": 180.0,
+        "variable_rotation": true
+      }
+    ]
+  }
+}

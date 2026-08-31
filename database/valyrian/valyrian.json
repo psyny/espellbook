@@ -1,0 +1,2138 @@
+{
+  "Abi-Dalzim's Horrid Wilting": {
+    "interpretation": "Dry Life",
+    "valyrian": "Tista Glaesā"
+  },
+  "Absorb Elements": {
+    "interpretation": "Drink",
+    "valyrian": "Mōzū"
+  },
+  "Acid Splash": {
+    "interpretation": "Burning Water",
+    "valyrian": "Zālā Iēdar"
+  },
+  "Aganazzar's Scorcher": {
+    "interpretation": "Long Fire",
+    "valyrian": "Bōsa Perzys"
+  },
+  "Aid": {
+    "interpretation": "Full Life",
+    "valyrian": "Lēda Glaesā"
+  },
+  "Air Bubble": {
+    "interpretation": "Breathing Water",
+    "valyrian": "Paghā Iēdar"
+  },
+  "Alarm": {
+    "interpretation": "Warning",
+    "valyrian": "Raqiros"
+  },
+  "Alter Self": {
+    "interpretation": "New Skin",
+    "valyrian": "Arlie Ñellyr"
+  },
+  "Alustriel's Mooncloak": {
+    "interpretation": "Moon Shelter",
+    "valyrian": "Hūra Dōros"
+  },
+  "Animal Friendship": {
+    "interpretation": "Good Beast",
+    "valyrian": "Sȳz Dȳñes"
+  },
+  "Animal Messenger": {
+    "interpretation": "Speaking Beast",
+    "valyrian": "Vestrā Dȳñes"
+  },
+  "Animal Shapes": {
+    "interpretation": "Beast Skin",
+    "valyrian": "Dȳñes Ñellyr"
+  },
+  "Animate Dead": {
+    "interpretation": "Living Dead",
+    "valyrian": "Glaesā Morghūljā"
+  },
+  "Animate Objects": {
+    "interpretation": "Living Things",
+    "valyrian": "Glaesā Tolvie"
+  },
+  "Antagonize": {
+    "interpretation": "Forced Fight",
+    "valyrian": "Indī Vīlībā"
+  },
+  "Antilife Shell": {
+    "interpretation": "Life Wall",
+    "valyrian": "Glaesā Dōros"
+  },
+  "Antimagic Field": {
+    "interpretation": "No Magic",
+    "valyrian": "Daor Māzverys"
+  },
+  "Antipathy/Sympathy": {
+    "interpretation": "Fear Love",
+    "valyrian": "Zūgā Biare"
+  },
+  "Arcane Eye": {
+    "interpretation": "Magic Eye",
+    "valyrian": "Māzverys Laes"
+  },
+  "Arcane Gate": {
+    "interpretation": "Two Roads",
+    "valyrian": "Lanta Geralbar"
+  },
+  "Arcane Lock": {
+    "interpretation": "Sealed Threshold",
+    "valyrian": "Āeksio Lēkia"
+  },
+  "Arcane Vigor": {
+    "interpretation": "Renewal",
+    "valyrian": "Aderī"
+  },
+  "Armor of Agathys": {
+    "interpretation": "Freeze",
+    "valyrian": "Zīrā"
+  },
+  "Arms of Hadar": {
+    "interpretation": "Black Hold",
+    "valyrian": "Zōbrie Ōrē"
+  },
+  "Ashardalon's Stride": {
+    "interpretation": "Burn",
+    "valyrian": "Zālā"
+  },
+  "Astral Projection": {
+    "interpretation": "Far Self",
+    "valyrian": "Tolmiot Issaros"
+  },
+  "Augury": {
+    "interpretation": "Know Fate",
+    "valyrian": "Gīmī Vējes"
+  },
+  "Aura of Life": {
+    "interpretation": "Living Circle",
+    "valyrian": "Glaesā Grevenka"
+  },
+  "Aura of Purity": {
+    "interpretation": "Clean Life",
+    "valyrian": "Rāenā Glaesā"
+  },
+  "Aura of Vitality": {
+    "interpretation": "Giving Life",
+    "valyrian": "Tepā Glaesā"
+  },
+  "Awaken": {
+    "interpretation": "Living Thought",
+    "valyrian": "Glaesā Otāpā"
+  },
+  "Backlash": {
+    "interpretation": "Turn",
+    "valyrian": "Pālē"
+  },
+  "Bane": {
+    "interpretation": "Bad Fate",
+    "valyrian": "Quba Vējes"
+  },
+  "Banishing Smite": {
+    "interpretation": "Far",
+    "valyrian": "Tolmiot"
+  },
+  "Banishment": {
+    "interpretation": "Far Exile",
+    "valyrian": "Tolmiot Geralbar"
+  },
+  "Barkskin": {
+    "interpretation": "Bark",
+    "valyrian": "Pragrion"
+  },
+  "Beacon of Hope": {
+    "interpretation": "Good Sun",
+    "valyrian": "Sȳz Vēzos"
+  },
+  "Beast Bond": {
+    "interpretation": "Beast Heart",
+    "valyrian": "Dȳñes Prūmia"
+  },
+  "Beast Sense": {
+    "interpretation": "Beast Sight",
+    "valyrian": "Dȳñes Urnē"
+  },
+  "Befuddlement": {
+    "interpretation": "Broken Thought",
+    "valyrian": "Ezīmā Otāpā"
+  },
+  "Bestow Curse": {
+    "interpretation": "Bad Gift",
+    "valyrian": "Quba Tepā"
+  },
+  "Bigby's Hand": {
+    "interpretation": "Great Hand",
+    "valyrian": "Rōva Ondos"
+  },
+  "Blade Barrier": {
+    "interpretation": "Sharp Wall",
+    "valyrian": "Qana Dōros"
+  },
+  "Blade of Disaster": {
+    "interpretation": "Cut",
+    "valyrian": "Nektō"
+  },
+  "Blade Ward": {
+    "interpretation": "Turn the Edge",
+    "valyrian": "Vezof Korzion"
+  },
+  "Bless": {
+    "interpretation": "Good Fate",
+    "valyrian": "Sȳz Vējes"
+  },
+  "Blight": {
+    "interpretation": "Rotten Life",
+    "valyrian": "Puatta Glaesā"
+  },
+  "Blinding Smite": {
+    "interpretation": "Black",
+    "valyrian": "Zōbrie"
+  },
+  "Blindness/Deafness": {
+    "interpretation": "No Eyes",
+    "valyrian": "Daor Laes"
+  },
+  "Blink": {
+    "interpretation": "Far Turn",
+    "valyrian": "Tolmiot Pālē"
+  },
+  "Blur": {
+    "interpretation": "False Sight",
+    "valyrian": "Pirta Urnē"
+  },
+  "Bones of the Earth": {
+    "interpretation": "Earth Bones",
+    "valyrian": "Tegon Īby"
+  },
+  "Booming Blade": {
+    "interpretation": "Sky Blade",
+    "valyrian": "Jēdar Qana"
+  },
+  "Borrowed Knowledge": {
+    "interpretation": "Borrowed Knowing",
+    "valyrian": "Tolie Gīmī"
+  },
+  "Burning Hands": {
+    "interpretation": "Fire Hands",
+    "valyrian": "Perzys Ondos"
+  },
+  "Cacophonic Shield": {
+    "interpretation": "Sound Wall",
+    "valyrian": "Rȳbā Dōros"
+  },
+  "Call Lightning": {
+    "interpretation": "Sky Fire",
+    "valyrian": "Jēdar Perzys"
+  },
+  "Calm Emotions": {
+    "interpretation": "Quiet Heart",
+    "valyrian": "Adere Prūmia"
+  },
+  "Catapult": {
+    "interpretation": "Thrown Stone",
+    "valyrian": "Ilzī Dōron"
+  },
+  "Catnap": {
+    "interpretation": "Short Sleep",
+    "valyrian": "Mība Ēdrū"
+  },
+  "Cause Fear": {
+    "interpretation": "Living Fear",
+    "valyrian": "Glaesā Zūgā"
+  },
+  "Ceremony": {
+    "interpretation": "Good Name",
+    "valyrian": "Sȳz Brōzi"
+  },
+  "Chain Lightning": {
+    "interpretation": "Sky Chain",
+    "valyrian": "Jēdar Belmon"
+  },
+  "Chaos Bolt": {
+    "interpretation": "Changing Fire",
+    "valyrian": "Arlie Perzys"
+  },
+  "Charm Monster": {
+    "interpretation": "Happy Beast",
+    "valyrian": "Biare Dȳñes"
+  },
+  "Charm Person": {
+    "interpretation": "Happy Heart",
+    "valyrian": "Biare Prūmia"
+  },
+  "Chill Touch": {
+    "interpretation": "Cold Hand",
+    "valyrian": "Iosre Ondos"
+  },
+  "Chromatic Orb": {
+    "interpretation": "Many Fires",
+    "valyrian": "Olvie Perzys"
+  },
+  "Circle of Death": {
+    "interpretation": "Death Circle",
+    "valyrian": "Morghūljā Grevenka"
+  },
+  "Circle of Power": {
+    "interpretation": "Heavy Circle",
+    "valyrian": "Kempa Grevenka"
+  },
+  "Clairvoyance": {
+    "interpretation": "Far Sight",
+    "valyrian": "Tolmiot Urnē"
+  },
+  "Clone": {
+    "interpretation": "New Self",
+    "valyrian": "Arlie Issaros"
+  },
+  "Cloud of Daggers": {
+    "interpretation": "Sharp Cloud",
+    "valyrian": "Qana Sambar"
+  },
+  "Cloudkill": {
+    "interpretation": "Killing Fog",
+    "valyrian": "Ossēnā Sambrar"
+  },
+  "Color Spray": {
+    "interpretation": "Many Suns",
+    "valyrian": "Olvie Vēzos"
+  },
+  "Command": {
+    "interpretation": "Word Push",
+    "valyrian": "Brōzi Indī"
+  },
+  "Commune": {
+    "interpretation": "Far Hearing",
+    "valyrian": "Tolmiot Rȳbā"
+  },
+  "Commune with Nature": {
+    "interpretation": "Hear Earth",
+    "valyrian": "Rȳbā Tegon"
+  },
+  "Compelled Duel": {
+    "interpretation": "Fight",
+    "valyrian": "Vīlībā"
+  },
+  "Comprehend Languages": {
+    "interpretation": "Know Tongue",
+    "valyrian": "Gīmī Ēngos"
+  },
+  "Compulsion": {
+    "interpretation": "Push Walk",
+    "valyrian": "Indī Dekurūbā"
+  },
+  "Cone of Cold": {
+    "interpretation": "Wide Cold",
+    "valyrian": "Drāñe Iosre"
+  },
+  "Confusion": {
+    "interpretation": "False Thought",
+    "valyrian": "Pirta Otāpā"
+  },
+  "Conjure Animals": {
+    "interpretation": "Come Beasts",
+    "valyrian": "Māzī Dȳñes"
+  },
+  "Conjure Barrage": {
+    "interpretation": "Many Throws",
+    "valyrian": "Olvie Ilzī"
+  },
+  "Conjure Celestial": {
+    "interpretation": "Come Sun",
+    "valyrian": "Māzī Vēzos"
+  },
+  "Conjure Constructs": {
+    "interpretation": "Come Stone",
+    "valyrian": "Māzī Dōron"
+  },
+  "Conjure Elemental": {
+    "interpretation": "Come Element",
+    "valyrian": "Māzī Būjot"
+  },
+  "Conjure Fey": {
+    "interpretation": "Come Forest",
+    "valyrian": "Māzī Guēsin"
+  },
+  "Conjure Minor Elementals": {
+    "interpretation": "Small Elements",
+    "valyrian": "Byka Būjot"
+  },
+  "Conjure Volley": {
+    "interpretation": "Wide Throw",
+    "valyrian": "Drāñe Ilzī"
+  },
+  "Conjure Woodland Beings": {
+    "interpretation": "Forest Beasts",
+    "valyrian": "Guēsin Dȳñes"
+  },
+  "Contact Other Plane": {
+    "interpretation": "Far Knowing",
+    "valyrian": "Tolmiot Gīmī"
+  },
+  "Contagion": {
+    "interpretation": "Rotten Blood",
+    "valyrian": "Puatta Ānogar"
+  },
+  "Contingency": {
+    "interpretation": "If Magic",
+    "valyrian": "Lo Māzverys"
+  },
+  "Continual Flame": {
+    "interpretation": "Long Burn",
+    "valyrian": "Bōsa Zālā"
+  },
+  "Control Flames": {
+    "interpretation": "Hold Fire",
+    "valyrian": "Ōrē Perzys"
+  },
+  "Control Water": {
+    "interpretation": "Hold Water",
+    "valyrian": "Ōrē Iēdar"
+  },
+  "Control Weather": {
+    "interpretation": "Hold Sky",
+    "valyrian": "Ōrē Jēdar"
+  },
+  "Control Winds": {
+    "interpretation": "Hold Wind",
+    "valyrian": "Ōrē Jelmio"
+  },
+  "Cordon of Arrows": {
+    "interpretation": "Sharp Circle",
+    "valyrian": "Qana Grevenka"
+  },
+  "Counterspell": {
+    "interpretation": "Counter",
+    "valyrian": "Rūnāros"
+  },
+  "Create Bonfire": {
+    "interpretation": "Small Fire",
+    "valyrian": "Byka Perzys"
+  },
+  "Create Food and Water": {
+    "interpretation": "Eat Drink",
+    "valyrian": "Ipradā Mōzū"
+  },
+  "Create Homunculus": {
+    "interpretation": "New Servant",
+    "valyrian": "Arlie Dohaeriros"
+  },
+  "Create Magen": {
+    "interpretation": "Living Servant",
+    "valyrian": "Glaesā Dohaeriros"
+  },
+  "Create or Destroy Water": {
+    "interpretation": "Water Turn",
+    "valyrian": "Iēdar Pālē"
+  },
+  "Create Spelljamming Helm": {
+    "interpretation": "Flying Throne",
+    "valyrian": "Sōvē Dēmalion"
+  },
+  "Create Undead": {
+    "interpretation": "New Dead",
+    "valyrian": "Arlie Morghūljā"
+  },
+  "Creation": {
+    "interpretation": "New Things",
+    "valyrian": "Arlie Tolvie"
+  },
+  "Crown of Madness": {
+    "interpretation": "Broken Head",
+    "valyrian": "Ezīmā Bartos"
+  },
+  "Crown of Stars": {
+    "interpretation": "Many Stars",
+    "valyrian": "Olvie Qēlos"
+  },
+  "Crusader's Mantle": {
+    "interpretation": "Fighting Wall",
+    "valyrian": "Vīlībā Dōros"
+  },
+  "Cure Wounds": {
+    "interpretation": "Good Skin",
+    "valyrian": "Sȳz Ñellyr"
+  },
+  "Dancing Lights": {
+    "interpretation": "Playing Stars",
+    "valyrian": "Tymā Qēlos"
+  },
+  "Danse Macabre": {
+    "interpretation": "Dancing Dead",
+    "valyrian": "Tymā Morghūljā"
+  },
+  "Darkness": {
+    "interpretation": "Black Night",
+    "valyrian": "Zōbrie Bantis"
+  },
+  "Darkvision": {
+    "interpretation": "Night Sight",
+    "valyrian": "Bantis Urnē"
+  },
+  "Dawn": {
+    "interpretation": "New Sun",
+    "valyrian": "Arlie Vēzos"
+  },
+  "Daylight": {
+    "interpretation": "Full Sun",
+    "valyrian": "Lēda Vēzos"
+  },
+  "Death Armor": {
+    "interpretation": "Grave's Embrace",
+    "valyrian": "Morghūljagon Sȳndror"
+  },
+  "Death Ward": {
+    "interpretation": "Death Wall",
+    "valyrian": "Morghūljā Dōros"
+  },
+  "Delayed Blast Fireball": {
+    "interpretation": "Waiting Fire",
+    "valyrian": "Umbagon Perzys"
+  },
+  "Demiplane": {
+    "interpretation": "Small World",
+    "valyrian": "Byka Vys"
+  },
+  "Deryan's Helpful Homunculi": {
+    "interpretation": "Servants of the Hand",
+    "valyrian": "Dohaeriros Qrinunty"
+  },
+  "Destructive Wave": {
+    "interpretation": "Wide Hit",
+    "valyrian": "Drāñe Hīlā"
+  },
+  "Detect Evil and Good": {
+    "interpretation": "Good Bad",
+    "valyrian": "Sȳz Quba"
+  },
+  "Detect Magic": {
+    "interpretation": "Find Magic",
+    "valyrian": "Rhaenagon Māzverys"
+  },
+  "Detect Poison and Disease": {
+    "interpretation": "See Rotten",
+    "valyrian": "Urnē Puatta"
+  },
+  "Detect Thoughts": {
+    "interpretation": "Hear Thought",
+    "valyrian": "Rȳbā Otāpā"
+  },
+  "Dimension Door": {
+    "interpretation": "Far Arrival",
+    "valyrian": "Tolmiot Māzī"
+  },
+  "Dirge": {
+    "interpretation": "Death Wind",
+    "valyrian": "Morghūljā Jelmio"
+  },
+  "Disguise Self": {
+    "interpretation": "False Skin",
+    "valyrian": "Pirta Ñellyr"
+  },
+  "Disintegrate": {
+    "interpretation": "Dust Skin",
+    "valyrian": "Jeson Ñellyr"
+  },
+  "Dispel Evil and Good": {
+    "interpretation": "Turn Bad",
+    "valyrian": "Pālē Quba"
+  },
+  "Dispel Magic": {
+    "interpretation": "Turn Magic",
+    "valyrian": "Pālē Māzverys"
+  },
+  "Dissonant Whispers": {
+    "interpretation": "Bad Hearing",
+    "valyrian": "Quba Rȳbā"
+  },
+  "Distort Value": {
+    "interpretation": "False Gold",
+    "valyrian": "Pirta Āeksion"
+  },
+  "Divination": {
+    "interpretation": "Fate Knowing",
+    "valyrian": "Vējes Gīmī"
+  },
+  "Divine Favor": {
+    "interpretation": "Good",
+    "valyrian": "Sȳz"
+  },
+  "Divine Smite": {
+    "interpretation": "Hit",
+    "valyrian": "Hīlā"
+  },
+  "Divine Word": {
+    "interpretation": "Say",
+    "valyrian": "Vestrā"
+  },
+  "Dominate Beast": {
+    "interpretation": "Hold Beast",
+    "valyrian": "Ōrē Dȳñes"
+  },
+  "Dominate Monster": {
+    "interpretation": "Hold Other",
+    "valyrian": "Ōrē Tolie"
+  },
+  "Dominate Person": {
+    "interpretation": "Hold Person",
+    "valyrian": "Ōrē Issaros"
+  },
+  "Doomtide": {
+    "interpretation": "Black Fog",
+    "valyrian": "Zōbrie Sambrar"
+  },
+  "Draconic Transformation": {
+    "interpretation": "Wing",
+    "valyrian": "Tīkun"
+  },
+  "Dragon's Breath": {
+    "interpretation": "Breathe",
+    "valyrian": "Paghā"
+  },
+  "Drawmij's Instant Summons": {
+    "interpretation": "Return Thing",
+    "valyrian": "Amāzinon Tolvie"
+  },
+  "Dream": {
+    "interpretation": "Night Thought",
+    "valyrian": "Bantis Otāpā"
+  },
+  "Dream of the Blue Veil": {
+    "interpretation": "Far Sleep",
+    "valyrian": "Tolmiot Ēdrū"
+  },
+  "Druid Grove": {
+    "interpretation": "Forest Wall",
+    "valyrian": "Guēsin Dōros"
+  },
+  "Druidcraft": {
+    "interpretation": "Earth Play",
+    "valyrian": "Tegon Tymā"
+  },
+  "Dust Devil": {
+    "interpretation": "Dust Wind",
+    "valyrian": "Jeson Jelmio"
+  },
+  "Earth Tremor": {
+    "interpretation": "Earth Hit",
+    "valyrian": "Tegon Hīlā"
+  },
+  "Earthbind": {
+    "interpretation": "Hold Wing",
+    "valyrian": "Ōrē Tīkun"
+  },
+  "Earthquake": {
+    "interpretation": "Earth Split",
+    "valyrian": "Tegon Ezīmā"
+  },
+  "Eldritch Blast": {
+    "interpretation": "Magic Hit",
+    "valyrian": "Māzverys Hīlā"
+  },
+  "Elemental Bane": {
+    "interpretation": "Bad Element",
+    "valyrian": "Quba Būjot"
+  },
+  "Elemental Weapon": {
+    "interpretation": "Element Blade",
+    "valyrian": "Būjot Qana"
+  },
+  "Elementalism": {
+    "interpretation": "Elemental Dominion",
+    "valyrian": "Būjot Dārior"
+  },
+  "Elminster's Effulgent Spheres": {
+    "interpretation": "Many Magic",
+    "valyrian": "Olvie Māzverys"
+  },
+  "Elminster's Elusion": {
+    "interpretation": "Evasion",
+    "valyrian": "Rȳbagon"
+  },
+  "Enemies Abound": {
+    "interpretation": "Many Fights",
+    "valyrian": "Olvie Vīlībā"
+  },
+  "Enervation": {
+    "interpretation": "Drink Life",
+    "valyrian": "Mōzū Glaesā"
+  },
+  "Enhance Ability": {
+    "interpretation": "Greater Self",
+    "valyrian": "Rōva Issaros"
+  },
+  "Enlarge/Reduce": {
+    "interpretation": "Greater Lesser",
+    "valyrian": "Rōvēgrie Byka"
+  },
+  "Ensnaring Strike": {
+    "interpretation": "Tie",
+    "valyrian": "Letā"
+  },
+  "Entangle": {
+    "interpretation": "Earth Ropes",
+    "valyrian": "Tegon Hubon"
+  },
+  "Enthrall": {
+    "interpretation": "Hold Hearing",
+    "valyrian": "Ōrē Rȳbā"
+  },
+  "Erupting Earth": {
+    "interpretation": "Throw Earth",
+    "valyrian": "Ilzī Tegon"
+  },
+  "Etherealness": {
+    "interpretation": "Thin Self",
+    "valyrian": "Vasrie Issaros"
+  },
+  "Evard's Black Tentacles": {
+    "interpretation": "Black Ropes",
+    "valyrian": "Zōbrie Hubon"
+  },
+  "Expeditious Retreat": {
+    "interpretation": "Walk",
+    "valyrian": "Dekurūbā"
+  },
+  "Eyebite": {
+    "interpretation": "Eye Fear",
+    "valyrian": "Laes Zūgā"
+  },
+  "Fabricate": {
+    "interpretation": "Sew Things",
+    "valyrian": "Ñepē Tolvie"
+  },
+  "Faerie Fire": {
+    "interpretation": "Green Fire",
+    "valyrian": "Kasta Perzys"
+  },
+  "False Life": {
+    "interpretation": "False Life",
+    "valyrian": "Pirta Glaesā"
+  },
+  "Far Step": {
+    "interpretation": "Come",
+    "valyrian": "Māzī"
+  },
+  "Fast Friends": {
+    "interpretation": "Quick Happiness",
+    "valyrian": "Adere Biare"
+  },
+  "Fear": {
+    "interpretation": "Black Fear",
+    "valyrian": "Zōbrie Zūgā"
+  },
+  "Feather Fall": {
+    "interpretation": "Feather",
+    "valyrian": "Tīkos"
+  },
+  "Feign Death": {
+    "interpretation": "False Death",
+    "valyrian": "Pirta Morghūljā"
+  },
+  "Find Familiar": {
+    "interpretation": "Call the Watcher",
+    "valyrian": "Vēzos Gīmigon"
+  },
+  "Find Greater Steed": {
+    "interpretation": "Great Horse",
+    "valyrian": "Rōva Anne"
+  },
+  "Find Steed": {
+    "interpretation": "Come Horse",
+    "valyrian": "Māzī Anne"
+  },
+  "Find the Path": {
+    "interpretation": "See Road",
+    "valyrian": "Urnē Geralbar"
+  },
+  "Find Traps": {
+    "interpretation": "See Rope",
+    "valyrian": "Urnē Hubon"
+  },
+  "Finger of Death": {
+    "interpretation": "Death Hand",
+    "valyrian": "Morghūljā Ondos"
+  },
+  "Fire Bolt": {
+    "interpretation": "Throw Fire",
+    "valyrian": "Ilzī Perzys"
+  },
+  "Fire Shield": {
+    "interpretation": "Fire Wall",
+    "valyrian": "Perzys Dōros"
+  },
+  "Fire Storm": {
+    "interpretation": "Fire Sky",
+    "valyrian": "Perzys Jēdar"
+  },
+  "Fireball": {
+    "interpretation": "Round Fire",
+    "valyrian": "Grevenka Perzys"
+  },
+  "Fizban's Platinum Shield": {
+    "interpretation": "Safe",
+    "valyrian": "Ȳgha"
+  },
+  "Flame Arrows": {
+    "interpretation": "Fire Throw",
+    "valyrian": "Perzys Ilzī"
+  },
+  "Flame Blade": {
+    "interpretation": "Fire",
+    "valyrian": "Perzys"
+  },
+  "Flame Strike": {
+    "interpretation": "Sun Fire",
+    "valyrian": "Vēzos Perzys"
+  },
+  "Flaming Sphere": {
+    "interpretation": "Turning Fire",
+    "valyrian": "Pālē Perzys"
+  },
+  "Flesh to Stone": {
+    "interpretation": "Stone Skin",
+    "valyrian": "Dōron Ñellyr"
+  },
+  "Fly": {
+    "interpretation": "Sky Wings",
+    "valyrian": "Jēdar Tīkun"
+  },
+  "Fog Cloud": {
+    "interpretation": "Thick Fog",
+    "valyrian": "Qumblie Sambrar"
+  },
+  "Forbiddance": {
+    "interpretation": "No Road",
+    "valyrian": "Daor Geralbar"
+  },
+  "Forcecage": {
+    "interpretation": "Holding Wall",
+    "valyrian": "Ōrē Dōros"
+  },
+  "Foresight": {
+    "interpretation": "See Fate",
+    "valyrian": "Urnē Vējes"
+  },
+  "Fount of Moonlight": {
+    "interpretation": "Moon Sun",
+    "valyrian": "Hūra Vēzos"
+  },
+  "Freedom of Movement": {
+    "interpretation": "Free Walk",
+    "valyrian": "Dāez Dekurūbā"
+  },
+  "Friends": {
+    "interpretation": "Happy Person",
+    "valyrian": "Biare Issaros"
+  },
+  "Frost Fingers": {
+    "interpretation": "Ice Hands",
+    "valyrian": "Suvion Ondos"
+  },
+  "Frostbite": {
+    "interpretation": "Winter Touch",
+    "valyrian": "Hīdriō Rūklon"
+  },
+  "Gaseous Form": {
+    "interpretation": "Fog Skin",
+    "valyrian": "Sambrar Ñellyr"
+  },
+  "Gate": {
+    "interpretation": "World Road",
+    "valyrian": "Vys Geralbar"
+  },
+  "Gate Seal": {
+    "interpretation": "Road Wall",
+    "valyrian": "Geralbar Dōros"
+  },
+  "Geas": {
+    "interpretation": "Bound Word",
+    "valyrian": "Belmon Brōzi"
+  },
+  "Gentle Repose": {
+    "interpretation": "Silent Rest",
+    "valyrian": "Lēda Rūs"
+  },
+  "Giant Insect": {
+    "interpretation": "Great Worm",
+    "valyrian": "Rōva Turgon"
+  },
+  "Gift of Gab": {
+    "interpretation": "Lie",
+    "valyrian": "Ilā"
+  },
+  "Glibness": {
+    "interpretation": "Smooth Tongue",
+    "valyrian": "Adere Ēngos"
+  },
+  "Globe of Invulnerability": {
+    "interpretation": "Round Wall",
+    "valyrian": "Grevenka Dōros"
+  },
+  "Glyph of Warding": {
+    "interpretation": "Magic Name",
+    "valyrian": "Māzverys Brōzi"
+  },
+  "Goodberry": {
+    "interpretation": "Good Fruit",
+    "valyrian": "Sȳz Gerpa"
+  },
+  "Grasping Vine": {
+    "interpretation": "Pull",
+    "valyrian": "Hakō"
+  },
+  "Grease": {
+    "interpretation": "Smooth Earth",
+    "valyrian": "Adere Tegon"
+  },
+  "Greater Invisibility": {
+    "interpretation": "Night Skin",
+    "valyrian": "Bantis Ñellyr"
+  },
+  "Greater Restoration": {
+    "interpretation": "New Life",
+    "valyrian": "Arlie Glaesā"
+  },
+  "Green-Flame Blade": {
+    "interpretation": "Green Burn",
+    "valyrian": "Kasta Zālā"
+  },
+  "Guardian of Faith": {
+    "interpretation": "Good Wall",
+    "valyrian": "Sȳz Dōros"
+  },
+  "Guardian of Nature": {
+    "interpretation": "Forest",
+    "valyrian": "Guēsin"
+  },
+  "Guards and Wards": {
+    "interpretation": "Many Walls",
+    "valyrian": "Olvie Dōros"
+  },
+  "Guidance": {
+    "interpretation": "Good Road",
+    "valyrian": "Sȳz Geralbar"
+  },
+  "Guiding Bolt": {
+    "interpretation": "Sun Road",
+    "valyrian": "Vēzos Geralbar"
+  },
+  "Gust": {
+    "interpretation": "Wind Push",
+    "valyrian": "Jelmio Indī"
+  },
+  "Gust of Wind": {
+    "interpretation": "Heavy Wind",
+    "valyrian": "Kempa Jelmio"
+  },
+  "Hail of Thorns": {
+    "interpretation": "Stab",
+    "valyrian": "Ohīlā"
+  },
+  "Hallow": {
+    "interpretation": "Good Earth",
+    "valyrian": "Sȳz Tegon"
+  },
+  "Hallucinatory Terrain": {
+    "interpretation": "False Earth",
+    "valyrian": "Pirta Tegon"
+  },
+  "Harm": {
+    "interpretation": "Bad Life",
+    "valyrian": "Quba Glaesā"
+  },
+  "Haste": {
+    "interpretation": "Quick Walk",
+    "valyrian": "Adere Dekurūbā"
+  },
+  "Heal": {
+    "interpretation": "Good Blood",
+    "valyrian": "Sȳz Ānogar"
+  },
+  "Healing Spirit": {
+    "interpretation": "Live",
+    "valyrian": "Glaesā"
+  },
+  "Healing Word": {
+    "interpretation": "Give",
+    "valyrian": "Tepā"
+  },
+  "Heat Metal": {
+    "interpretation": "Warm Iron",
+    "valyrian": "Bāne Āegion"
+  },
+  "Hellish Rebuke": {
+    "interpretation": "Ashes",
+    "valyrian": "Ñuqir"
+  },
+  "Heroes' Feast": {
+    "interpretation": "Full Good",
+    "valyrian": "Lēda Sȳz"
+  },
+  "Heroism": {
+    "interpretation": "No Fear",
+    "valyrian": "Daor Zūgā"
+  },
+  "Hex": {
+    "interpretation": "Bad",
+    "valyrian": "Quba"
+  },
+  "Hold Monster": {
+    "interpretation": "Stone Hold",
+    "valyrian": "Dōron Ōrē"
+  },
+  "Hold Person": {
+    "interpretation": "Stone Person",
+    "valyrian": "Dōron Issaros"
+  },
+  "Holy Aura": {
+    "interpretation": "White Wall",
+    "valyrian": "Timpa Dōros"
+  },
+  "Holy Star of Mystra": {
+    "interpretation": "Star",
+    "valyrian": "Qēlos"
+  },
+  "Holy Weapon": {
+    "interpretation": "Sharp",
+    "valyrian": "Qana"
+  },
+  "Homunculus Servant": {
+    "interpretation": "Small Servant",
+    "valyrian": "Byka Dohaeriros"
+  },
+  "Hunger of Hadar": {
+    "interpretation": "Black Mouth",
+    "valyrian": "Zōbrie Relgos"
+  },
+  "Hunter's Mark": {
+    "interpretation": "Hunt",
+    "valyrian": "Arghū"
+  },
+  "Hypnotic Pattern": {
+    "interpretation": "Many Sleep",
+    "valyrian": "Olvie Ēdrū"
+  },
+  "Ice Knife": {
+    "interpretation": "Ice Stab",
+    "valyrian": "Suvion Ohīlā"
+  },
+  "Ice Storm": {
+    "interpretation": "Ice Sky",
+    "valyrian": "Suvion Jēdar"
+  },
+  "Identify": {
+    "interpretation": "Reveal True Nature",
+    "valyrian": "Tegōñor Iksan"
+  },
+  "Illusory Dragon": {
+    "interpretation": "False Beast",
+    "valyrian": "Pirta Dȳñes"
+  },
+  "Illusory Script": {
+    "interpretation": "False Writing",
+    "valyrian": "Pirta Bardugon"
+  },
+  "Immolation": {
+    "interpretation": "Living Burn",
+    "valyrian": "Glaesā Zālā"
+  },
+  "Imprisonment": {
+    "interpretation": "Chain Wall",
+    "valyrian": "Belmon Dōros"
+  },
+  "Incendiary Cloud": {
+    "interpretation": "Fire Cloud",
+    "valyrian": "Perzys Sambar"
+  },
+  "Incite Greed": {
+    "interpretation": "Eat Gold",
+    "valyrian": "Ipradā Āeksion"
+  },
+  "Infernal Calling": {
+    "interpretation": "Come Bad",
+    "valyrian": "Māzī Quba"
+  },
+  "Infestation": {
+    "interpretation": "Many Worms",
+    "valyrian": "Olvie Turgon"
+  },
+  "Inflict Wounds": {
+    "interpretation": "Cut Life",
+    "valyrian": "Nektō Glaesā"
+  },
+  "Insect Plague": {
+    "interpretation": "Worm Cloud",
+    "valyrian": "Turgon Sambar"
+  },
+  "Intellect Fortress": {
+    "interpretation": "Thought Wall",
+    "valyrian": "Otāpā Dōros"
+  },
+  "Investiture of Flame": {
+    "interpretation": "Fire Skin",
+    "valyrian": "Perzys Ñellyr"
+  },
+  "Investiture of Ice": {
+    "interpretation": "Ice Skin",
+    "valyrian": "Suvion Ñellyr"
+  },
+  "Investiture of Stone": {
+    "interpretation": "Earth Stone",
+    "valyrian": "Tegon Dōron"
+  },
+  "Investiture of Wind": {
+    "interpretation": "Wind Skin",
+    "valyrian": "Jelmio Ñellyr"
+  },
+  "Invisibility": {
+    "interpretation": "Veil the Sight",
+    "valyrian": "Urnes Dōrī"
+  },
+  "Invulnerability": {
+    "interpretation": "Safe Wall",
+    "valyrian": "Ȳgha Dōros"
+  },
+  "Jallarzi's Storm of Radiance": {
+    "interpretation": "Sun Wind",
+    "valyrian": "Vēzos Jelmio"
+  },
+  "Jim's Glowing Coin": {
+    "interpretation": "Gold Sun",
+    "valyrian": "Āeksion Vēzos"
+  },
+  "Jim's Magic Missile": {
+    "interpretation": "Magic Throw",
+    "valyrian": "Māzverys Ilzī"
+  },
+  "Jump": {
+    "interpretation": "Fly",
+    "valyrian": "Sōvē"
+  },
+  "Kinetic Jaunt": {
+    "interpretation": "Quick",
+    "valyrian": "Adere"
+  },
+  "Knock": {
+    "interpretation": "Turn Wall",
+    "valyrian": "Pālē Dōros"
+  },
+  "Laeral's Silver Lance": {
+    "interpretation": "Long Stab",
+    "valyrian": "Bōsa Ohīlā"
+  },
+  "Legend Lore": {
+    "interpretation": "Old Knowing",
+    "valyrian": "Uēpa Gīmī"
+  },
+  "Leomund's Secret Chest": {
+    "interpretation": "Far Hold",
+    "valyrian": "Tolmiot Ōrē"
+  },
+  "Leomund's Tiny Hut": {
+    "interpretation": "Small Wall",
+    "valyrian": "Byka Dōros"
+  },
+  "Lesser Restoration": {
+    "interpretation": "Wash",
+    "valyrian": "Rāenābā"
+  },
+  "Levitate": {
+    "interpretation": "Sky Float",
+    "valyrian": "Jēdar Bēvumbā"
+  },
+  "Life Transference": {
+    "interpretation": "Give Blood",
+    "valyrian": "Tepā Ānogar"
+  },
+  "Light": {
+    "interpretation": "White Sun",
+    "valyrian": "Timpa Vēzos"
+  },
+  "Lightning Arrow": {
+    "interpretation": "Throw",
+    "valyrian": "Ilzī"
+  },
+  "Lightning Bolt": {
+    "interpretation": "Straight Fire",
+    "valyrian": "Ilie Perzys"
+  },
+  "Lightning Lure": {
+    "interpretation": "Pull Sky",
+    "valyrian": "Hakō Jēdar"
+  },
+  "Locate Animals or Plants": {
+    "interpretation": "See Life",
+    "valyrian": "Urnē Glaesā"
+  },
+  "Locate Creature": {
+    "interpretation": "See Person",
+    "valyrian": "Urnē Issaros"
+  },
+  "Locate Object": {
+    "interpretation": "See Thing",
+    "valyrian": "Urnē Tolvie"
+  },
+  "Longstrider": {
+    "interpretation": "Long Walk",
+    "valyrian": "Bōsa Dekurūbā"
+  },
+  "Maddening Darkness": {
+    "interpretation": "Black Thought",
+    "valyrian": "Zōbrie Otāpā"
+  },
+  "Maelstrom": {
+    "interpretation": "Water Pull",
+    "valyrian": "Iēdar Hakō"
+  },
+  "Mage Armor": {
+    "interpretation": "Arcane Armor",
+    "valyrian": "Āeksio Sȳndror"
+  },
+  "Mage Hand": {
+    "interpretation": "Unseen Hand",
+    "valyrian": "Dōrī Qrinunty"
+  },
+  "Magic Circle": {
+    "interpretation": "Magic Circle",
+    "valyrian": "Māzverys Grevenka"
+  },
+  "Magic Jar": {
+    "interpretation": "Life Chain",
+    "valyrian": "Glaesā Belmon"
+  },
+  "Magic Missile": {
+    "interpretation": "Arcane Darts",
+    "valyrian": "Āeksio Prūmia"
+  },
+  "Magic Mouth": {
+    "interpretation": "Speaking Mouth",
+    "valyrian": "Vestrā Relgos"
+  },
+  "Magic Stone": {
+    "interpretation": "Stone",
+    "valyrian": "Dōron"
+  },
+  "Magic Weapon": {
+    "interpretation": "Magic",
+    "valyrian": "Māzverys"
+  },
+  "Major Image": {
+    "interpretation": "Great Falsehood",
+    "valyrian": "Rōva Pirta"
+  },
+  "Mass Cure Wounds": {
+    "interpretation": "Many Good",
+    "valyrian": "Olvie Sȳz"
+  },
+  "Mass Heal": {
+    "interpretation": "Many Life",
+    "valyrian": "Olvie Glaesā"
+  },
+  "Mass Healing Word": {
+    "interpretation": "Many",
+    "valyrian": "Olvie"
+  },
+  "Mass Polymorph": {
+    "interpretation": "Many Skins",
+    "valyrian": "Olvie Ñellyr"
+  },
+  "Mass Suggestion": {
+    "interpretation": "Many Words",
+    "valyrian": "Olvie Brōzi"
+  },
+  "Maximilian's Earthen Grasp": {
+    "interpretation": "Earth Hand",
+    "valyrian": "Tegon Ondos"
+  },
+  "Maze": {
+    "interpretation": "False Road",
+    "valyrian": "Pirta Geralbar"
+  },
+  "Meld into Stone": {
+    "interpretation": "In Stone",
+    "valyrian": "Va Dōron"
+  },
+  "Melf's Acid Arrow": {
+    "interpretation": "Burning Throw",
+    "valyrian": "Zālā Ilzī"
+  },
+  "Melf's Minute Meteors": {
+    "interpretation": "Small Stars",
+    "valyrian": "Byka Qēlos"
+  },
+  "Mending": {
+    "interpretation": "Make Whole",
+    "valyrian": "Olvie Iksos"
+  },
+  "Mental Prison": {
+    "interpretation": "Thought Chain",
+    "valyrian": "Otāpā Belmon"
+  },
+  "Message": {
+    "interpretation": "Whisper Afar",
+    "valyrian": "Tolī Henujagon"
+  },
+  "Meteor Swarm": {
+    "interpretation": "Sky Stones",
+    "valyrian": "Jēdar Dōron"
+  },
+  "Mighty Fortress": {
+    "interpretation": "Great Wall",
+    "valyrian": "Rōva Dōros"
+  },
+  "Mind Blank": {
+    "interpretation": "No Thought",
+    "valyrian": "Daor Otāpā"
+  },
+  "Mind Sliver": {
+    "interpretation": "Sharp Thought",
+    "valyrian": "Qana Otāpā"
+  },
+  "Mind Spike": {
+    "interpretation": "Stab Thought",
+    "valyrian": "Ohīlā Otāpā"
+  },
+  "Minor Illusion": {
+    "interpretation": "Small Falsehood",
+    "valyrian": "Byka Pirta"
+  },
+  "Mirage Arcane": {
+    "interpretation": "False World",
+    "valyrian": "Pirta Vys"
+  },
+  "Mirror Image": {
+    "interpretation": "Many Selves",
+    "valyrian": "Tolī Ñuhi"
+  },
+  "Mislead": {
+    "interpretation": "False Self",
+    "valyrian": "Pirta Issaros"
+  },
+  "Misty Step": {
+    "interpretation": "Fog",
+    "valyrian": "Sambrar"
+  },
+  "Modify Memory": {
+    "interpretation": "New Thought",
+    "valyrian": "Arlie Otāpā"
+  },
+  "Mold Earth": {
+    "interpretation": "Turn Earth",
+    "valyrian": "Pālē Tegon"
+  },
+  "Moonbeam": {
+    "interpretation": "Moon Fire",
+    "valyrian": "Hūra Perzys"
+  },
+  "Mordenkainen's Faithful Hound": {
+    "interpretation": "Seeing Dog",
+    "valyrian": "Urnē Jaos"
+  },
+  "Mordenkainen's Magnificent Mansion": {
+    "interpretation": "Great Safety",
+    "valyrian": "Rōva Ȳgha"
+  },
+  "Mordenkainen's Private Sanctum": {
+    "interpretation": "Safe World",
+    "valyrian": "Ȳgha Vys"
+  },
+  "Mordenkainen's Sword": {
+    "interpretation": "Sharp Hand",
+    "valyrian": "Qana Ondos"
+  },
+  "Motivational Speech": {
+    "interpretation": "Happy Word",
+    "valyrian": "Biare Brōzi"
+  },
+  "Move Earth": {
+    "interpretation": "Push Earth",
+    "valyrian": "Indī Tegon"
+  },
+  "Nathair's Mischief": {
+    "interpretation": "Playing Fog",
+    "valyrian": "Tymā Sambrar"
+  },
+  "Negative Energy Flood": {
+    "interpretation": "Death Flow",
+    "valyrian": "Morghūljā Iārā"
+  },
+  "Nondetection": {
+    "interpretation": "No Sight",
+    "valyrian": "Daor Urnē"
+  },
+  "Nystul's Magic Aura": {
+    "interpretation": "False Magic",
+    "valyrian": "Pirta Māzverys"
+  },
+  "Otiluke's Freezing Sphere": {
+    "interpretation": "Round Ice",
+    "valyrian": "Grevenka Suvion"
+  },
+  "Otiluke's Resilient Sphere": {
+    "interpretation": "Stone Circle",
+    "valyrian": "Dōron Grevenka"
+  },
+  "Otto's Irresistible Dance": {
+    "interpretation": "Push Play",
+    "valyrian": "Indī Tymā"
+  },
+  "Pass without Trace": {
+    "interpretation": "No Foot",
+    "valyrian": "Daor Deks"
+  },
+  "Passwall": {
+    "interpretation": "Wall Road",
+    "valyrian": "Dōros Geralbar"
+  },
+  "Phantasmal Force": {
+    "interpretation": "False Hit",
+    "valyrian": "Pirta Hīlā"
+  },
+  "Phantasmal Killer": {
+    "interpretation": "Fear Kill",
+    "valyrian": "Zūgā Ossēnā"
+  },
+  "Phantom Steed": {
+    "interpretation": "False Horse",
+    "valyrian": "Pirta Anne"
+  },
+  "Planar Ally": {
+    "interpretation": "Other World",
+    "valyrian": "Tolie Vys"
+  },
+  "Planar Binding": {
+    "interpretation": "World Chain",
+    "valyrian": "Vys Belmon"
+  },
+  "Plane Shift": {
+    "interpretation": "Turn World",
+    "valyrian": "Pālē Vys"
+  },
+  "Plant Growth": {
+    "interpretation": "Great Forest",
+    "valyrian": "Rōva Guēsin"
+  },
+  "Poison Spray": {
+    "interpretation": "Rotten Spit",
+    "valyrian": "Puatta Pykā"
+  },
+  "Polymorph": {
+    "interpretation": "Other Skin",
+    "valyrian": "Tolie Ñellyr"
+  },
+  "Power Word Fortify": {
+    "interpretation": "Heavy Word",
+    "valyrian": "Kempa Vestrā"
+  },
+  "Power Word Heal": {
+    "interpretation": "Life Word",
+    "valyrian": "Glaesā Vestrā"
+  },
+  "Power Word Kill": {
+    "interpretation": "Death Word",
+    "valyrian": "Morghūljā Vestrā"
+  },
+  "Power Word Pain": {
+    "interpretation": "Suffer Word",
+    "valyrian": "Botagon Vestrā"
+  },
+  "Power Word Stun": {
+    "interpretation": "Sit Word",
+    "valyrian": "Dēmā Vestrā"
+  },
+  "Prayer of Healing": {
+    "interpretation": "Good Song",
+    "valyrian": "Sȳz Vāedā"
+  },
+  "Prestidigitation": {
+    "interpretation": "Minor Magic",
+    "valyrian": "Qelbar Āeksiō"
+  },
+  "Primal Savagery": {
+    "interpretation": "Sharp Beast",
+    "valyrian": "Qana Dȳñes"
+  },
+  "Primordial Ward": {
+    "interpretation": "Element Wall",
+    "valyrian": "Būjot Dōros"
+  },
+  "Prismatic Spray": {
+    "interpretation": "All Stars",
+    "valyrian": "Tolvie Qēlos"
+  },
+  "Prismatic Wall": {
+    "interpretation": "Sun Wall",
+    "valyrian": "Vēzos Dōros"
+  },
+  "Produce Flame": {
+    "interpretation": "Warm",
+    "valyrian": "Bāne"
+  },
+  "Programmed Illusion": {
+    "interpretation": "Named Falsehood",
+    "valyrian": "Brōzi Pirta"
+  },
+  "Project Image": {
+    "interpretation": "Far Falsehood",
+    "valyrian": "Tolmiot Pirta"
+  },
+  "Protection from Energy": {
+    "interpretation": "Element Safety",
+    "valyrian": "Būjot Ȳgha"
+  },
+  "Protection from Evil and Good": {
+    "interpretation": "Spirit Ward",
+    "valyrian": "Vezof Ñuhys"
+  },
+  "Protection from Poison": {
+    "interpretation": "Safe Blood",
+    "valyrian": "Ȳgha Ānogar"
+  },
+  "Psychic Scream": {
+    "interpretation": "Thought Cry",
+    "valyrian": "Otāpā Vestrā"
+  },
+  "Purify Food and Drink": {
+    "interpretation": "Clean Eating",
+    "valyrian": "Rāenā Ipradā"
+  },
+  "Pyrotechnics": {
+    "interpretation": "Fire Smoke",
+    "valyrian": "Perzys Ōrbar"
+  },
+  "Raise Dead": {
+    "interpretation": "Dead Live",
+    "valyrian": "Morghūljā Glaesā"
+  },
+  "Rary's Telepathic Bond": {
+    "interpretation": "Two Thoughts",
+    "valyrian": "Lanta Otāpā"
+  },
+  "Raulothim's Psychic Lance": {
+    "interpretation": "Long Thought",
+    "valyrian": "Bōsa Otāpā"
+  },
+  "Ray of Enfeeblement": {
+    "interpretation": "Heavy Self",
+    "valyrian": "Kempa Issaros"
+  },
+  "Ray of Frost": {
+    "interpretation": "Cold Throw",
+    "valyrian": "Iosre Ilzī"
+  },
+  "Ray of Sickness": {
+    "interpretation": "Rotten Breath",
+    "valyrian": "Puatta Paghā"
+  },
+  "Regenerate": {
+    "interpretation": "New Blood",
+    "valyrian": "Arlie Ānogar"
+  },
+  "Reincarnate": {
+    "interpretation": "Other Life",
+    "valyrian": "Tolie Glaesā"
+  },
+  "Remove Curse": {
+    "interpretation": "Good Turn",
+    "valyrian": "Sȳz Pālē"
+  },
+  "Resistance": {
+    "interpretation": "Hold Life",
+    "valyrian": "Ōrē Glaesā"
+  },
+  "Resurrection": {
+    "interpretation": "Life Return",
+    "valyrian": "Glaesā Amāzinon"
+  },
+  "Reverse Gravity": {
+    "interpretation": "Sky Fall",
+    "valyrian": "Jēdar Ropā"
+  },
+  "Revivify": {
+    "interpretation": "Live Again",
+    "valyrian": "Glaesā Arlī"
+  },
+  "Rime's Binding Ice": {
+    "interpretation": "Ice Rope",
+    "valyrian": "Suvion Hubon"
+  },
+  "Rope Trick": {
+    "interpretation": "Rope World",
+    "valyrian": "Hubon Vys"
+  },
+  "Sacred Flame": {
+    "interpretation": "White Fire",
+    "valyrian": "Timpa Perzys"
+  },
+  "Sanctuary": {
+    "interpretation": "Wall",
+    "valyrian": "Dōros"
+  },
+  "Scatter": {
+    "interpretation": "All Throw",
+    "valyrian": "Tolvie Ilzī"
+  },
+  "Scorching Ray": {
+    "interpretation": "Burning Sight",
+    "valyrian": "Zālā Urnē"
+  },
+  "Scrying": {
+    "interpretation": "Far Eye",
+    "valyrian": "Tolmiot Laes"
+  },
+  "Searing Smite": {
+    "interpretation": "Red",
+    "valyrian": "Mele"
+  },
+  "See Invisibility": {
+    "interpretation": "See the Unseen",
+    "valyrian": "Dōrī Urnes"
+  },
+  "Seeming": {
+    "interpretation": "Many Falsehoods",
+    "valyrian": "Olvie Pirta"
+  },
+  "Sending": {
+    "interpretation": "Far Word",
+    "valyrian": "Tolmiot Brōzi"
+  },
+  "Sequester": {
+    "interpretation": "Long Sleep",
+    "valyrian": "Bōsa Ēdrū"
+  },
+  "Shadow Blade": {
+    "interpretation": "Night",
+    "valyrian": "Bantis"
+  },
+  "Shadow of Moil": {
+    "interpretation": "Black Fire",
+    "valyrian": "Zōbrie Perzys"
+  },
+  "Shape Water": {
+    "interpretation": "Turn Water",
+    "valyrian": "Pālē Iēdar"
+  },
+  "Shapechange": {
+    "interpretation": "All Skins",
+    "valyrian": "Tolvie Ñellyr"
+  },
+  "Shatter": {
+    "interpretation": "Split Stone",
+    "valyrian": "Ezīmā Dōron"
+  },
+  "Shield": {
+    "interpretation": "Shield",
+    "valyrian": "Somby"
+  },
+  "Shield of Faith": {
+    "interpretation": "White",
+    "valyrian": "Timpa"
+  },
+  "Shillelagh": {
+    "interpretation": "Stick",
+    "valyrian": "Tāemītsos"
+  },
+  "Shining Smite": {
+    "interpretation": "Sun",
+    "valyrian": "Vēzos"
+  },
+  "Shocking Grasp": {
+    "interpretation": "Sky Hand",
+    "valyrian": "Jēdar Ondos"
+  },
+  "Sickening Radiance": {
+    "interpretation": "Bad Sun",
+    "valyrian": "Quba Vēzos"
+  },
+  "Silence": {
+    "interpretation": "No Hearing",
+    "valyrian": "Daor Rȳbā"
+  },
+  "Silent Image": {
+    "interpretation": "White Falsehood",
+    "valyrian": "Timpa Pirta"
+  },
+  "Silvery Barbs": {
+    "interpretation": "Fate",
+    "valyrian": "Vējes"
+  },
+  "Simbul's Synostodweomer": {
+    "interpretation": "Magic Life",
+    "valyrian": "Māzverys Glaesā"
+  },
+  "Simulacrum": {
+    "interpretation": "Snow Self",
+    "valyrian": "Sōna Issaros"
+  },
+  "Skill Empowerment": {
+    "interpretation": "Great Knowing",
+    "valyrian": "Rōva Gīmī"
+  },
+  "Skywrite": {
+    "interpretation": "Sky Writing",
+    "valyrian": "Jēdar Bardugon"
+  },
+  "Sleep": {
+    "interpretation": "Full Sleep",
+    "valyrian": "Lēda Ēdrū"
+  },
+  "Sleet Storm": {
+    "interpretation": "Snow Wind",
+    "valyrian": "Sōna Jelmio"
+  },
+  "Slow": {
+    "interpretation": "Heavy Walk",
+    "valyrian": "Kempa Dekurūbā"
+  },
+  "Snare": {
+    "interpretation": "Binding Circle",
+    "valyrian": "Gūrēñagon Tēgon"
+  },
+  "Snilloc's Snowball Swarm": {
+    "interpretation": "Many Snow",
+    "valyrian": "Olvie Sōna"
+  },
+  "Songal's Elemental Suffusion": {
+    "interpretation": "Element Skin",
+    "valyrian": "Būjot Ñellyr"
+  },
+  "Sorcerous Burst": {
+    "interpretation": "Changing Hit",
+    "valyrian": "Arlie Hīlā"
+  },
+  "Soul Cage": {
+    "interpretation": "Hold",
+    "valyrian": "Ōrē"
+  },
+  "Spare the Dying": {
+    "interpretation": "Hold Death",
+    "valyrian": "Ōrē Morghūljā"
+  },
+  "Speak with Animals": {
+    "interpretation": "Beast Tongue",
+    "valyrian": "Dȳñes Ēngos"
+  },
+  "Speak with Dead": {
+    "interpretation": "Dead Tongue",
+    "valyrian": "Morghūljā Ēngos"
+  },
+  "Speak with Plants": {
+    "interpretation": "Forest Tongue",
+    "valyrian": "Guēsin Ēngos"
+  },
+  "Spellfire Flare": {
+    "interpretation": "Magic Fire",
+    "valyrian": "Māzverys Perzys"
+  },
+  "Spellfire Storm": {
+    "interpretation": "Magic Sky",
+    "valyrian": "Māzverys Jēdar"
+  },
+  "Spider Climb": {
+    "interpretation": "Wall Walk",
+    "valyrian": "Dōros Dekurūbā"
+  },
+  "Spike Growth": {
+    "interpretation": "Sharp Earth",
+    "valyrian": "Qana Tegon"
+  },
+  "Spirit Guardians": {
+    "interpretation": "Many Wards",
+    "valyrian": "Olvie Vezof"
+  },
+  "Spirit of Death": {
+    "interpretation": "Death Servant",
+    "valyrian": "Morghūljā Dohaeriros"
+  },
+  "Spirit Shroud": {
+    "interpretation": "Death",
+    "valyrian": "Morghūljā"
+  },
+  "Spiritual Weapon": {
+    "interpretation": "Hand",
+    "valyrian": "Ondos"
+  },
+  "Spray of Cards": {
+    "interpretation": "Playing Throw",
+    "valyrian": "Tymā Ilzī"
+  },
+  "Staggering Smite": {
+    "interpretation": "Fall",
+    "valyrian": "Ropā"
+  },
+  "Starry Wisp": {
+    "interpretation": "Star Fire",
+    "valyrian": "Qēlos Perzys"
+  },
+  "Steel Wind Strike": {
+    "interpretation": "Sharp Wind",
+    "valyrian": "Qana Jelmio"
+  },
+  "Stinking Cloud": {
+    "interpretation": "Rotten Fog",
+    "valyrian": "Puatta Sambrar"
+  },
+  "Stone Shape": {
+    "interpretation": "Turn Stone",
+    "valyrian": "Pālē Dōron"
+  },
+  "Stoneskin": {
+    "interpretation": "Thick Skin",
+    "valyrian": "Qumblie Ñellyr"
+  },
+  "Storm of Vengeance": {
+    "interpretation": "Killing Wind",
+    "valyrian": "Ossēnā Jelmio"
+  },
+  "Storm Sphere": {
+    "interpretation": "Round Wind",
+    "valyrian": "Grevenka Jelmio"
+  },
+  "Suggestion": {
+    "interpretation": "Word Thought",
+    "valyrian": "Brōzi Otāpā"
+  },
+  "Summon Aberration": {
+    "interpretation": "Come Other",
+    "valyrian": "Māzī Tolie"
+  },
+  "Summon Beast": {
+    "interpretation": "Beast Come",
+    "valyrian": "Dȳñes Māzī"
+  },
+  "Summon Celestial": {
+    "interpretation": "Come Star",
+    "valyrian": "Māzī Qēlos"
+  },
+  "Summon Construct": {
+    "interpretation": "Stone Come",
+    "valyrian": "Dōron Māzī"
+  },
+  "Summon Dragon": {
+    "interpretation": "Come Wing",
+    "valyrian": "Māzī Tīkun"
+  },
+  "Summon Elemental": {
+    "interpretation": "Element Come",
+    "valyrian": "Būjot Māzī"
+  },
+  "Summon Fey": {
+    "interpretation": "Forest Come",
+    "valyrian": "Guēsin Māzī"
+  },
+  "Summon Fiend": {
+    "interpretation": "Bad Come",
+    "valyrian": "Quba Māzī"
+  },
+  "Summon Greater Demon": {
+    "interpretation": "Great Bad",
+    "valyrian": "Rōva Quba"
+  },
+  "Summon Lesser Demons": {
+    "interpretation": "Small Bad",
+    "valyrian": "Byka Quba"
+  },
+  "Summon Shadowspawn": {
+    "interpretation": "Come Night",
+    "valyrian": "Māzī Bantis"
+  },
+  "Summon Undead": {
+    "interpretation": "Come Dead",
+    "valyrian": "Māzī Morghūljā"
+  },
+  "Sunbeam": {
+    "interpretation": "Straight Sun",
+    "valyrian": "Ilie Vēzos"
+  },
+  "Sunburst": {
+    "interpretation": "Wide Sun",
+    "valyrian": "Drāñe Vēzos"
+  },
+  "Swift Quiver": {
+    "interpretation": "Straight",
+    "valyrian": "Ilie"
+  },
+  "Sword Burst": {
+    "interpretation": "Round Cut",
+    "valyrian": "Grevenka Nektō"
+  },
+  "Syluné's Viper": {
+    "interpretation": "Snake",
+    "valyrian": "Peldio"
+  },
+  "Symbol": {
+    "interpretation": "Named Magic",
+    "valyrian": "Brōzi Māzverys"
+  },
+  "Synaptic Static": {
+    "interpretation": "Thought Wind",
+    "valyrian": "Otāpā Jelmio"
+  },
+  "Tasha's Bubbling Cauldron": {
+    "interpretation": "Many Drinks",
+    "valyrian": "Olvie Mōzū"
+  },
+  "Tasha's Caustic Brew": {
+    "interpretation": "Rotten Water",
+    "valyrian": "Puatta Iēdar"
+  },
+  "Tasha's Hideous Laughter": {
+    "interpretation": "Bad Laugh",
+    "valyrian": "Quba Sōpā"
+  },
+  "Tasha's Mind Whip": {
+    "interpretation": "Thought Rope",
+    "valyrian": "Otāpā Hubon"
+  },
+  "Tasha's Otherworldly Guise": {
+    "interpretation": "Other",
+    "valyrian": "Tolie"
+  },
+  "Telekinesis": {
+    "interpretation": "Thought Push",
+    "valyrian": "Otāpā Indī"
+  },
+  "Telepathy": {
+    "interpretation": "Thought Tongue",
+    "valyrian": "Otāpā Ēngos"
+  },
+  "Teleport": {
+    "interpretation": "Far Walk",
+    "valyrian": "Tolmiot Dekurūbā"
+  },
+  "Teleportation Circle": {
+    "interpretation": "Far Circle",
+    "valyrian": "Tolmiot Grevenka"
+  },
+  "Temple of the Gods": {
+    "interpretation": "Safe Sun",
+    "valyrian": "Ȳgha Vēzos"
+  },
+  "Tenser's Floating Disk": {
+    "interpretation": "Bearer of Burdens",
+    "valyrian": "Dohaeriros Tēlie"
+  },
+  "Tenser's Transformation": {
+    "interpretation": "Fighting Self",
+    "valyrian": "Vīlībā Issaros"
+  },
+  "Thaumaturgy": {
+    "interpretation": "Magic Voice",
+    "valyrian": "Māzverys Vestrā"
+  },
+  "Thorn Whip": {
+    "interpretation": "Plant Rope",
+    "valyrian": "Guēse Hubon"
+  },
+  "Thunder Step": {
+    "interpretation": "Sky Walk",
+    "valyrian": "Jēdar Dekurūbā"
+  },
+  "Thunderclap": {
+    "interpretation": "Sky Hit",
+    "valyrian": "Jēdar Hīlā"
+  },
+  "Thunderous Smite": {
+    "interpretation": "Wind",
+    "valyrian": "Jelmio"
+  },
+  "Thunderwave": {
+    "interpretation": "Wind Hit",
+    "valyrian": "Jelmio Hīlā"
+  },
+  "Tidal Wave": {
+    "interpretation": "Sea Push",
+    "valyrian": "Embar Indī"
+  },
+  "Time Stop": {
+    "interpretation": "World Wait",
+    "valyrian": "Vys Umbagon"
+  },
+  "Tiny Servant": {
+    "interpretation": "Small Life",
+    "valyrian": "Byka Glaesā"
+  },
+  "Toll the Dead": {
+    "interpretation": "Death's Chime",
+    "valyrian": "Morghūl Raqiros"
+  },
+  "Tongues": {
+    "interpretation": "Many Tongues",
+    "valyrian": "Olvie Ēngos"
+  },
+  "Transmute Rock": {
+    "interpretation": "New Stone",
+    "valyrian": "Arlie Dōron"
+  },
+  "Transport via Plants": {
+    "interpretation": "Forest Road",
+    "valyrian": "Guēsin Geralbar"
+  },
+  "Tree Stride": {
+    "interpretation": "Tree Walk",
+    "valyrian": "Guēse Dekurūbā"
+  },
+  "True Polymorph": {
+    "interpretation": "Correct Skin",
+    "valyrian": "Drēje Ñellyr"
+  },
+  "True Resurrection": {
+    "interpretation": "Correct Life",
+    "valyrian": "Drēje Glaesā"
+  },
+  "True Seeing": {
+    "interpretation": "Correct Sight",
+    "valyrian": "Drēje Urnē"
+  },
+  "True Strike": {
+    "interpretation": "Correct Hit",
+    "valyrian": "Drēje Hīlā"
+  },
+  "Tsunami": {
+    "interpretation": "Sea Wall",
+    "valyrian": "Embar Dōros"
+  },
+  "Unseen Servant": {
+    "interpretation": "Unseen Servant",
+    "valyrian": "Dōrī Dohaeriros"
+  },
+  "Vampiric Touch": {
+    "interpretation": "Drink Blood",
+    "valyrian": "Mōzū Ānogar"
+  },
+  "Vicious Mockery": {
+    "interpretation": "Bad Words",
+    "valyrian": "Quba Brōzi"
+  },
+  "Vitriolic Sphere": {
+    "interpretation": "Rotten Circle",
+    "valyrian": "Puatta Grevenka"
+  },
+  "Vortex Warp": {
+    "interpretation": "Turning Road",
+    "valyrian": "Pālē Geralbar"
+  },
+  "Wall of Fire": {
+    "interpretation": "Wall Burn",
+    "valyrian": "Dōros Zālā"
+  },
+  "Wall of Force": {
+    "interpretation": "Heavy Wall",
+    "valyrian": "Kempa Dōros"
+  },
+  "Wall of Ice": {
+    "interpretation": "Ice Wall",
+    "valyrian": "Suvion Dōros"
+  },
+  "Wall of Light": {
+    "interpretation": "Star Wall",
+    "valyrian": "Qēlos Dōros"
+  },
+  "Wall of Sand": {
+    "interpretation": "Sand Wall",
+    "valyrian": "Rizmon Dōros"
+  },
+  "Wall of Stone": {
+    "interpretation": "Stone Wall",
+    "valyrian": "Dōron Dōros"
+  },
+  "Wall of Thorns": {
+    "interpretation": "Sharp Tree",
+    "valyrian": "Qana Guēse"
+  },
+  "Wall of Water": {
+    "interpretation": "Water Wall",
+    "valyrian": "Iēdar Dōros"
+  },
+  "Wardaway": {
+    "interpretation": "Begone",
+    "valyrian": "Dōrī Iksat"
+  },
+  "Warding Bond": {
+    "interpretation": "Bound Ward",
+    "valyrian": "Belmon Vezof"
+  },
+  "Warding Wind": {
+    "interpretation": "Guardian Wind",
+    "valyrian": "Vezof Jelmio"
+  },
+  "Warp Sense": {
+    "interpretation": "See Turn",
+    "valyrian": "Urnē Pālē"
+  },
+  "Water Breathing": {
+    "interpretation": "Water Breath",
+    "valyrian": "Iēdar Paghā"
+  },
+  "Water Walk": {
+    "interpretation": "Water Walk",
+    "valyrian": "Iēdar Dekurūbā"
+  },
+  "Watery Sphere": {
+    "interpretation": "Round Water",
+    "valyrian": "Grevenka Iēdar"
+  },
+  "Web": {
+    "interpretation": "Many Ropes",
+    "valyrian": "Olvie Hubon"
+  },
+  "Weird": {
+    "interpretation": "False Fear",
+    "valyrian": "Pirta Zūgā"
+  },
+  "Whirlwind": {
+    "interpretation": "Turning Wind",
+    "valyrian": "Pālē Jelmio"
+  },
+  "Wind Walk": {
+    "interpretation": "Wind Walk",
+    "valyrian": "Jelmio Dekurūbā"
+  },
+  "Wind Wall": {
+    "interpretation": "Wind Wall",
+    "valyrian": "Jelmio Dōros"
+  },
+  "Wish": {
+    "interpretation": "All Fate",
+    "valyrian": "Tolvie Vējes"
+  },
+  "Witch Bolt": {
+    "interpretation": "Black Sky",
+    "valyrian": "Zōbrie Jēdar"
+  },
+  "Wither and Bloom": {
+    "interpretation": "Death Flower",
+    "valyrian": "Morghūljā Rūklon"
+  },
+  "Word of Radiance": {
+    "interpretation": "Sun Word",
+    "valyrian": "Vēzos Brōzi"
+  },
+  "Word of Recall": {
+    "interpretation": "Return Word",
+    "valyrian": "Amāzinon Brōzi"
+  },
+  "Wrath of Nature": {
+    "interpretation": "Fighting Earth",
+    "valyrian": "Vīlībā Tegon"
+  },
+  "Wrathful Smite": {
+    "interpretation": "Fear",
+    "valyrian": "Zūgā"
+  },
+  "Yolande's Regal Presence": {
+    "interpretation": "King Push",
+    "valyrian": "Dārys Indī"
+  },
+  "Zephyr Strike": {
+    "interpretation": "Run",
+    "valyrian": "Dakō"
+  },
+  "Zone of Truth": {
+    "interpretation": "Correct Words",
+    "valyrian": "Drēje Brōzi"
+  }
+}

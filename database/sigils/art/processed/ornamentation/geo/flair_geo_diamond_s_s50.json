@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "base_svg_filename": "flair_geo_diamond_s_s50.svg",
+    "type": "ornamentation",
+    "subtype": "geo"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082973": {
+        "id": "10000082973",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          3,
+          1
+        ]
+      }
+    },
+    "groups": {
+      "10000082973": {
+        "id": "10000082973",
+        "category": "main",
+        "entities": [
+          "10000082973"
+        ],
+        "random_group": [
+          4,
+          0,
+          2
+        ]
+      }
+    }
+  }
+}

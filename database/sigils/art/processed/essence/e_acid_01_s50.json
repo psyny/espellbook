@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_acid_01_s50.svg",
+    "type": "essence",
+    "subtype": "acid"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082239": {
+        "id": "10000082239",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          4,
+          2
+        ]
+      }
+    },
+    "groups": {
+      "10000082239": {
+        "id": "10000082239",
+        "category": "main",
+        "entities": [
+          "10000082239"
+        ],
+        "random_group": [
+          3,
+          1,
+          2
+        ]
+      }
+    }
+  }
+}

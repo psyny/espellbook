@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_cold_01_s50.svg",
+    "type": "essence",
+    "subtype": "cold"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082294": {
+        "id": "10000082294",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          5,
+          4
+        ]
+      },
+      "10000082295": {
+        "id": "10000082295",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000082294": {
+        "id": "10000082294",
+        "category": "main",
+        "entities": [
+          "10000082294"
+        ],
+        "random_group": [
+          0,
+          3,
+          2
+        ]
+      },
+      "10000082295": {
+        "id": "10000082295",
+        "category": "main",
+        "entities": [
+          "10000082295"
+        ],
+        "random_group": [
+          2,
+          0,
+          2
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Ranger",
+  "casting_stat": "wisdom",
+  "spellcasting": "half",
+  "prepared_caster": true,
+  "spells_prepared_formula": "wisdom_modifier + floor(level / 2)",
+  "ritual_caster": false,
+  "progression": {
+    "1": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [0, 0, 0, 0, 0, 0, 0, 0, 0] },
+    "2": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [2, 0, 0, 0, 0, 0, 0, 0, 0] },
+    "3": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [3, 0, 0, 0, 0, 0, 0, 0, 0] },
+    "4": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [3, 0, 0, 0, 0, 0, 0, 0, 0] },
+    "5": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 2, 0, 0, 0, 0, 0, 0, 0] },
+    "6": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 2, 0, 0, 0, 0, 0, 0, 0] },
+    "7": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 0, 0, 0, 0, 0, 0, 0] },
+    "8": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 0, 0, 0, 0, 0, 0, 0] },
+    "9": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 2, 0, 0, 0, 0, 0, 0] },
+    "10": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 2, 0, 0, 0, 0, 0, 0] },
+    "11": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 0, 0, 0, 0, 0, 0] },
+    "12": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 0, 0, 0, 0, 0, 0] },
+    "13": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 1, 0, 0, 0, 0, 0] },
+    "14": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 1, 0, 0, 0, 0, 0] },
+    "15": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 2, 0, 0, 0, 0, 0] },
+    "16": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 2, 0, 0, 0, 0, 0] },
+    "17": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 3, 1, 0, 0, 0, 0] },
+    "18": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 3, 1, 0, 0, 0, 0] },
+    "19": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 3, 2, 0, 0, 0, 0] },
+    "20": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [4, 3, 3, 3, 2, 0, 0, 0, 0] }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "metadata": {
+    "base_svg_filename": "divination_level_0.svg",
+    "type": "school",
+    "school": "Divination",
+    "level": 0,
+    "subtype": "divination"
+  },
+  "entity_map": {
+    "entities": {
+      "10000084384": {
+        "id": "10000084384",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          4,
+          5
+        ]
+      },
+      "10000084385": {
+        "id": "10000084385",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          5,
+          5
+        ]
+      },
+      "10000084386": {
+        "id": "10000084386",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          0,
+          5
+        ]
+      },
+      "10000084388": {
+        "id": "10000084388",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          2,
+          4
+        ]
+      }
+    },
+    "groups": {
+      "10000084383": {
+        "id": "10000084383",
+        "category": "main",
+        "entities": [
+          "10000084384",
+          "10000084385",
+          "10000084386"
+        ],
+        "random_group": [
+          4,
+          1,
+          0
+        ]
+      },
+      "10000084387": {
+        "id": "10000084387",
+        "category": "main",
+        "entities": [
+          "10000084388"
+        ],
+        "random_group": [
+          1,
+          1,
+          0
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000084352",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000084365",
+        "x": 596.9949,
+        "y": 556.0,
+        "rotation": 120.0,
+        "variable_rotation": true
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000084361",
+        "x": 403.0052,
+        "y": 556.0,
+        "rotation": 240.0,
+        "variable_rotation": true
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000084357",
+        "x": 500.0,
+        "y": 388.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_m": [
+      {
+        "source_id": "10000084370",
+        "x": 556.2917,
+        "y": 467.5,
+        "rotation": 60.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084374",
+        "x": 500.0,
+        "y": 565.0,
+        "rotation": 180.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084378",
+        "x": 443.7083,
+        "y": 467.5,
+        "rotation": 300.0,
+        "variable_rotation": true
+      }
+    ]
+  }
+}

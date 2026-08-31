@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_necrosis_01_s50.svg",
+    "type": "essence",
+    "subtype": "necrosis"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082587": {
+        "id": "10000082587",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          4,
+          5
+        ]
+      },
+      "10000082588": {
+        "id": "10000082588",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          4,
+          3
+        ]
+      }
+    },
+    "groups": {
+      "10000082587": {
+        "id": "10000082587",
+        "category": "main",
+        "entities": [
+          "10000082587"
+        ],
+        "random_group": [
+          3,
+          1,
+          3
+        ]
+      },
+      "10000082588": {
+        "id": "10000082588",
+        "category": "main",
+        "entities": [
+          "10000082588"
+        ],
+        "random_group": [
+          1,
+          3,
+          2
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_force_01_s50.svg",
+    "type": "essence",
+    "subtype": "force"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082376": {
+        "id": "10000082376",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          5,
+          1
+        ]
+      },
+      "10000082377": {
+        "id": "10000082377",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          1,
+          4
+        ]
+      }
+    },
+    "groups": {
+      "10000082376": {
+        "id": "10000082376",
+        "category": "main",
+        "entities": [
+          "10000082376"
+        ],
+        "random_group": [
+          4,
+          1,
+          5
+        ]
+      },
+      "10000082377": {
+        "id": "10000082377",
+        "category": "main",
+        "entities": [
+          "10000082377"
+        ],
+        "random_group": [
+          2,
+          4,
+          3
+        ]
+      }
+    }
+  }
+}

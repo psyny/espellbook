@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="50mm"
+   height="50mm"
+   viewBox="0 0 50 50"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="flair_rune_w_s50.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="4.5354829"
+     inkscape:cx="81.90969"
+     inkscape:cy="94.367019"
+     inkscape:window-width="3840"
+     inkscape:window-height="2071"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="true">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999999"
+       spacingy="0.99999999"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="symbol_art"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="matrix(0.49465652,0,0,0.49465652,4.31878,0.50427695)">
+    <path
+       style="fill:#000000;stroke-width:4.91645"
+       d="M 20.488258,49.924463 V 9.4930861 l 4.043147,0.04917 c 2.880307,0.03441 9.004396,2.5922029 21.293868,8.8949049 23.165369,11.880528 23.145013,10.937748 0.536682,24.858208 L 29.113594,53.915606 V 72.136441 90.357279 H 24.800925 20.488258 Z M 42.02608,36.944082 51.931565,30.816797 48.586946,28.78281 C 44.574921,26.342967 30.479827,19.1966 29.679625,19.1966 c -0.311213,0 -0.566031,5.631459 -0.566031,12.514304 0,10.260108 0.270896,12.410418 1.503551,11.937356 0.826899,-0.31711 5.96096,-3.334192 11.408935,-6.704178 z"
+       id="path19" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="general_boundaries"
+     sodipodi:insensitive="true">
+    <g
+       id="g3"
+       style="display:inline"
+       inkscape:label="_helper_center_mark"
+       transform="matrix(0.5,0,0,0.5,-0.25,-0.25)">
+      <circle
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:1.96078;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.1"
+         id="path1"
+         cx="50.499996"
+         cy="50.499996"
+         r="49.019608" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.1"
+         d="m 0.5,50.5 h 100"
+         id="path2"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.1"
+         d="M 50.5,100.5 V 0.5"
+         id="path3"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>

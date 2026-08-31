@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_time_01_s100.svg",
+    "type": "essence",
+    "subtype": "time"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082890": {
+        "id": "10000082890",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          0,
+          3
+        ]
+      }
+    },
+    "groups": {
+      "10000082890": {
+        "id": "10000082890",
+        "category": "main",
+        "entities": [
+          "10000082890"
+        ],
+        "random_group": [
+          4,
+          1,
+          2
+        ]
+      }
+    }
+  }
+}

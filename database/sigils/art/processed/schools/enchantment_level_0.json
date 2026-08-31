@@ -1,0 +1,186 @@
+{
+  "metadata": {
+    "base_svg_filename": "enchantment_level_0.svg",
+    "type": "school",
+    "school": "Enchantment",
+    "level": 0,
+    "subtype": "enchantment"
+  },
+  "entity_map": {
+    "entities": {
+      "10000084831": {
+        "id": "10000084831",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          0,
+          2
+        ]
+      },
+      "10000084833": {
+        "id": "10000084833",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          4,
+          3,
+          1
+        ]
+      },
+      "10000084834": {
+        "id": "10000084834",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          4,
+          0,
+          5
+        ]
+      },
+      "10000084835": {
+        "id": "10000084835",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          5,
+          4
+        ]
+      },
+      "10000084836": {
+        "id": "10000084836",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          4,
+          0,
+          5
+        ]
+      },
+      "10000084838": {
+        "id": "10000084838",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          2,
+          4
+        ]
+      },
+      "10000084839": {
+        "id": "10000084839",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          3,
+          2
+        ]
+      }
+    },
+    "groups": {
+      "10000084830": {
+        "id": "10000084830",
+        "category": "main",
+        "entities": [
+          "10000084831"
+        ],
+        "random_group": [
+          0,
+          5,
+          5
+        ]
+      },
+      "10000084832": {
+        "id": "10000084832",
+        "category": "sub",
+        "entities": [
+          "10000084833",
+          "10000084834",
+          "10000084835",
+          "10000084836"
+        ],
+        "random_group": [
+          5,
+          0,
+          5
+        ]
+      },
+      "10000084837": {
+        "id": "10000084837",
+        "category": "sub",
+        "entities": [
+          "10000084838",
+          "10000084839"
+        ],
+        "random_group": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000084812",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000084808",
+        "x": 420.0,
+        "y": 580.0,
+        "rotation": 359.967,
+        "variable_rotation": false
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000084804",
+        "x": 580.0,
+        "y": 580.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000084800",
+        "x": 500.0,
+        "y": 419.5875,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "ornamentation_l": [
+      {
+        "source_id": "10000084817",
+        "x": 500.0,
+        "y": 580.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000084821",
+        "x": 580.0,
+        "y": 420.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000084825",
+        "x": 420.0,
+        "y": 420.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+    "name": "Hujah",
+    "classes": {
+        "wizard": 1
+    },
+    "stats": {
+      "hp": 8
+    },
+    "attributes": {
+        "strength": 7,
+        "dexterity": 14,
+        "constitution": 14,
+        "intelligence": 18,
+        "wisdom": 12,
+        "charisma": 11
+    },
+    "custom_mods": {
+        "spell_dc_mod": 0,
+        "spell_attack_mod": 0,
+        "slots": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+        },
+        "prepared": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+        }
+    }
+}

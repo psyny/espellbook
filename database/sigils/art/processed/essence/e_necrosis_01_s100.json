@@ -1,0 +1,233 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_necrosis_01_s100.svg",
+    "type": "essence",
+    "subtype": "necrosis"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082567": {
+        "id": "10000082567",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          1,
+          4
+        ]
+      },
+      "10000082568": {
+        "id": "10000082568",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          4,
+          2
+        ]
+      },
+      "10000082569": {
+        "id": "10000082569",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          0,
+          5
+        ]
+      },
+      "10000082570": {
+        "id": "10000082570",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          0,
+          2
+        ]
+      },
+      "10000082571": {
+        "id": "10000082571",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          4,
+          4
+        ]
+      },
+      "10000082572": {
+        "id": "10000082572",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          1,
+          2
+        ]
+      },
+      "10000082573": {
+        "id": "10000082573",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          0,
+          3
+        ]
+      },
+      "10000082574": {
+        "id": "10000082574",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          0,
+          2
+        ]
+      },
+      "10000082575": {
+        "id": "10000082575",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          2,
+          0
+        ]
+      },
+      "10000082576": {
+        "id": "10000082576",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          0,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000082567": {
+        "id": "10000082567",
+        "category": "main",
+        "entities": [
+          "10000082567"
+        ],
+        "random_group": [
+          1,
+          1,
+          5
+        ]
+      },
+      "10000082568": {
+        "id": "10000082568",
+        "category": "main",
+        "entities": [
+          "10000082568"
+        ],
+        "random_group": [
+          0,
+          0,
+          4
+        ]
+      },
+      "10000082569": {
+        "id": "10000082569",
+        "category": "main",
+        "entities": [
+          "10000082569"
+        ],
+        "random_group": [
+          1,
+          4,
+          2
+        ]
+      },
+      "10000082570": {
+        "id": "10000082570",
+        "category": "main",
+        "entities": [
+          "10000082570"
+        ],
+        "random_group": [
+          0,
+          3,
+          2
+        ]
+      },
+      "10000082571": {
+        "id": "10000082571",
+        "category": "main",
+        "entities": [
+          "10000082571"
+        ],
+        "random_group": [
+          5,
+          3,
+          5
+        ]
+      },
+      "10000082572": {
+        "id": "10000082572",
+        "category": "main",
+        "entities": [
+          "10000082572"
+        ],
+        "random_group": [
+          0,
+          5,
+          4
+        ]
+      },
+      "10000082573": {
+        "id": "10000082573",
+        "category": "main",
+        "entities": [
+          "10000082573"
+        ],
+        "random_group": [
+          1,
+          4,
+          2
+        ]
+      },
+      "10000082574": {
+        "id": "10000082574",
+        "category": "main",
+        "entities": [
+          "10000082574"
+        ],
+        "random_group": [
+          1,
+          1,
+          5
+        ]
+      },
+      "10000082575": {
+        "id": "10000082575",
+        "category": "main",
+        "entities": [
+          "10000082575"
+        ],
+        "random_group": [
+          2,
+          2,
+          4
+        ]
+      },
+      "10000082576": {
+        "id": "10000082576",
+        "category": "main",
+        "entities": [
+          "10000082576"
+        ],
+        "random_group": [
+          1,
+          1,
+          2
+        ]
+      }
+    }
+  }
+}

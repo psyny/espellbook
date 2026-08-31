@@ -1,0 +1,1761 @@
+{
+  "School": {
+    "definitions": {
+      "description": "The school category identifies the broad magical discipline a spell belongs to.",
+      "associated": [
+        "magical discipline",
+        "arcane tradition",
+        "formal classification",
+        "method of magic",
+        "spell school"
+      ],
+      "not_associated": [
+        "damage type",
+        "element",
+        "range",
+        "area shape",
+        "visual ornament"
+      ]
+    },
+    "symbols": [
+      {
+        "name": "Abjuration",
+        "definitions": {
+          "description": "Protective magic that blocks, shields, wards, dispels, or banishes harmful forces.",
+          "associated": [
+            "defense",
+            "exclusion",
+            "resistance",
+            "cancellation",
+            "protection",
+            "containment",
+            "blocks",
+            "shields",
+            "wards",
+            "dispels",
+            "banishes harmful forces"
+          ],
+          "not_associated": [
+            "summoning",
+            "teleportation",
+            "prediction",
+            "mind control",
+            "illusion",
+            "direct energy projection",
+            "undeath",
+            "physical alteration"
+          ]
+        }
+      },
+      {
+        "name": "Conjuration",
+        "definitions": {
+          "description": "Magic that summons, creates, transports, or relocates creatures, objects, and substances.",
+          "associated": [
+            "arrival",
+            "manifestation",
+            "transport",
+            "portals",
+            "summoning",
+            "spatial transfer",
+            "summons",
+            "creates",
+            "transports",
+            "relocates creatures",
+            "objects",
+            "substances"
+          ],
+          "not_associated": [
+            "protective warding",
+            "prediction",
+            "mind control",
+            "sensory deception",
+            "life drain",
+            "property alteration"
+          ]
+        }
+      },
+      {
+        "name": "Divination",
+        "definitions": {
+          "description": "Magic that reveals hidden information, detects unseen things, or predicts possible futures.",
+          "associated": [
+            "knowledge",
+            "discovery",
+            "prophecy",
+            "awareness",
+            "insight",
+            "magical perception",
+            "reveals hidden information",
+            "detects unseen things",
+            "predicts possible futures"
+          ],
+          "not_associated": [
+            "direct damage",
+            "summoning",
+            "mind control",
+            "illusion creation",
+            "physical transformation",
+            "protective barrier"
+          ]
+        }
+      },
+      {
+        "name": "Enchantment",
+        "definitions": {
+          "description": "Magic that alters thoughts, emotions, behavior, choices, or mental states.",
+          "associated": [
+            "influence",
+            "charm",
+            "command",
+            "fear",
+            "desire",
+            "obedience",
+            "psychological alteration",
+            "alters thoughts",
+            "emotions",
+            "behavior",
+            "choices",
+            "mental states"
+          ],
+          "not_associated": [
+            "physical transformation",
+            "elemental damage",
+            "summoning",
+            "teleportation",
+            "sensory illusion",
+            "divination"
+          ]
+        }
+      },
+      {
+        "name": "Evocation",
+        "definitions": {
+          "description": "Magic that directly produces, shapes, or releases energy and elemental power.",
+          "associated": [
+            "projection",
+            "energy",
+            "elemental force",
+            "impact",
+            "radiance",
+            "direct magical output",
+            "directly produces",
+            "shapes",
+            "releases energy",
+            "elemental power"
+          ],
+          "not_associated": [
+            "subtle mind control",
+            "teleportation",
+            "sensory deception",
+            "corpse animation",
+            "material transformation",
+            "prediction"
+          ]
+        }
+      },
+      {
+        "name": "Illusion",
+        "definitions": {
+          "description": "Magic that deceives the senses or creates false images, sounds, sensations, and appearances.",
+          "associated": [
+            "deception",
+            "appearance",
+            "perception",
+            "concealment",
+            "mimicry",
+            "unreality",
+            "deceives the senses",
+            "creates false images",
+            "sounds",
+            "sensations",
+            "appearances"
+          ],
+          "not_associated": [
+            "physical transformation",
+            "direct elemental damage",
+            "healing",
+            "summoning real creatures",
+            "teleportation",
+            "necromancy"
+          ]
+        }
+      },
+      {
+        "name": "Necromancy",
+        "definitions": {
+          "description": "Magic that manipulates life force, death, undeath, decay, and the boundary between living and dead.",
+          "associated": [
+            "mortality",
+            "decay",
+            "vitality",
+            "souls",
+            "corpses",
+            "undeath",
+            "entropy",
+            "manipulates life force",
+            "death",
+            "boundary between living",
+            "dead"
+          ],
+          "not_associated": [
+            "ordinary healing",
+            "elemental projection",
+            "teleportation",
+            "sensory illusion",
+            "weather control",
+            "mundane material shaping"
+          ]
+        }
+      },
+      {
+        "name": "Transmutation",
+        "definitions": {
+          "description": "Magic that changes the physical, material, biological, or magical properties of an existing target.",
+          "associated": [
+            "alteration",
+            "conversion",
+            "mutation",
+            "enhancement",
+            "reduction",
+            "transformation",
+            "changes the physical",
+            "material",
+            "biological"
+          ],
+          "not_associated": [
+            "summoning new entities",
+            "pure divination",
+            "mind domination",
+            "sensory illusion",
+            "banishment",
+            "raw energy projection"
+          ]
+        }
+      }
+    ]
+  },
+  "Essence": {
+    "definitions": {
+      "description": "The essence category identifies the substance, energy, element, living principle, or metaphysical domain expressed by a spell.",
+      "associated": [
+        "substance",
+        "energy",
+        "element",
+        "material",
+        "living principle",
+        "metaphysical domain",
+        "nature of the phenomenon"
+      ],
+      "not_associated": [
+        "spell purpose",
+        "range category",
+        "school classification",
+        "area geometry",
+        "ornamentation"
+      ]
+    },
+    "symbols": [
+      {
+        "name": "Fire",
+        "definitions": {
+          "description": "Fire represents flames, heat, ignition, combustion, and burning energy.",
+          "associated": [
+            "flame",
+            "blaze",
+            "inferno",
+            "ash",
+            "smoke",
+            "heat",
+            "combustion",
+            "flames",
+            "ignition",
+            "burning energy"
+          ],
+          "not_associated": [
+            "cold",
+            "ice",
+            "frost",
+            "lightning",
+            "electricity",
+            "radiant holiness",
+            "acid corrosion",
+            "psychic damage"
+          ]
+        }
+      },
+      {
+        "name": "Cold",
+        "definitions": {
+          "description": "Cold represents frost, ice, snow, freezing, and the removal of heat.",
+          "associated": [
+            "ice",
+            "frost",
+            "winter",
+            "chill",
+            "snow",
+            "freezing",
+            "low temperature",
+            "removal of heat"
+          ],
+          "not_associated": [
+            "fire",
+            "heat",
+            "burning",
+            "lightning",
+            "electricity",
+            "acid",
+            "radiant energy",
+            "poison"
+          ]
+        }
+      },
+      {
+        "name": "Lightning",
+        "definitions": {
+          "description": "Lightning represents explicitly electrical phenomena: electric current, charged particles, sparks, arcs, electrocution, and natural lightning.",
+          "associated": [
+            "lightning damage",
+            "lightning bolt",
+            "chain lightning",
+            "electric current",
+            "electrical discharge",
+            "electric arc",
+            "electrical charge",
+            "electrocution",
+            "spark",
+            "static electricity",
+            "voltage",
+            "conductivity",
+            "charged energy",
+            "storm electricity"
+          ],
+          "not_associated": [
+            "generic magical energy",
+            "magical power",
+            "attack roll",
+            "damage without electricity",
+            "force damage",
+            "radiant damage",
+            "thunder damage",
+            "sound",
+            "shockwave",
+            "explosion",
+            "fire",
+            "heat",
+            "speed",
+            "sudden movement",
+            "aura",
+            "resistance to several damage types"
+          ]
+        }
+      },
+      {
+        "name": "Thunder",
+        "definitions": {
+          "description": "Thunder represents explicitly sonic or concussive phenomena: thunder damage, pressure waves, violent vibration, deafening resonance, and shockwaves.",
+          "associated": [
+            "thunder damage",
+            "thunderous",
+            "thunderclap",
+            "sonic boom",
+            "shockwave",
+            "pressure wave",
+            "concussive vibration",
+            "deafening blast",
+            "violent resonance",
+            "booming sound",
+            "acoustic impact"
+          ],
+          "not_associated": [
+            "ordinary speech",
+            "verbal spell components",
+            "generic impact",
+            "generic damage",
+            "electricity",
+            "lightning",
+            "force damage",
+            "protective aura",
+            "healing aura",
+            "movement",
+            "explosive speed",
+            "magical energy without sound"
+          ]
+        }
+      },
+      {
+        "name": "Acid",
+        "definitions": {
+          "description": "Acid represents corrosion, dissolution, chemical erosion, and caustic substances.",
+          "associated": [
+            "caustic fluid",
+            "corrosion",
+            "chemical decay",
+            "burning liquid",
+            "dissolution",
+            "chemical erosion",
+            "caustic substances"
+          ],
+          "not_associated": [
+            "fire",
+            "heat",
+            "poison",
+            "disease",
+            "lightning",
+            "necrotic decay",
+            "water",
+            "generic damage"
+          ]
+        }
+      },
+      {
+        "name": "Poison",
+        "definitions": {
+          "description": "Poison represents toxins, venom, contamination, disease, and biological corruption.",
+          "associated": [
+            "venom",
+            "toxin",
+            "plague",
+            "sickness",
+            "infection",
+            "contamination",
+            "biological harm",
+            "toxins",
+            "disease",
+            "biological corruption"
+          ],
+          "not_associated": [
+            "acid corrosion",
+            "fire",
+            "cold",
+            "lightning",
+            "necrotic energy",
+            "radiant energy",
+            "force damage",
+            "ordinary disease healing"
+          ]
+        }
+      },
+      {
+        "name": "Force",
+        "definitions": {
+          "description": "Force represents explicitly non-elemental magical force: telekinetic pressure, invisible impact, force fields, and effects identified as Force damage.",
+          "associated": [
+            "force damage",
+            "wall of force",
+            "force field",
+            "telekinetic force",
+            "invisible pressure",
+            "arcane impact",
+            "magical barrier of force",
+            "kinetic push",
+            "kinetic pull",
+            "crushing magical pressure",
+            "pure non-elemental force"
+          ],
+          "not_associated": [
+            "generic spell",
+            "generic magical effect",
+            "attack roll",
+            "saving throw",
+            "damage without Force type",
+            "protection without force field",
+            "temporary Hit Points",
+            "physical impact",
+            "weapon strike",
+            "movement",
+            "ordinary barrier",
+            "resistance",
+            "healing",
+            "enchantment"
+          ]
+        }
+      },
+      {
+        "name": "Radiance",
+        "definitions": {
+          "description": "Radiance represents explicitly sacred, celestial, or radiant energy, especially Radiant damage, holy power, purification, and sunlight-like divine brilliance.",
+          "associated": [
+            "radiant damage",
+            "holy light",
+            "divine radiance",
+            "celestial power",
+            "sacred energy",
+            "sunlight",
+            "sunbeam",
+            "purification",
+            "consecration",
+            "holy flame",
+            "divine brilliance",
+            "dawn"
+          ],
+          "not_associated": [
+            "ordinary visible light",
+            "dim light",
+            "glowing object",
+            "shimmering magic",
+            "visual information",
+            "generic healing",
+            "generic beneficial magic",
+            "generic magic",
+            "force damage",
+            "lightning",
+            "fire",
+            "shadow",
+            "illumination without sacred power"
+          ]
+        }
+      },
+      {
+        "name": "Necrosis",
+        "definitions": {
+          "description": "Necrosis represents decay, entropy, corruption, withering, undeath, and necrotic energy.",
+          "associated": [
+            "decay",
+            "rot",
+            "entropy",
+            "withering",
+            "corruption",
+            "death energy",
+            "undeath",
+            "necrotic energy"
+          ],
+          "not_associated": [
+            "healing",
+            "growth",
+            "radiance",
+            "ordinary shadow",
+            "poison",
+            "acid",
+            "fire",
+            "cold"
+          ]
+        }
+      },
+      {
+        "name": "Life",
+        "definitions": {
+          "description": "Life represents direct manipulation of vitality: healing wounds, restoring Hit Points, sustaining living bodies, regeneration, and biological growth.",
+          "associated": [
+            "regain Hit Points",
+            "restore Hit Points",
+            "healing",
+            "heal",
+            "vitality",
+            "life force",
+            "regeneration",
+            "revival",
+            "living tissue",
+            "biological growth",
+            "restore health",
+            "prevent death",
+            "temporary vitality"
+          ],
+          "not_associated": [
+            "creature",
+            "living target",
+            "Hit Points used only as object durability",
+            "temporary hit points from armor",
+            "generic protection",
+            "resistance",
+            "necrotic damage",
+            "undeath",
+            "poison",
+            "disease",
+            "ordinary plants",
+            "animation of objects",
+            "generic magical energy"
+          ]
+        }
+      },
+      {
+        "name": "Mind",
+        "definitions": {
+          "description": "Mind represents direct interaction with cognition, perception, memory, emotion, telepathy, dreams, intelligence, and psychic harm.",
+          "associated": [
+            "psychic damage",
+            "telepathy",
+            "thoughts",
+            "memory",
+            "emotion",
+            "charmed",
+            "frightened",
+            "mental command",
+            "intelligence",
+            "wisdom",
+            "consciousness",
+            "dream",
+            "perception",
+            "mental link",
+            "mind control"
+          ],
+          "not_associated": [
+            "choose",
+            "decide",
+            "remember a location",
+            "visual information without mental manipulation",
+            "ordinary sight",
+            "ordinary knowledge",
+            "saving throw alone",
+            "creature command after summoning",
+            "movement",
+            "soul",
+            "life force",
+            "generic magic",
+            "attack roll"
+          ]
+        }
+      },
+      {
+        "name": "Soul",
+        "definitions": {
+          "description": "Soul represents explicit spirits, ghosts, souls, astral selves, possession, resurrection identity, and existence beyond the physical body.",
+          "associated": [
+            "soul",
+            "spirit",
+            "ghost",
+            "specter",
+            "afterlife",
+            "astral body",
+            "astral projection",
+            "possession",
+            "reincarnation",
+            "resurrection",
+            "spiritual essence",
+            "disembodied identity"
+          ],
+          "not_associated": [
+            "creature",
+            "life",
+            "healing",
+            "Hit Points",
+            "mental command",
+            "thoughts",
+            "emotion",
+            "generic magical aura",
+            "protective ward",
+            "ordinary identity",
+            "animation of objects",
+            "light",
+            "shadow",
+            "force"
+          ]
+        }
+      },
+      {
+        "name": "Time",
+        "definitions": {
+          "description": "Time represents explicit temporal manipulation: haste, slowing, stopping time, aging, rewinding, delaying, repeating, or altering temporal sequence, including personal time dilation that speeds up or slows down how quickly a creature acts, moves, and takes turns, such as doubling or halving a creature's speed and granting or removing an action on its turn.",
+          "associated": [
+            "time stop",
+            "haste",
+            "slow",
+            "hasted",
+            "slowed",
+            "temporal",
+            "aging",
+            "rewind",
+            "delay",
+            "time loop",
+            "repeat in time",
+            "accelerated time",
+            "personal time dilation",
+            "temporal quickening",
+            "temporal deceleration",
+            "quickened reflexes",
+            "sluggish reflexes",
+            "speed doubled",
+            "speed halved",
+            "target's speed is doubled",
+            "target's speed is halved",
+            "extra action each turn",
+            "fewer actions each turn",
+            "gains an additional action on each of its turns",
+            "can take only one action or bonus action, not both",
+            "acting faster than normal",
+            "acting slower than normal",
+            "suspended animation",
+            "alter duration",
+            "future",
+            "past"
+          ],
+          "not_associated": [
+            "spell duration",
+            "until the spell ends",
+            "start of your next turn",
+            "one minute",
+            "one hour",
+            "twenty-four hours",
+            "ordinary sequence of turns",
+            "teleportation",
+            "concentration",
+            "repeated saving throw",
+            "generic persistence"
+          ]
+        }
+      },
+      {
+        "name": "Space",
+        "definitions": {
+          "description": "Space represents explicit spatial manipulation: teleportation, portals, planar displacement, extradimensional spaces, and changes to distance or location without ordinary travel.",
+          "associated": [
+            "teleportation",
+            "teleport",
+            "portal",
+            "planar travel",
+            "plane of existence",
+            "demiplane",
+            "extradimensional space",
+            "spatial distortion",
+            "instant relocation",
+            "blink between planes",
+            "dimensional gate",
+            "banishment to another plane"
+          ],
+          "not_associated": [
+            "range in feet",
+            "within range",
+            "move normally",
+            "walking",
+            "flight",
+            "speed increase",
+            "direction",
+            "ordinary location",
+            "area of effect",
+            "distance in spell header",
+            "force",
+            "air",
+            "line of sight"
+          ]
+        }
+      },
+      {
+        "name": "Air",
+        "definitions": {
+          "description": "Air represents wind, atmosphere, gases, pressure, breath, and weather carried through the sky.",
+          "associated": [
+            "wind",
+            "breeze",
+            "gale",
+            "atmosphere",
+            "pressure",
+            "breath",
+            "sky",
+            "gases",
+            "weather carried through the sky"
+          ],
+          "not_associated": [
+            "sound",
+            "thunder shockwave",
+            "lightning",
+            "water",
+            "vacuum-like force",
+            "ordinary movement",
+            "space",
+            "gas poison"
+          ]
+        }
+      },
+      {
+        "name": "Earth",
+        "definitions": {
+          "description": "Earth represents soil, terrain, clay, sand, ground, and the natural land.",
+          "associated": [
+            "soil",
+            "dirt",
+            "sand",
+            "clay",
+            "ground",
+            "terrain",
+            "land",
+            "natural land"
+          ],
+          "not_associated": [
+            "solid stone",
+            "worked metal",
+            "plants",
+            "water",
+            "air",
+            "force",
+            "necrosis",
+            "ordinary terrain distance"
+          ]
+        }
+      },
+      {
+        "name": "Water",
+        "definitions": {
+          "description": "Water represents liquids, rivers, rain, oceans, tides, waves, and fluid motion.",
+          "associated": [
+            "rain",
+            "river",
+            "sea",
+            "tide",
+            "wave",
+            "moisture",
+            "fluidity",
+            "liquids",
+            "rivers",
+            "oceans",
+            "tides",
+            "waves",
+            "fluid motion"
+          ],
+          "not_associated": [
+            "ice",
+            "cold",
+            "air",
+            "acid",
+            "poison",
+            "earth",
+            "ordinary mist illusion",
+            "force"
+          ]
+        }
+      },
+      {
+        "name": "Plant",
+        "definitions": {
+          "description": "Plant represents vegetation, roots, vines, leaves, forests, seeds, and botanical life.",
+          "associated": [
+            "flora",
+            "roots",
+            "vines",
+            "leaves",
+            "trees",
+            "flowers",
+            "seeds",
+            "forests",
+            "vegetation",
+            "botanical life"
+          ],
+          "not_associated": [
+            "animal life",
+            "generic healing",
+            "earth",
+            "stone",
+            "wooden objects without botanical magic",
+            "poison",
+            "necrosis",
+            "ordinary nature imagery"
+          ]
+        }
+      },
+      {
+        "name": "Stone",
+        "definitions": {
+          "description": "Stone represents rock, crystal, masonry, mineral structures, and solid geological material.",
+          "associated": [
+            "rock",
+            "crystal",
+            "masonry",
+            "boulder",
+            "cliff",
+            "mineral",
+            "petrification",
+            "mineral structures",
+            "solid geological material"
+          ],
+          "not_associated": [
+            "loose soil",
+            "sand",
+            "metal",
+            "plant",
+            "force barrier",
+            "ice",
+            "bone",
+            "ordinary masonry references"
+          ]
+        }
+      },
+      {
+        "name": "Metal",
+        "definitions": {
+          "description": "Metal represents metallic substances, alloys, forged objects, weapons, armor, and conductive structures.",
+          "associated": [
+            "iron",
+            "steel",
+            "alloy",
+            "forge",
+            "weapon",
+            "armor",
+            "chain",
+            "metallic structure",
+            "metallic substances",
+            "alloys",
+            "forged objects",
+            "weapons",
+            "conductive structures"
+          ],
+          "not_associated": [
+            "stone",
+            "earth",
+            "plant",
+            "force",
+            "lightning itself",
+            "ordinary weapons with no metal manipulation",
+            "bone",
+            "wood"
+          ]
+        }
+      },
+      {
+        "name": "Light",
+        "definitions": {
+          "description": "Light represents explicit visible illumination and optical brightness: emitted light, flashes, beams, glowing radiance, and changes to visibility.",
+          "associated": [
+            "bright light",
+            "dim light",
+            "illumination",
+            "glow",
+            "glowing",
+            "flash of light",
+            "beam of light",
+            "sunlight",
+            "brightness",
+            "optical effect",
+            "visible brilliance",
+            "dazzling light"
+          ],
+          "not_associated": [
+            "can see",
+            "visual information",
+            "line of sight",
+            "invisible",
+            "appearance without illumination",
+            "radiant damage",
+            "holy power",
+            "shimmering magic",
+            "generic aura",
+            "generic energy",
+            "shadow",
+            "darkvision",
+            "ordinary sight references"
+          ]
+        }
+      },
+      {
+        "name": "Shadow",
+        "definitions": {
+          "description": "Shadow represents explicit magical darkness, dimming, concealment through darkness, shadow material, or umbral energy.",
+          "associated": [
+            "magical darkness",
+            "darkness",
+            "shadow",
+            "shadows",
+            "umbral",
+            "shade",
+            "absence of light",
+            "concealment in darkness",
+            "shadow energy",
+            "night-like gloom",
+            "blackness"
+          ],
+          "not_associated": [
+            "dim light",
+            "ordinary night",
+            "shades of gray",
+            "invisibility",
+            "illusion",
+            "generic concealment",
+            "necrotic damage",
+            "soul",
+            "portal mist",
+            "generic magic",
+            "visual information",
+            "glowing ring"
+          ]
+        }
+      },
+      {
+        "name": "Sound",
+        "definitions": {
+          "description": "Sound represents explicit acoustic phenomena: audible speech, music, tones, echoes, hearing, silence, and sound-based communication or effects.",
+          "associated": [
+            "sound",
+            "audible",
+            "voice",
+            "music",
+            "song",
+            "echo",
+            "tone",
+            "hearing",
+            "deafened",
+            "silence",
+            "spoken message",
+            "bell",
+            "acoustic vibration",
+            "sonic effect"
+          ],
+          "not_associated": [
+            "verbal component",
+            "ordinary communication",
+            "mental message",
+            "telepathy",
+            "thunder damage",
+            "shockwave",
+            "generic vibration",
+            "command",
+            "spell words without acoustic effect",
+            "visual effect",
+            "force",
+            "air"
+          ]
+        }
+      },
+      {
+        "name": "Magic",
+        "definitions": {
+          "description": "Magic represents raw or self-referential magical substance: antimagic, dispelling, spell energy, magical fields, glyphs, and effects whose essence is magic itself rather than an element.",
+          "associated": [
+            "antimagic",
+            "dispel magic",
+            "counterspell",
+            "spell energy",
+            "raw magic",
+            "arcane field",
+            "magical aura",
+            "glyph",
+            "rune",
+            "ward of pure magic",
+            "suppress magic",
+            "absorb magic",
+            "detect magic",
+            "magic itself"
+          ],
+          "not_associated": [
+            "spell",
+            "magic action",
+            "spellcasting ability",
+            "magical only as a generic adjective",
+            "every supernatural effect",
+            "specific element",
+            "ordinary enchantment",
+            "generic damage",
+            "generic protection",
+            "generic creation",
+            "weapon enhanced by a spell",
+            "school classification",
+            "personal time dilation",
+            "doubling or halving a creature's speed",
+            "gaining or losing an action on a turn"
+          ]
+        }
+      }
+    ]
+  },
+  "Intent": {
+    "definitions": {
+      "description": "The intent category identifies the primary outcome a spell is designed to produce, independent of its element or spatial shape.",
+      "associated": [
+        "primary purpose",
+        "main outcome",
+        "direct harm",
+        "defense",
+        "creation",
+        "physical alteration",
+        "relocation",
+        "information",
+        "behavioral control"
+      ],
+      "not_associated": [
+        "damage type",
+        "element",
+        "spell school",
+        "range",
+        "area geometry",
+        "incidental secondary effect"
+      ]
+    },
+    "symbols": [
+      {
+        "name": "Burst",
+        "definitions": {
+          "description": "Burst represents directly inflicting immediate harm through damage, destructive energy, or a harmful attack whose primary result is injury.",
+          "associated": [
+            "deal damage",
+            "takes damage",
+            "direct damage",
+            "damage on a failed save",
+            "extra damage",
+            "harm the target",
+            "destructive blast",
+            "offensive spell",
+            "injure",
+            "burn",
+            "electrocute",
+            "corrode",
+            "crush",
+            "necrotic harm",
+            "psychic damage"
+          ],
+          "not_associated": [
+            "attack roll without dealing damage",
+            "subtract from attack roll",
+            "add to attack roll",
+            "saving throw bonus",
+            "resistance",
+            "reduce damage",
+            "temporary Hit Points",
+            "restore Hit Points",
+            "protective ward",
+            "charmed",
+            "frightened",
+            "teleportation",
+            "movement",
+            "reveal information",
+            "create an object",
+            "alter appearance",
+            "persistent control without injury"
+          ]
+        }
+      },
+      {
+        "name": "Protection",
+        "definitions": {
+          "description": "Protection represents preventing or reducing harm, improving defenses, granting resistance or cover, blocking access, suppressing threats, or preserving a target's safety.",
+          "associated": [
+            "reduce damage",
+            "resistance",
+            "immunity",
+            "temporary Hit Points",
+            "armor class",
+            "cover",
+            "disadvantage on attacks against you",
+            "subtract from an attack roll",
+            "protect",
+            "shield",
+            "ward",
+            "barrier",
+            "prevent entry",
+            "prevent harm",
+            "negate an effect",
+            "suppress magic",
+            "saving throw advantage",
+            "cannot be targeted"
+          ],
+          "not_associated": [
+            "deal damage",
+            "extra damage",
+            "attack a target",
+            "summon a creature",
+            "create an object",
+            "teleport",
+            "increase movement speed",
+            "reveal information",
+            "charm",
+            "frighten",
+            "change appearance",
+            "heal damage after it occurs without defensive benefit"
+          ]
+        }
+      },
+      {
+        "name": "Creation",
+        "definitions": {
+          "description": "Creation represents causing a new creature, object, structure, substance, duplicate, construct, or persistent magical manifestation to exist.",
+          "associated": [
+            "create",
+            "conjure",
+            "summon",
+            "manifest",
+            "produce",
+            "forms a new object",
+            "creates a creature",
+            "creates a structure",
+            "creates a wall",
+            "creates a hand",
+            "creates an aura",
+            "animated construct",
+            "duplicate",
+            "materialize",
+            "bring into existence"
+          ],
+          "not_associated": [
+            "change an existing target",
+            "teleport an existing target",
+            "move an existing target",
+            "restore Hit Points",
+            "grant a condition",
+            "deal damage only",
+            "protect without producing a manifestation",
+            "detect information",
+            "command an already-created creature",
+            "ordinary spell effect wording"
+          ]
+        }
+      },
+      {
+        "name": "Transformation",
+        "definitions": {
+          "description": "Transformation represents materially or biologically changing an existing target's form, body, properties, senses, size, condition, or capabilities.",
+          "associated": [
+            "transform",
+            "shape-shift",
+            "alter form",
+            "change appearance",
+            "change size",
+            "change body",
+            "grow claws",
+            "gain gills",
+            "petrify",
+            "turn into",
+            "modify properties",
+            "enhance an existing target",
+            "reduce an existing target",
+            "change capabilities",
+            "physical alteration"
+          ],
+          "not_associated": [
+            "deal damage only",
+            "apply a numerical attack penalty",
+            "apply a saving throw penalty",
+            "charm",
+            "frighten",
+            "command behavior",
+            "teleport",
+            "move",
+            "create a separate entity",
+            "summon",
+            "reveal information",
+            "protect without changing the target",
+            "restore Hit Points only"
+          ]
+        }
+      },
+      {
+        "name": "Movement",
+        "definitions": {
+          "description": "Movement represents deliberately relocating a creature or object, granting or changing travel modes, increasing mobility, teleporting, pushing, pulling, or controlling spatial motion.",
+          "associated": [
+            "move",
+            "movement",
+            "teleport",
+            "travel",
+            "fly",
+            "swim speed",
+            "climb speed",
+            "speed increases",
+            "push",
+            "pull",
+            "reposition",
+            "transport",
+            "relocate",
+            "propel",
+            "planar travel",
+            "move through a portal"
+          ],
+          "not_associated": [
+            "creature takes an action",
+            "command a creature",
+            "attack",
+            "Dodge action",
+            "cannot move",
+            "difficult terrain alone",
+            "static barrier",
+            "create a creature with legs",
+            "duration",
+            "change appearance",
+            "animation without relocation as the primary purpose",
+            "ordinary target movement in rules text"
+          ]
+        }
+      },
+      {
+        "name": "Knowledge",
+        "definitions": {
+          "description": "Knowledge represents obtaining or transmitting information: detecting, identifying, perceiving, predicting, understanding, revealing, observing, or communicating knowledge.",
+          "associated": [
+            "detect",
+            "identify",
+            "reveal",
+            "learn",
+            "know",
+            "perceive",
+            "sense",
+            "observe",
+            "divination",
+            "omen",
+            "predict",
+            "information",
+            "vision",
+            "scry",
+            "understand",
+            "communicate a message",
+            "receive information",
+            "discover hidden"
+          ],
+          "not_associated": [
+            "Wisdom saving throw",
+            "Intelligence saving throw",
+            "mental damage",
+            "charm",
+            "fear",
+            "command",
+            "attack bonus",
+            "saving throw bonus",
+            "movement",
+            "creation",
+            "generic sight requirement",
+            "can see within range",
+            "visual appearance",
+            "ordinary choice",
+            "knowledge mentioned only in spell name without information gain"
+          ]
+        }
+      },
+      {
+        "name": "Influence",
+        "definitions": {
+          "description": "Influence represents changing another creature's behavior, choices, emotions, agency, attitude, actions, or mental state without primarily changing its physical form.",
+          "associated": [
+            "charmed",
+            "frightened",
+            "command",
+            "compel",
+            "control",
+            "dominate",
+            "persuade",
+            "influence behavior",
+            "force a creature to act",
+            "change attitude",
+            "mental manipulation",
+            "emotion",
+            "fear",
+            "obedience",
+            "must use its action",
+            "cannot willingly move",
+            "disadvantage caused by a curse",
+            "curse behavior"
+          ],
+          "not_associated": [
+            "deal psychic damage only",
+            "attack roll",
+            "saving throw penalty without behavioral effect",
+            "protect",
+            "heal",
+            "create",
+            "teleport",
+            "move an object",
+            "physical transformation",
+            "detect information",
+            "communicate without control",
+            "command an animated servant already under control"
+          ]
+        }
+      }
+    ]
+  },
+  "Flow": {
+    "definitions": {
+      "description": "The flow category identifies the geometric or sequential pattern through which a spell's effect propagates.",
+      "associated": [
+        "propagation pattern",
+        "spatial behavior",
+        "targeting geometry",
+        "area shape",
+        "direction of travel",
+        "persistent field"
+      ],
+      "not_associated": [
+        "spell purpose",
+        "element",
+        "school",
+        "maximum range",
+        "decorative style"
+      ]
+    },
+    "symbols": [
+      {
+        "name": "Point",
+        "definitions": {
+          "description": "Point affects one specific target, object, location, or origin without visible propagation.",
+          "associated": [
+            "direct targeting",
+            "fixed origin",
+            "single location",
+            "immediate placement",
+            "point affects one specific target",
+            "object",
+            "location",
+            "origin without visible propagation"
+          ],
+          "not_associated": [
+            "projectile travel",
+            "straight corridor",
+            "widening cone",
+            "radial explosion",
+            "wall",
+            "surrounding aura",
+            "chain between targets"
+          ]
+        }
+      },
+      {
+        "name": "Projectile",
+        "definitions": {
+          "description": "Projectile travels from an origin toward a target before producing its main effect.",
+          "associated": [
+            "travel",
+            "launch",
+            "missile",
+            "bolt",
+            "ray",
+            "shot",
+            "impact"
+          ],
+          "not_associated": [
+            "instant appearance at target",
+            "continuous line area",
+            "cone",
+            "radial burst",
+            "wall",
+            "aura",
+            "chain"
+          ]
+        }
+      },
+      {
+        "name": "Line",
+        "definitions": {
+          "description": "Line propagates along a straight, narrow path from an origin.",
+          "associated": [
+            "straight path",
+            "beam",
+            "corridor",
+            "ray",
+            "channel",
+            "directional propagation",
+            "line propagates along a straight",
+            "narrow path from an origin"
+          ],
+          "not_associated": [
+            "single final target only",
+            "widening cone",
+            "radial burst",
+            "wall boundary",
+            "surrounding aura",
+            "chain jumps",
+            "instant point"
+          ]
+        }
+      },
+      {
+        "name": "Cone",
+        "definitions": {
+          "description": "Cone expands outward from an origin in a widening directional area.",
+          "associated": [
+            "fan shape",
+            "widening arc",
+            "breath weapon",
+            "spray",
+            "directional area"
+          ],
+          "not_associated": [
+            "straight narrow line",
+            "radial sphere",
+            "single point",
+            "wall",
+            "aura",
+            "chain",
+            "projectile to one target"
+          ]
+        }
+      },
+      {
+        "name": "Burst",
+        "definitions": {
+          "description": "Burst expands outward from a central point and affects an area around it.",
+          "associated": [
+            "center point",
+            "radius",
+            "explosion",
+            "sphere",
+            "radial expansion",
+            "area effect",
+            "affects an area around it"
+          ],
+          "not_associated": [
+            "single target point",
+            "projectile",
+            "straight line",
+            "widening cone",
+            "wall",
+            "moving aura",
+            "chain between targets"
+          ]
+        }
+      },
+      {
+        "name": "Wall",
+        "definitions": {
+          "description": "Wall forms a continuous barrier, boundary, surface, curtain, or partition.",
+          "associated": [
+            "barrier",
+            "boundary",
+            "partition",
+            "surface",
+            "curtain",
+            "continuous obstruction",
+            "wall forms a continuous barrier"
+          ],
+          "not_associated": [
+            "radial explosion",
+            "moving aura",
+            "single point",
+            "projectile",
+            "chain",
+            "widening cone",
+            "ordinary cover only"
+          ]
+        }
+      },
+      {
+        "name": "Aura",
+        "definitions": {
+          "description": "Aura continuously surrounds and radiates from a creature, object, or fixed source.",
+          "associated": [
+            "surrounding field",
+            "emanation",
+            "radius",
+            "presence",
+            "zone",
+            "persistent influence",
+            "aura continuously surrounds",
+            "radiates from a creature",
+            "object",
+            "fixed source"
+          ],
+          "not_associated": [
+            "detached burst",
+            "single projectile",
+            "line",
+            "cone",
+            "wall",
+            "chain",
+            "instant point"
+          ]
+        }
+      },
+      {
+        "name": "Chain",
+        "definitions": {
+          "description": "Chain propagates sequentially from one target to another nearby target.",
+          "associated": [
+            "jumping",
+            "bouncing",
+            "linking",
+            "arcing",
+            "relay",
+            "sequence",
+            "target transfer"
+          ],
+          "not_associated": [
+            "continuous area",
+            "single projectile",
+            "line",
+            "cone",
+            "wall",
+            "aura",
+            "instant point"
+          ]
+        }
+      }
+    ]
+  },
+  "Reach": {
+    "definitions": {
+      "description": "The reach category identifies the practical distance over which a spell can affect a target or location.",
+      "associated": [
+        "casting distance",
+        "target distance",
+        "range class",
+        "contact",
+        "nearby",
+        "battlefield distance",
+        "remote range"
+      ],
+      "not_associated": [
+        "area shape",
+        "spell purpose",
+        "element",
+        "school",
+        "visual style"
+      ]
+    },
+    "symbols": [
+      {
+        "name": "Touch",
+        "definitions": {
+          "description": "Touch requires direct physical contact with the target.",
+          "associated": [
+            "contact",
+            "hand",
+            "physical connection",
+            "adjacency",
+            "zero distance"
+          ],
+          "not_associated": [
+            "nearby ranged targeting",
+            "battlefield range",
+            "long range",
+            "planar range"
+          ]
+        }
+      },
+      {
+        "name": "Close",
+        "definitions": {
+          "description": "Close affects targets within a short nearby distance from the caster.",
+          "associated": [
+            "nearby",
+            "short range",
+            "local distance",
+            "immediate surroundings",
+            "proximity"
+          ],
+          "not_associated": [
+            "physical contact",
+            "medium battlefield distance",
+            "long range",
+            "unlimited range"
+          ]
+        }
+      },
+      {
+        "name": "Medium",
+        "definitions": {
+          "description": "Medium affects targets at a moderate tactical distance.",
+          "associated": [
+            "moderate distance",
+            "battlefield range",
+            "standard ranged casting",
+            "midrange targeting"
+          ],
+          "not_associated": [
+            "touch",
+            "immediate proximity",
+            "very long range",
+            "planar or unlimited range"
+          ]
+        }
+      },
+      {
+        "name": "Far",
+        "definitions": {
+          "description": "Far affects distant targets well beyond ordinary close combat range.",
+          "associated": [
+            "long range",
+            "distant targeting",
+            "extended distance",
+            "remote impact",
+            "faraway points"
+          ],
+          "not_associated": [
+            "touch",
+            "nearby range",
+            "ordinary medium range",
+            "unlimited or planar range"
+          ]
+        }
+      },
+      {
+        "name": "Unlimited",
+        "definitions": {
+          "description": "Unlimited has effectively unrestricted, planetary, planar, or otherwise exceptional range.",
+          "associated": [
+            "infinite range",
+            "planar range",
+            "global reach",
+            "remote connection",
+            "distance independence",
+            "unlimited has effectively unrestricted",
+            "planetary",
+            "planar",
+            "otherwise exceptional range"
+          ],
+          "not_associated": [
+            "touch",
+            "nearby range",
+            "ordinary battlefield range",
+            "defined long-range limit"
+          ]
+        }
+      }
+    ]
+  },
+  "Ornamentation": {
+    "definitions": {
+      "description": "The ornamentation category identifies decorative visual motifs added to a sigil without changing the spell's core meaning.",
+      "associated": [
+        "decorative motif",
+        "visual accent",
+        "border",
+        "separator",
+        "repeated mark",
+        "stylistic texture"
+      ],
+      "not_associated": [
+        "spell mechanics",
+        "damage type",
+        "intent",
+        "range",
+        "flow"
+      ]
+    },
+    "symbols": [
+      {
+        "name": "Runes",
+        "definitions": {
+          "description": "Runes are angular written symbols used as mystical letters, labels, borders, or repeated magical marks.",
+          "associated": [
+            "elder futhark",
+            "glyphs",
+            "inscriptions",
+            "letters",
+            "magical writing",
+            "ancient scripts",
+            "labels",
+            "borders",
+            "repeated magical marks"
+          ],
+          "not_associated": [
+            "simple geometry only",
+            "damage type",
+            "spell intent",
+            "range",
+            "flow pattern",
+            "school classification"
+          ]
+        }
+      },
+      {
+        "name": "Geometric",
+        "definitions": {
+          "description": "Geometric ornamentation uses simple shapes such as circles, triangles, squares, diamonds, lines, and polygons.",
+          "associated": [
+            "geometry",
+            "symmetry",
+            "shapes",
+            "diagrams",
+            "patterns",
+            "constructed order",
+            "triangles",
+            "squares",
+            "diamonds",
+            "lines",
+            "polygons"
+          ],
+          "not_associated": [
+            "written language",
+            "runes",
+            "damage type",
+            "spell intent",
+            "range",
+            "flow pattern"
+          ]
+        }
+      }
+    ]
+  }
+}

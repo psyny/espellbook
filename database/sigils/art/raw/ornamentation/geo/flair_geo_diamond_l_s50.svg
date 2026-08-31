@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="50mm"
+   height="50mm"
+   viewBox="0 0 50 50"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="flair_geo_diamond_l_s50.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="4.5354829"
+     inkscape:cx="81.90969"
+     inkscape:cy="94.477261"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     inkscape:window-x="1728"
+     inkscape:window-y="28"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showgrid="true">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999999"
+       spacingy="0.99999999"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="symbol_art"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="matrix(0.49465652,0,0,0.49465652,4.31878,0.50427695)"
+     style="stroke-width:2.02160481;stroke-dasharray:none">
+    <path
+       style="baseline-shift:baseline;display:inline;overflow:visible;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.0216;stroke-dasharray:none;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       d="M 41.80694,9.0884538 1.376726,49.518679 41.80694,89.953923 82.242177,49.518679 Z m 0,8.1221902 L 74.119991,49.518679 41.80694,81.831736 9.4989121,49.518679 Z"
+       id="path4"
+       inkscape:label="diamond" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="general_boundaries"
+     sodipodi:insensitive="true">
+    <g
+       id="g3"
+       style="display:inline"
+       inkscape:label="_helper_center_mark"
+       transform="matrix(0.5,0,0,0.5,-0.25,-0.25)">
+      <circle
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:1.96078;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.1"
+         id="path1"
+         cx="50.499996"
+         cy="50.499996"
+         r="49.019608" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.1"
+         d="m 0.5,50.5 h 100"
+         id="path2"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.1"
+         d="M 50.5,100.5 V 0.5"
+         id="path3"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>

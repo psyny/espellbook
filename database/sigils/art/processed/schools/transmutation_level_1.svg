@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg:svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" width="1000mm" height="1000mm" viewBox="0 0 1000 1000" version="1.1" id="10000086708" inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)" sodipodi:docname="transmutation_level_1.svg">
+  <sodipodi:namedview id="10000086709" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" showgrid="true" inkscape:zoom="0.80176765" inkscape:cx="1836.567" inkscape:cy="1849.0394" inkscape:window-width="1920" inkscape:window-height="1052" inkscape:window-x="1728" inkscape:window-y="28" inkscape:window-maximized="0" inkscape:current-layer="10000086723">
+    <inkscape:grid id="10000086710" units="mm" originx="0" originy="0" spacingx="0.99999999" spacingy="0.99999999" empcolor="#0099e5" empopacity="0.30196078" color="#0099e5" opacity="0.14901961" empspacing="5" enabled="true" visible="true" />
+  </sodipodi:namedview>
+  <svg:defs id="10000086711">
+    <svg:pattern patternUnits="userSpaceOnUse" width="154.96063" height="136.06299" patternTransform="translate(1264.252,1207.5591)" preserveAspectRatio="xMidYMid" id="10000086712">
+      <svg:rect style="fill-opacity:0;stroke:#000000;stroke-width:3.77953;stroke-dasharray:none;stroke-opacity:0.502597" id="10000086713" width="151.18111" height="132.28346" x="1.8897638" y="1.8897638" />
+    </svg:pattern>
+  </svg:defs>
+  <svg:g inkscape:label="sigil_art" inkscape:groupmode="layer" id="10000086771">
+    <svg:g id="10000086772" inkscape:label="geo_main">
+      <svg:circle id="10000086773" cx="500" cy="500" inkscape:label="geo_main_s" r="130" fill-opacity="0" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-dasharray="none" class="sigil-symbol-stroke" />
+    </svg:g>
+    <svg:g id="10000086774" inkscape:label="geo_sub">
+      <svg:circle id="10000086775" cx="500" cy="500" r="110" inkscape:label="geo_sub_s" fill-opacity="0" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-dasharray="none" class="sigil-symbol-stroke" />
+    </svg:g>
+    <svg:g id="10000086776" inkscape:label="geo_sub">
+      <svg:path d="M 450,535 435,520" id="10000086777" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:label="geo_sub_s" inkscape:transform-center-y="-94.999999" inkscape:transform-center-x="3.8146971e-06" sodipodi:nodetypes="cc" stroke-linejoin="miter" fill-opacity="0.0" stroke="#000000" stroke-opacity="1" fill-rule="evenodd" stroke-width="2" stroke-linecap="butt" stroke-dasharray="none" class="sigil-symbol-stroke" />
+      <svg:path d="m 550,535 15,-15" id="10000086778" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:label="geo_sub_s" inkscape:transform-center-y="-94.999999" inkscape:transform-center-x="3.8146971e-06" sodipodi:nodetypes="cc" stroke-linejoin="miter" fill-opacity="0.0" stroke="#000000" stroke-opacity="1" fill-rule="evenodd" stroke-width="2" stroke-linecap="butt" stroke-dasharray="none" class="sigil-symbol-stroke" />
+    </svg:g>
+    <svg:g id="10000086779" inkscape:label="geo_sub">
+      <svg:path d="m 515,445 40,40" id="10000086780" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:label="geo_sub_s" inkscape:transform-center-y="-94.999999" inkscape:transform-center-x="3.8146971e-06" sodipodi:nodetypes="cc" stroke-linejoin="miter" fill-opacity="0.0" stroke="#000000" stroke-opacity="1" fill-rule="evenodd" stroke-width="2" stroke-linecap="butt" stroke-dasharray="none" class="sigil-symbol-stroke" />
+      <svg:path d="m 480,445 -35,40" id="10000086781" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:label="geo_sub_s" inkscape:transform-center-y="-94.999999" inkscape:transform-center-x="3.8146971e-06" sodipodi:nodetypes="cc" stroke-linejoin="miter" fill-opacity="0.0" stroke="#000000" stroke-opacity="1" fill-rule="evenodd" stroke-width="2" stroke-linecap="butt" stroke-dasharray="none" class="sigil-symbol-stroke" />
+    </svg:g>
+  </svg:g>
+</svg:svg>

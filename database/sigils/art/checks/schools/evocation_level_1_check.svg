@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg:svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" width="1000mm" height="1000mm" viewBox="0 0 1000 1000" version="1.1" id="svg1" inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)" sodipodi:docname="evocation_level_1.svg">
+  <sodipodi:namedview id="namedview1" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" showgrid="true" inkscape:zoom="1.6035353" inkscape:cx="1792.9134" inkscape:cy="1847.1685" inkscape:window-width="3840" inkscape:window-height="2071" inkscape:window-x="-9" inkscape:window-y="-9" inkscape:window-maximized="1" inkscape:current-layer="g110">
+    <inkscape:grid id="grid1" units="mm" originx="0" originy="0" spacingx="0.99999999" spacingy="0.99999999" empcolor="#0099e5" empopacity="0.30196078" color="#0099e5" opacity="0.14901961" empspacing="5" enabled="true" visible="true" />
+  </sodipodi:namedview>
+  <svg:defs id="defs1">
+    <svg:pattern patternUnits="userSpaceOnUse" width="154.96063" height="136.06299" patternTransform="translate(1264.252,1207.5591)" preserveAspectRatio="xMidYMid" id="pattern5">
+      <svg:rect style="fill-opacity:0;stroke:#000000;stroke-width:3.77953;stroke-dasharray:none;stroke-opacity:0.502597" id="rect5" width="151.18111" height="132.28346" x="1.8897638" y="1.8897638" />
+    </svg:pattern>
+  </svg:defs>
+  <svg:g inkscape:label="sigil_art" inkscape:groupmode="layer" id="layer1">
+    <svg:g id="g109" inkscape:label="geo_main">
+      <svg:circle style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1" id="path12" cx="500" cy="500" inkscape:label="geo_main_s" r="130" />
+    </svg:g>
+    <svg:g id="g108" inkscape:label="geo_sub">
+      <svg:circle style="fill:#000000;stroke:#000000;stroke-width:2;stroke-opacity:1;fill-opacity:0;stroke-dasharray:none" id="circle27" cx="500" cy="500" r="110" inkscape:label="geo_sub_s" />
+    </svg:g>
+    <svg:g id="g107" inkscape:label="geo_sub">
+      <svg:path id="geo_sub_s" style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1" d="m 563.56699,488.79143 c 1.3075,7.41519 1.3075,15.00196 0,22.41715" sodipodi:nodetypes="ccc" inkscape:transform-center-x="-64.057303" inkscape:transform-center-y="4.7331418e-06" inkscape:label="geo_sub_s" />
+      <svg:path id="path103" style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1" d="m 522.07659,439.34509 c 7.07549,2.57526 13.64583,6.36865 19.41382,11.20857" sodipodi:nodetypes="ccc" inkscape:transform-center-x="-31.783501" inkscape:transform-center-y="-55.050625" inkscape:label="geo_sub_s" />
+      <svg:path id="path104" style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1" d="m 458.5096,450.55366 c 5.76799,-4.83993 12.33833,-8.63331 19.41382,-11.20858" sodipodi:nodetypes="ccc" inkscape:transform-center-x="31.783489" inkscape:transform-center-y="-55.05063" inkscape:label="geo_sub_s" />
+      <svg:path id="path105" style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1" d="m 436.43301,511.20857 c -1.3075,-7.41519 -1.3075,-15.00196 0,-22.41715" sodipodi:nodetypes="ccc" inkscape:transform-center-x="64.057301" inkscape:transform-center-y="-4.9999999e-06" inkscape:label="geo_sub_s" />
+      <svg:path id="path106" style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1" d="m 477.92341,560.65491 c -7.07549,-2.57526 -13.64583,-6.36865 -19.41382,-11.20857" sodipodi:nodetypes="ccc" inkscape:transform-center-x="31.783499" inkscape:transform-center-y="55.050625" inkscape:label="geo_sub_s" />
+      <svg:path id="path107" style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1" d="m 541.4904,549.44634 c -5.76799,4.83993 -12.33833,8.63331 -19.41382,11.20858" sodipodi:nodetypes="ccc" inkscape:transform-center-x="-31.783491" inkscape:transform-center-y="55.05063" inkscape:label="geo_sub_s" />
+    </svg:g>
+  </svg:g>
+  <svg:g id="check_essence" inkscape:groupmode="layer" inkscape:label="check_essence">
+    <svg:g transform="translate(500.0,500.0) rotate(0.0)" inkscape:label="g1">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#e6194b;fill-opacity:0.35;stroke:#e6194b;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#e6194b;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:g id="check_reach" inkscape:groupmode="layer" inkscape:label="check_reach">
+    <svg:g transform="translate(430.718,540.0) rotate(60.0)" inkscape:label="g9-2-3-8">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#3cb44b;fill-opacity:0.35;stroke:#3cb44b;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#3cb44b;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:g id="check_flow" inkscape:groupmode="layer" inkscape:label="check_flow">
+    <svg:g transform="translate(569.282,540.0) rotate(300.0)" inkscape:label="g9-2-3">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#4363d8;fill-opacity:0.35;stroke:#4363d8;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#4363d8;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:g id="check_intent" inkscape:groupmode="layer" inkscape:label="check_intent">
+    <svg:g transform="translate(500.0,420.0) rotate(180.0)" inkscape:label="g9-2">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#f58231;fill-opacity:0.35;stroke:#f58231;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#f58231;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:g id="check_ornamentation_s" inkscape:groupmode="layer" inkscape:label="check_ornamentation_s">
+    <svg:g transform="translate(520.8378,618.1769) rotate(350.0)" inkscape:label="g1-4">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(541.0424,612.7631) rotate(340.0)" inkscape:label="g29">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(560.0,603.923) rotate(330.0)" inkscape:label="g31">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(577.1345,591.9253) rotate(320.0)" inkscape:label="g33">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(591.9253,577.1345) rotate(310.0)" inkscape:label="g35">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(603.923,560.0) rotate(300.0)" inkscape:label="g37">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(612.7631,541.0424) rotate(290.0)" inkscape:label="g39">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(618.1769,520.8377) rotate(280.0)" inkscape:label="g41">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(620.0,500.0) rotate(270.0)" inkscape:label="g43">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(618.1769,479.1622) rotate(260.0)" inkscape:label="g45">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(612.7631,458.9576) rotate(250.0)" inkscape:label="g47">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(603.923,440.0) rotate(240.0)" inkscape:label="g49">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(591.9253,422.8655) rotate(230.0)" inkscape:label="g51">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(577.1345,408.0747) rotate(220.0)" inkscape:label="g53">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(560.0,396.077) rotate(210.0)" inkscape:label="g55">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(541.0424,387.2369) rotate(200.0)" inkscape:label="g57">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(520.8378,381.8231) rotate(190.0)" inkscape:label="g59">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(500.0,380.0) rotate(180.0)" inkscape:label="g61">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(479.1622,381.8231) rotate(170.0)" inkscape:label="g63">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(458.9576,387.2369) rotate(160.0)" inkscape:label="g65">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(440.0,396.077) rotate(150.0)" inkscape:label="g67">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(422.8655,408.0747) rotate(140.0)" inkscape:label="g69">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(408.0747,422.8655) rotate(130.0)" inkscape:label="g71">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(396.077,440.0) rotate(120.0)" inkscape:label="g73">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(387.2369,458.9576) rotate(110.0)" inkscape:label="g75">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(381.8231,479.1622) rotate(100.0)" inkscape:label="g77">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(380.0,500.0) rotate(90.0)" inkscape:label="g79">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(381.8231,520.8378) rotate(80.0)" inkscape:label="g81">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(387.2369,541.0424) rotate(70.0)" inkscape:label="g83">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(396.077,560.0) rotate(60.0)" inkscape:label="g85">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(408.0747,577.1345) rotate(50.0)" inkscape:label="g87">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(422.8655,591.9253) rotate(40.0)" inkscape:label="g89">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(440.0,603.9231) rotate(30.0)" inkscape:label="g91">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(458.9576,612.7631) rotate(20.0)" inkscape:label="g93">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(479.1623,618.1769) rotate(10.0)" inkscape:label="g95">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(500.0,620.0) rotate(0.0)" inkscape:label="g97">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#911eb4;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:g id="check_ornamentation_m" inkscape:groupmode="layer" inkscape:label="check_ornamentation_m">
+    <svg:g transform="translate(546.25,419.8926) rotate(210.0)" inkscape:label="g1-9">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#00a0a0;fill-opacity:0.35;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(592.5,500.0) rotate(270.0)" inkscape:label="g12">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#00a0a0;fill-opacity:0.35;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(546.25,580.1074) rotate(330.0)" inkscape:label="g16">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#00a0a0;fill-opacity:0.35;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(453.75,580.1074) rotate(30.0)" inkscape:label="g18">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#00a0a0;fill-opacity:0.35;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(407.5,500.0) rotate(90.0)" inkscape:label="g20">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#00a0a0;fill-opacity:0.35;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(453.75,419.8926) rotate(150.0)" inkscape:label="g22">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#00a0a0;fill-opacity:0.35;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:g id="check_ornamentation_l" inkscape:groupmode="layer" inkscape:label="check_ornamentation_l">
+    <svg:g transform="translate(569.282,460.0) rotate(240.0)" inkscape:label="g26">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#bcbd22;fill-opacity:0.35;stroke:#bcbd22;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#bcbd22;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(430.7179,460.0) rotate(120.0)" inkscape:label="g24">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#bcbd22;fill-opacity:0.35;stroke:#bcbd22;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#bcbd22;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+    <svg:g transform="translate(500.0,580.0) rotate(0.0)" inkscape:label="g7">
+      <svg:rect x="-5.0" y="-5.0" width="10.0" height="10.0" style="fill:#bcbd22;fill-opacity:0.35;stroke:#bcbd22;stroke-width:1;stroke-opacity:1" />
+      <svg:path d="M 0,-5.0 V -11.0" style="fill:none;stroke:#bcbd22;stroke-width:1;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:g id="check_legend" inkscape:groupmode="layer" inkscape:label="check_legend">
+    <svg:rect x="20" y="20" width="12" height="12" style="fill:#e6194b;fill-opacity:0.35;stroke:#e6194b;stroke-width:1" />
+    <svg:text x="38" y="31" style="font-family:sans-serif;font-size:13px;fill:#000000">essence (1)</svg:text>
+    <svg:rect x="20" y="40" width="12" height="12" style="fill:#3cb44b;fill-opacity:0.35;stroke:#3cb44b;stroke-width:1" />
+    <svg:text x="38" y="51" style="font-family:sans-serif;font-size:13px;fill:#000000">reach (1)</svg:text>
+    <svg:rect x="20" y="60" width="12" height="12" style="fill:#4363d8;fill-opacity:0.35;stroke:#4363d8;stroke-width:1" />
+    <svg:text x="38" y="71" style="font-family:sans-serif;font-size:13px;fill:#000000">flow (1)</svg:text>
+    <svg:rect x="20" y="80" width="12" height="12" style="fill:#f58231;fill-opacity:0.35;stroke:#f58231;stroke-width:1" />
+    <svg:text x="38" y="91" style="font-family:sans-serif;font-size:13px;fill:#000000">intent (1)</svg:text>
+    <svg:rect x="20" y="100" width="12" height="12" style="fill:#911eb4;fill-opacity:0.35;stroke:#911eb4;stroke-width:1" />
+    <svg:text x="38" y="111" style="font-family:sans-serif;font-size:13px;fill:#000000">ornamentation_s (36)</svg:text>
+    <svg:rect x="20" y="120" width="12" height="12" style="fill:#00a0a0;fill-opacity:0.35;stroke:#00a0a0;stroke-width:1" />
+    <svg:text x="38" y="131" style="font-family:sans-serif;font-size:13px;fill:#000000">ornamentation_m (6)</svg:text>
+    <svg:rect x="20" y="140" width="12" height="12" style="fill:#bcbd22;fill-opacity:0.35;stroke:#bcbd22;stroke-width:1" />
+    <svg:text x="38" y="151" style="font-family:sans-serif;font-size:13px;fill:#000000">ornamentation_l (3)</svg:text>
+  </svg:g>
+</svg:svg>

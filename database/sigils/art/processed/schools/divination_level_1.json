@@ -1,0 +1,250 @@
+{
+  "metadata": {
+    "base_svg_filename": "divination_level_1.svg",
+    "type": "school",
+    "school": "Divination",
+    "level": 1,
+    "subtype": "divination"
+  },
+  "entity_map": {
+    "entities": {
+      "10000084489": {
+        "id": "10000084489",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          4,
+          5
+        ]
+      },
+      "10000084490": {
+        "id": "10000084490",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          4,
+          4
+        ]
+      },
+      "10000084491": {
+        "id": "10000084491",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          2,
+          2
+        ]
+      },
+      "10000084493": {
+        "id": "10000084493",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          5,
+          2
+        ]
+      },
+      "10000084495": {
+        "id": "10000084495",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          1,
+          5
+        ]
+      }
+    },
+    "groups": {
+      "10000084488": {
+        "id": "10000084488",
+        "category": "main",
+        "entities": [
+          "10000084489",
+          "10000084490",
+          "10000084491"
+        ],
+        "random_group": [
+          0,
+          5,
+          5
+        ]
+      },
+      "10000084492": {
+        "id": "10000084492",
+        "category": "sub",
+        "entities": [
+          "10000084493"
+        ],
+        "random_group": [
+          0,
+          5,
+          0
+        ]
+      },
+      "10000084494": {
+        "id": "10000084494",
+        "category": "main",
+        "entities": [
+          "10000084495"
+        ],
+        "random_group": [
+          0,
+          4,
+          1
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000084408",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000084421",
+        "x": 596.9949,
+        "y": 556.0,
+        "rotation": 120.0,
+        "variable_rotation": true
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000084417",
+        "x": 403.0052,
+        "y": 556.0,
+        "rotation": 240.0,
+        "variable_rotation": true
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000084413",
+        "x": 500.0,
+        "y": 388.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_s": [
+      {
+        "source_id": "10000084475",
+        "x": 500.2276,
+        "y": 309.6058,
+        "rotation": 180.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000084479",
+        "x": 335.0,
+        "y": 595.0,
+        "rotation": 60.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000084483",
+        "x": 664.7724,
+        "y": 595.3942,
+        "rotation": 300.0,
+        "variable_rotation": false
+      }
+    ],
+    "ornamentation_m": [
+      {
+        "source_id": "10000084426",
+        "x": 500.0,
+        "y": 435.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084430",
+        "x": 532.5,
+        "y": 443.7083,
+        "rotation": 30.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084434",
+        "x": 556.2917,
+        "y": 467.5,
+        "rotation": 60.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084438",
+        "x": 565.0,
+        "y": 500.0,
+        "rotation": 90.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084442",
+        "x": 556.2917,
+        "y": 532.5,
+        "rotation": 120.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084446",
+        "x": 532.5,
+        "y": 556.2917,
+        "rotation": 150.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084450",
+        "x": 500.0,
+        "y": 565.0,
+        "rotation": 180.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084454",
+        "x": 467.5,
+        "y": 556.2917,
+        "rotation": 210.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084458",
+        "x": 443.7083,
+        "y": 532.5,
+        "rotation": 240.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084462",
+        "x": 435.0,
+        "y": 500.0,
+        "rotation": 270.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084466",
+        "x": 443.7083,
+        "y": 467.5,
+        "rotation": 300.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000084470",
+        "x": 467.5,
+        "y": 443.7083,
+        "rotation": 330.0,
+        "variable_rotation": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="50mm"
+   height="50mm"
+   viewBox="0 0 50 50"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="SymbolPosMarker.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="6.4141414"
+     inkscape:cx="89.177953"
+     inkscape:cy="91.672441"
+     inkscape:window-width="3840"
+     inkscape:window-height="2071"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g9">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999999"
+       spacingy="0.99999999"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g9"
+       inkscape:label="_marker_symbol_pos">
+      <circle
+         style="fill:#000000;stroke-width:1;fill-opacity:0.25;stroke:none;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="path6"
+         cx="25"
+         cy="25"
+         r="25"
+         inkscape:label="_marker_boundary" />
+      <path
+         sodipodi:type="star"
+         style="fill:#ffffff;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:0.50340134;stroke-dasharray:none"
+         id="path8"
+         inkscape:flatsided="true"
+         sodipodi:sides="3"
+         sodipodi:cx="25"
+         sodipodi:cy="25"
+         sodipodi:r1="23"
+         sodipodi:r2="11.5"
+         sodipodi:arg1="-1.5707963"
+         sodipodi:arg2="-0.52359878"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 25.000001,2 19.918583,34.500001 -39.8371686,-2e-6 z"
+         inkscape:transform-center-y="-5.75"
+         inkscape:label="_marker_direction" />
+      <circle
+         style="fill:#000000;fill-opacity:0.25;stroke-width:1.3"
+         id="path9"
+         cx="25"
+         cy="25"
+         r="2"
+         inkscape:label="_marker_center" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,279 @@
+{
+  "essence_top_gap": 0.003,
+  "intent_top_gap": 0.005,
+  "viewbox_per_level": {
+    "0": 500,
+    "1": 500,
+    "2": 500,
+    "3": 500,
+    "4": 500,
+    "5": 500,
+    "6": 500,
+    "7": 500,
+    "8": 500,
+    "9": 500
+  },
+  "vector_noise": {
+    "school_base": {
+      "Abjuration": 0.0,
+      "Conjuration": 0.35,
+      "Divination": 0.1,
+      "Enchantment": 0.3,
+      "Evocation": 0.8,
+      "Illusion": 0.45,
+      "Necromancy": 0.7,
+      "Transmutation": 0.55
+    },
+    "essence_factors": {
+      "Fire": 0.6875,
+      "Cold": -0.8125,
+      "Lightning": 0.8875,
+      "Thunder": 0.6875,
+      "Acid": 0.4875,
+      "Poison": 0.4875,
+      "Force": -0.3125,
+      "Radiance": -0.6125,
+      "Necrosis": 0.6875,
+      "Life": 0.0875,
+      "Mind": -0.0125,
+      "Soul": 0.1875,
+      "Time": -0.9125,
+      "Space": -0.6125,
+      "Air": 0.2875,
+      "Earth": -0.3125,
+      "Water": -0.0125,
+      "Plant": 0.3875,
+      "Stone": -0.6125,
+      "Metal": -0.7125,
+      "Light": -0.5125,
+      "Shadow": 0.2875,
+      "Sound": 0.3875,
+      "Magic": -0.1125
+    },
+    "intent_factors": {
+      "Burst": 0.785716,
+      "Protection": -0.814286,
+      "Creation": -0.214286,
+      "Transformation": 0.485714,
+      "Movement": 0.285714,
+      "Knowledge": -0.714286,
+      "Influence": 0.185714
+    }
+  },
+  "angle_noise": {
+    "school_base": {
+      "Abjuration": 0.05,
+      "Conjuration": 0.4,
+      "Divination": 0.0,
+      "Enchantment": 0.3,
+      "Evocation": 0.65,
+      "Illusion": 0.75,
+      "Necromancy": 0.55,
+      "Transmutation": 0.45
+    },
+    "essence_factors": {
+      "Fire": 0.502091,
+      "Cold": -0.647917,
+      "Lightning": 0.952083,
+      "Thunder": 0.602083,
+      "Acid": 0.302083,
+      "Poison": 0.202083,
+      "Force": -0.447917,
+      "Radiance": -0.597917,
+      "Necrosis": 0.402083,
+      "Life": 0.102083,
+      "Mind": 0.302083,
+      "Soul": 0.152083,
+      "Time": -0.947917,
+      "Space": -0.697917,
+      "Air": 0.652083,
+      "Earth": -0.397917,
+      "Water": 0.152083,
+      "Plant": 0.402083,
+      "Stone": -0.747917,
+      "Metal": -0.847917,
+      "Light": -0.497917,
+      "Shadow": 0.552083,
+      "Sound": 0.702083,
+      "Magic": -0.147917
+    },
+    "intent_factors": {
+      "Burst": 0.7,
+      "Protection": -0.9,
+      "Creation": -0.4,
+      "Transformation": 0.5,
+      "Movement": 0.65,
+      "Knowledge": -0.8,
+      "Influence": 0.25
+    }
+  },
+  "position_noise": {
+    "school_base": {
+      "Abjuration": 0.0,
+      "Conjuration": 0.504,
+      "Divination": 0.036,
+      "Enchantment": 0.36,
+      "Evocation": 0.252,
+      "Illusion": 0.648,
+      "Necromancy": 0.468,
+      "Transmutation": 0.576
+    },
+    "essence_factors": {
+      "Fire": 0.126409,
+      "Cold": -0.529583,
+      "Lightning": 0.372417,
+      "Thunder": 0.249417,
+      "Acid": 0.290417,
+      "Poison": 0.208417,
+      "Force": -0.611583,
+      "Radiance": -0.570583,
+      "Necrosis": 0.331417,
+      "Life": 0.085417,
+      "Mind": 0.372417,
+      "Soul": 0.249417,
+      "Time": -0.775583,
+      "Space": 0.536417,
+      "Air": 0.495417,
+      "Earth": -0.365583,
+      "Water": 0.331417,
+      "Plant": 0.454417,
+      "Stone": -0.693583,
+      "Metal": -0.734583,
+      "Light": -0.447583,
+      "Shadow": 0.495417,
+      "Sound": 0.290417,
+      "Magic": -0.160583
+    },
+    "intent_factors": {
+      "Burst": 0.251858,
+      "Protection": -0.814143,
+      "Creation": -0.527143,
+      "Transformation": 0.620857,
+      "Movement": 0.743857,
+      "Knowledge": -0.732143,
+      "Influence": 0.456857
+    }
+  },
+  "essence_colors": {
+    "Fire": {
+      "h": 12,
+      "s": 100,
+      "l": 50
+    },
+    "Cold": {
+      "h": 195,
+      "s": 100,
+      "l": 50
+    },
+    "Lightning": {
+      "h": 54,
+      "s": 100,
+      "l": 50
+    },
+    "Thunder": {
+      "h": 278,
+      "s": 100,
+      "l": 50
+    },
+    "Acid": {
+      "h": 92,
+      "s": 100,
+      "l": 50
+    },
+    "Poison": {
+      "h": 116,
+      "s": 100,
+      "l": 50
+    },
+    "Force": {
+      "h": 224,
+      "s": 100,
+      "l": 75
+    },
+    "Radiance": {
+      "h": 46,
+      "s": 100,
+      "l": 100
+    },
+    "Necrosis": {
+      "h": 304,
+      "s": 100,
+      "l": 75
+    },
+    "Life": {
+      "h": 142,
+      "s": 100,
+      "l": 75
+    },
+    "Mind": {
+      "h": 326,
+      "s": 100,
+      "l": 75
+    },
+    "Soul": {
+      "h": 257,
+      "s": 100,
+      "l": 75
+    },
+    "Time": {
+      "h": 183,
+      "s": 100,
+      "l": 75
+    },
+    "Space": {
+      "h": 241,
+      "s": 100,
+      "l": 75
+    },
+    "Air": {
+      "h": 202,
+      "s": 100,
+      "l": 50
+    },
+    "Earth": {
+      "h": 32,
+      "s": 100,
+      "l": 50
+    },
+    "Water": {
+      "h": 208,
+      "s": 100,
+      "l": 50
+    },
+    "Plant": {
+      "h": 128,
+      "s": 100,
+      "l": 50
+    },
+    "Stone": {
+      "h": 28,
+      "s": 100,
+      "l": 50
+    },
+    "Metal": {
+      "h": 210,
+      "s": 100,
+      "l": 50
+    },
+    "Light": {
+      "h": 58,
+      "s": 100,
+      "l": 75
+    },
+    "Shadow": {
+      "h": 268,
+      "s": 100,
+      "l": 75
+    },
+    "Sound": {
+      "h": 318,
+      "s": 100,
+      "l": 75
+    },
+    "Magic": {
+      "h": 286,
+      "s": 100,
+      "l": 75
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Warlock",
+  "casting_stat": "charisma",
+  "spellcasting": "pact",
+  "prepared_caster": false,
+  "ritual_caster": false,
+  "progression": {
+    "1": { "cantrips": 2, "spells_known": 2, "spells_prepared": 2, "pact_slot_level": 1, "pact_slots": 1 },
+    "2": { "cantrips": 2, "spells_known": 3, "spells_prepared": 3, "pact_slot_level": 1, "pact_slots": 2 },
+    "3": { "cantrips": 2, "spells_known": 4, "spells_prepared": 4, "pact_slot_level": 2, "pact_slots": 2 },
+    "4": { "cantrips": 3, "spells_known": 5, "spells_prepared": 5, "pact_slot_level": 2, "pact_slots": 2 },
+    "5": { "cantrips": 3, "spells_known": 6, "spells_prepared": 6, "pact_slot_level": 3, "pact_slots": 2 },
+    "6": { "cantrips": 3, "spells_known": 7, "spells_prepared": 7, "pact_slot_level": 3, "pact_slots": 2 },
+    "7": { "cantrips": 3, "spells_known": 8, "spells_prepared": 8, "pact_slot_level": 4, "pact_slots": 2 },
+    "8": { "cantrips": 3, "spells_known": 9, "spells_prepared": 9, "pact_slot_level": 4, "pact_slots": 2 },
+    "9": { "cantrips": 3, "spells_known": 10, "spells_prepared": 10, "pact_slot_level": 5, "pact_slots": 2 },
+    "10": { "cantrips": 4, "spells_known": 10, "spells_prepared": 10, "pact_slot_level": 5, "pact_slots": 2 },
+    "11": { "cantrips": 4, "spells_known": 11, "spells_prepared": 11, "pact_slot_level": 5, "pact_slots": 3 },
+    "12": { "cantrips": 4, "spells_known": 11, "spells_prepared": 11, "pact_slot_level": 5, "pact_slots": 3 },
+    "13": { "cantrips": 4, "spells_known": 12, "spells_prepared": 12, "pact_slot_level": 5, "pact_slots": 3 },
+    "14": { "cantrips": 4, "spells_known": 12, "spells_prepared": 12, "pact_slot_level": 5, "pact_slots": 3 },
+    "15": { "cantrips": 4, "spells_known": 13, "spells_prepared": 13, "pact_slot_level": 5, "pact_slots": 3 },
+    "16": { "cantrips": 4, "spells_known": 13, "spells_prepared": 13, "pact_slot_level": 5, "pact_slots": 3 },
+    "17": { "cantrips": 4, "spells_known": 14, "spells_prepared": 14, "pact_slot_level": 5, "pact_slots": 4 },
+    "18": { "cantrips": 4, "spells_known": 14, "spells_prepared": 14, "pact_slot_level": 5, "pact_slots": 4 },
+    "19": { "cantrips": 4, "spells_known": 15, "spells_prepared": 15, "pact_slot_level": 5, "pact_slots": 4 },
+    "20": { "cantrips": 4, "spells_known": 15, "spells_prepared": 15, "pact_slot_level": 5, "pact_slots": 4 }
+  }
+}

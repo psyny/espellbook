@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <title>Spellbook</title>
+    <style>
+/* {{ CSS }} */
+    </style>
+</head>
+<body>
+    <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+        <defs>
+{{ SIGIL_DEFS }}
+        </defs>
+    </svg>
+    <div class="app">
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="char">Stats</button>
+            <button class="tab-btn" data-tab="spellbook">Spellbook</button>
+            <button class="tab-btn" data-tab="sheet">Sheet</button>
+            <button class="tab-btn" data-tab="catalog">Spell Catalog</button>
+            <button class="tab-btn" data-tab="options">Options</button>
+        </nav>
+
+        <main>
+            <section id="char" class="tab-content active">
+                <div id="char-sheet"></div>
+            </section>
+
+            <section id="spellbook" class="tab-content">
+                <div class="spellbook-header">
+                    <h2 id="spellbook-title" class="spellbook-title"></h2>
+                </div>
+                <div id="spellbook-list" class="spellbook-list"></div>
+            </section>
+
+            <div id="cast-modal" class="cast-modal">
+                <h2 id="cast-modal-name" class="cast-modal-name"></h2>
+                <div id="cast-level-row" class="cast-level-row"></div>
+                <div id="cast-btn-row" class="cast-btn-row">
+                    <button id="cast-confirm-btn" class="cast-confirm-btn">Cast</button>
+                    <button id="cast-hold-btn" class="cast-confirm-btn cast-hold-btn">Hold</button>
+                </div>
+                <div id="cast-sigil-wrap" class="cast-sigil-wrap"></div>
+            </div>
+
+            <div id="immersive-modal" class="immersive-modal" style="display:none">
+                <div class="immersive-zone zone-prev"></div>
+                <div class="immersive-zone zone-next"></div>
+                <div class="immersive-zone zone-close"></div>
+                <div class="immersive-stage">
+                    <div id="immersive-book" class="immersive-book"></div>
+                </div>
+            </div>
+
+            <section id="sheet" class="tab-content">
+                <div id="char-sheet-editor"></div>
+            </section>
+
+            <section id="catalog" class="tab-content">
+                <input type="search" id="catalog-search" placeholder="Search spells..." autocomplete="off">
+                <details class="catalog-filters-card">
+                    <summary>Filters</summary>
+                    <div class="catalog-filters-content">
+                        <div id="source-filters" class="source-filters"></div>
+                        <div id="book-source-filters" class="source-filters"></div>
+                        <div id="level-filters" class="filter-row"></div>
+                        <div id="school-filters" class="filter-row"></div>
+                        <div id="class-filters" class="filter-row"></div>
+                        <div id="ritual-filters" class="filter-row"></div>
+                        <div id="range-filters" class="filter-row"></div>
+                        <div id="casting-time-filters" class="filter-row"></div>
+                    </div>
+                </details>
+                <div id="catalog-list"></div>
+            </section>
+
+            <section id="options" class="tab-content">
+                <div class="section-header">
+                    <h2>Options</h2>
+                    <p>Customize your spellbook view</p>
+                </div>
+
+                <div class="options-category">
+                    <h3 class="options-category-title">UI</h3>
+                    <div class="options-grid">
+                        <label class="option-card">
+                            <span class="option-title">Theme</span>
+                            <select id="theme-select">
+                                <option value="dark">Dark Fantasy</option>
+                                <option value="light">Clean Light</option>
+                                <option value="parchment">Parchment</option>
+                            </select>
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Text Size</span>
+                            <input type="range" id="font-size" min="12" max="22" value="16">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="options-category">
+                    <h3 class="options-category-title">Spells</h3>
+                    <div class="options-grid">
+                        <label class="option-card">
+                            <span class="option-title">Add Valyrian Spell Names</span>
+                            <input type="checkbox" id="valyrian-toggle">
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Sigils on Immersive Spellbook</span>
+                            <input type="checkbox" id="sigils-immersive-toggle" checked>
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Sigils on Cast Action</span>
+                            <input type="checkbox" id="sigils-cast-toggle" checked>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="options-category">
+                    <h3 class="options-category-title">Animation</h3>
+                    <div class="options-grid">
+                        <label class="option-card">
+                            <span class="option-title">Page Flip Speed</span>
+                            <input type="range" id="flip-speed" min="1" max="100" step="1" value="75">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="options-category">
+                    <h3 class="options-category-title">Persistence</h3>
+                    <div class="options-grid">
+                        <button id="save-state" class="option-btn">Save State</button>
+                        <input type="file" id="load-state-input" accept=".json,application/json" style="display:none">
+                        <button id="load-state" class="option-btn">Load State</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>Generated by ESpellbook</p>
+        </footer>
+    </div>
+
+    <script>
+const CHARACTER = "{{ CHARACTER_JSON }}";
+const CLASSES = "{{ CLASSES_JSON }}";
+const RULES = "{{ RULES_JSON }}";
+const SPELLS = "{{ SPELLS_JSON }}";
+const INITIAL_PREPARED = "{{ INITIAL_PREPARED_JSON }}";
+const SIGIL_ASSETS = "{{ SIGIL_ASSETS_JSON }}";
+const SIGIL_FALLBACKS = "{{ SIGIL_FALLBACKS_JSON }}";
+const SIGIL_SCHOOLS = "{{ SIGIL_SCHOOLS_JSON }}";
+const SIGIL_DEFAULT_SCHOOL = "{{ SIGIL_DEFAULT_SCHOOL_JSON }}";
+const SIGIL_VIEWBOX_PER_LEVEL = "{{ SIGIL_VIEWBOX_PER_LEVEL_JSON }}";
+const SIGIL_ENTITY_MAPS = "{{ SIGIL_ENTITY_MAPS_JSON }}";
+/* {{ JS }} */
+    </script>
+</body>
+</html>

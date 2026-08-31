@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_mind_01_s50.svg",
+    "type": "essence",
+    "subtype": "mind"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082555": {
+        "id": "10000082555",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          3,
+          5
+        ]
+      },
+      "10000082556": {
+        "id": "10000082556",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          5,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000082555": {
+        "id": "10000082555",
+        "category": "main",
+        "entities": [
+          "10000082555"
+        ],
+        "random_group": [
+          1,
+          5,
+          2
+        ]
+      },
+      "10000082556": {
+        "id": "10000082556",
+        "category": "main",
+        "entities": [
+          "10000082556"
+        ],
+        "random_group": [
+          2,
+          3,
+          0
+        ]
+      }
+    }
+  }
+}

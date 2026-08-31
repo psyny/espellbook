@@ -1,0 +1,338 @@
+{
+  "metadata": {
+    "base_svg_filename": "necromancy_level_1.svg",
+    "type": "school",
+    "school": "Necromancy",
+    "level": 1,
+    "subtype": "necromancy"
+  },
+  "entity_map": {
+    "entities": {
+      "10000086250": {
+        "id": "10000086250",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          3,
+          5
+        ]
+      },
+      "10000086251": {
+        "id": "10000086251",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          3,
+          3
+        ]
+      },
+      "10000086252": {
+        "id": "10000086252",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          3,
+          0
+        ]
+      },
+      "10000086254": {
+        "id": "10000086254",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          3,
+          1
+        ]
+      },
+      "10000086255": {
+        "id": "10000086255",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          4,
+          0
+        ]
+      },
+      "10000086256": {
+        "id": "10000086256",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          4,
+          0,
+          3
+        ]
+      },
+      "10000086258": {
+        "id": "10000086258",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          1,
+          4
+        ]
+      },
+      "10000086260": {
+        "id": "10000086260",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          4,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000086249": {
+        "id": "10000086249",
+        "category": "main",
+        "entities": [
+          "10000086250",
+          "10000086251",
+          "10000086252"
+        ],
+        "random_group": [
+          2,
+          4,
+          1
+        ]
+      },
+      "10000086253": {
+        "id": "10000086253",
+        "category": "sub",
+        "entities": [
+          "10000086254",
+          "10000086255",
+          "10000086256"
+        ],
+        "random_group": [
+          5,
+          2,
+          1
+        ]
+      },
+      "10000086257": {
+        "id": "10000086257",
+        "category": "sub",
+        "entities": [
+          "10000086258"
+        ],
+        "random_group": [
+          1,
+          2,
+          2
+        ]
+      },
+      "10000086259": {
+        "id": "10000086259",
+        "category": "main",
+        "entities": [
+          "10000086260"
+        ],
+        "random_group": [
+          4,
+          5,
+          0
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000086144",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000086157",
+        "x": 596.9949,
+        "y": 556.0,
+        "rotation": 120.0,
+        "variable_rotation": true
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000086153",
+        "x": 403.0052,
+        "y": 556.0,
+        "rotation": 240.0,
+        "variable_rotation": true
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000086149",
+        "x": 500.0,
+        "y": 388.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_s": [
+      {
+        "source_id": "10000086224",
+        "x": 500.2286,
+        "y": 309.0873,
+        "rotation": 120.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000086228",
+        "x": 335.2373,
+        "y": 404.6103,
+        "rotation": 60.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000086232",
+        "x": 335.0088,
+        "y": 594.9938,
+        "rotation": 0.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000086236",
+        "x": 499.7714,
+        "y": 690.3835,
+        "rotation": 300.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000086240",
+        "x": 664.7627,
+        "y": 595.3897,
+        "rotation": 240.0,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000086244",
+        "x": 664.9912,
+        "y": 405.0062,
+        "rotation": 180.0,
+        "variable_rotation": false
+      }
+    ],
+    "ornamentation_m": [
+      {
+        "source_id": "10000086162",
+        "x": 500.0,
+        "y": 435.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086166",
+        "x": 532.5,
+        "y": 443.7083,
+        "rotation": 30.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086170",
+        "x": 556.2917,
+        "y": 467.5,
+        "rotation": 60.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086174",
+        "x": 565.0,
+        "y": 500.0,
+        "rotation": 90.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086178",
+        "x": 556.2917,
+        "y": 532.5,
+        "rotation": 120.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086182",
+        "x": 532.5,
+        "y": 556.2917,
+        "rotation": 150.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086186",
+        "x": 500.0,
+        "y": 565.0,
+        "rotation": 180.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086190",
+        "x": 467.5,
+        "y": 556.2917,
+        "rotation": 210.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086194",
+        "x": 443.7083,
+        "y": 532.5,
+        "rotation": 240.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086198",
+        "x": 435.0,
+        "y": 500.0,
+        "rotation": 270.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086202",
+        "x": 443.7083,
+        "y": 467.5,
+        "rotation": 300.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086206",
+        "x": 467.5,
+        "y": 443.7083,
+        "rotation": 330.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_l": [
+      {
+        "source_id": "10000086211",
+        "x": 596.9961,
+        "y": 443.9978,
+        "rotation": 60.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086215",
+        "x": 500.0051,
+        "y": 612.0001,
+        "rotation": 180.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000086219",
+        "x": 403.0064,
+        "y": 444.0022,
+        "rotation": 300.0,
+        "variable_rotation": true
+      }
+    ]
+  }
+}

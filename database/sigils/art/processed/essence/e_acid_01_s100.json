@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_acid_01_s100.svg",
+    "type": "essence",
+    "subtype": "acid"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082222": {
+        "id": "10000082222",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          5,
+          2
+        ]
+      },
+      "10000082223": {
+        "id": "10000082223",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          4,
+          3
+        ]
+      },
+      "10000082224": {
+        "id": "10000082224",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          1,
+          1
+        ]
+      },
+      "10000082225": {
+        "id": "10000082225",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          5,
+          0
+        ]
+      },
+      "10000082226": {
+        "id": "10000082226",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          3,
+          2
+        ]
+      },
+      "10000082227": {
+        "id": "10000082227",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          2,
+          2
+        ]
+      },
+      "10000082228": {
+        "id": "10000082228",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          4,
+          5
+        ]
+      }
+    },
+    "groups": {
+      "10000082222": {
+        "id": "10000082222",
+        "category": "main",
+        "entities": [
+          "10000082222"
+        ],
+        "random_group": [
+          0,
+          3,
+          0
+        ]
+      },
+      "10000082223": {
+        "id": "10000082223",
+        "category": "main",
+        "entities": [
+          "10000082223"
+        ],
+        "random_group": [
+          2,
+          5,
+          3
+        ]
+      },
+      "10000082224": {
+        "id": "10000082224",
+        "category": "main",
+        "entities": [
+          "10000082224"
+        ],
+        "random_group": [
+          1,
+          2,
+          3
+        ]
+      },
+      "10000082225": {
+        "id": "10000082225",
+        "category": "main",
+        "entities": [
+          "10000082225"
+        ],
+        "random_group": [
+          2,
+          4,
+          5
+        ]
+      },
+      "10000082226": {
+        "id": "10000082226",
+        "category": "main",
+        "entities": [
+          "10000082226"
+        ],
+        "random_group": [
+          0,
+          2,
+          3
+        ]
+      },
+      "10000082227": {
+        "id": "10000082227",
+        "category": "main",
+        "entities": [
+          "10000082227"
+        ],
+        "random_group": [
+          4,
+          0,
+          4
+        ]
+      },
+      "10000082228": {
+        "id": "10000082228",
+        "category": "main",
+        "entities": [
+          "10000082228"
+        ],
+        "random_group": [
+          2,
+          3,
+          3
+        ]
+      }
+    }
+  }
+}

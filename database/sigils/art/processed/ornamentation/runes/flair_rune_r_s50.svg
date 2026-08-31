@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg:svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" width="50mm" height="50mm" viewBox="0 0 50 50" version="1.1" id="10000083167" inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)" sodipodi:docname="flair_rune_r_s50.svg">
+  <sodipodi:namedview id="10000083168" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" inkscape:zoom="4.5354829" inkscape:cx="81.90969" inkscape:cy="94.367019" inkscape:window-width="3840" inkscape:window-height="2071" inkscape:window-x="-9" inkscape:window-y="-9" inkscape:window-maximized="1" inkscape:current-layer="10000083171" showgrid="true">
+    <inkscape:grid id="10000083169" units="mm" originx="0" originy="0" spacingx="0.99999999" spacingy="0.99999999" empcolor="#0099e5" empopacity="0.30196078" color="#0099e5" opacity="0.14901961" empspacing="5" enabled="true" visible="true" />
+  </sodipodi:namedview>
+  <svg:defs id="10000083170" />
+  <svg:g inkscape:label="symbol_art" inkscape:groupmode="layer" id="10000083171" transform="matrix(0.49465652,0,0,0.49465652,4.31878,0.50427695)">
+    <svg:path d="M 18.2396,49.924804 V 9.4927812 h 4.42208 c 3.436314,0 8.239131,1.9828898 21.544999,8.8950488 21.346224,11.088952 21.251187,10.819085 8.133869,23.091692 l -9.026565,8.445282 10.64386,19.876428 c 5.85412,10.932015 10.643858,20.02923 10.643858,20.216009 0,0.186826 -2.310723,0.339733 -5.134928,0.339733 h -5.13493 L 44.372121,70.403015 C 38.894264,59.428323 34.412398,49.903074 34.412398,49.235851 c 0,-0.667223 4.002405,-4.965799 8.89426,-9.552387 L 52.200869,31.344232 40.090014,25.27039 C 33.429091,21.929802 27.728515,19.1966 27.422166,19.1966 c -0.306301,0 -0.557044,16.011095 -0.557044,35.580188 V 90.356974 H 22.552335 18.2396 Z" id="10000083172" stroke-opacity="0.0" fill="#000000" stroke-width="0" class="sigil-symbol-path" />
+  </svg:g>
+</svg:svg>

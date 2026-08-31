@@ -1,0 +1,5 @@
+# No third-party dependencies: all generate_*.py scripts and lib/ modules
+# use only the Python standard library (json, re, pathlib, xml.etree).
+numpy>=2.0
+sentence-transformers==5.1.0
+torch>=2.8,<3.0

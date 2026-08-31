@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "base_svg_filename": "illusion_level_0.svg",
+    "type": "school",
+    "school": "Illusion",
+    "level": 0,
+    "subtype": "illusion"
+  },
+  "entity_map": {
+    "entities": {
+      "10000085648": {
+        "id": "10000085648",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          1,
+          1
+        ]
+      },
+      "10000085650": {
+        "id": "10000085650",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          1,
+          2
+        ]
+      },
+      "10000085651": {
+        "id": "10000085651",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          5,
+          0
+        ]
+      },
+      "10000085652": {
+        "id": "10000085652",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          4,
+          5
+        ]
+      },
+      "10000085653": {
+        "id": "10000085653",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          3,
+          5
+        ]
+      },
+      "10000085654": {
+        "id": "10000085654",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          0,
+          0
+        ]
+      },
+      "10000085655": {
+        "id": "10000085655",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          0,
+          1
+        ]
+      },
+      "10000085656": {
+        "id": "10000085656",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          1,
+          3
+        ]
+      },
+      "10000085657": {
+        "id": "10000085657",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          1,
+          2
+        ]
+      }
+    },
+    "groups": {
+      "10000085647": {
+        "id": "10000085647",
+        "category": "main",
+        "entities": [
+          "10000085648"
+        ],
+        "random_group": [
+          1,
+          0,
+          4
+        ]
+      },
+      "10000085649": {
+        "id": "10000085649",
+        "category": "sub",
+        "entities": [
+          "10000085650",
+          "10000085651",
+          "10000085652",
+          "10000085653",
+          "10000085654",
+          "10000085655",
+          "10000085656",
+          "10000085657"
+        ],
+        "random_group": [
+          0,
+          2,
+          2
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000085607",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000085620",
+        "x": 390.0,
+        "y": 500.0,
+        "rotation": 269.967,
+        "variable_rotation": true
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000085616",
+        "x": 610.0,
+        "y": 500.0,
+        "rotation": 90.0,
+        "variable_rotation": true
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000085612",
+        "x": 500.0,
+        "y": 390.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_m": [
+      {
+        "source_id": "10000085630",
+        "x": 547.7297,
+        "y": 452.2703,
+        "rotation": 45.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085634",
+        "x": 547.7298,
+        "y": 547.7297,
+        "rotation": 135.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085638",
+        "x": 452.2703,
+        "y": 547.7298,
+        "rotation": 225.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085642",
+        "x": 452.2703,
+        "y": 452.2703,
+        "rotation": 315.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_l": [
+      {
+        "source_id": "10000085625",
+        "x": 500.0,
+        "y": 610.0,
+        "rotation": 180.0,
+        "variable_rotation": true
+      }
+    ]
+  }
+}

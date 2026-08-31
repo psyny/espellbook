@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_air_01_s100.svg",
+    "type": "essence",
+    "subtype": "air"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082250": {
+        "id": "10000082250",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          4,
+          1
+        ]
+      },
+      "10000082251": {
+        "id": "10000082251",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          0,
+          2
+        ]
+      },
+      "10000082252": {
+        "id": "10000082252",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          4,
+          4
+        ]
+      }
+    },
+    "groups": {
+      "10000082250": {
+        "id": "10000082250",
+        "category": "main",
+        "entities": [
+          "10000082250"
+        ],
+        "random_group": [
+          1,
+          5,
+          5
+        ]
+      },
+      "10000082251": {
+        "id": "10000082251",
+        "category": "main",
+        "entities": [
+          "10000082251"
+        ],
+        "random_group": [
+          4,
+          4,
+          5
+        ]
+      },
+      "10000082252": {
+        "id": "10000082252",
+        "category": "main",
+        "entities": [
+          "10000082252"
+        ],
+        "random_group": [
+          3,
+          4,
+          0
+        ]
+      }
+    }
+  }
+}

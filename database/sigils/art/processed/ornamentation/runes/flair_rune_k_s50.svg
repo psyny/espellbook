@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg:svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" width="50mm" height="50mm" viewBox="0 0 50 50" version="1.1" id="10000083090" inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)" sodipodi:docname="flair_rune_k_s50.svg">
+  <sodipodi:namedview id="10000083091" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" inkscape:zoom="4.5354829" inkscape:cx="81.90969" inkscape:cy="94.367019" inkscape:window-width="3840" inkscape:window-height="2071" inkscape:window-x="-9" inkscape:window-y="-9" inkscape:window-maximized="1" inkscape:current-layer="10000083094" showgrid="true">
+    <inkscape:grid id="10000083092" units="mm" originx="0" originy="0" spacingx="0.99999999" spacingy="0.99999999" empcolor="#0099e5" empopacity="0.30196078" color="#0099e5" opacity="0.14901961" empspacing="5" enabled="true" visible="true" />
+  </sodipodi:namedview>
+  <svg:defs id="10000083093" />
+  <svg:g inkscape:label="symbol_art" inkscape:groupmode="layer" id="10000083094" transform="matrix(0.49465652,0,0,0.49465652,4.31878,0.50427695)">
+    <svg:path d="m 36.508386,59.204314 c -4.646544,-5.118054 -8.448258,-9.644977 -8.448258,-10.059786 0,-0.414911 3.615738,-4.936022 8.034964,-10.047003 7.988924,-9.239518 8.06574,-9.292985 13.403431,-9.334932 l 5.368467,-0.04042 -8.416215,9.270296 c -4.628906,5.09865 -8.416217,9.775466 -8.416217,10.392878 0,0.617415 0.758614,1.752177 1.685821,2.521656 0.927157,0.769481 4.718914,4.820341 8.426172,9.001893 l 6.740403,7.602819 h -4.965183 c -4.816348,0 -5.21832,-0.278966 -13.413385,-9.305621 z" id="10000083095" stroke-opacity="0.0" fill="#000000" stroke-width="0" class="sigil-symbol-path" />
+  </svg:g>
+</svg:svg>

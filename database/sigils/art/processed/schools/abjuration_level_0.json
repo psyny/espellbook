@@ -1,0 +1,175 @@
+{
+  "metadata": {
+    "base_svg_filename": "abjuration_level_0.svg",
+    "type": "school",
+    "school": "Abjuration",
+    "level": 0,
+    "subtype": "abjuration"
+  },
+  "entity_map": {
+    "entities": {
+      "10000083331": {
+        "id": "10000083331",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          5,
+          3
+        ]
+      },
+      "10000083333": {
+        "id": "10000083333",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          0,
+          3
+        ]
+      },
+      "10000083334": {
+        "id": "10000083334",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          4,
+          1,
+          1
+        ]
+      },
+      "10000083335": {
+        "id": "10000083335",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          1,
+          0
+        ]
+      },
+      "10000083336": {
+        "id": "10000083336",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          5,
+          2
+        ]
+      },
+      "10000083337": {
+        "id": "10000083337",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          4,
+          0,
+          2
+        ]
+      },
+      "10000083338": {
+        "id": "10000083338",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          5,
+          4
+        ]
+      }
+    },
+    "groups": {
+      "10000083330": {
+        "id": "10000083330",
+        "category": "main",
+        "entities": [
+          "10000083331"
+        ],
+        "random_group": [
+          2,
+          0,
+          3
+        ]
+      },
+      "10000083332": {
+        "id": "10000083332",
+        "category": "sub",
+        "entities": [
+          "10000083333",
+          "10000083334",
+          "10000083335",
+          "10000083336",
+          "10000083337",
+          "10000083338"
+        ],
+        "random_group": [
+          2,
+          4,
+          1
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000083299",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000083312",
+        "x": 430.718,
+        "y": 460.0,
+        "rotation": 120.0,
+        "variable_rotation": true
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000083308",
+        "x": 569.282,
+        "y": 460.0,
+        "rotation": 240.0,
+        "variable_rotation": true
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000083304",
+        "x": 500.0,
+        "y": 580.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_m": [
+      {
+        "source_id": "10000083317",
+        "x": 608.6862,
+        "y": 437.25,
+        "rotation": 240.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083321",
+        "x": 500.0,
+        "y": 625.5,
+        "rotation": 0.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083325",
+        "x": 391.3138,
+        "y": 437.25,
+        "rotation": 120.0,
+        "variable_rotation": true
+      }
+    ]
+  }
+}

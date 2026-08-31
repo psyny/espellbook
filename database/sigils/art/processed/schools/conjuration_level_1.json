@@ -1,0 +1,261 @@
+{
+  "metadata": {
+    "base_svg_filename": "conjuration_level_1.svg",
+    "type": "school",
+    "school": "Conjuration",
+    "level": 1,
+    "subtype": "conjuration"
+  },
+  "entity_map": {
+    "entities": {
+      "10000083910": {
+        "id": "10000083910",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          5,
+          4
+        ]
+      },
+      "10000083912": {
+        "id": "10000083912",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          3,
+          5,
+          3
+        ]
+      },
+      "10000083913": {
+        "id": "10000083913",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          4,
+          5,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000083909": {
+        "id": "10000083909",
+        "category": "sub",
+        "entities": [
+          "10000083910"
+        ],
+        "random_group": [
+          3,
+          4,
+          2
+        ]
+      },
+      "10000083911": {
+        "id": "10000083911",
+        "category": "main",
+        "entities": [
+          "10000083912",
+          "10000083913"
+        ],
+        "random_group": [
+          4,
+          4,
+          4
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000083803",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000083816",
+        "x": 580.0,
+        "y": 500.0,
+        "rotation": 90.0,
+        "variable_rotation": true
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000083812",
+        "x": 420.0,
+        "y": 500.0,
+        "rotation": 270.0,
+        "variable_rotation": true
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000083808",
+        "x": 500.0,
+        "y": 420.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_s": [
+      {
+        "source_id": "10000083875",
+        "x": 365.8124,
+        "y": 634.325,
+        "rotation": 229.5412,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000083879",
+        "x": 634.325,
+        "y": 634.1876,
+        "rotation": 139.5412,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000083883",
+        "x": 634.1876,
+        "y": 365.675,
+        "rotation": 49.5412,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000083887",
+        "x": 365.675,
+        "y": 365.8125,
+        "rotation": 319.5412,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000083892",
+        "x": 310.1329,
+        "y": 500.0972,
+        "rotation": 274.5412,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000083896",
+        "x": 500.0972,
+        "y": 689.8671,
+        "rotation": 184.5412,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000083900",
+        "x": 689.8671,
+        "y": 499.9028,
+        "rotation": 94.5412,
+        "variable_rotation": false
+      },
+      {
+        "source_id": "10000083904",
+        "x": 499.9028,
+        "y": 310.133,
+        "rotation": 4.5412,
+        "variable_rotation": false
+      }
+    ],
+    "ornamentation_m": [
+      {
+        "source_id": "10000083821",
+        "x": 500.0,
+        "y": 355.5,
+        "rotation": 0.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083825",
+        "x": 602.1769,
+        "y": 397.8231,
+        "rotation": 45.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083829",
+        "x": 644.5,
+        "y": 500.0,
+        "rotation": 90.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083833",
+        "x": 602.1769,
+        "y": 602.1769,
+        "rotation": 135.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083837",
+        "x": 500.0,
+        "y": 644.5,
+        "rotation": 180.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083841",
+        "x": 397.8231,
+        "y": 602.1769,
+        "rotation": 225.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083845",
+        "x": 355.5,
+        "y": 500.0,
+        "rotation": 270.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083849",
+        "x": 397.8231,
+        "y": 397.8231,
+        "rotation": 315.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_l": [
+      {
+        "source_id": "10000083854",
+        "x": 556.5686,
+        "y": 443.4315,
+        "rotation": 45.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083858",
+        "x": 556.5685,
+        "y": 556.5686,
+        "rotation": 135.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083862",
+        "x": 500.0,
+        "y": 580.0,
+        "rotation": 180.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083866",
+        "x": 443.4315,
+        "y": 556.5686,
+        "rotation": 225.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000083870",
+        "x": 443.4314,
+        "y": 443.4315,
+        "rotation": 315.0,
+        "variable_rotation": true
+      }
+    ]
+  }
+}

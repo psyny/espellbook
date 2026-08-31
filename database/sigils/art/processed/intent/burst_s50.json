@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "base_svg_filename": "burst_s50.svg",
+    "type": "intent",
+    "subtype": "burst"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082951": {
+        "id": "10000082951",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          1,
+          5
+        ]
+      }
+    },
+    "groups": {
+      "10000082951": {
+        "id": "10000082951",
+        "category": "main",
+        "entities": [
+          "10000082951"
+        ],
+        "random_group": [
+          5,
+          0,
+          5
+        ]
+      }
+    }
+  }
+}

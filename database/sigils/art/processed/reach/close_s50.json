@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "base_svg_filename": "close_s50.svg",
+    "type": "reach",
+    "subtype": "close"
+  },
+  "entity_map": {
+    "entities": {
+      "10000083273": {
+        "id": "10000083273",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          4,
+          3
+        ]
+      },
+      "10000083274": {
+        "id": "10000083274",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          5,
+          1
+        ]
+      }
+    },
+    "groups": {
+      "10000083272": {
+        "id": "10000083272",
+        "category": "main",
+        "entities": [
+          "10000083273",
+          "10000083274"
+        ],
+        "random_group": [
+          4,
+          4,
+          4
+        ]
+      }
+    }
+  }
+}

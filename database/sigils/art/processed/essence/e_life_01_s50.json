@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_life_01_s50.svg",
+    "type": "essence",
+    "subtype": "life"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082405": {
+        "id": "10000082405",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          4,
+          2
+        ]
+      }
+    },
+    "groups": {
+      "10000082405": {
+        "id": "10000082405",
+        "category": "main",
+        "entities": [
+          "10000082405"
+        ],
+        "random_group": [
+          1,
+          5,
+          1
+        ]
+      }
+    }
+  }
+}

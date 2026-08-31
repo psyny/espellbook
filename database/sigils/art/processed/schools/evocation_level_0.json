@@ -1,0 +1,175 @@
+{
+  "metadata": {
+    "base_svg_filename": "evocation_level_0.svg",
+    "type": "school",
+    "school": "Evocation",
+    "level": 0,
+    "subtype": "evocation"
+  },
+  "entity_map": {
+    "entities": {
+      "10000085269": {
+        "id": "10000085269",
+        "category": "main",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          1,
+          5
+        ]
+      },
+      "10000085271": {
+        "id": "10000085271",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          3,
+          1
+        ]
+      },
+      "10000085272": {
+        "id": "10000085272",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          0,
+          4
+        ]
+      },
+      "10000085273": {
+        "id": "10000085273",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          1,
+          1
+        ]
+      },
+      "10000085274": {
+        "id": "10000085274",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          1,
+          0,
+          5
+        ]
+      },
+      "10000085275": {
+        "id": "10000085275",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          5,
+          0
+        ]
+      },
+      "10000085276": {
+        "id": "10000085276",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          0,
+          2
+        ]
+      }
+    },
+    "groups": {
+      "10000085268": {
+        "id": "10000085268",
+        "category": "main",
+        "entities": [
+          "10000085269"
+        ],
+        "random_group": [
+          5,
+          1,
+          2
+        ]
+      },
+      "10000085270": {
+        "id": "10000085270",
+        "category": "sub",
+        "entities": [
+          "10000085271",
+          "10000085272",
+          "10000085273",
+          "10000085274",
+          "10000085275",
+          "10000085276"
+        ],
+        "random_group": [
+          5,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "topology": {
+    "essence": [
+      {
+        "source_id": "10000085250",
+        "x": 500.0,
+        "y": 500.0,
+        "rotation": 0.0,
+        "variable_rotation": false
+      }
+    ],
+    "reach": [
+      {
+        "source_id": "10000085245",
+        "x": 430.718,
+        "y": 540.0,
+        "rotation": 60.0,
+        "variable_rotation": true
+      }
+    ],
+    "flow": [
+      {
+        "source_id": "10000085241",
+        "x": 569.282,
+        "y": 540.0,
+        "rotation": 300.0,
+        "variable_rotation": true
+      }
+    ],
+    "intent": [
+      {
+        "source_id": "10000085237",
+        "x": 500.0,
+        "y": 420.0,
+        "rotation": 180.0,
+        "variable_rotation": true
+      }
+    ],
+    "ornamentation_l": [
+      {
+        "source_id": "10000085255",
+        "x": 569.282,
+        "y": 460.0,
+        "rotation": 240.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085259",
+        "x": 430.7179,
+        "y": 460.0,
+        "rotation": 120.0,
+        "variable_rotation": true
+      },
+      {
+        "source_id": "10000085263",
+        "x": 500.0,
+        "y": 580.0,
+        "rotation": 0.0,
+        "variable_rotation": true
+      }
+    ]
+  }
+}

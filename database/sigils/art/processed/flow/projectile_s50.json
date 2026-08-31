@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "base_svg_filename": "projectile_s50.svg",
+    "type": "flow",
+    "subtype": "projectile"
+  },
+  "entity_map": {
+    "entities": {
+      "10000082940": {
+        "id": "10000082940",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          3,
+          2
+        ]
+      }
+    },
+    "groups": {
+      "10000082940": {
+        "id": "10000082940",
+        "category": "main",
+        "entities": [
+          "10000082940"
+        ],
+        "random_group": [
+          1,
+          3,
+          3
+        ]
+      }
+    }
+  }
+}
