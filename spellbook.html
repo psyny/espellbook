@@ -1497,20 +1497,47 @@ body.theme-parchment {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 20px;
     background: rgba(0, 0, 0, 0.95);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.5s ease;
 }
 
 .cast-modal.open {
     opacity: 1;
     pointer-events: auto;
+}
+
+/* Name, level picker and cast/hold buttons float over the sigil canvas,
+   which fills the full modal so casting effects can use the whole screen. */
+.cast-modal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/* Ambient bokeh particles behind the sigil, reading as distant lights.
+   Blur is per-particle (smaller = blurrier, bigger = sharper - see the
+   edgeSoftness uniforms in script.js), not a CSS filter, so it can vary
+   within the layer instead of blurring everything uniformly. Sits below
+   the header overlay and never intercepts clicks. */
+.cast-bokeh-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.cast-bokeh-back {
+    z-index: 0;
 }
 
 .cast-modal-name {
@@ -1614,15 +1641,12 @@ body.theme-parchment {
 }
 
 .cast-sigil-wrap {
-    display: none;
-    width: 100%;
-    flex: 1;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.cast-modal.casting .cast-sigil-wrap {
-    display: flex;
 }
 
 /* Unlike .immersive-sigil, this sigil's color comes from the spell's own
@@ -1874,13 +1898,16 @@ body.theme-parchment {
             </section>
 
             <div id="cast-modal" class="cast-modal">
-                <h2 id="cast-modal-name" class="cast-modal-name"></h2>
-                <div id="cast-level-row" class="cast-level-row"></div>
-                <div id="cast-btn-row" class="cast-btn-row">
-                    <button id="cast-confirm-btn" class="cast-confirm-btn">Cast</button>
-                    <button id="cast-hold-btn" class="cast-confirm-btn cast-hold-btn">Hold</button>
-                </div>
+                <canvas id="cast-bokeh-back" class="cast-bokeh-canvas cast-bokeh-back"></canvas>
                 <div id="cast-sigil-wrap" class="cast-sigil-wrap"></div>
+                <div class="cast-modal-header">
+                    <h2 id="cast-modal-name" class="cast-modal-name"></h2>
+                    <div id="cast-level-row" class="cast-level-row"></div>
+                    <div id="cast-btn-row" class="cast-btn-row">
+                        <button id="cast-confirm-btn" class="cast-confirm-btn">Cast</button>
+                        <button id="cast-hold-btn" class="cast-confirm-btn cast-hold-btn">Hold</button>
+                    </div>
+                </div>
             </div>
 
             <div id="immersive-modal" class="immersive-modal" style="display:none">
@@ -1952,6 +1979,10 @@ body.theme-parchment {
                         <label class="option-card">
                             <span class="option-title">Sigils on Cast Action</span>
                             <input type="checkbox" id="sigils-cast-toggle" checked>
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Bokeh Effect on Cast</span>
+                            <input type="checkbox" id="bokeh-cast-toggle" checked>
                         </label>
                     </div>
                 </div>
@@ -2421,6 +2452,17 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
         localStorage.setItem(SIGILS_CAST_KEY, JSON.stringify(value === true));
     }
 
+    const BOKEH_CAST_KEY = 'espellbook_show_bokeh_cast';
+
+    function showBokehCast() {
+        const raw = localStorage.getItem(BOKEH_CAST_KEY);
+        return raw === null ? true : JSON.parse(raw) === true;
+    }
+
+    function saveShowBokehCast(value) {
+        localStorage.setItem(BOKEH_CAST_KEY, JSON.stringify(value === true));
+    }
+
     // The flip-speed slider is a 1-100 "speed" dial, not a raw duration: higher
     // value = faster flip. FLIP_SPEED_MAX is a hard stop that disables the page
     // turn animation entirely (an explicit "off" position, not just a very fast
@@ -2762,6 +2804,15 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
 
     /* ---- Cast Modal ---- */
     let castAutoTimer = null;
+    // Matches the .cast-modal opacity transition duration in style.css.
+    const CAST_MODAL_FADE_MS = 500;
+
+    function cancelCastCloseCleanup(modal) {
+        if (modal._closeCleanupTimer) {
+            clearTimeout(modal._closeCleanupTimer);
+            modal._closeCleanupTimer = null;
+        }
+    }
 
     function openCastModal(spell) {
         const modal = document.getElementById('cast-modal');
@@ -2772,6 +2823,7 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
         const sigilWrap = document.getElementById('cast-sigil-wrap');
         if (!modal || !nameEl || !row || !confirmBtn || !holdBtn || !sigilWrap) return;
 
+        cancelCastCloseCleanup(modal);
         modal.classList.remove('casting');
         if (showSigilsCast()) {
             modal.classList.add('sigils-enabled');
@@ -2779,6 +2831,11 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
             modal.classList.remove('sigils-enabled');
         }
         sigilWrap.innerHTML = '';
+
+        // Ambient bokeh starts right away, at a low spawn rate, so the modal
+        // doesn't feel empty while the player is still picking a level;
+        // doCast() bumps this up to full rate once they actually cast/hold.
+        startCastBokeh(spell, BOKEH_AMBIENT_SPAWN_RATE);
 
         nameEl.textContent = spell.name;
 
@@ -2885,6 +2942,7 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
                 applySigilMasks(sigilWrap);
                 modal.classList.add('casting');
                 if (FADE_IN_STYLE === 'one_by_one') modal.classList.add('fadein-one-by-one');
+                startCastBokeh(spell, 1);
                 return true;
             }
             return false;
@@ -2953,15 +3011,23 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
             clearIdleSymbolPulse(entry);
             return false;
         });
-        modal.classList.remove('open');
-        modal.classList.remove('casting');
-        modal.classList.remove('fadein-one-by-one');
-        modal.classList.remove('fading-out');
-        modal.classList.remove('sigils-enabled');
         if (modal._bgClose) {
             modal.removeEventListener('click', modal._bgClose);
             modal._bgClose = null;
         }
+        modal.classList.remove('open');
+        // Defer clearing the casting/sigil state until the fade-out finishes,
+        // otherwise the level picker and cast buttons (hidden by .casting)
+        // flash back into view while the modal is still visible.
+        cancelCastCloseCleanup(modal);
+        modal._closeCleanupTimer = setTimeout(() => {
+            modal._closeCleanupTimer = null;
+            modal.classList.remove('casting');
+            modal.classList.remove('fadein-one-by-one');
+            modal.classList.remove('fading-out');
+            modal.classList.remove('sigils-enabled');
+            stopCastBokeh();
+        }, CAST_MODAL_FADE_MS);
     }
 
     function openSigilPreview(spell) {
@@ -2970,11 +3036,13 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
         const sigilWrap = document.getElementById('cast-sigil-wrap');
         if (!modal || !nameEl || !sigilWrap) return;
 
+        cancelCastCloseCleanup(modal);
         nameEl.textContent = spell.name;
         sigilWrap.innerHTML = buildCastSigilSvg(spell, getLevel(spell));
         applySigilMasks(sigilWrap);
         modal.classList.add('casting');
         if (FADE_IN_STYLE === 'one_by_one') modal.classList.add('fadein-one-by-one');
+        startCastBokeh(spell);
         modal.classList.add('open');
 
         if (modal._bgClose) {
@@ -2991,6 +3059,323 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
             }
         };
         modal.addEventListener('click', modal._bgClose);
+    }
+
+    /* ---- Cast Modal Bokeh ----
+       An ambient particle field behind the sigil, rendered with plain WebGL1
+       triangles (not gl_PointSize sprites, whose max size is unreliable
+       across GPUs/drivers), reading as distant lights. Every particle's
+       position/size/blur/color/opacity is derived purely from a per-particle
+       seed plus the u_time uniform in the vertex shader, so nothing is
+       simulated or re-uploaded from JS per frame - only u_time ticks. Each
+       cycle (life + gap) reseeds the particle's spawn point/velocity/color
+       pick via a hash of (seed, cycleIndex), which is how particles
+       "respawn" randomly forever without any CPU-side bookkeeping. */
+    // Ambient particles are present as soon as the modal opens (before the
+    // player picks a level/casts), but spawn far less often; casting or
+    // holding bumps the spawn rate up to 1.0 (see startCastBokeh's spawnRate).
+    const BOKEH_AMBIENT_SPAWN_RATE = 0.2;
+
+    const BOKEH_LAYERS = [
+        // Behind the sigil, reading as distant lights. Blur is per-particle
+        // rather than a uniform CSS filter: minEdgeSoftness (low = wide
+        // feather = blurry) applies to the smallest particles,
+        // maxEdgeSoftness (high = thin feather = crisp) to the biggest,
+        // interpolated by each particle's own size.
+        { canvasId: 'cast-bokeh-back', count: 16, minSize: 10, maxSize: 25, speed: 11.8, life: 3.0, minEdgeSoftness: 0.15, maxEdgeSoftness: 0.60 }
+    ];
+
+    const BOKEH_VERTEX_SHADER = `
+        attribute float a_id;
+        attribute vec2 a_corner;
+        uniform float u_time;
+        uniform vec2 u_resolution;
+        uniform float u_minSize;
+        uniform float u_maxSize;
+        uniform float u_speed;
+        uniform float u_baseLife;
+        uniform float u_spawnRate;
+        uniform float u_minEdgeSoftness;
+        uniform float u_maxEdgeSoftness;
+        uniform vec3 u_color1;
+        uniform vec3 u_color2;
+        uniform vec3 u_color3;
+        varying vec2 v_uv;
+        varying float v_alpha;
+        varying vec3 v_color;
+        varying float v_edgeSoftness;
+
+        float hash(float n) { return fract(sin(n) * 43758.5453123); }
+        float hash2(float n, float m) { return hash(n * 12.9898 + m * 78.233); }
+
+        void main() {
+            float seed = a_id + 1.0;
+            float life = u_baseLife * (0.8 + 0.4 * hash2(seed, 10.0));
+            float gap = u_baseLife * (0.6 + 1.2 * hash2(seed, 11.0));
+            float cycle = life + gap;
+            float phase = hash2(seed, 12.0) * cycle;
+            float shifted = u_time + phase;
+            float t = mod(shifted, cycle);
+            float cycleIndex = floor(shifted / cycle);
+            float alive = step(t, life);
+
+            float basis = cycleIndex * 17.0;
+            float rx = hash2(seed, basis + 1.0);
+            float ry1 = hash2(seed, basis + 2.0);
+            float ry2 = hash2(seed, basis + 3.0);
+            float startX = rx * u_resolution.x;
+            // Sum of two uniform draws biases y toward the horizontal
+            // centerline instead of spreading evenly top-to-bottom.
+            float startY = u_resolution.y * 0.5 + (ry1 + ry2 - 1.0) * u_resolution.y * 0.5;
+
+            float vAngle = hash2(seed, basis + 4.0) * 6.28318530718;
+            float vSpeed = u_speed * (0.3 + 0.7 * hash2(seed, basis + 5.0));
+            vec2 vel = vec2(cos(vAngle), sin(vAngle)) * vSpeed;
+            vec2 center = vec2(startX, startY) + vel * t;
+
+            float fadeIn = 0.2;
+            float fadeOut = 0.2;
+            float envIn = clamp(t / fadeIn, 0.0, 1.0);
+            float envOut = clamp((life - t) / fadeOut, 0.0, 1.0);
+            float env = min(envIn, envOut);
+            float flickerSeed = hash2(seed, basis + 6.0);
+            float flicker = 0.82 + 0.18 * sin(t * 9.0 + flickerSeed * 6.28318530718);
+
+            // Each cycle independently rolls whether this particle actually
+            // spawns at all, so u_spawnRate directly controls how often
+            // particles appear (1.0 = every cycle, 0.2 = roughly 1 in 5).
+            float spawnRoll = hash2(seed, basis + 15.0);
+            float spawnGate = step(spawnRoll, u_spawnRate);
+
+            v_alpha = alive * env * flicker * spawnGate;
+
+            float colorPick = hash2(seed, basis + 7.0);
+            vec3 baseColor = colorPick < 0.3333 ? u_color1 : (colorPick < 0.6667 ? u_color2 : u_color3);
+            vec3 jitter = vec3(
+                hash2(seed, basis + 8.0),
+                hash2(seed, basis + 9.0),
+                hash2(seed, basis + 13.0)
+            );
+            v_color = clamp(baseColor * (1.0 + (jitter - 0.5) * 0.4), 0.0, 1.0);
+
+            // Same 0-1 factor drives both size and blur, so smaller
+            // particles (low sizeFactor) get a wider soft feather
+            // (blurrier) and bigger ones get a thin, near-crisp edge.
+            float sizeFactor = hash2(seed, basis + 14.0);
+            float size = mix(u_minSize, u_maxSize, sizeFactor);
+            v_edgeSoftness = mix(u_minEdgeSoftness, u_maxEdgeSoftness, sizeFactor);
+            vec2 pixelPos = center + a_corner * size * 0.5;
+            vec2 clip = (pixelPos / u_resolution) * 2.0 - 1.0;
+            clip.y = -clip.y;
+            v_uv = a_corner;
+            gl_Position = vec4(clip, 0.0, 1.0);
+        }
+    `;
+
+    const BOKEH_FRAGMENT_SHADER = `
+        precision mediump float;
+        varying vec2 v_uv;
+        varying float v_alpha;
+        varying vec3 v_color;
+        varying float v_edgeSoftness;
+        void main() {
+            float dist = length(v_uv);
+            float mask = 1.0 - smoothstep(v_edgeSoftness, 1.0, dist);
+            float alpha = v_alpha * mask;
+            if (alpha <= 0.001) discard;
+            gl_FragColor = vec4(v_color * alpha, alpha);
+        }
+    `;
+
+    let bokehStates = null;
+    let bokehActive = false;
+    let bokehAnimationId = null;
+    let bokehStartTime = 0;
+
+    function compileBokehProgram(gl) {
+        function compileShader(type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                const message = gl.getShaderInfoLog(shader);
+                gl.deleteShader(shader);
+                throw new Error(message);
+            }
+            return shader;
+        }
+        const vs = compileShader(gl.VERTEX_SHADER, BOKEH_VERTEX_SHADER);
+        const fs = compileShader(gl.FRAGMENT_SHADER, BOKEH_FRAGMENT_SHADER);
+        const program = gl.createProgram();
+        gl.attachShader(program, vs);
+        gl.attachShader(program, fs);
+        gl.linkProgram(program);
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+            const message = gl.getProgramInfoLog(program);
+            gl.deleteProgram(program);
+            throw new Error(message);
+        }
+        return program;
+    }
+
+    function initBokehLayer(layer) {
+        const canvas = document.getElementById(layer.canvasId);
+        if (!canvas) return null;
+        const gl = canvas.getContext('webgl', {
+            alpha: true,
+            antialias: false,
+            depth: false,
+            stencil: false,
+            premultipliedAlpha: true,
+            powerPreference: 'low-power'
+        }) || canvas.getContext('experimental-webgl');
+        if (!gl) return null;
+
+        let program;
+        try {
+            program = compileBokehProgram(gl);
+        } catch (error) {
+            console.error('Bokeh WebGL init failed:', error);
+            return null;
+        }
+        gl.useProgram(program);
+
+        // 6 vertices (2 triangles) per particle: (id, cornerX, cornerY).
+        const corners = [[-1, -1], [1, -1], [-1, 1], [-1, 1], [1, -1], [1, 1]];
+        const vertexData = new Float32Array(layer.count * 6 * 3);
+        for (let i = 0; i < layer.count; i++) {
+            for (let c = 0; c < 6; c++) {
+                const base = (i * 6 + c) * 3;
+                vertexData[base] = i;
+                vertexData[base + 1] = corners[c][0];
+                vertexData[base + 2] = corners[c][1];
+            }
+        }
+        const buffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
+
+        const aId = gl.getAttribLocation(program, 'a_id');
+        const aCorner = gl.getAttribLocation(program, 'a_corner');
+
+        const uniforms = {};
+        ['u_time', 'u_resolution', 'u_minSize', 'u_maxSize', 'u_speed', 'u_baseLife', 'u_spawnRate', 'u_minEdgeSoftness', 'u_maxEdgeSoftness', 'u_color1', 'u_color2', 'u_color3']
+            .forEach(name => { uniforms[name] = gl.getUniformLocation(program, name); });
+
+        return { canvas, gl, program, buffer, aId, aCorner, uniforms, layer, colors: [[1, 1, 1], [1, 1, 1], [1, 1, 1]], spawnRate: 1, spawnRateTarget: 1, dpr: 1 };
+    }
+
+    function resizeBokehCanvas(state) {
+        const canvas = state.canvas;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
+        const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+        if (canvas.width !== w || canvas.height !== h) {
+            canvas.width = w;
+            canvas.height = h;
+        }
+        state.dpr = dpr;
+    }
+
+    function drawBokehLayer(state, timeSec) {
+        resizeBokehCanvas(state);
+        const gl = state.gl;
+        gl.viewport(0, 0, state.canvas.width, state.canvas.height);
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.useProgram(state.program);
+
+        gl.uniform1f(state.uniforms.u_time, timeSec);
+        gl.uniform2f(state.uniforms.u_resolution, state.canvas.width, state.canvas.height);
+        gl.uniform1f(state.uniforms.u_minSize, state.layer.minSize * state.dpr);
+        gl.uniform1f(state.uniforms.u_maxSize, state.layer.maxSize * state.dpr);
+        gl.uniform1f(state.uniforms.u_speed, state.layer.speed * state.dpr);
+        gl.uniform1f(state.uniforms.u_baseLife, state.layer.life);
+        gl.uniform1f(state.uniforms.u_spawnRate, state.spawnRate);
+        gl.uniform1f(state.uniforms.u_minEdgeSoftness, state.layer.minEdgeSoftness);
+        gl.uniform1f(state.uniforms.u_maxEdgeSoftness, state.layer.maxEdgeSoftness);
+        gl.uniform3f(state.uniforms.u_color1, state.colors[0][0], state.colors[0][1], state.colors[0][2]);
+        gl.uniform3f(state.uniforms.u_color2, state.colors[1][0], state.colors[1][1], state.colors[1][2]);
+        gl.uniform3f(state.uniforms.u_color3, state.colors[2][0], state.colors[2][1], state.colors[2][2]);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, state.buffer);
+        gl.enableVertexAttribArray(state.aId);
+        gl.vertexAttribPointer(state.aId, 1, gl.FLOAT, false, 12, 0);
+        gl.enableVertexAttribArray(state.aCorner);
+        gl.vertexAttribPointer(state.aCorner, 2, gl.FLOAT, false, 12, 4);
+
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+        gl.drawArrays(gl.TRIANGLES, 0, state.layer.count * 6);
+    }
+
+    // Time constant (seconds) for spawnRate to ease toward its target -
+    // without this, bumping the uniform straight from ambient to full rate
+    // makes every particle whose per-cycle roll falls in between pop in on
+    // the same frame, since the shader re-evaluates the gate every frame
+    // with no memory of a ramp. Exponential easing here gives a smooth rise
+    // instead (~63% of the way there after one tau, ~95% after three).
+    const BOKEH_SPAWN_RATE_TAU = 1.2;
+    let bokehLastFrameTime = 0;
+
+    function bokehAnimationLoop(timestamp) {
+        if (!bokehActive || !bokehStates) {
+            bokehAnimationId = null;
+            return;
+        }
+        const dt = Math.max(0, (timestamp - bokehLastFrameTime) * 0.001);
+        bokehLastFrameTime = timestamp;
+        const ease = 1 - Math.exp(-dt / BOKEH_SPAWN_RATE_TAU);
+        const timeSec = (timestamp - bokehStartTime) * 0.001;
+        for (const state of bokehStates) {
+            state.spawnRate += (state.spawnRateTarget - state.spawnRate) * ease;
+            drawBokehLayer(state, timeSec);
+        }
+        bokehAnimationId = requestAnimationFrame(bokehAnimationLoop);
+    }
+
+    // Parses a spell's three sigil colors into 0-1 RGB triples for the shader.
+    function spellBokehColors(spell) {
+        const style = (spell.sigil_params && spell.sigil_params.style) || {};
+        const toFloat3 = (rgbString) => rgbComponents(rgbString).split(',').map(v => parseFloat(v) / 255);
+        return [toFloat3(style.color_1), toFloat3(style.color_2), toFloat3(style.color_3)];
+    }
+
+    // spawnRate defaults to full density (1.0); pass BOKEH_AMBIENT_SPAWN_RATE
+    // while the player is still picking a level, before they've cast/held.
+    // Calling this again on an already-running field (e.g. ambient -> full
+    // rate once cast/hold is clicked) only retargets spawnRate, which then
+    // eases toward it in bokehAnimationLoop rather than jumping instantly -
+    // and it deliberately does not reset bokehStartTime, so particles
+    // already mid-lifecycle don't jump either.
+    function startCastBokeh(spell, spawnRate) {
+        if (!showBokehCast()) return;
+        if (!bokehStates) {
+            bokehStates = BOKEH_LAYERS.map(initBokehLayer).filter(Boolean);
+        }
+        if (!bokehStates.length) return;
+        const colors = spellBokehColors(spell);
+        const rate = spawnRate === undefined ? 1 : spawnRate;
+        const isFreshStart = bokehAnimationId === null;
+        bokehStates.forEach(state => {
+            state.colors = colors;
+            state.spawnRateTarget = rate;
+            if (isFreshStart) state.spawnRate = rate;
+        });
+        bokehActive = true;
+        if (isFreshStart) {
+            bokehStartTime = performance.now();
+            bokehLastFrameTime = bokehStartTime;
+            bokehAnimationId = requestAnimationFrame(bokehAnimationLoop);
+        }
+    }
+
+    function stopCastBokeh() {
+        bokehActive = false;
+        if (bokehAnimationId !== null) {
+            cancelAnimationFrame(bokehAnimationId);
+            bokehAnimationId = null;
+        }
     }
 
     function setupLongPress(element, callback, duration = 3000) {
@@ -3068,6 +3453,7 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
         const loadStateInput = document.getElementById('load-state-input');
         const sigilsImmersiveToggle = document.getElementById('sigils-immersive-toggle');
         const sigilsCastToggle = document.getElementById('sigils-cast-toggle');
+        const bokehCastToggle = document.getElementById('bokeh-cast-toggle');
 
         const savedTheme = localStorage.getItem('theme') || 'dark';
         theme.value = savedTheme;
@@ -3094,6 +3480,14 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000082222": 
             sigilsCastToggle.checked = showSigilsCast();
             sigilsCastToggle.addEventListener('change', () => {
                 saveShowSigilsCast(sigilsCastToggle.checked);
+            });
+        }
+
+        if (bokehCastToggle) {
+            bokehCastToggle.checked = showBokehCast();
+            bokehCastToggle.addEventListener('change', () => {
+                saveShowBokehCast(bokehCastToggle.checked);
+                if (!bokehCastToggle.checked) stopCastBokeh();
             });
         }
 

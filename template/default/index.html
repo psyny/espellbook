@@ -39,13 +39,16 @@
             </section>
 
             <div id="cast-modal" class="cast-modal">
-                <h2 id="cast-modal-name" class="cast-modal-name"></h2>
-                <div id="cast-level-row" class="cast-level-row"></div>
-                <div id="cast-btn-row" class="cast-btn-row">
-                    <button id="cast-confirm-btn" class="cast-confirm-btn">Cast</button>
-                    <button id="cast-hold-btn" class="cast-confirm-btn cast-hold-btn">Hold</button>
-                </div>
+                <canvas id="cast-bokeh-back" class="cast-bokeh-canvas cast-bokeh-back"></canvas>
                 <div id="cast-sigil-wrap" class="cast-sigil-wrap"></div>
+                <div class="cast-modal-header">
+                    <h2 id="cast-modal-name" class="cast-modal-name"></h2>
+                    <div id="cast-level-row" class="cast-level-row"></div>
+                    <div id="cast-btn-row" class="cast-btn-row">
+                        <button id="cast-confirm-btn" class="cast-confirm-btn">Cast</button>
+                        <button id="cast-hold-btn" class="cast-confirm-btn cast-hold-btn">Hold</button>
+                    </div>
+                </div>
             </div>
 
             <div id="immersive-modal" class="immersive-modal" style="display:none">
@@ -117,6 +120,10 @@
                         <label class="option-card">
                             <span class="option-title">Sigils on Cast Action</span>
                             <input type="checkbox" id="sigils-cast-toggle" checked>
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Bokeh Effect on Cast</span>
+                            <input type="checkbox" id="bokeh-cast-toggle" checked>
                         </label>
                     </div>
                 </div>

@@ -1487,20 +1487,47 @@ body.theme-parchment {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 20px;
     background: rgba(0, 0, 0, 0.95);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.5s ease;
 }
 
 .cast-modal.open {
     opacity: 1;
     pointer-events: auto;
+}
+
+/* Name, level picker and cast/hold buttons float over the sigil canvas,
+   which fills the full modal so casting effects can use the whole screen. */
+.cast-modal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/* Ambient bokeh particles behind the sigil, reading as distant lights.
+   Blur is per-particle (smaller = blurrier, bigger = sharper - see the
+   edgeSoftness uniforms in script.js), not a CSS filter, so it can vary
+   within the layer instead of blurring everything uniformly. Sits below
+   the header overlay and never intercepts clicks. */
+.cast-bokeh-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.cast-bokeh-back {
+    z-index: 0;
 }
 
 .cast-modal-name {
@@ -1604,15 +1631,12 @@ body.theme-parchment {
 }
 
 .cast-sigil-wrap {
-    display: none;
-    width: 100%;
-    flex: 1;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.cast-modal.casting .cast-sigil-wrap {
-    display: flex;
 }
 
 /* Unlike .immersive-sigil, this sigil's color comes from the spell's own
