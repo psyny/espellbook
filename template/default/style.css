@@ -910,6 +910,88 @@ body.theme-parchment .slots-grid.warlock {
     --mana-glow: rgba(54, 3, 3, 0.9);
 }
 
+.skills-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    --skill-green: #3ecf6a;
+    --skill-blue: #4d9fff;
+    --skill-red: #e0524f;
+    --skill-neutral: var(--text);
+}
+
+.skills-section h3 {
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.skills-grid {
+    columns: 200px;
+    column-gap: 2rem;
+    column-rule: 1px solid var(--border);
+}
+
+.skill-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+}
+
+.skill-row.tier-green { --tier-color: var(--skill-green); }
+.skill-row.tier-blue { --tier-color: var(--skill-blue); }
+.skill-row.tier-red { --tier-color: var(--skill-red); }
+.skill-row.tier-neutral { --tier-color: var(--skill-neutral); }
+
+.skill-prof-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--tier-color);
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.skill-prof-dot.is-proficient {
+    background: var(--tier-color);
+    box-shadow: 0 0 4px var(--tier-color);
+}
+
+.skill-name {
+    color: var(--tier-color);
+    flex: 1;
+}
+
+.skill-ability {
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.skill-mod {
+    color: var(--tier-color);
+    font-weight: bold;
+    min-width: 2.2em;
+    text-align: right;
+}
+
+body.theme-light .skills-section {
+    --skill-green: #1e8449;
+    --skill-blue: #1a5fb4;
+    --skill-red: #a4262c;
+}
+
+body.theme-parchment .skills-section {
+    --skill-green: #0f7a3d;
+    --skill-blue: #0f5fa8;
+    --skill-red: #b3261e;
+}
+
 /* Sheet editor */
 .sheet-header {
     text-align: center;
@@ -938,6 +1020,12 @@ body.theme-parchment .slots-grid.warlock {
     color: var(--accent);
     font-size: 1.1rem;
     margin-bottom: 0.75rem;
+}
+
+.sheet-hint {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: -0.5rem 0 0.75rem;
 }
 
 .sheet-grid {

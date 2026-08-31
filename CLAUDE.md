@@ -35,6 +35,10 @@ There is no test suite and no linter configured.
 
 **Client-side runtime** (`template/default/script.js`, inlined into the generated HTML) owns character state (classes, attributes, prepared spells, slots), spell filtering/search, and sigil composition (`buildSigilSvg()` and friends) purely from the JSON baked into the page at generation time — it does not fetch anything. Character data is not baked in; users load/save their character JSON through the page's UI (see `chars/*/char.json` for the format).
 
+## Testing
+
+Do not auto-launch a browser (headless or otherwise) to verify UI changes to `spellbook.html` — just regenerate it and reason about the diff/code. If visual verification is needed, ask the user to open the file themselves.
+
 ## Deep-dive notes
 
 `code_map/` holds notes on non-obvious algorithms and where each system lives — not a restatement of the directory structure. Read `code_map/README.md` first, then the relevant note, before touching sigil generation/composition or the rand-factor system. **Update the relevant `code_map/*.md` whenever you change the logic it documents.**

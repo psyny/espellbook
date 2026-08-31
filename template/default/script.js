@@ -1219,6 +1219,56 @@
         return prof + mod + override;
     }
 
+    const ABILITY_ABBREV = {
+        strength: 'Str', dexterity: 'Dex', constitution: 'Con',
+        intelligence: 'Int', wisdom: 'Wis', charisma: 'Cha'
+    };
+
+    function getSkillList() {
+        const bySkill = (RULES.skills && RULES.skills.by_skill) || {};
+        return Object.keys(bySkill).sort((a, b) => a.localeCompare(b)).map(name => ({ name, ability: bySkill[name] }));
+    }
+
+    // Ranks the character's six ability modifiers into tiers so skills can be
+    // color-grouped by how strong the character is in the governing ability.
+    // Ties share a tier; a stat only falls to "red" if it isn't already the
+    // highest or second-highest tier.
+    function getAbilityTierMap() {
+        const attrs = SHEET_CHARACTER.attributes || {};
+        const mods = {};
+        Object.keys(attrs).forEach(key => { mods[key] = getAbilityModifier(attrs[key]); });
+
+        const distinctDesc = [...new Set(Object.values(mods))].sort((a, b) => b - a);
+        const highest = distinctDesc[0];
+        const second = distinctDesc.length > 1 ? distinctDesc[1] : null;
+
+        const tiers = {};
+        Object.entries(mods).forEach(([key, mod]) => {
+            if (mod === highest) tiers[key] = 'green';
+            else if (second !== null && mod === second) tiers[key] = 'blue';
+            else if (mod < 0) tiers[key] = 'red';
+            else tiers[key] = 'neutral';
+        });
+        return tiers;
+    }
+
+    function isSkillProficient(skillName) {
+        return (SHEET_CHARACTER.skill_proficiencies || []).includes(skillName);
+    }
+
+    function getSkillCustomMod(skillName) {
+        const skillMods = (SHEET_CHARACTER.custom_mods && SHEET_CHARACTER.custom_mods.skills) || {};
+        return parseInt(skillMods[skillName]) || 0;
+    }
+
+    function getSkillModifier(skillName, ability) {
+        const level = getCharacterLevel();
+        const prof = getProficiencyBonus(level);
+        const abilityMod = getAbilityModifier((SHEET_CHARACTER.attributes || {})[ability] || 10);
+        const profBonus = isSkillProficient(skillName) ? prof : 0;
+        return abilityMod + profBonus + getSkillCustomMod(skillName);
+    }
+
     function getMaxSlotsArray() {
         const slots = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         const customMods = (SHEET_CHARACTER.custom_mods && SHEET_CHARACTER.custom_mods.slots) || {};
@@ -1379,6 +1429,21 @@
             `;
         }).join('') : '<p class="empty-state">No spell slots available at this level.</p>';
 
+        const abilityTiers = getAbilityTierMap();
+        const skillsHtml = getSkillList().map(({ name, ability }) => {
+            const tier = abilityTiers[ability] || 'neutral';
+            const proficient = isSkillProficient(name);
+            const mod = getSkillModifier(name, ability);
+            return `
+                <div class="skill-row tier-${tier}">
+                    <span class="skill-prof-dot ${proficient ? 'is-proficient' : ''}" aria-label="${proficient ? 'Proficient' : 'Not proficient'}"></span>
+                    <span class="skill-name">${escapeHtml(name)}</span>
+                    <span class="skill-ability">${ABILITY_ABBREV[ability] || ''}</span>
+                    <span class="skill-mod">${formatModifier(mod)}</span>
+                </div>
+            `;
+        }).join('');
+
         container.innerHTML = `
             <div class="char-header">
                 <h2>${escapeHtml(SHEET_CHARACTER.name || 'Character')}</h2>
@@ -1415,6 +1480,13 @@
                 </div>
                 <div class="slots-grid ${getMagicType()}">
                     ${slotsHtml}
+                </div>
+            </div>
+
+            <div class="skills-section">
+                <h3>Skills</h3>
+                <div class="skills-grid">
+                    ${skillsHtml}
                 </div>
             </div>
         `;
@@ -1457,6 +1529,8 @@
         const override = SHEET_CHARACTER.custom_mods || {};
         const slots = override.slots || {};
         const prepared = override.prepared || {};
+        const skillMods = override.skills || {};
+        const skillProficiencies = SHEET_CHARACTER.skill_proficiencies || [];
 
         const classInputs = Object.keys(CLASSES).map(key => {
             const cls = CLASSES[key];
@@ -1486,6 +1560,22 @@
             <label class="sheet-field small">
                 <span>Lvl ${level}</span>
                 <input type="number" class="sheet-prepared-override" data-level="${level}" value="${prepared[String(level)] || 0}" min="0">
+            </label>
+        `).join('');
+
+        const skillList = getSkillList();
+
+        const skillProfInputs = skillList.map(({ name, ability }) => `
+            <label class="filter-toggle">
+                <input type="checkbox" class="sheet-skill-prof" data-skill="${escapeHtml(name)}" ${skillProficiencies.includes(name) ? 'checked' : ''}>
+                ${escapeHtml(name)} <span class="skill-ability">(${ABILITY_ABBREV[ability] || ''})</span>
+            </label>
+        `).join('');
+
+        const skillModInputs = skillList.map(({ name }) => `
+            <label class="sheet-field small">
+                <span>${escapeHtml(name)}</span>
+                <input type="number" class="sheet-skill-mod" data-skill="${escapeHtml(name)}" value="${skillMods[name] || 0}">
             </label>
         `).join('');
 
@@ -1522,7 +1612,24 @@
                 </div>
 
                 <div class="sheet-section">
-                    <h3>Modifiers</h3>
+                    <h3>Skill Proficiencies</h3>
+                    <p class="sheet-hint">Which skills your character is trained in. Drives the proficiency dot and modifier shown on the Stats tab.</p>
+                    <div class="filter-row">
+                        ${skillProfInputs}
+                    </div>
+                </div>
+
+                <div class="sheet-section">
+                    <h3>Custom Mods: Skill Bonuses</h3>
+                    <p class="sheet-hint">Added on top of the automatically calculated skill modifier (ability + proficiency).</p>
+                    <div class="sheet-grid small">
+                        ${skillModInputs}
+                    </div>
+                </div>
+
+                <div class="sheet-section">
+                    <h3>Custom Mods: Spell DC &amp; Attack</h3>
+                    <p class="sheet-hint">Overrides on top of the automatically calculated values — use for magic items, boons, or other one-off bonuses.</p>
                     <div class="sheet-grid">
                         <label class="sheet-field">
                             <span>Spell DC Mod</span>
@@ -1536,14 +1643,16 @@
                 </div>
 
                 <div class="sheet-section">
-                    <h3>Custom Slot Mods (per spell level)</h3>
+                    <h3>Custom Mods: Spell Slots (per level)</h3>
+                    <p class="sheet-hint">Added on top of the slots calculated from your class &amp; level.</p>
                     <div class="sheet-grid small">
                         ${slotInputs}
                     </div>
                 </div>
 
                 <div class="sheet-section">
-                    <h3>Custom Prepared Mods (per spell level)</h3>
+                    <h3>Custom Mods: Prepared Spells (per level)</h3>
+                    <p class="sheet-hint">Added on top of the prepared-spell count calculated from your class &amp; level.</p>
                     <div class="sheet-grid small">
                         ${preparedInputs}
                     </div>
@@ -1583,15 +1692,28 @@
                 newPrepared[input.dataset.level] = parseInt(input.value) || 0;
             });
 
+            const newSkillProficiencies = [];
+            container.querySelectorAll('.sheet-skill-prof').forEach(input => {
+                if (input.checked) newSkillProficiencies.push(input.dataset.skill);
+            });
+
+            const newSkillMods = {};
+            container.querySelectorAll('.sheet-skill-mod').forEach(input => {
+                const val = parseInt(input.value) || 0;
+                if (val !== 0) newSkillMods[input.dataset.skill] = val;
+            });
+
             SHEET_CHARACTER.name = name;
             SHEET_CHARACTER.classes = newClasses;
             SHEET_CHARACTER.attributes = newAttrs;
             SHEET_CHARACTER.stats = { hp };
+            SHEET_CHARACTER.skill_proficiencies = newSkillProficiencies;
             SHEET_CHARACTER.custom_mods = {
                 spell_dc_mod: dcMod,
                 spell_attack_mod: attackMod,
                 slots: newSlots,
-                prepared: newPrepared
+                prepared: newPrepared,
+                skills: newSkillMods
             };
 
             saveSheetData();

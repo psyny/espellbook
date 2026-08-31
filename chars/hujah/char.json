@@ -14,9 +14,14 @@
         "wisdom": 12,
         "charisma": 11
     },
+    "skill_proficiencies": [
+        "Arcana",
+        "Investigation"
+    ],
     "custom_mods": {
         "spell_dc_mod": 0,
         "spell_attack_mod": 0,
+        "skills": {},
         "slots": {
             "0": 0,
             "1": 0,

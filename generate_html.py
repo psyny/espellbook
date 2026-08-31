@@ -23,11 +23,13 @@ DEFAULT_CHARACTER = {
         "wisdom": 10,
         "charisma": 10,
     },
+    "skill_proficiencies": [],
     "custom_mods": {
         "spell_dc_mod": 0,
         "spell_attack_mod": 0,
         "slots": {str(i): 0 for i in range(10)},
         "prepared": {str(i): 0 for i in range(10)},
+        "skills": {},
     },
 }
 
