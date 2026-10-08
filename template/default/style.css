@@ -1662,6 +1662,15 @@ body.theme-parchment {
     animation: cast-sigil-glow 1.0s both, cast-sigil-pulse 2s ease-in-out 1.0s infinite;
 }
 
+/* Draw-on-cast: the glow rises alongside the pen instead of ahead of it.
+   --sigil-draw-duration is set on the modal by applyDrawSigilMode() in
+   script.js, from the same value the shader sweep uses. */
+.cast-modal.casting.draw-sigil .cast-sigil {
+    animation:
+        cast-sigil-glow-draw var(--sigil-draw-duration, 5s) both,
+        cast-sigil-pulse 2s ease-in-out var(--sigil-draw-duration, 5s) infinite;
+}
+
 /* Default state: visible, no animation. */
 .sigil-part {
     opacity: 1;
@@ -1760,6 +1769,15 @@ body.theme-parchment {
     0% { --glow-intensity: 0; }
     20% { --glow-intensity: 0.2; }
     50% { --glow-intensity: 1.0; }
+    100% { --glow-intensity: 0.9; }
+}
+
+/* Draw-on-cast variant: a faint glow follows the strokes, then flares
+   as the last ones land. */
+@keyframes cast-sigil-glow-draw {
+    0% { --glow-intensity: 0; }
+    70% { --glow-intensity: 0.35; }
+    92% { --glow-intensity: 1.0; }
     100% { --glow-intensity: 0.9; }
 }
 

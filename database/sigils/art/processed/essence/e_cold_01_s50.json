@@ -6,50 +6,50 @@
   },
   "entity_map": {
     "entities": {
-      "10000082294": {
-        "id": "10000082294",
+      "10000087078": {
+        "id": "10000087078",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          1,
+          5
+        ]
+      },
+      "10000087079": {
+        "id": "10000087079",
         "category": "main",
         "is_stroke": false,
         "random_group": [
           0,
-          5,
-          4
-        ]
-      },
-      "10000082295": {
-        "id": "10000082295",
-        "category": "main",
-        "is_stroke": false,
-        "random_group": [
-          1,
-          1,
-          0
+          0,
+          2
         ]
       }
     },
     "groups": {
-      "10000082294": {
-        "id": "10000082294",
+      "10000087078": {
+        "id": "10000087078",
         "category": "main",
         "entities": [
-          "10000082294"
-        ],
-        "random_group": [
-          0,
-          3,
-          2
-        ]
-      },
-      "10000082295": {
-        "id": "10000082295",
-        "category": "main",
-        "entities": [
-          "10000082295"
+          "10000087078"
         ],
         "random_group": [
           2,
-          0,
-          2
+          4,
+          5
+        ]
+      },
+      "10000087079": {
+        "id": "10000087079",
+        "category": "main",
+        "entities": [
+          "10000087079"
+        ],
+        "random_group": [
+          3,
+          1,
+          4
         ]
       }
     }
