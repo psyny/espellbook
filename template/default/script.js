@@ -425,6 +425,53 @@
         localStorage.setItem(SIGILS_CAST_KEY, JSON.stringify(value === true));
     }
 
+    const DRAW_SIGIL_CAST_KEY = 'espellbook_draw_sigil_cast';
+
+    function showDrawSigilCast() {
+        const raw = localStorage.getItem(DRAW_SIGIL_CAST_KEY);
+        return raw === null ? true : JSON.parse(raw) === true;
+    }
+
+    function saveShowDrawSigilCast(value) {
+        localStorage.setItem(DRAW_SIGIL_CAST_KEY, JSON.stringify(value === true));
+    }
+
+    // How long the draw-on-cast animation takes, in seconds (Options slider).
+    const DRAW_SIGIL_SECONDS_KEY = 'espellbook_draw_sigil_seconds';
+    const DRAW_SIGIL_SECONDS_DEFAULT = 5;
+
+    function sigilDrawSeconds() {
+        const value = parseFloat(localStorage.getItem(DRAW_SIGIL_SECONDS_KEY));
+        return value >= 1 && value <= 20 ? value : DRAW_SIGIL_SECONDS_DEFAULT;
+    }
+
+    // How each part of a drawn sigil appears (Options selects).
+    // Lines (school frame): 'stroke' traces the pen strokes, 'fade' fades
+    // the frame in whole. Symbols: 'swipe' traces/wipes each symbol, 'fade'
+    // fades each one in whole. Only used while Draw Sigil on Cast is on.
+    const DRAW_SIGIL_LINE_MODE_KEY = 'espellbook_draw_sigil_line_mode';
+    const DRAW_SIGIL_SYMBOL_MODE_KEY = 'espellbook_draw_sigil_symbol_mode';
+    const DRAW_SIGIL_LINE_MODES = ['fade', 'stroke'];
+    const DRAW_SIGIL_SYMBOL_MODES = ['fade', 'swipe'];
+
+    function sigilDrawLineMode() {
+        const value = localStorage.getItem(DRAW_SIGIL_LINE_MODE_KEY);
+        return DRAW_SIGIL_LINE_MODES.includes(value) ? value : 'stroke';
+    }
+
+    function sigilDrawSymbolMode() {
+        const value = localStorage.getItem(DRAW_SIGIL_SYMBOL_MODE_KEY);
+        return DRAW_SIGIL_SYMBOL_MODES.includes(value) ? value : 'swipe';
+    }
+
+    // Marks the cast modal as drawing (or not) and hands the CSS glow the
+    // same duration the shader sweep will use.
+    function applyDrawSigilMode(modal) {
+        const draw = showDrawSigilCast();
+        modal.classList.toggle('draw-sigil', draw);
+        if (draw) modal.style.setProperty('--sigil-draw-duration', `${sigilDrawSeconds()}s`);
+    }
+
     const BOKEH_CAST_KEY = 'espellbook_show_bokeh_cast';
 
     function showBokehCast() {
@@ -912,6 +959,7 @@
             const castLevel = typeof selectedValue === 'number' ? selectedValue : spellLevel;
             if (showSigilsCast()) {
                 sigilWrap.innerHTML = buildCastSigilSvg(spell, castLevel);
+                applyDrawSigilMode(modal);
                 applySigilMasks(sigilWrap);
                 modal.classList.add('casting');
                 if (FADE_IN_STYLE === 'one_by_one') modal.classList.add('fadein-one-by-one');
@@ -927,11 +975,14 @@
         newCastBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (doCast()) {
-                // Auto-cycle: wait 2s then start fade-out, close after fade-out
+                // Auto-cycle: hold the finished sigil 2s, then start fade-out
+                // and close after it. Drawing the sigil takes time of its
+                // own, so the hold only starts once the drawing is done.
+                const drawMs = showDrawSigilCast() ? sigilDrawSeconds() * 1000 : 0;
                 castAutoTimer = setTimeout(() => {
                     castAutoTimer = null;
                     startCastFadeOut(modal, () => closeCastModal());
-                }, 2000);
+                }, drawMs + 2000);
             } else {
                 closeCastModal();
             }
@@ -997,6 +1048,7 @@
             modal._closeCleanupTimer = null;
             modal.classList.remove('casting');
             modal.classList.remove('fadein-one-by-one');
+            modal.classList.remove('draw-sigil');
             modal.classList.remove('fading-out');
             modal.classList.remove('sigils-enabled');
             stopCastBokeh();
@@ -1012,6 +1064,7 @@
         cancelCastCloseCleanup(modal);
         nameEl.textContent = spell.name;
         sigilWrap.innerHTML = buildCastSigilSvg(spell, getLevel(spell));
+        applyDrawSigilMode(modal);
         applySigilMasks(sigilWrap);
         modal.classList.add('casting');
         if (FADE_IN_STYLE === 'one_by_one') modal.classList.add('fadein-one-by-one');
@@ -1427,6 +1480,10 @@
         const sigilsImmersiveToggle = document.getElementById('sigils-immersive-toggle');
         const sigilsCastToggle = document.getElementById('sigils-cast-toggle');
         const bokehCastToggle = document.getElementById('bokeh-cast-toggle');
+        const drawSigilCastToggle = document.getElementById('draw-sigil-cast-toggle');
+        const drawSigilSeconds = document.getElementById('draw-sigil-seconds');
+        const drawSigilLineMode = document.getElementById('draw-sigil-line-mode');
+        const drawSigilSymbolMode = document.getElementById('draw-sigil-symbol-mode');
 
         const savedTheme = localStorage.getItem('theme') || 'dark';
         theme.value = savedTheme;
@@ -1455,6 +1512,45 @@
                 saveShowSigilsCast(sigilsCastToggle.checked);
             });
         }
+
+        // The draw time and line/symbol modes only matter while drawing.
+        const syncDrawSigilOptions = () => {
+            const off = drawSigilCastToggle ? !drawSigilCastToggle.checked : false;
+            [drawSigilSeconds, drawSigilLineMode, drawSigilSymbolMode].forEach(el => {
+                if (el) el.disabled = off;
+            });
+        };
+
+        if (drawSigilCastToggle) {
+            drawSigilCastToggle.checked = showDrawSigilCast();
+            drawSigilCastToggle.addEventListener('change', () => {
+                saveShowDrawSigilCast(drawSigilCastToggle.checked);
+                syncDrawSigilOptions();
+            });
+        }
+
+        if (drawSigilSeconds) {
+            drawSigilSeconds.value = sigilDrawSeconds();
+            drawSigilSeconds.addEventListener('input', () => {
+                localStorage.setItem(DRAW_SIGIL_SECONDS_KEY, parseFloat(drawSigilSeconds.value));
+            });
+        }
+
+        if (drawSigilLineMode) {
+            drawSigilLineMode.value = sigilDrawLineMode();
+            drawSigilLineMode.addEventListener('change', () => {
+                localStorage.setItem(DRAW_SIGIL_LINE_MODE_KEY, drawSigilLineMode.value);
+            });
+        }
+
+        if (drawSigilSymbolMode) {
+            drawSigilSymbolMode.value = sigilDrawSymbolMode();
+            drawSigilSymbolMode.addEventListener('change', () => {
+                localStorage.setItem(DRAW_SIGIL_SYMBOL_MODE_KEY, drawSigilSymbolMode.value);
+            });
+        }
+
+        syncDrawSigilOptions();
 
         if (bokehCastToggle) {
             bokehCastToggle.checked = showBokehCast();
@@ -2329,6 +2425,8 @@
         uniform float u_castProgress;
         uniform float u_fadeOut;
         uniform float u_fadeIn;
+        uniform float u_fadeEdge;
+        uniform float u_drawTip;
 
         uniform float u_dispFrequency;
         uniform float u_dispOctaves;
@@ -2500,14 +2598,28 @@
             // Fade-out erosion: dissolves all pixels during fade-out
             alpha *= fadeOutErosionMask(duv);
 
-            // Per-pixel staggered fade using timing texture
-            float pixelTiming = texture2D(u_timing, duv).r;
-            float fadeEdge = 0.08;
+            // Per-pixel staggered fade using timing texture. R = reveal
+            // time. G = 1 where the draw timing image traces the part
+            // (stroke/swipe) and 0 where it fades it in whole. Only traced
+            // pixels get the crisp u_fadeEdge and the pen tip; faded ones
+            // keep the soft classic edge (0.08, = SIGIL_FADE_EDGE). The
+            // classic timing image is plain gray, but there u_fadeEdge is
+            // already 0.08 and u_drawTip 0, so G has no effect.
+            vec4 timingTex = texture2D(u_timing, duv);
+            float pixelTiming = timingTex.r;
+            float traced = timingTex.g;
+            float fadeEdge = mix(0.08, u_fadeEdge, traced);
             float fade = smoothstep(pixelTiming - fadeEdge, pixelTiming + fadeEdge, u_castProgress);
             alpha *= fade;
 
             float glow = brightnessOverlay(v_uv);
             vec3 color = mix(u_color, u_brightnessColor, glow);
+
+            // Draw-on-cast "pen tip": pixels the reveal front has just
+            // passed burn near-white, cooling to the sigil color behind it.
+            float sinceDrawn = u_castProgress - pixelTiming;
+            float tip = u_drawTip * traced * (1.0 - smoothstep(0.0, 0.05, sinceDrawn));
+            color = mix(color, mix(u_brightnessColor, vec3(1.0), 0.7), tip);
 
             gl_FragColor = vec4(color * alpha, alpha);
         }
@@ -2596,6 +2708,8 @@
             'u_castProgress',
             'u_fadeOut',
             'u_fadeIn',
+            'u_fadeEdge',
+            'u_drawTip',
             'u_dispFrequency',
             'u_dispOctaves',
             'u_dispSeed',
@@ -2661,6 +2775,8 @@
     }
 
     let sigilDefsHtml;
+
+    let sigilDrawDefsHtml;
 
     function getSigilDefsHtml() {
         if (sigilDefsHtml === undefined) {
@@ -2757,6 +2873,286 @@
         );
     }
 
+    // --- Draw-on-cast timing ---
+    // Same contract as buildSigilTimingSvg (R channel = normalized reveal
+    // time, swept by u_castProgress), but the time varies *within* each
+    // symbol so it looks hand-drawn instead of popping in whole:
+    //  - stroke shapes are traced along their own length. SVG has no
+    //    gradient-along-a-stroke, so each <use> is stacked SIGIL_DRAW_STEPS
+    //    times with a progressively shorter dash prefix and an earlier gray;
+    //    the shortest/earliest copy paints last and so wins where they overlap.
+    //    The dash is set on the <use> and reaches the shapes by inheritance
+    //    (selectors can't cross into <use> content, inheritance can), which is
+    //    why the defs copy below gets pathLength="1" and loses the art's own
+    //    stroke-dasharray:none.
+    //  - filled shapes can't be traced, so they get a left-to-right gradient
+    //    wipe across their own bounding box over the same time window.
+    //  - the school frame is not traced shape by shape at all: its stored
+    //    paths don't match how a hand would draw it (two overlapping squares
+    //    are saved as a star outline plus an octagon). It is traced along
+    //    the pre-chained pen strokes in the school's `draw_chains` (built by
+    //    lib/sigil_strokes.py), see appendSchoolDrawChains.
+    // Parts are sequenced by category (SIGIL_DRAW_WINDOWS), staggered within
+    // each category in DOM order. Total duration: sigilDrawSeconds().
+    const SIGIL_FADE_EDGE = 0.08;       // reveal-front softness, classic fade
+    const SIGIL_DRAW_FADE_EDGE = 0.012; // much crisper front while drawing
+    const SIGIL_DRAW_STEPS = 20;        // dash-prefix copies per stroke symbol
+    // School pen strokes: one dash-prefix copy per this many user units of
+    // stroke, within [min, max] copies.
+    const SIGIL_CHAIN_STEP_UNITS = 8;
+    const SIGIL_CHAIN_STEPS_MIN = 6;
+    const SIGIL_CHAIN_STEPS_MAX = 160;
+    // A stroke's share of the school window grows slower than its length,
+    // so short ticks are still visibly drawn rather than popping in; each
+    // stroke starts before the previous one has finished.
+    const SIGIL_CHAIN_LENGTH_POWER = 0.7;
+    const SIGIL_CHAIN_OVERLAP = 0.35;
+    // Reveal times stay inside this band: the shader's smoothstep needs
+    // headroom above/below so parts are fully hidden at 0 and opaque at 1.
+    const SIGIL_DRAW_T_MIN = 0.08;
+    const SIGIL_DRAW_T_MAX = 0.9;
+    // [start, end] of each category's window, as a fraction of that band.
+    const SIGIL_DRAW_WINDOWS = {
+        school:  [0.00, 0.52],
+        essence: [0.44, 0.68],
+        intent:  [0.56, 0.76],
+        reach:   [0.62, 0.84],
+        flow:    [0.62, 0.84],
+        orn_l:   [0.70, 0.90],
+        orn_m:   [0.76, 0.95],
+        orn_s:   [0.82, 1.00],
+    };
+
+    function getSigilDrawDefsHtml() {
+        if (sigilDrawDefsHtml === undefined) {
+            sigilDrawDefsHtml = getSigilDefsHtml()
+                .replace(/\sstroke-dasharray="none"/g, '')
+                .replace(/stroke-dasharray\s*:\s*none;?/g, '')
+                .replace(/<(path|circle|rect|ellipse|line|polyline|polygon)\b/g, '<$1 pathLength="1"');
+        }
+        return sigilDrawDefsHtml;
+    }
+
+    // symbol id -> school level record (the one resolveTopology returned).
+    let sigilSchoolBySymbol;
+
+    function sigilSchoolRecord(symbolId) {
+        if (!sigilSchoolBySymbol) {
+            sigilSchoolBySymbol = new Map();
+            Object.values(SIGIL_SCHOOLS || {}).forEach(levels => {
+                Object.values(levels).forEach(record => {
+                    if (record && record.symbol) sigilSchoolBySymbol.set(record.symbol.id, record);
+                });
+            });
+        }
+        return sigilSchoolBySymbol.get(symbolId) || null;
+    }
+
+    // Trace the school frame along its pre-chained pen strokes instead of
+    // its stored shapes. `schoolParts` are the cloned school .sigil-part
+    // groups; their <use>s are flattened to the window's end time as an
+    // underlay (anything a stroke somehow misses shows up last rather than
+    // first), and the strokes are stacked on top as dash-prefix copies.
+    // School <use>s sit at translate(c,c) with x/y = -c on a symbol whose
+    // viewBox matches its size, so symbol coordinates are the SVG's own
+    // user coordinates and the chain paths need no transform.
+    // Returns false (touching nothing) when the frame has no usable chains.
+    function appendSchoolDrawChains(clone, schoolParts, tStart, tEnd, gray) {
+        const record = sigilSchoolRecord(clone.getAttribute('data-school-symbol'));
+        const chains = record && record.draw_chains;
+        if (!chains || !chains.length || !schoolParts.length) return false;
+
+        const defaultWidths = new Map();
+        (record.groups || []).forEach(group => (group.entities || []).forEach(entity => {
+            defaultWidths.set(String(entity.id), entity.stroke_width != null ? entity.stroke_width : 1);
+        }));
+
+        // Widths as actually rendered: sub-groups can be skipped entirely
+        // (no <use>) or have their stroke-width rescaled, per spell.
+        const widths = new Map();
+        const uses = [];
+        schoolParts.forEach(part => part.querySelectorAll('use').forEach(use => {
+            const id = use.getAttribute('data-entity');
+            if (!id) return;
+            const own = parseFloat(use.getAttribute('stroke-width'));
+            widths.set(id, isNaN(own) ? (defaultWidths.get(id) || 1) : own);
+            uses.push(use);
+        }));
+
+        const visible = chains
+            .map(chain => ({
+                chain,
+                width: Math.max(0, ...chain.entities.map(id => widths.get(String(id)) || 0))
+            }))
+            .filter(item => item.width > 0);
+        if (!visible.length) return false;
+
+        uses.forEach(use => {
+            use.setAttribute('fill', gray(tEnd));
+            use.setAttribute('stroke', gray(tEnd));
+        });
+
+        // Lay the strokes out on the school window: longest first (the
+        // order draw_chains arrives in), each overlapping the previous.
+        let cursor = 0;
+        const slots = visible.map(item => {
+            const share = Math.pow(Math.max(item.chain.length, 1), SIGIL_CHAIN_LENGTH_POWER);
+            const slot = { start: cursor, share };
+            cursor += share * (1 - SIGIL_CHAIN_OVERLAP);
+            return slot;
+        });
+        const last = slots[slots.length - 1];
+        const total = last.start + last.share;
+
+        const markup = [];
+        visible.forEach((item, idx) => {
+            const t0 = tStart + (tEnd - tStart) * slots[idx].start / total;
+            const t1 = tStart + (tEnd - tStart) * (slots[idx].start + slots[idx].share) / total;
+            const steps = Math.max(SIGIL_CHAIN_STEPS_MIN, Math.min(SIGIL_CHAIN_STEPS_MAX,
+                Math.ceil(item.chain.length / SIGIL_CHAIN_STEP_UNITS)));
+            // A little wider than the real stroke so its antialiased edge
+            // is covered too.
+            const base = `<path d="${item.chain.d}" pathLength="1" fill="none" ` +
+                `stroke-width="${item.width + 1.5}" stroke-linejoin="miter" stroke-miterlimit="8"`;
+            markup.push(`${base} stroke="${gray(t1)}"/>`);
+            for (let i = steps - 1; i >= 1; i--) {
+                const frac = i / steps;
+                markup.push(`${base} stroke="${gray(t0 + (t1 - t0) * frac)}" stroke-dasharray="${frac} 2"/>`);
+            }
+        });
+
+        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        group.innerHTML = markup.join('');
+        // Right after the last school part's positioning wrapper, so the
+        // strokes paint over the underlay but under every other symbol.
+        const lastWrapper = schoolParts[schoolParts.length - 1].parentNode;
+        lastWrapper.parentNode.insertBefore(group, lastWrapper.nextSibling);
+        return true;
+    }
+
+    // With Line Animation = fade the frame needs no time of its own, so it
+    // gets this short window and every other category's window is squeezed
+    // from [essence start, 1] onto [SIGIL_DRAW_FADED_SCHOOL_WINDOW[1], 1]
+    // (otherwise nothing would happen while the strokes would be drawing).
+    const SIGIL_DRAW_FADED_SCHOOL_WINDOW = [0.00, 0.10];
+
+    function sigilDrawWindow(cat, lineMode) {
+        const win = SIGIL_DRAW_WINDOWS[cat] || [0, 1];
+        if (lineMode === 'stroke') return win;
+        if (cat === 'school') return SIGIL_DRAW_FADED_SCHOOL_WINDOW;
+        const from = SIGIL_DRAW_WINDOWS.essence[0];
+        const to = SIGIL_DRAW_FADED_SCHOOL_WINDOW[1];
+        const squeeze = x => to + (x - from) * (1 - to) / (1 - from);
+        return [squeeze(win[0]), squeeze(win[1])];
+    }
+
+    function buildSigilDrawTimingSvg(targetSvg, size, lineMode, symbolMode) {
+        const clone = targetSvg.cloneNode(true);
+        const span = SIGIL_DRAW_T_MAX - SIGIL_DRAW_T_MIN;
+        // R = reveal time. G flags traced pixels for the shader (crisp front
+        // and pen tip); faded parts leave G at 0.
+        const timeColor = traced => t => {
+            const v = Math.round(Math.max(0, Math.min(1, t)) * 255);
+            return `rgb(${v},${traced ? 255 : 0},${v})`;
+        };
+        const tracedColor = timeColor(true);
+        const fadedColor = timeColor(false);
+
+        const byCategory = new Map();
+        clone.querySelectorAll('.sigil-part').forEach(part => {
+            const cat = part.getAttribute('data-cat') || 'school';
+            if (!byCategory.has(cat)) byCategory.set(cat, []);
+            byCategory.get(cat).push(part);
+        });
+
+        const [schoolStart, schoolEnd] = sigilDrawWindow('school', lineMode);
+        if (lineMode === 'stroke' && appendSchoolDrawChains(
+            clone,
+            byCategory.get('school') || [],
+            SIGIL_DRAW_T_MIN + schoolStart * span,
+            SIGIL_DRAW_T_MIN + schoolEnd * span,
+            tracedColor
+        )) {
+            byCategory.delete('school');
+        }
+
+        const gradients = [];
+        byCategory.forEach((parts, cat) => {
+            // School left here is either faded, or stroked without usable
+            // draw_chains (then traced shape by shape, as symbols are).
+            const trace = cat === 'school' ? lineMode === 'stroke' : symbolMode === 'swipe';
+            const [w0, w1] = sigilDrawWindow(cat, lineMode);
+            const width = w1 - w0;
+            const count = parts.length;
+            // Each part draws over a slice of its category's window; slices
+            // overlap so several symbols are mid-stroke at once.
+            const slice = count > 1 ? width * Math.max(0.25, 2 / (count + 1)) : width;
+            parts.forEach((part, idx) => {
+                const start = count > 1 ? w0 + (width - slice) * idx / (count - 1) : w0;
+                const t0 = SIGIL_DRAW_T_MIN + start * span;
+                const t1 = SIGIL_DRAW_T_MIN + (start + slice) * span;
+
+                if (!trace) {
+                    // Fade: the whole part at its slice's start time; the
+                    // shader's soft edge (G = 0) fades it in.
+                    part.querySelectorAll('use').forEach(use => {
+                        use.setAttribute('fill', fadedColor(t0));
+                        use.setAttribute('stroke', fadedColor(t0));
+                    });
+                    return;
+                }
+
+                const gray = tracedColor;
+                part.querySelectorAll('use').forEach(use => {
+                    const gradId = 'sigil-draw-g' + gradients.length;
+                    gradients.push(
+                        `<linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="0">` +
+                        `<stop offset="0" stop-color="${gray(t0)}"/>` +
+                        `<stop offset="1" stop-color="${gray(t1)}"/>` +
+                        '</linearGradient>'
+                    );
+                    // Base copy: fills wipe via the gradient; strokes sit at
+                    // the end time underneath the dash-prefix copies.
+                    use.setAttribute('fill', `url(#${gradId})`);
+                    use.setAttribute('stroke', gray(t1));
+                    let after = use;
+                    for (let i = SIGIL_DRAW_STEPS - 1; i >= 1; i--) {
+                        const frac = i / SIGIL_DRAW_STEPS;
+                        const copy = use.cloneNode(false);
+                        copy.setAttribute('fill', 'none');
+                        copy.setAttribute('stroke', gray(t0 + (t1 - t0) * frac));
+                        copy.setAttribute('stroke-dasharray', `${frac} 2`);
+                        after.after(copy);
+                        after = copy;
+                    }
+                });
+            });
+        });
+
+        const serializer = new XMLSerializer();
+        const children = Array.from(clone.childNodes).map(n => serializer.serializeToString(n)).join('');
+        const viewBox = targetSvg.getAttribute('viewBox') || '0 0 1000 1000';
+        const preserve = targetSvg.getAttribute('preserveAspectRatio') || 'xMidYMid meet';
+
+        const styleBlock =
+            '<style>' +
+            '.sigil-symbol-path{fill:inherit!important;stroke:none!important;fill-opacity:1!important;}' +
+            '.sigil-symbol-stroke{fill:none!important;fill-opacity:0!important;stroke:inherit!important;stroke-opacity:1!important;}' +
+            '</style>';
+
+        return (
+            '<svg xmlns="http://www.w3.org/2000/svg" ' +
+            'viewBox="' + viewBox + '" ' +
+            'width="' + size + '" ' +
+            'height="' + size + '" ' +
+            'preserveAspectRatio="' + preserve + '">' +
+            '<defs>' + getSigilDrawDefsHtml() + gradients.join('') + '</defs>' +
+            styleBlock +
+            children +
+            '</svg>'
+        );
+    }
+
     function loadSvgImage(svgString) {
         return new Promise((resolve, reject) => {
             const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
@@ -2814,6 +3210,8 @@
         gl.uniform1f(sigilGlUniforms.u_castProgress, params.castProgress != null ? params.castProgress : 1.0);
         gl.uniform1f(sigilGlUniforms.u_fadeOut, params.fadeOut || 0.0);
         gl.uniform1f(sigilGlUniforms.u_fadeIn, params.fadeIn != null ? params.fadeIn : 1.0);
+        gl.uniform1f(sigilGlUniforms.u_fadeEdge, params.fadeEdge != null ? params.fadeEdge : SIGIL_FADE_EDGE);
+        gl.uniform1f(sigilGlUniforms.u_drawTip, params.drawTip || 0.0);
     }
 
     // Decoding the mask/school/timing SVGs into rasterized images is the
@@ -2828,7 +3226,13 @@
     const SIGIL_IMAGE_CACHE_MAX = 6;
     const sigilImageCache = new Map();
 
-    function getOrLoadSigilImages(targetSvg, size, cacheKey) {
+    // `draw` swaps the timing image for the draw-on-cast one. Each draw
+    // variant (line + symbol mode) gets its own cache slot so changing an
+    // option never serves a stale timing map.
+    function getOrLoadSigilImages(targetSvg, size, cacheKey, draw) {
+        const lineMode = sigilDrawLineMode();
+        const symbolMode = sigilDrawSymbolMode();
+        if (cacheKey && draw) cacheKey += `:draw:${lineMode}:${symbolMode}`;
         if (cacheKey && sigilImageCache.has(cacheKey)) {
             const cached = sigilImageCache.get(cacheKey);
             // Touch for LRU: re-insertion moves it to the end (most-recent).
@@ -2839,7 +3243,9 @@
 
         const fullSvg = buildSigilMaskSourceSvg(targetSvg, size, false);
         const schoolSvg = buildSigilMaskSourceSvg(targetSvg, size, true);
-        const timingSvg = buildSigilTimingSvg(targetSvg, size, false);
+        const timingSvg = draw
+            ? buildSigilDrawTimingSvg(targetSvg, size, lineMode, symbolMode)
+            : buildSigilTimingSvg(targetSvg, size, false);
 
         const promise = Promise.all([loadSvgImage(fullSvg), loadSvgImage(schoolSvg), loadSvgImage(timingSvg)])
             .then(([fullImg, schoolImg, timingImg]) => ({ fullImg, schoolImg, timingImg }));
@@ -2871,6 +3277,10 @@
     // could interleave where before they couldn't. Passing the copy-out in
     // as onDrawn keeps "this render's draw" and "this render's read-back"
     // as one atomic step regardless of how other renders' promises resolve.
+    function isDrawnCastSigil(wrap) {
+        return !!wrap && wrap.classList.contains('cast-sigil') && showDrawSigilCast();
+    }
+
     function renderSigil(targetSvg, params, time, onDrawn) {
         if (!sigilGlReady && !initSigilWebGL()) return Promise.resolve(null);
 
@@ -2878,8 +3288,9 @@
         const gl = sigilGl;
         const wrap = targetSvg.closest('.sigil-mask-wrap');
         const cacheKey = wrap ? wrap.dataset.sigilCacheKey : null;
+        const draw = isDrawnCastSigil(wrap);
 
-        return getOrLoadSigilImages(targetSvg, size, cacheKey).then(({ fullImg, schoolImg, timingImg }) => {
+        return getOrLoadSigilImages(targetSvg, size, cacheKey, draw).then(({ fullImg, schoolImg, timingImg }) => {
             if (sigilGlCanvas.width !== size || sigilGlCanvas.height !== size) {
                 sigilGlCanvas.width = size;
                 sigilGlCanvas.height = size;
@@ -3066,11 +3477,21 @@
             if (entry.canvas.offsetParent !== null) {
                 // Update castProgress and fadeOut based on fade phase
                 const elapsed = (timestamp - entry.castStartTime) * 0.001;
+                // The pen tip and crisp front only exist while drawing in;
+                // idle and fade-out fall back to the classic soft edge (on
+                // fade-out a drawn sigil unwinds in reverse as it dissolves).
+                entry.params.fadeEdge = SIGIL_FADE_EDGE;
+                entry.params.drawTip = 0;
                 if (entry.fadePhase === 'in') {
-                    entry.params.castProgress = Math.min(1, elapsed / SIGIL_FADE_IN_TOTAL);
+                    const inTotal = entry.draw ? entry.drawSeconds : SIGIL_FADE_IN_TOTAL;
+                    entry.params.castProgress = Math.min(1, elapsed / inTotal);
                     entry.params.fadeIn = Math.min(1, elapsed / SIGIL_FADE_IN_TOTAL);
                     entry.params.fadeOut = 0;
-                    if (entry.params.fadeIn === 1) {
+                    if (entry.draw) {
+                        entry.params.fadeEdge = SIGIL_DRAW_FADE_EDGE;
+                        entry.params.drawTip = 1;
+                    }
+                    if (entry.params.castProgress === 1) {
                         entry.fadePhase = 'idle';
                         scheduleIdleSymbolPulse(entry);
                     }
@@ -3305,6 +3726,8 @@
                             fullImg: result.fullImg,
                             schoolImg: result.schoolImg,
                             timingImg: result.timingImg,
+                            draw: isDrawnCastSigil(wrap),
+                            drawSeconds: sigilDrawSeconds(),
                             castStartTime: performance.now(),
                             fadePhase: 'in'
                         };
@@ -3343,7 +3766,8 @@
             const targetSvg = container.querySelector('svg.sigil-mask-target');
             if (!wrap || !targetSvg) return;
 
-            getOrLoadSigilImages(targetSvg, SIGIL_MASK_SIZE, wrap.dataset.sigilCacheKey).catch(() => {});
+            // Warm the variant a cast will actually ask for.
+            getOrLoadSigilImages(targetSvg, SIGIL_MASK_SIZE, wrap.dataset.sigilCacheKey, showDrawSigilCast()).catch(() => {});
         });
     }
 
@@ -3501,8 +3925,8 @@
                     const schoolCenter = baseSize / 2;
                     uses.push(
                         `<g transform="translate(${schoolCenter},${schoolCenter})">` +
-                        `<g class="sigil-part sigil-part-school" style="--delay:${groupDelay};--fadein-delay:${SIGIL_FADEIN_DELAY.school}s;--fadeout-delay:${SIGIL_FADEOUT_DELAY.school}s;transform-origin:0px 0px">` +
-                        `<use href="#${entity.symbol.id}" width="${baseSize}" height="${baseSize}" x="${-schoolCenter}" y="${-schoolCenter}"${strokeAttr} data-seed="${seed}"/>` +
+                        `<g class="sigil-part sigil-part-school" data-cat="school" style="--delay:${groupDelay};--fadein-delay:${SIGIL_FADEIN_DELAY.school}s;--fadeout-delay:${SIGIL_FADEOUT_DELAY.school}s;transform-origin:0px 0px">` +
+                        `<use href="#${entity.symbol.id}" width="${baseSize}" height="${baseSize}" x="${-schoolCenter}" y="${-schoolCenter}"${strokeAttr} data-seed="${seed}" data-entity="${entity.id}"/>` +
                         `</g></g>`
                     );
                 });
@@ -3514,7 +3938,7 @@
             const schoolCenter = baseSize / 2;
             uses.push(
                 `<g transform="translate(${schoolCenter},${schoolCenter})">` +
-                `<g class="sigil-part sigil-part-school" style="--delay:${schoolDelay};--fadein-delay:${SIGIL_FADEIN_DELAY.school}s;--fadeout-delay:${SIGIL_FADEOUT_DELAY.school}s;transform-origin:0px 0px">` +
+                `<g class="sigil-part sigil-part-school" data-cat="school" style="--delay:${schoolDelay};--fadein-delay:${SIGIL_FADEIN_DELAY.school}s;--fadeout-delay:${SIGIL_FADEOUT_DELAY.school}s;transform-origin:0px 0px">` +
                 `<use href="#${resolved.symbol.id}" width="${baseSize}" height="${baseSize}" x="${-schoolCenter}" y="${-schoolCenter}" data-seed="${baseSeed}"/>` +
                 `</g></g>`
             );
@@ -3551,7 +3975,7 @@
                 const foDelay = SIGIL_FADEOUT_DELAY[cat] || 0;
                 uses.push(
                     `<g transform="translate(${slot.x},${slot.y}) rotate(${rotation})${scaleAttr}">` +
-                    `<g class="sigil-part" style="--delay:${delay};--fadein-delay:${fiDelay}s;--fadeout-delay:${foDelay}s;transform-origin:0px 0px">` +
+                    `<g class="sigil-part" data-cat="${cat}" style="--delay:${delay};--fadein-delay:${fiDelay}s;--fadeout-delay:${foDelay}s;transform-origin:0px 0px">` +
                     `<use href="#${asset.id}" width="${asset.size}" height="${asset.size}" x="${-half}" y="${-half}" data-seed="${seed}"/>` +
                     `</g></g>`
                 );
@@ -3576,7 +4000,7 @@
         // both variants share one decoded entry.
         const imageCacheKey = `${spell.id}:${sigilLevel}`;
 
-        const markup = `<div class="sigil-mask-wrap ${svgClass}" data-sigil-mask="${paramsAttr}" data-sigil-cache-key="${imageCacheKey}"${styleAttr}><svg class="sigil-mask-target" viewBox="${sigilViewBox(sigilLevel)}" preserveAspectRatio="xMidYMid meet">${uses.join('')}</svg></div>`;
+        const markup = `<div class="sigil-mask-wrap ${svgClass}" data-sigil-mask="${paramsAttr}" data-sigil-cache-key="${imageCacheKey}"${styleAttr}><svg class="sigil-mask-target" data-school-symbol="${resolved.symbol.id}" viewBox="${sigilViewBox(sigilLevel)}" preserveAspectRatio="xMidYMid meet">${uses.join('')}</svg></div>`;
 
         sigilMarkupCache.set(markupKey, markup);
         if (sigilMarkupCache.size > SIGIL_MARKUP_CACHE_MAX) {

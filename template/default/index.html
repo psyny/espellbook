@@ -121,10 +121,6 @@
                             <span class="option-title">Sigils on Cast Action</span>
                             <input type="checkbox" id="sigils-cast-toggle" checked>
                         </label>
-                        <label class="option-card">
-                            <span class="option-title">Bokeh Effect on Cast</span>
-                            <input type="checkbox" id="bokeh-cast-toggle" checked>
-                        </label>
                     </div>
                 </div>
 
@@ -134,6 +130,32 @@
                         <label class="option-card">
                             <span class="option-title">Page Flip Speed</span>
                             <input type="range" id="flip-speed" min="1" max="100" step="1" value="75">
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Bokeh Effect on Cast</span>
+                            <input type="checkbox" id="bokeh-cast-toggle" checked>
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Draw Sigil on Cast</span>
+                            <input type="checkbox" id="draw-sigil-cast-toggle" checked>
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Sigil Draw Time</span>
+                            <input type="range" id="draw-sigil-seconds" min="2" max="12" step="0.5" value="5">
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Sigil Draw Line Animation</span>
+                            <select id="draw-sigil-line-mode">
+                                <option value="fade">Fade</option>
+                                <option value="stroke">Stroke</option>
+                            </select>
+                        </label>
+                        <label class="option-card">
+                            <span class="option-title">Sigil Draw Symbol Animation</span>
+                            <select id="draw-sigil-symbol-mode">
+                                <option value="fade">Fade</option>
+                                <option value="swipe">Swipe</option>
+                            </select>
                         </label>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from generate_processed_symbols import INKSCAPE_NS, SODIPODI_NS, is_group, label_of
+from lib.sigil_strokes import UnsupportedGeometry, build_draw_chains
 
 ART_LAYER_LABELS = ("symbol_art", "sigil_art")
 SKIP_ATTR_NAMESPACES = (INKSCAPE_NS, SODIPODI_NS)
@@ -141,6 +142,24 @@ def _register_school_entities(register, raw_layer, width, base_symbol_id, entity
     return result
 
 
+def _school_draw_chains(raw_layer, entity_map):
+    """Pen strokes for the draw-on-cast animation of a school frame (see
+    lib/sigil_strokes.py). Empty when the frame has geometry that can't be
+    chained; the client then falls back to tracing each shape as stored."""
+    entities = (entity_map or {}).get("entities", {})
+    elements = []
+    for entity_id, entity_data in entities.items():
+        if not entity_data.get("is_stroke", False):
+            continue
+        elem = _element_by_id(raw_layer, entity_id)
+        if elem is not None:
+            elements.append((entity_id, elem))
+    try:
+        return build_draw_chains(elements)
+    except UnsupportedGeometry:
+        return []
+
+
 def build_sigil_library(root_dir):
     """Scan every processed sigil art asset and return everything needed to
     build spell sigils client-side: the shared symbol defs, per-category
@@ -238,6 +257,7 @@ def build_sigil_library(root_dir):
                 "symbol": {"id": symbol_id, "size": width},
                 "topology": data.get("topology", {}),
                 "groups": groups_meta,
+                "draw_chains": _school_draw_chains(raw_layer, data.get("entity_map")),
             }
 
     fallbacks = {

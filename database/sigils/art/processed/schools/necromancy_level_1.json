@@ -8,138 +8,138 @@
   },
   "entity_map": {
     "entities": {
-      "10000086250": {
-        "id": "10000086250",
+      "10000091034": {
+        "id": "10000091034",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
-          3,
-          3,
-          5
-        ]
-      },
-      "10000086251": {
-        "id": "10000086251",
-        "category": "sub",
-        "is_stroke": true,
-        "random_group": [
-          2,
-          3,
-          3
-        ]
-      },
-      "10000086252": {
-        "id": "10000086252",
-        "category": "sub",
-        "is_stroke": true,
-        "random_group": [
-          2,
-          3,
-          0
-        ]
-      },
-      "10000086254": {
-        "id": "10000086254",
-        "category": "sub",
-        "is_stroke": true,
-        "random_group": [
-          0,
-          3,
-          1
-        ]
-      },
-      "10000086255": {
-        "id": "10000086255",
-        "category": "sub",
-        "is_stroke": true,
-        "random_group": [
-          3,
-          4,
-          0
-        ]
-      },
-      "10000086256": {
-        "id": "10000086256",
-        "category": "sub",
-        "is_stroke": true,
-        "random_group": [
-          4,
-          0,
-          3
-        ]
-      },
-      "10000086258": {
-        "id": "10000086258",
-        "category": "sub",
-        "is_stroke": true,
-        "random_group": [
-          3,
           1,
+          2,
+          3
+        ]
+      },
+      "10000091035": {
+        "id": "10000091035",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          2,
           4
         ]
       },
-      "10000086260": {
-        "id": "10000086260",
+      "10000091036": {
+        "id": "10000091036",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          5,
+          0,
+          3
+        ]
+      },
+      "10000091038": {
+        "id": "10000091038",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          1,
+          2
+        ]
+      },
+      "10000091039": {
+        "id": "10000091039",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          4,
+          0,
+          1
+        ]
+      },
+      "10000091040": {
+        "id": "10000091040",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          2,
+          3,
+          4
+        ]
+      },
+      "10000091042": {
+        "id": "10000091042",
+        "category": "sub",
+        "is_stroke": true,
+        "random_group": [
+          0,
+          5,
+          0
+        ]
+      },
+      "10000091044": {
+        "id": "10000091044",
         "category": "main",
         "is_stroke": true,
         "random_group": [
-          1,
           4,
-          0
+          5,
+          4
         ]
       }
     },
     "groups": {
-      "10000086249": {
-        "id": "10000086249",
+      "10000091033": {
+        "id": "10000091033",
         "category": "main",
         "entities": [
-          "10000086250",
-          "10000086251",
-          "10000086252"
+          "10000091034",
+          "10000091035",
+          "10000091036"
         ],
         "random_group": [
-          2,
           4,
-          1
-        ]
-      },
-      "10000086253": {
-        "id": "10000086253",
-        "category": "sub",
-        "entities": [
-          "10000086254",
-          "10000086255",
-          "10000086256"
-        ],
-        "random_group": [
-          5,
-          2,
-          1
-        ]
-      },
-      "10000086257": {
-        "id": "10000086257",
-        "category": "sub",
-        "entities": [
-          "10000086258"
-        ],
-        "random_group": [
-          1,
-          2,
+          0,
           2
         ]
       },
-      "10000086259": {
-        "id": "10000086259",
-        "category": "main",
+      "10000091037": {
+        "id": "10000091037",
+        "category": "sub",
         "entities": [
-          "10000086260"
+          "10000091038",
+          "10000091039",
+          "10000091040"
         ],
         "random_group": [
+          1,
+          0,
+          5
+        ]
+      },
+      "10000091041": {
+        "id": "10000091041",
+        "category": "sub",
+        "entities": [
+          "10000091042"
+        ],
+        "random_group": [
+          1,
           4,
-          5,
-          0
+          2
+        ]
+      },
+      "10000091043": {
+        "id": "10000091043",
+        "category": "main",
+        "entities": [
+          "10000091044"
+        ],
+        "random_group": [
+          2,
+          2,
+          3
         ]
       }
     }
@@ -147,7 +147,7 @@
   "topology": {
     "essence": [
       {
-        "source_id": "10000086144",
+        "source_id": "10000090928",
         "x": 500.0,
         "y": 500.0,
         "rotation": 0.0,
@@ -156,7 +156,7 @@
     ],
     "reach": [
       {
-        "source_id": "10000086157",
+        "source_id": "10000090941",
         "x": 596.9949,
         "y": 556.0,
         "rotation": 120.0,
@@ -165,7 +165,7 @@
     ],
     "flow": [
       {
-        "source_id": "10000086153",
+        "source_id": "10000090937",
         "x": 403.0052,
         "y": 556.0,
         "rotation": 240.0,
@@ -174,7 +174,7 @@
     ],
     "intent": [
       {
-        "source_id": "10000086149",
+        "source_id": "10000090933",
         "x": 500.0,
         "y": 388.0,
         "rotation": 0.0,
@@ -183,42 +183,42 @@
     ],
     "ornamentation_s": [
       {
-        "source_id": "10000086224",
+        "source_id": "10000091008",
         "x": 500.2286,
         "y": 309.0873,
         "rotation": 120.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000086228",
+        "source_id": "10000091012",
         "x": 335.2373,
         "y": 404.6103,
         "rotation": 60.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000086232",
+        "source_id": "10000091016",
         "x": 335.0088,
         "y": 594.9938,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000086236",
+        "source_id": "10000091020",
         "x": 499.7714,
         "y": 690.3835,
         "rotation": 300.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000086240",
+        "source_id": "10000091024",
         "x": 664.7627,
         "y": 595.3897,
         "rotation": 240.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000086244",
+        "source_id": "10000091028",
         "x": 664.9912,
         "y": 405.0062,
         "rotation": 180.0,
@@ -227,84 +227,84 @@
     ],
     "ornamentation_m": [
       {
-        "source_id": "10000086162",
+        "source_id": "10000090946",
         "x": 500.0,
         "y": 435.0,
         "rotation": 0.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086166",
+        "source_id": "10000090950",
         "x": 532.5,
         "y": 443.7083,
         "rotation": 30.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086170",
+        "source_id": "10000090954",
         "x": 556.2917,
         "y": 467.5,
         "rotation": 60.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086174",
+        "source_id": "10000090958",
         "x": 565.0,
         "y": 500.0,
         "rotation": 90.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086178",
+        "source_id": "10000090962",
         "x": 556.2917,
         "y": 532.5,
         "rotation": 120.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086182",
+        "source_id": "10000090966",
         "x": 532.5,
         "y": 556.2917,
         "rotation": 150.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086186",
+        "source_id": "10000090970",
         "x": 500.0,
         "y": 565.0,
         "rotation": 180.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086190",
+        "source_id": "10000090974",
         "x": 467.5,
         "y": 556.2917,
         "rotation": 210.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086194",
+        "source_id": "10000090978",
         "x": 443.7083,
         "y": 532.5,
         "rotation": 240.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086198",
+        "source_id": "10000090982",
         "x": 435.0,
         "y": 500.0,
         "rotation": 270.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086202",
+        "source_id": "10000090986",
         "x": 443.7083,
         "y": 467.5,
         "rotation": 300.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086206",
+        "source_id": "10000090990",
         "x": 467.5,
         "y": 443.7083,
         "rotation": 330.0,
@@ -313,21 +313,21 @@
     ],
     "ornamentation_l": [
       {
-        "source_id": "10000086211",
+        "source_id": "10000090995",
         "x": 596.9961,
         "y": 443.9978,
         "rotation": 60.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086215",
+        "source_id": "10000090999",
         "x": 500.0051,
         "y": 612.0001,
         "rotation": 180.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000086219",
+        "source_id": "10000091003",
         "x": 403.0064,
         "y": 444.0022,
         "rotation": 300.0,
