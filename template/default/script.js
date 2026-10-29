@@ -55,16 +55,126 @@
         });
     }
 
-    function getSpellbook() {
-        try {
-            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-        } catch {
-            return [];
-        }
+    /* ---- Spellbook entries ----
+       The spellbook is a list of entries, not spell ids, so the same spell
+       can be in it more than once (e.g. once from the class, once from a
+       race). Each entry:
+         { uid, spell, source, recharge, charges, used }
+       - source:   where the character got it (SPELL_SOURCES).
+       - recharge: what casting it spends (SPELL_RECHARGES): 'spellslot'
+                   uses the normal slots; 'short'/'long' use the entry's own
+                   charges, refilled by that rest; 'none' is unlimited.
+       - charges/used: only meaningful for 'short'/'long'.
+       Old saves stored bare spell ids; normalizeEntry() turns those into
+       class/spellslot entries, so they load unchanged.
+       Prepared status stays keyed by spell id (PREPARED_KEY) and only
+       applies to class entries: other sources are always available and
+       never count toward the prepared limit. */
+    const SPELL_SOURCES = {
+        class: 'Class', race: 'Race', feat: 'Feat', item: 'Item', other: 'Other'
+    };
+    const SPELL_RECHARGES = {
+        spellslot: 'Spell Slot', short: 'Short Rest', long: 'Long Rest', none: 'None'
+    };
+
+    function newEntryUid() {
+        return 'e' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
     }
 
-    function saveSpellbook(list) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    function normalizeEntry(raw) {
+        if (typeof raw === 'number' || typeof raw === 'string') {
+            const spell = Number(raw);
+            if (!Number.isFinite(spell)) return null;
+            return { uid: 's' + spell, spell, source: 'class', recharge: 'spellslot', charges: 1, used: 0 };
+        }
+        if (!raw || typeof raw !== 'object') return null;
+        const spell = Number(raw.spell);
+        if (!Number.isFinite(spell)) return null;
+        const charges = Math.max(1, parseInt(raw.charges, 10) || 1);
+        return {
+            uid: raw.uid ? String(raw.uid) : newEntryUid(),
+            spell,
+            source: SPELL_SOURCES[raw.source] ? raw.source : 'class',
+            recharge: SPELL_RECHARGES[raw.recharge] ? raw.recharge : 'spellslot',
+            charges,
+            used: Math.min(charges, Math.max(0, parseInt(raw.used, 10) || 0))
+        };
+    }
+
+    function getSpellbookEntries() {
+        let raw;
+        try {
+            raw = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        } catch {
+            raw = [];
+        }
+        if (!Array.isArray(raw)) return [];
+        const seen = new Set();
+        return raw.map(normalizeEntry).filter(entry => {
+            if (!entry || seen.has(entry.uid)) return false;
+            seen.add(entry.uid);
+            return true;
+        });
+    }
+
+    function saveSpellbook(entries) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(entries.map(normalizeEntry).filter(Boolean)));
+    }
+
+    // Distinct spell ids in the spellbook, in entry order. For views that
+    // show each spell once (catalog state, immersive book).
+    function getSpellbook() {
+        return [...new Set(getSpellbookEntries().map(entry => entry.spell))];
+    }
+
+    function getSpellEntries(spellId) {
+        spellId = Number(spellId);
+        return getSpellbookEntries().filter(entry => entry.spell === spellId);
+    }
+
+    function updateSpellbookEntry(uid, changes) {
+        const entries = getSpellbookEntries();
+        const entry = entries.find(e => e.uid === uid);
+        if (!entry) return null;
+        Object.assign(entry, changes);
+        saveSpellbook(entries);
+        prunePrepared();
+        return normalizeEntry(entry);
+    }
+
+    function hasClassEntry(spellId, entries = getSpellbookEntries()) {
+        spellId = Number(spellId);
+        return entries.some(entry => entry.spell === spellId && entry.source === 'class');
+    }
+
+    // Prepared only means something for class entries; drop spells that no
+    // longer have one (removed, or switched to another source).
+    function prunePrepared() {
+        const entries = getSpellbookEntries();
+        const prepared = getPrepared();
+        const kept = prepared.filter(id => hasClassEntry(id, entries));
+        if (kept.length !== prepared.length) savePrepared(kept);
+    }
+
+    // Prepared via the class, or always available through another source.
+    function isSpellAvailable(spellId, entries = getSpellbookEntries()) {
+        spellId = Number(spellId);
+        if (entries.some(entry => entry.spell === spellId && entry.source !== 'class')) return true;
+        return getPrepared().includes(spellId) && hasClassEntry(spellId, entries);
+    }
+
+    function entryHasCharges(entry) {
+        return entry.recharge === 'short' || entry.recharge === 'long';
+    }
+
+    // Compact label for the Stats card: source initial + rest initial,
+    // e.g. Race + Short Rest -> "RS".
+    function chargeTag(entry) {
+        return SPELL_SOURCES[entry.source].charAt(0) + SPELL_RECHARGES[entry.recharge].charAt(0);
+    }
+
+    function entryRemaining(entry) {
+        return Math.max(0, entry.charges - entry.used);
     }
 
     function findSpell(id) {
@@ -628,8 +738,8 @@
                     ${spell.classes && spell.classes.length ? `<p class="spell-classes">Classes: ${escapeHtml(spell.classes.join(', '))}</p>` : ''}
                     ${sourcePageHtml(spell)}
                     <div class="spell-actions">
-                        <button class="btn btn-primary add-btn" data-id="${spell.id}" ${inBook ? 'disabled' : ''}>
-                            ${inBook ? 'In SpellBook' : 'Add to SpellBook'}
+                        <button class="btn btn-primary add-btn${inBook ? ' in-book' : ''}" data-id="${spell.id}">
+                            ${inBook ? 'Add Another to SpellBook' : 'Add to SpellBook'}
                         </button>
                     </div>
                 </article>`;
@@ -705,55 +815,65 @@
         draw();
     }
 
+    // Spellbook cards the user has expanded, by entry uid, so re-rendering
+    // after an edit (e.g. changing an entry's source) keeps them open.
+    const expandedEntries = new Set();
+
     function renderSpellbook() {
         const title = document.getElementById('spellbook-title');
         if (title) title.textContent = `${SHEET_CHARACTER.name || 'My'}'s Spellbook`;
 
         const list = document.getElementById('spellbook-list');
-        const ids = getSpellbook();
-        const spells = ids.map(findSpell).filter(Boolean);
+        const entries = getSpellbookEntries()
+            .map(entry => ({ entry, spell: findSpell(entry.spell) }))
+            .filter(item => item.spell);
 
-        if (!spells.length) {
+        if (!entries.length) {
             list.innerHTML = '<p class="empty-state">Your SpellBook is empty. Add spells from the Spells Catalog.</p>';
             return;
         }
 
         const prepared = getPrepared();
+        // Class entries follow the prepared toggle; other sources are
+        // always available and sort with the prepared ones.
+        const isUp = ({ entry, spell }) => entry.source !== 'class' || prepared.includes(spell.id);
         const grouped = new Map();
-        spells.forEach(spell => {
-            const level = getLevel(spell);
+        entries.forEach(item => {
+            const level = getLevel(item.spell);
             if (!grouped.has(level)) grouped.set(level, []);
-            grouped.get(level).push(spell);
+            grouped.get(level).push(item);
         });
         grouped.forEach(group => group.sort((a, b) => {
-            const aPrep = prepared.includes(a.id);
-            const bPrep = prepared.includes(b.id);
-            const aRitual = a.ritual && !aPrep;
-            const bRitual = b.ritual && !bPrep;
-            const aScore = aPrep ? 2 : (aRitual ? 1 : 0);
-            const bScore = bPrep ? 2 : (bRitual ? 1 : 0);
+            const aScore = isUp(a) ? 2 : (a.spell.ritual ? 1 : 0);
+            const bScore = isUp(b) ? 2 : (b.spell.ritual ? 1 : 0);
             if (aScore !== bScore) return bScore - aScore;
-            return a.name.localeCompare(b.name);
+            const byName = a.spell.name.localeCompare(b.spell.name);
+            if (byName !== 0) return byName;
+            // Same spell twice: the class copy first.
+            return (a.entry.source === 'class' ? 0 : 1) - (b.entry.source === 'class' ? 0 : 1);
         }));
         const levels = Array.from(grouped.keys()).sort((a, b) => a - b);
 
         list.innerHTML = levels.map(level => {
-            const levelSpells = grouped.get(level);
-            const preparedCount = levelSpells.filter(s => prepared.includes(s.id)).length;
+            const items = grouped.get(level);
+            // Only class spells count toward the prepared limit.
+            const preparedCount = new Set(items
+                .filter(({ entry, spell }) => entry.source === 'class' && prepared.includes(spell.id))
+                .map(({ spell }) => spell.id)).size;
             const cap = level === 0 ? null : getPreparedCap(level);
             const header = level === 0
                 ? `${levelTitle(level)}: ${preparedCount}`
                 : (cap > 0 ? `${levelTitle(level)}: ${preparedCount}/${cap}` : `${levelTitle(level)}: ${preparedCount}`);
             return `
                 <div class="level-divider">${header}</div>
-                ${levelSpells.map(spell => renderSpellbookCard(spell, prepared.includes(spell.id))).join('')}`;
+                ${items.map(({ entry, spell }) => renderSpellbookCard(spell, entry, prepared.includes(spell.id))).join('')}`;
         }).join('');
 
         list.querySelectorAll('.collapse-btn').forEach(btn => {
-            btn.addEventListener('click', () => toggleCard(btn.dataset.id));
+            btn.addEventListener('click', () => toggleCard(btn.dataset.entry));
         });
 
-        list.querySelectorAll('.prepared-toggle').forEach(btn => {
+        list.querySelectorAll('.prepared-toggle[data-id]').forEach(btn => {
             btn.addEventListener('click', () => {
                 togglePrepared(btn.dataset.id);
                 renderSpellbook();
@@ -763,15 +883,31 @@
 
         list.querySelectorAll('.remove-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                removeFromSpellbook(btn.dataset.id);
+                expandedEntries.delete(btn.dataset.entry);
+                removeSpellbookEntry(btn.dataset.entry);
                 renderSpellbook();
                 renderCatalog();
             });
         });
 
+        list.querySelectorAll('.entry-options').forEach(row => {
+            const uid = row.dataset.entry;
+            row.querySelectorAll('select, input').forEach(input => {
+                input.addEventListener('change', () => {
+                    const field = input.dataset.field;
+                    let value = input.value;
+                    if (field === 'charges') value = Math.max(1, parseInt(value, 10) || 1);
+                    // A new charge count or recharge type starts full.
+                    const changes = { [field]: value };
+                    if (field === 'charges' || field === 'recharge') changes.used = 0;
+                    updateSpellbookEntry(uid, changes);
+                    renderSpellbook();
+                });
+            });
+        });
+
         list.querySelectorAll('.spellbook-card').forEach(card => {
-            const id = card.dataset.id;
-            const spell = findSpell(id);
+            const spell = findSpell(card.dataset.id);
             if (!spell) return;
 
             setupLongPress(card, () => {
@@ -780,14 +916,38 @@
         });
     }
 
-    function renderSpellbookCard(spell, isPrepared) {
-        const ritualClass = isPrepared ? 'prepared' : (spell.ritual ? 'ritual-only' : '');
+    function entryOptionsHtml(entry) {
+        const select = (field, options) => `
+            <select data-field="${field}">
+                ${Object.entries(options).map(([value, label]) =>
+                    `<option value="${value}"${entry[field] === value ? ' selected' : ''}>${label}</option>`).join('')}
+            </select>`;
         return `
-        <div class="spellbook-card collapsed" data-id="${spell.id}">
+            <div class="entry-options" data-entry="${entry.uid}">
+                <label class="entry-option"><span>Source</span>${select('source', SPELL_SOURCES)}</label>
+                <label class="entry-option"><span>Recharges On</span>${select('recharge', SPELL_RECHARGES)}</label>
+                ${entryHasCharges(entry) ? `
+                <label class="entry-option"><span>Charges</span>
+                    <input type="number" data-field="charges" min="1" max="99" value="${entry.charges}">
+                </label>` : ''}
+            </div>`;
+    }
+
+    function renderSpellbookCard(spell, entry, isPrepared) {
+        const isClass = entry.source === 'class';
+        // Non-class entries are always available: a fixed, filled marker
+        // instead of the prepared toggle.
+        const toggle = isClass
+            ? `<button class="prepared-toggle ${isPrepared ? 'prepared' : (spell.ritual ? 'ritual-only' : '')}" data-id="${spell.id}" title="Toggle prepared" aria-label="Toggle prepared"></button>`
+            : `<span class="prepared-toggle prepared fixed" title="Always available (${SPELL_SOURCES[entry.source]})" aria-label="Always available"></span>`;
+        const tag = isClass ? '' : `<span class="entry-source-tag">${SPELL_SOURCES[entry.source]}</span>`;
+        const expanded = expandedEntries.has(entry.uid);
+        return `
+        <div class="spellbook-card${expanded ? '' : ' collapsed'}" data-id="${spell.id}" data-entry="${entry.uid}">
             <div class="spellbook-card-header">
-                <button class="prepared-toggle ${ritualClass}" data-id="${spell.id}" title="Toggle prepared" aria-label="Toggle prepared"></button>
-                <h3 class="spell-name">${escapeHtml(spell.name)}</h3>
-                <button class="collapse-btn" data-id="${spell.id}" aria-label="Expand">+</button>
+                ${toggle}
+                <h3 class="spell-name">${escapeHtml(spell.name)}${tag}</h3>
+                <button class="collapse-btn" data-entry="${entry.uid}" aria-label="${expanded ? 'Collapse' : 'Expand'}">${expanded ? '−' : '+'}</button>
             </div>
             <div class="spellbook-card-body">
                 <p class="spell-level">${escapeHtml(formatLevelSchool(spell))}${valyrianBlockHtml(spell)}</p>
@@ -795,21 +955,40 @@
                 <div class="spell-description">${spell.description}</div>
                 ${spell.classes && spell.classes.length ? `<p class="spell-classes">Classes: ${escapeHtml(spell.classes.join(', '))}</p>` : ''}
                 ${sourcePageHtml(spell)}
+                ${entryOptionsHtml(entry)}
                 <div class="spell-actions">
-                    <button class="btn btn-danger remove-btn" data-id="${spell.id}">Remove from SpellBook</button>
+                    <button class="btn btn-danger remove-btn" data-entry="${entry.uid}">Remove from SpellBook</button>
                 </div>
             </div>
         </div>`;
     }
 
-    function toggleCard(id) {
-        const card = document.querySelector(`.spellbook-card[data-id="${CSS.escape(String(id))}"]`);
+    function toggleCard(uid) {
+        const card = document.querySelector(`.spellbook-card[data-entry="${CSS.escape(String(uid))}"]`);
         if (!card) return;
-        const body = card.querySelector('.spellbook-card-body');
         const btn = card.querySelector('.collapse-btn');
         const collapsed = card.classList.toggle('collapsed');
+        if (collapsed) expandedEntries.delete(uid);
+        else expandedEntries.add(uid);
         btn.textContent = collapsed ? '+' : '−';
         btn.setAttribute('aria-label', collapsed ? 'Expand' : 'Collapse');
+    }
+
+    // One use of a short/long rest entry. Unlimited ('none') and spent
+    // entries are left alone, like casting with no slot left.
+    function spendEntryCharge(uid) {
+        const entry = getSpellbookEntries().find(e => e.uid === uid);
+        if (!entry || !entryHasCharges(entry) || entryRemaining(entry) === 0) return false;
+        updateSpellbookEntry(uid, { used: entry.used + 1 });
+        renderCharSheet();
+        return true;
+    }
+
+    function adjustEntryCharge(uid, delta) {
+        const entry = getSpellbookEntries().find(e => e.uid === uid);
+        if (!entry) return;
+        updateSpellbookEntry(uid, { used: Math.min(entry.charges, Math.max(0, entry.used - delta)) });
+        renderCharSheet();
     }
 
     function spendSlotForSpell(level) {
@@ -883,10 +1062,23 @@
             buttons.push({ label: String(i), value: i });
         }
 
+        // Spellbook entries of this spell that cast from their own charges
+        // (short/long rest) or for free (recharge 'none'). Each gets its own
+        // button after the level buttons; casting with one spends its charge
+        // and casts at the spell's own level.
+        const chargeEntries = getSpellEntries(spell.id).filter(entry => entry.recharge !== 'spellslot');
+        chargeEntries.forEach(entry => {
+            buttons.push({ value: 'entry:' + entry.uid, entryUid: entry.uid });
+        });
+        const castableEntry = chargeEntries.find(entry => entry.recharge === 'none' || entryRemaining(entry) > 0);
+
         // Determine default selection
         let defaultValue;
         if (spellLevel === 0) {
             defaultValue = 0;
+        } else if (castableEntry && !(isPrepared && hasClassEntry(spell.id))) {
+            // Not a prepared class spell: use the free/charged copy first.
+            defaultValue = 'entry:' + castableEntry.uid;
         } else if (isRitual && !isPrepared) {
             defaultValue = 'ritual';
         } else {
@@ -897,6 +1089,7 @@
 
         function renderButtons() {
             const curSlots = getCurrentSlots();
+            const entriesNow = getSpellEntries(spell.id);
             row.innerHTML = '';
             buttons.forEach(b => {
                 const div = document.createElement('div');
@@ -907,7 +1100,21 @@
                 let disabled = false;
                 let spent = false;
 
-                if (b.isRitual) {
+                if (b.entryUid) {
+                    const entry = entriesNow.find(e => e.uid === b.entryUid);
+                    if (!entry) return;
+                    // Charge buttons go on their own line under the levels.
+                    if (b === buttons.find(x => x.entryUid)) {
+                        const brk = document.createElement('div');
+                        brk.className = 'cast-row-break';
+                        row.appendChild(brk);
+                    }
+                    div.classList.add('cast-charge-btn');
+                    const count = entry.recharge === 'none' ? '\u221e' : `${entryRemaining(entry)}/${entry.charges}`;
+                    div.textContent = `${SPELL_SOURCES[entry.source]} ${count}`;
+                    div.title = `${SPELL_SOURCES[entry.source]} \u00b7 ${SPELL_RECHARGES[entry.recharge]}`;
+                    if (entry.recharge !== 'none' && entryRemaining(entry) === 0) spent = true;
+                } else if (b.isRitual) {
                     // Ritual button: disabled if spell is not a ritual
                     if (!isRitual) disabled = true;
                 } else if (b.value === 0) {
@@ -953,6 +1160,8 @@
         function doCast() {
             if (selectedValue === 'ritual' || selectedValue === 0) {
                 // No slot consumed
+            } else if (typeof selectedValue === 'string' && selectedValue.startsWith('entry:')) {
+                spendEntryCharge(selectedValue.slice('entry:'.length));
             } else if (typeof selectedValue === 'number' && selectedValue >= 1) {
                 spendSlotForSpell(selectedValue);
             }
@@ -1410,7 +1619,7 @@
         let startY = 0;
 
         function isInteractive(target) {
-            return target.closest('button, .collapse-btn, .prepared-toggle, .remove-btn, .spell-actions') !== null;
+            return target.closest('button, select, input, .collapse-btn, .prepared-toggle, .remove-btn, .spell-actions, .entry-options') !== null;
         }
 
         function start(e) {
@@ -1453,20 +1662,21 @@
         element.addEventListener('contextmenu', e => e.preventDefault());
     }
 
+    // First copy of a spell is a normal class spell; extra copies come from
+    // somewhere else, so they default to Other / Long Rest / 1 charge.
     function addToSpellbook(id) {
         id = Number(id);
-        const list = getSpellbook();
-        if (!list.includes(id)) {
-            list.push(id);
-            saveSpellbook(list);
-        }
+        const entries = getSpellbookEntries();
+        const first = !entries.some(entry => entry.spell === id);
+        entries.push(first
+            ? { uid: newEntryUid(), spell: id, source: 'class', recharge: 'spellslot', charges: 1, used: 0 }
+            : { uid: newEntryUid(), spell: id, source: 'other', recharge: 'long', charges: 1, used: 0 });
+        saveSpellbook(entries);
     }
 
-    function removeFromSpellbook(id) {
-        id = Number(id);
-        const list = getSpellbook().filter(spellId => spellId !== id);
-        saveSpellbook(list);
-        savePrepared(getPrepared().filter(spellId => spellId !== id));
+    function removeSpellbookEntry(uid) {
+        saveSpellbook(getSpellbookEntries().filter(entry => entry.uid !== uid));
+        prunePrepared();
     }
 
     function setupOptions() {
@@ -1483,6 +1693,7 @@
         const drawSigilCastToggle = document.getElementById('draw-sigil-cast-toggle');
         const drawSigilSeconds = document.getElementById('draw-sigil-seconds');
         const drawSigilLineMode = document.getElementById('draw-sigil-line-mode');
+        const skillDisplaySelect = document.getElementById('skill-display-select');
         const drawSigilSymbolMode = document.getElementById('draw-sigil-symbol-mode');
 
         const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -1533,6 +1744,14 @@
             drawSigilSeconds.value = sigilDrawSeconds();
             drawSigilSeconds.addEventListener('input', () => {
                 localStorage.setItem(DRAW_SIGIL_SECONDS_KEY, parseFloat(drawSigilSeconds.value));
+            });
+        }
+
+        if (skillDisplaySelect) {
+            skillDisplaySelect.value = getSkillDisplay();
+            skillDisplaySelect.addEventListener('change', () => {
+                localStorage.setItem(SKILL_DISPLAY_KEY, skillDisplaySelect.value);
+                renderCharSheet();
             });
         }
 
@@ -1682,6 +1901,18 @@
         strength: 'Str', dexterity: 'Dex', constitution: 'Con',
         intelligence: 'Int', wisdom: 'Wis', charisma: 'Cha'
     };
+
+    // Stats tab skill layout (Options > Sheet > Skill Display):
+    // 'alphabetical' is one A-Z list; 'by_attribute' groups skills under
+    // their ability (ABILITY_ABBREV order: Str, Dex, Con, Int, Wis, Cha),
+    // A-Z within each group.
+    const SKILL_DISPLAY_KEY = 'espellbook_skill_display';
+    const SKILL_DISPLAY_MODES = ['alphabetical', 'by_attribute'];
+
+    function getSkillDisplay() {
+        const value = localStorage.getItem(SKILL_DISPLAY_KEY);
+        return SKILL_DISPLAY_MODES.includes(value) ? value : 'alphabetical';
+    }
 
     function getSkillList() {
         const bySkill = (RULES.skills && RULES.skills.by_skill) || {};
@@ -1836,8 +2067,22 @@
         renderCharSheet();
     }
 
-    function resetSlots() {
-        saveSlots(getMaxSlotsArray());
+    // Slots come from the first class only (no multiclass support); for a
+    // Warlock those are pact slots, which come back on a short rest.
+    function slotsRechargeOnShortRest() {
+        const cls = getPrimaryClass();
+        return !!cls && cls.spellcasting === 'pact';
+    }
+
+    // Short rest: short-rest charges, plus pact slots. Long rest: every slot
+    // and every charge.
+    function takeRest(kind) {
+        if (kind === 'long' || slotsRechargeOnShortRest()) saveSlots(getMaxSlotsArray());
+        const entries = getSpellbookEntries();
+        entries.forEach(entry => {
+            if (entry.recharge === 'short' || (kind === 'long' && entry.recharge === 'long')) entry.used = 0;
+        });
+        saveSpellbook(entries);
         renderCharSheet();
     }
 
@@ -1888,8 +2133,32 @@
             `;
         }).join('') : '<p class="empty-state">No spell slots available at this level.</p>';
 
+        // Short/long rest entries, each with its own small orbs. At-will
+        // ('none') and slot-based entries have nothing to track here.
+        const chargeRows = getSpellbookEntries()
+            .filter(entryHasCharges)
+            .map(entry => ({ entry, spell: findSpell(entry.spell) }))
+            .filter(item => item.spell)
+            .sort((a, b) => getLevel(a.spell) - getLevel(b.spell) || a.spell.name.localeCompare(b.spell.name));
+        const chargesHtml = chargeRows.map(({ entry, spell }) => {
+            const remaining = entryRemaining(entry);
+            const orbs = Array.from({ length: entry.charges }, (_, i) => {
+                const filled = i < remaining;
+                return `<span class="slot-orb ${filled ? 'filled' : 'spent'}" style="animation-delay: ${i * 0.35}s" aria-label="${filled ? 'Available charge' : 'Spent charge'}"></span>`;
+            }).join('');
+            // Class entries keep the caster-type color from the grid; other
+            // sources get their own (.source-race etc. in style.css).
+            const colorClass = entry.source === 'class' ? '' : ` source-${entry.source}`;
+            return `
+                <div class="slot-level-group charge-group${colorClass}" data-entry="${entry.uid}">
+                    <span class="charge-name"><span class="charge-tag" title="${SPELL_SOURCES[entry.source]} - ${SPELL_RECHARGES[entry.recharge]}">${chargeTag(entry)}</span>${escapeHtml(spell.name)}</span>
+                    <div class="slot-orbs">${orbs}</div>
+                </div>
+            `;
+        }).join('');
+
         const abilityTiers = getAbilityTierMap();
-        const skillsHtml = getSkillList().map(({ name, ability }) => {
+        const skillRowHtml = ({ name, ability }) => {
             const tier = abilityTiers[ability] || 'neutral';
             const proficient = isSkillProficient(name);
             const mod = getSkillModifier(name, ability);
@@ -1901,7 +2170,24 @@
                     <span class="skill-mod">${formatModifier(mod)}</span>
                 </div>
             `;
-        }).join('');
+        };
+        const skillList = getSkillList();
+        const byAttribute = getSkillDisplay() === 'by_attribute';
+        // getSkillList() is already A-Z, so filtering keeps each group A-Z.
+        // Abilities without skills (Constitution) get no group.
+        const skillsHtml = byAttribute
+            ? Object.keys(ABILITY_ABBREV).map(ability => {
+                const skills = skillList.filter(skill => skill.ability === ability);
+                if (!skills.length) return '';
+                const label = ability.charAt(0).toUpperCase() + ability.slice(1);
+                return `
+                    <div class="skill-group">
+                        <h4 class="skill-group-title">${escapeHtml(label)}</h4>
+                        ${skills.map(skillRowHtml).join('')}
+                    </div>
+                `;
+            }).join('')
+            : skillList.map(skillRowHtml).join('');
 
         container.innerHTML = `
             <div class="char-header">
@@ -1935,16 +2221,29 @@
             <div class="slots-section">
                 <div class="slots-header">
                     <h3>Spell Slots</h3>
-                    <button id="reset-slots" class="btn btn-primary">Reset</button>
+                    <div class="rest-btns">
+                        <button class="btn btn-primary rest-btn" data-rest="short" title="Restores short rest charges${slotsRechargeOnShortRest() ? ' and pact slots' : ''}">Short Rest</button>
+                        <button class="btn btn-primary rest-btn" data-rest="long" title="Restores all spell slots and charges">Long Rest</button>
+                    </div>
                 </div>
                 <div class="slots-grid ${getMagicType()}">
                     ${slotsHtml}
                 </div>
             </div>
 
+            ${chargeRows.length ? `
+            <div class="slots-section charges-section">
+                <div class="slots-header">
+                    <h3>Other Spell Sources</h3>
+                </div>
+                <div class="slots-grid charges-grid ${getMagicType()}">
+                    ${chargesHtml}
+                </div>
+            </div>` : ''}
+
             <div class="skills-section">
                 <h3>Skills</h3>
-                <div class="skills-grid">
+                <div class="skills-grid${byAttribute ? ' by-attribute' : ''}">
                     ${skillsHtml}
                 </div>
             </div>
@@ -1960,7 +2259,12 @@
             });
         });
 
-        container.querySelectorAll('.slot-level-group').forEach(group => {
+        container.querySelectorAll('.charge-group').forEach(group => {
+            group.addEventListener('click', () => adjustEntryCharge(group.dataset.entry, -1));
+            setupLongPress(group, () => adjustEntryCharge(group.dataset.entry, 1), 1000);
+        });
+
+        container.querySelectorAll('.slot-level-group:not(.charge-group)').forEach(group => {
             group.addEventListener('click', () => {
                 const level = parseInt(group.dataset.level);
                 const current = getCurrentSlots()[level];
@@ -1974,8 +2278,9 @@
             }, 1000);
         });
 
-        const resetBtn = document.getElementById('reset-slots');
-        if (resetBtn) resetBtn.addEventListener('click', resetSlots);
+        container.querySelectorAll('.rest-btn').forEach(btn => {
+            btn.addEventListener('click', () => takeRest(btn.dataset.rest));
+        });
     }
 
     function renderSheetEditor() {
@@ -4077,7 +4382,7 @@
             }).join('');
             return `<div class="immersive-bookmarks">${bookmarks}</div>`;
         })() : '';
-        const prepared = getPrepared().includes(spell.id);
+        const prepared = isSpellAvailable(spell.id);
         const ritualMark = !prepared && spell.ritual ? '*' : '';
         const nameClass = prepared ? '' : 'unprepared';
         const valyrianHtml = valyrianInlineHtml(spell);
@@ -4099,7 +4404,9 @@
 
     function buildImmersivePages() {
         const spells = getSpellbook().map(findSpell).filter(s => s);
-        const prepared = getPrepared();
+        // Prepared class spells and anything from another source come first.
+        const entries = getSpellbookEntries();
+        const available = new Set(spells.filter(s => isSpellAvailable(s.id, entries)).map(s => s.id));
         const grouped = new Map();
         spells.forEach(spell => {
             const level = getLevel(spell);
@@ -4107,8 +4414,8 @@
             grouped.get(level).push(spell);
         });
         grouped.forEach(group => group.sort((a, b) => {
-            const aPrep = prepared.includes(a.id);
-            const bPrep = prepared.includes(b.id);
+            const aPrep = available.has(a.id);
+            const bPrep = available.has(b.id);
             if (aPrep !== bPrep) return aPrep ? -1 : 1;
             const aRit = a.ritual ? -1 : 1;
             const bRit = b.ritual ? -1 : 1;
