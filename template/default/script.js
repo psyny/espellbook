@@ -445,6 +445,25 @@
         return value >= 1 && value <= 20 ? value : DRAW_SIGIL_SECONDS_DEFAULT;
     }
 
+    // How each part of a drawn sigil appears (Options selects).
+    // Lines (school frame): 'stroke' traces the pen strokes, 'fade' fades
+    // the frame in whole. Symbols: 'swipe' traces/wipes each symbol, 'fade'
+    // fades each one in whole. Only used while Draw Sigil on Cast is on.
+    const DRAW_SIGIL_LINE_MODE_KEY = 'espellbook_draw_sigil_line_mode';
+    const DRAW_SIGIL_SYMBOL_MODE_KEY = 'espellbook_draw_sigil_symbol_mode';
+    const DRAW_SIGIL_LINE_MODES = ['fade', 'stroke'];
+    const DRAW_SIGIL_SYMBOL_MODES = ['fade', 'swipe'];
+
+    function sigilDrawLineMode() {
+        const value = localStorage.getItem(DRAW_SIGIL_LINE_MODE_KEY);
+        return DRAW_SIGIL_LINE_MODES.includes(value) ? value : 'stroke';
+    }
+
+    function sigilDrawSymbolMode() {
+        const value = localStorage.getItem(DRAW_SIGIL_SYMBOL_MODE_KEY);
+        return DRAW_SIGIL_SYMBOL_MODES.includes(value) ? value : 'swipe';
+    }
+
     // Marks the cast modal as drawing (or not) and hands the CSS glow the
     // same duration the shader sweep will use.
     function applyDrawSigilMode(modal) {
@@ -1463,6 +1482,8 @@
         const bokehCastToggle = document.getElementById('bokeh-cast-toggle');
         const drawSigilCastToggle = document.getElementById('draw-sigil-cast-toggle');
         const drawSigilSeconds = document.getElementById('draw-sigil-seconds');
+        const drawSigilLineMode = document.getElementById('draw-sigil-line-mode');
+        const drawSigilSymbolMode = document.getElementById('draw-sigil-symbol-mode');
 
         const savedTheme = localStorage.getItem('theme') || 'dark';
         theme.value = savedTheme;
@@ -1492,10 +1513,19 @@
             });
         }
 
+        // The draw time and line/symbol modes only matter while drawing.
+        const syncDrawSigilOptions = () => {
+            const off = drawSigilCastToggle ? !drawSigilCastToggle.checked : false;
+            [drawSigilSeconds, drawSigilLineMode, drawSigilSymbolMode].forEach(el => {
+                if (el) el.disabled = off;
+            });
+        };
+
         if (drawSigilCastToggle) {
             drawSigilCastToggle.checked = showDrawSigilCast();
             drawSigilCastToggle.addEventListener('change', () => {
                 saveShowDrawSigilCast(drawSigilCastToggle.checked);
+                syncDrawSigilOptions();
             });
         }
 
@@ -1505,6 +1535,22 @@
                 localStorage.setItem(DRAW_SIGIL_SECONDS_KEY, parseFloat(drawSigilSeconds.value));
             });
         }
+
+        if (drawSigilLineMode) {
+            drawSigilLineMode.value = sigilDrawLineMode();
+            drawSigilLineMode.addEventListener('change', () => {
+                localStorage.setItem(DRAW_SIGIL_LINE_MODE_KEY, drawSigilLineMode.value);
+            });
+        }
+
+        if (drawSigilSymbolMode) {
+            drawSigilSymbolMode.value = sigilDrawSymbolMode();
+            drawSigilSymbolMode.addEventListener('change', () => {
+                localStorage.setItem(DRAW_SIGIL_SYMBOL_MODE_KEY, drawSigilSymbolMode.value);
+            });
+        }
+
+        syncDrawSigilOptions();
 
         if (bokehCastToggle) {
             bokehCastToggle.checked = showBokehCast();
@@ -2552,9 +2598,18 @@
             // Fade-out erosion: dissolves all pixels during fade-out
             alpha *= fadeOutErosionMask(duv);
 
-            // Per-pixel staggered fade using timing texture
-            float pixelTiming = texture2D(u_timing, duv).r;
-            float fade = smoothstep(pixelTiming - u_fadeEdge, pixelTiming + u_fadeEdge, u_castProgress);
+            // Per-pixel staggered fade using timing texture. R = reveal
+            // time. G = 1 where the draw timing image traces the part
+            // (stroke/swipe) and 0 where it fades it in whole. Only traced
+            // pixels get the crisp u_fadeEdge and the pen tip; faded ones
+            // keep the soft classic edge (0.08, = SIGIL_FADE_EDGE). The
+            // classic timing image is plain gray, but there u_fadeEdge is
+            // already 0.08 and u_drawTip 0, so G has no effect.
+            vec4 timingTex = texture2D(u_timing, duv);
+            float pixelTiming = timingTex.r;
+            float traced = timingTex.g;
+            float fadeEdge = mix(0.08, u_fadeEdge, traced);
+            float fade = smoothstep(pixelTiming - fadeEdge, pixelTiming + fadeEdge, u_castProgress);
             alpha *= fade;
 
             float glow = brightnessOverlay(v_uv);
@@ -2563,7 +2618,7 @@
             // Draw-on-cast "pen tip": pixels the reveal front has just
             // passed burn near-white, cooling to the sigil color behind it.
             float sinceDrawn = u_castProgress - pixelTiming;
-            float tip = u_drawTip * (1.0 - smoothstep(0.0, 0.05, sinceDrawn));
+            float tip = u_drawTip * traced * (1.0 - smoothstep(0.0, 0.05, sinceDrawn));
             color = mix(color, mix(u_brightnessColor, vec3(1.0), 0.7), tip);
 
             gl_FragColor = vec4(color * alpha, alpha);
@@ -2975,13 +3030,33 @@
         return true;
     }
 
-    function buildSigilDrawTimingSvg(targetSvg, size) {
+    // With Line Animation = fade the frame needs no time of its own, so it
+    // gets this short window and every other category's window is squeezed
+    // from [essence start, 1] onto [SIGIL_DRAW_FADED_SCHOOL_WINDOW[1], 1]
+    // (otherwise nothing would happen while the strokes would be drawing).
+    const SIGIL_DRAW_FADED_SCHOOL_WINDOW = [0.00, 0.10];
+
+    function sigilDrawWindow(cat, lineMode) {
+        const win = SIGIL_DRAW_WINDOWS[cat] || [0, 1];
+        if (lineMode === 'stroke') return win;
+        if (cat === 'school') return SIGIL_DRAW_FADED_SCHOOL_WINDOW;
+        const from = SIGIL_DRAW_WINDOWS.essence[0];
+        const to = SIGIL_DRAW_FADED_SCHOOL_WINDOW[1];
+        const squeeze = x => to + (x - from) * (1 - to) / (1 - from);
+        return [squeeze(win[0]), squeeze(win[1])];
+    }
+
+    function buildSigilDrawTimingSvg(targetSvg, size, lineMode, symbolMode) {
         const clone = targetSvg.cloneNode(true);
         const span = SIGIL_DRAW_T_MAX - SIGIL_DRAW_T_MIN;
-        const gray = t => {
+        // R = reveal time. G flags traced pixels for the shader (crisp front
+        // and pen tip); faded parts leave G at 0.
+        const timeColor = traced => t => {
             const v = Math.round(Math.max(0, Math.min(1, t)) * 255);
-            return `rgb(${v},${v},${v})`;
+            return `rgb(${v},${traced ? 255 : 0},${v})`;
         };
+        const tracedColor = timeColor(true);
+        const fadedColor = timeColor(false);
 
         const byCategory = new Map();
         clone.querySelectorAll('.sigil-part').forEach(part => {
@@ -2990,20 +3065,23 @@
             byCategory.get(cat).push(part);
         });
 
-        const [schoolStart, schoolEnd] = SIGIL_DRAW_WINDOWS.school;
-        if (appendSchoolDrawChains(
+        const [schoolStart, schoolEnd] = sigilDrawWindow('school', lineMode);
+        if (lineMode === 'stroke' && appendSchoolDrawChains(
             clone,
             byCategory.get('school') || [],
             SIGIL_DRAW_T_MIN + schoolStart * span,
             SIGIL_DRAW_T_MIN + schoolEnd * span,
-            gray
+            tracedColor
         )) {
             byCategory.delete('school');
         }
 
         const gradients = [];
         byCategory.forEach((parts, cat) => {
-            const [w0, w1] = SIGIL_DRAW_WINDOWS[cat] || [0, 1];
+            // School left here is either faded, or stroked without usable
+            // draw_chains (then traced shape by shape, as symbols are).
+            const trace = cat === 'school' ? lineMode === 'stroke' : symbolMode === 'swipe';
+            const [w0, w1] = sigilDrawWindow(cat, lineMode);
             const width = w1 - w0;
             const count = parts.length;
             // Each part draws over a slice of its category's window; slices
@@ -3014,6 +3092,17 @@
                 const t0 = SIGIL_DRAW_T_MIN + start * span;
                 const t1 = SIGIL_DRAW_T_MIN + (start + slice) * span;
 
+                if (!trace) {
+                    // Fade: the whole part at its slice's start time; the
+                    // shader's soft edge (G = 0) fades it in.
+                    part.querySelectorAll('use').forEach(use => {
+                        use.setAttribute('fill', fadedColor(t0));
+                        use.setAttribute('stroke', fadedColor(t0));
+                    });
+                    return;
+                }
+
+                const gray = tracedColor;
                 part.querySelectorAll('use').forEach(use => {
                     const gradId = 'sigil-draw-g' + gradients.length;
                     gradients.push(
@@ -3137,10 +3226,13 @@
     const SIGIL_IMAGE_CACHE_MAX = 6;
     const sigilImageCache = new Map();
 
-    // `draw` swaps the timing image for the draw-on-cast one; it gets its
-    // own cache slot so toggling the option never serves a stale timing map.
+    // `draw` swaps the timing image for the draw-on-cast one. Each draw
+    // variant (line + symbol mode) gets its own cache slot so changing an
+    // option never serves a stale timing map.
     function getOrLoadSigilImages(targetSvg, size, cacheKey, draw) {
-        if (cacheKey && draw) cacheKey += ':draw';
+        const lineMode = sigilDrawLineMode();
+        const symbolMode = sigilDrawSymbolMode();
+        if (cacheKey && draw) cacheKey += `:draw:${lineMode}:${symbolMode}`;
         if (cacheKey && sigilImageCache.has(cacheKey)) {
             const cached = sigilImageCache.get(cacheKey);
             // Touch for LRU: re-insertion moves it to the end (most-recent).
@@ -3152,7 +3244,7 @@
         const fullSvg = buildSigilMaskSourceSvg(targetSvg, size, false);
         const schoolSvg = buildSigilMaskSourceSvg(targetSvg, size, true);
         const timingSvg = draw
-            ? buildSigilDrawTimingSvg(targetSvg, size)
+            ? buildSigilDrawTimingSvg(targetSvg, size, lineMode, symbolMode)
             : buildSigilTimingSvg(targetSvg, size, false);
 
         const promise = Promise.all([loadSvgImage(fullSvg), loadSvgImage(schoolSvg), loadSvgImage(timingSvg)])
