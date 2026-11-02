@@ -1,6 +1,6 @@
 # Cast Vanish Styles
 
-How a cast sigil leaves the screen depends on the spell. Everything lives in `template/default/script.js`; there is no server-side part.
+How a cast sigil leaves the screen depends on the spell. There is no server-side part: the logic and the shader live in `template/default/script.js`, the glow keyframes for ash and radiate (`cast-sigil-glow-out`, `cast-sigil-glow-flare`) in `style.css`, and the "Themed Vanish on Cast" option in `index.html`.
 
 ## Choosing the style
 
@@ -37,9 +37,9 @@ The mask branch runs in unbroken-sigil space (it receives the warped lookup), so
 
 ### Ash
 
-The light dies first, then the sigil falls apart into dust. `ashRelease()` gives every grain a release moment (top of the sigil first, roughened by a per-grain hash). `main()` darkens each point over the quarter of the fade-out before its grain lets go. The glow needs its own step: it is a CSS drop-shadow on the alpha, so it would keep burning around dark ink, and `startCastFadeOut()` adds the modal class `vanish-glow-out` to run it down.
+The light dies first, then the sigil falls apart into dust. `ashRelease()` gives every grain a release moment (top of the sigil first, roughened by a per-grain hash). `main()` darkens each point over the quarter of the fade-out before its grain lets go. The glow needs its own step: it is a CSS drop-shadow on the alpha, so it would keep burning around dark ink, and `startCastFadeOut()` adds the modal class `vanish-glow-out` to run it down. Both glow keyframes start from `--vanish-glow-from`, the value sampled at fade-out start, so dismissing a cast while it draws does not jump the glow up first. `clearCastFadeOutClasses()` runs on open as well as after close, because reopening cancels the delayed cleanup.
 
-`ashWarp()` moves the grains: each accelerates from rest, sways, tumbles and shrinks, and the mask fades it over the last third of its fall. The grid is too fine for the Voronoi test the other rigid styles use, so grains are plain squares of the `ASH` grid. Because grains only move down, the search for which grain covers a pixel is a band of cells above it rather than a square neighbourhood, and `ASH_FALL` must stay below the height that band covers. Grains are tried bottom row first so falling dust paints over the part of the sigil that is still intact.
+`ashWarp()` moves the grains: each accelerates from rest, sways, tumbles and shrinks, and the mask fades it over the last third of its fall. The grid is too fine for the Voronoi test the other rigid styles use, so grains are plain squares of the `ASH` grid. Because grains only move down, the search for which grain covers a pixel is a band of cells above it rather than a square neighbourhood, and `ASH_FALL` must stay below the height that band covers. Grains are tried from the highest row down and the first hit wins, so falling dust paints over the part of the sigil that is still intact.
 
 ### Burn
 
@@ -47,7 +47,7 @@ The sigil does not move and no fire is drawn: it goes the way burning paper goes
 
 ### Tesla
 
-Lightning's style. No bolt or arc is drawn: the sigil loses pieces in sudden jumps, at two places at once. The bites must land on the sigil's ink, which the shader cannot search for, so `buildTeslaBiteMap()` plans them once at fade-out start, seeded by `alphaSeed` so a spell always goes the same way. It reads the sigil's alpha and picks pairs of points until no ink is left, each point on ink no earlier bite reached, then spreads the pairs evenly over the fade-out. Picking from the leftovers matters: sampling all the ink lets dense interiors soak up the bites while thin outer rings sit untouched. Each point stamps a radial gradient with canvas `darken` compositing, so the earliest bite wins. The result is `u_vanishMap`, whose red channel is the fade-out progress at which each point is eaten. The mask only compares this with `u_fadeOut`; whatever no bite reached fades over the last 18% of the fade-out, and `main()` lights the ink just before it goes.
+Lightning's style. No bolt or arc is drawn: the sigil loses pieces in sudden jumps, at two places at once. The bites must land on the sigil's ink, which the shader cannot search for, so `buildTeslaBiteMap()` plans them once at fade-out start, seeded by `alphaSeed` so a spell always goes the same way. It reads the sigil's alpha and picks pairs of points until no ink is left, each point on ink no earlier bite reached and the second within `TESLA_BITE_JUMP` of the first when any such ink remains, then spreads the pairs evenly over the fade-out. Picking from the leftovers matters: sampling all the ink lets dense interiors soak up the bites while thin outer rings sit untouched. Each point stamps a radial gradient with canvas `darken` compositing, so the earliest bite wins. The result is `u_vanishMap`, whose red channel is the fade-out progress at which each point is eaten. The mask only compares this with `u_fadeOut`; whatever no bite reached fades over the last 18% of the fade-out, and `main()` lights the ink just before it goes.
 
 ### Wind
 
@@ -59,17 +59,25 @@ Replaced a scanline-glitch strobe that read as technological. `phantasmRipple()`
 
 ### Radiate
 
-Two beats: the sigil flares in place, then comes apart. `radiateFlare()` runs over the first third of the fade-out: `main()` pushes the lines towards white and `radiateBloom()` spills soft light off them. `radiateProgress()` starts just as the flare peaks and drives the expansion and the centre-out mask, so nothing moves or erodes before then. The mask measures distance against `u_inkRadius`, or a small sigil would lie entirely inside the first part of the sweep and vanish all at once. The expansion is modest because large sigils nearly fill the canvas and the rim goes last. The page's glow is a CSS drop-shadow, so `startCastFadeOut()` adds the modal class `vanish-glow-flare`, whose keyframes peak at the same moment; they repeat the numbers from the shader and from `VANISH_SECONDS` by hand.
+Two beats: the sigil flares in place, then comes apart. `radiateFlare()` runs over the first third of the fade-out: `main()` pushes the lines towards white and `radiateBloom()` spills soft light off them. `radiateProgress()` starts just as the flare peaks and drives the expansion and the centre-out mask, so nothing moves or erodes before then. The mask measures distance against `u_inkRadius`, or a small sigil would lie entirely inside the first part of the sweep and vanish all at once. The expansion is modest because large sigils nearly fill the canvas and the rim goes last. The page's glow is a CSS drop-shadow, so `startCastFadeOut()` adds the modal class `vanish-glow-flare`, whose keyframes peak at the same moment; the 36% peak repeats `radiateFlare()` by hand, and `--vanish-seconds` carries the length.
 
 ### Vortex
 
 The sigil cracks, then its shards are drawn down a whirlpool to a point. `vortexWarp()` uses the rigid-shard machinery of fracture at a finer grid (`VORTEX_SHARDS`), but the motion is the swirl: each site is carried round by `vortexAngle()` (centre faster than rim, which winds the shards into spiral arms) and scaled towards the centre by `vortexPull()`, reaching a point by 90% of the fade-out. Each shard turns with the flow plus a little of its own, and shrinks so gaps open. Shards can travel far from where they started, so a fixed neighbourhood around the pixel would miss them; undoing the swirl at the pixel gives the place in the unbroken sigil to search around instead, which works because all shards follow the same flow. The mask draws crack lines with `nearestShard()`, as fracture does, and switches everything off once it has collapsed.
 
-`crumble` is the older, cheaper cousin: square blocks on a fixed grid whose contents slide. It reads as stone breaking up rather than glass.
+`crumble` is the older, cheaper cousin: square blocks on a fixed grid whose contents slide. The warp chooses blocks by output position, so its mask hashes `v_uv` rather than the warped lookup, or a block would be cut along seams that do not match its edges. It reads as stone breaking up rather than glass.
+
+## Dismissing mid-draw
+
+A cast dismissed while it is still drawing in must not reveal what was never drawn. `startCastFadeOut()` stores the current `u_castProgress` in `entry.heldProgress`, keeps the real timing image, and the animation loop holds that progress, with the draw edge, while the style plays. `u_castHeld` makes the painted layers read ink through `drawnInk()`, and planning (`sigilInkRadius()`, `buildTeslaBiteMap()`) reads `readVisibleAlpha()`, so neither sees parts that were never drawn. Style 0 keeps its original behaviour. A cast dismissed before its images finish decoding never showed anything, so it registers no entry and simply closes.
+
+## Cost
+
+The rigid-piece searches run per fragment on a 1024px target. They try candidates from the top of the stacking order and return on the first hit, `inShard()` rejects a candidate as soon as it can, `displacedUV()` skips its noise for holes, and ash and vortex return early outside the disc their pieces can reach, using `u_inkRadius`. Those bounds must stay wider than the farthest a piece can travel, or the edge of the effect gets cut off. Wind and fracture have no such bound: their pieces reach most of the canvas. `renderSigilFrame()` uploads a texture only when its image changes (`uploadSigilTexture()`); `renderSigil()` writes the same textures directly and resets that record. `u_vanishMap` starts as one white texel so the texture is complete on every draw.
 
 ## The flat timing texture
 
-Fade-out normally replays the fade-in reveal timing backwards (`u_castProgress` runs 1 to 0 against the timing texture), which hides whole parts partway through. For a themed vanish, `startCastFadeOut()` replaces the entry's timing image with a 1x1 black canvas (`getSigilFlatTimingCanvas()`), meaning "everything revealed at time 0". The style then owns the whole fade-out, and the last few percent of `u_castProgress` still guarantee an empty frame at the end. Style 0 keeps the original timing behaviour.
+Fade-out normally replays the fade-in reveal timing backwards (`u_castProgress` runs 1 to 0 against the timing texture), which hides whole parts partway through. For a themed vanish, `startCastFadeOut()` replaces the entry's timing image with a 1x1 black canvas (`getSigilFlatTimingCanvas()`), meaning "everything revealed at time 0". The style then owns the whole fade-out and has to reach empty by itself: at `u_castProgress = 0` the shader's fade only drops to 0.5 against this texture. Style 0 keeps the original timing behaviour.
 
 ## Not covered
 
