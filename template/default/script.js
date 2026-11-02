@@ -242,23 +242,49 @@
         }
     }
 
-    function getTotalPreparedCap() {
-        const cls = getPrimaryClass();
-        if (!cls) return 0;
-        const level = getCharacterLevel();
-        const progression = cls.progression && cls.progression[String(level)];
-        if (!progression) return 0;
-        if (cls.prepared_caster && cls.spells_prepared_formula) {
-            return evaluateFormula(cls.spells_prepared_formula, level);
-        }
-        return progression.spells_known || 0;
+    const RULESETS = { '2014': '5.0e (2014)', '2024': '5.5e (2024)' };
+
+    function getRuleset() {
+        return RULESETS[SHEET_CHARACTER.ruleset] ? SHEET_CHARACTER.ruleset : '2014';
     }
 
-    function getPreparedCap(level) {
-        const mods = (SHEET_CHARACTER.custom_mods && SHEET_CHARACTER.custom_mods.prepared) || {};
-        const customCap = parseInt(mods[String(level)]);
-        if (!isNaN(customCap) && customCap > 0) return customCap;
-        return level === 0 ? 0 : getTotalPreparedCap();
+    // How many leveled spells one class can prepare at its own level, or
+    // null if the class doesn't prepare spells under the current ruleset.
+    // 2014: only formula-based classes (cleric, druid, wizard...) prepare.
+    // 2024: every caster prepares, from the class's fixed table.
+    function getClassPreparedCap(cls, level) {
+        if (!cls || level < 1) return null;
+        if (getRuleset() === '2024') {
+            const table = cls.spells_prepared_2024;
+            if (!Array.isArray(table) || !table.length) return null;
+            return table[Math.min(level, table.length) - 1] || 0;
+        }
+        if (!cls.prepared_caster || !cls.spells_prepared_formula) return null;
+        const progression = cls.progression && cls.progression[String(Math.min(level, 20))];
+        const hasSlots = progression && ((progression.spell_slots || []).some(n => n > 0) || progression.pact_slots > 0);
+        if (!hasSlots) return null;
+        return Math.max(1, evaluateFormula(cls.spells_prepared_formula, level));
+    }
+
+    // Total prepared-spell limit across all classes plus the sheet's custom
+    // mod, or null if none of the character's classes prepare spells.
+    function getTotalPreparedCap() {
+        let total = null;
+        Object.entries(SHEET_CHARACTER.classes || {}).forEach(([key, lvl]) => {
+            const cap = getClassPreparedCap(CLASSES[key.toLowerCase()], parseInt(lvl) || 0);
+            if (cap !== null) total = (total || 0) + cap;
+        });
+        if (total === null) return null;
+        const mod = parseInt(SHEET_CHARACTER.custom_mods && SHEET_CHARACTER.custom_mods.prepared_mod) || 0;
+        return Math.max(0, total + mod);
+    }
+
+    // Leveled class spells currently prepared (cantrips never count).
+    function getPreparedLeveledCount(entries = getSpellbookEntries()) {
+        return getPrepared().filter(id => {
+            const spell = findSpell(id);
+            return spell && getLevel(spell) > 0 && hasClassEntry(id, entries);
+        }).length;
     }
 
     function getPrepared() {
@@ -823,6 +849,13 @@
         const title = document.getElementById('spellbook-title');
         if (title) title.textContent = `${SHEET_CHARACTER.name || 'My'}'s Spellbook`;
 
+        const preparedSummary = document.getElementById('spellbook-prepared');
+        if (preparedSummary) {
+            const cap = getTotalPreparedCap();
+            preparedSummary.hidden = cap === null;
+            if (cap !== null) preparedSummary.textContent = `Prepared spells: ${getPreparedLeveledCount()}/${cap}`;
+        }
+
         const list = document.getElementById('spellbook-list');
         const entries = getSpellbookEntries()
             .map(entry => ({ entry, spell: findSpell(entry.spell) }))
@@ -856,14 +889,15 @@
 
         list.innerHTML = levels.map(level => {
             const items = grouped.get(level);
-            // Only class spells count toward the prepared limit.
-            const preparedCount = new Set(items
-                .filter(({ entry, spell }) => entry.source === 'class' && prepared.includes(spell.id))
-                .map(({ spell }) => spell.id)).size;
-            const cap = level === 0 ? null : getPreparedCap(level);
-            const header = level === 0
-                ? `${levelTitle(level)}: ${preparedCount}`
-                : (cap > 0 ? `${levelTitle(level)}: ${preparedCount}/${cap}` : `${levelTitle(level)}: ${preparedCount}`);
+            // Prepared vs. total class spells on this level (other sources
+            // are always available, so they don't count either way).
+            const classIds = new Set(items
+                .filter(({ entry }) => entry.source === 'class')
+                .map(({ spell }) => spell.id));
+            const preparedCount = [...classIds].filter(id => prepared.includes(id)).length;
+            const header = classIds.size
+                ? `${levelTitle(level)}: ${preparedCount}/${classIds.size}`
+                : levelTitle(level);
             return `
                 <div class="level-divider">${header}</div>
                 ${items.map(({ entry, spell }) => renderSpellbookCard(spell, entry, prepared.includes(spell.id))).join('')}`;
@@ -2283,6 +2317,29 @@
         });
     }
 
+    // Number input with square step buttons beside it, so values can be
+    // changed without typing.
+    function numStepperHtml(attrs, value) {
+        return `<span class="num-stepper">
+                <input type="number" ${attrs} value="${value}">
+                <button type="button" class="num-step" data-step="-1" tabindex="-1" aria-label="Decrease">&#9660;</button>
+                <button type="button" class="num-step" data-step="1" tabindex="-1" aria-label="Increase">&#9650;</button>
+            </span>`;
+    }
+
+    // Re-rendering the other tabs (catalog especially) is heavier than a
+    // keystroke, so batch it while the user is typing or clicking steppers.
+    let sheetRefreshTimer = null;
+    function scheduleSheetDependentsRefresh() {
+        clearTimeout(sheetRefreshTimer);
+        sheetRefreshTimer = setTimeout(() => {
+            renderCharSheet();
+            renderSpellbook();
+            renderClassFilters();
+            renderCatalog();
+        }, 250);
+    }
+
     function renderSheetEditor() {
         const container = document.getElementById('char-sheet-editor');
         if (!container) return;
@@ -2292,16 +2349,16 @@
         const stats = SHEET_CHARACTER.stats || {};
         const override = SHEET_CHARACTER.custom_mods || {};
         const slots = override.slots || {};
-        const prepared = override.prepared || {};
         const skillMods = override.skills || {};
         const skillProficiencies = SHEET_CHARACTER.skill_proficiencies || [];
+        const ruleset = getRuleset();
 
         const classInputs = Object.keys(CLASSES).map(key => {
             const cls = CLASSES[key];
             const value = classes[key] || 0;
             return `<label class="sheet-field">
                 <span>${escapeHtml(cls.name)} Level</span>
-                <input type="number" class="sheet-class-level" data-class="${escapeHtml(key)}" value="${value}" min="0" max="20">
+                ${numStepperHtml(`class="sheet-class-level" data-class="${escapeHtml(key)}" min="0" max="20"`, value)}
             </label>`;
         }).join('');
 
@@ -2309,21 +2366,14 @@
             const score = attributes[key] || 10;
             return `<label class="sheet-field">
                 <span>${escapeHtml(key.charAt(0).toUpperCase() + key.slice(1))}</span>
-                <input type="number" class="sheet-attr" data-attr="${escapeHtml(key)}" value="${score}" min="1" max="30">
+                ${numStepperHtml(`class="sheet-attr" data-attr="${escapeHtml(key)}" min="1" max="30"`, score)}
             </label>`;
         }).join('');
 
         const slotInputs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(level => `
             <label class="sheet-field small">
                 <span>Lvl ${level}</span>
-                <input type="number" class="sheet-slot-override" data-level="${level}" value="${slots[String(level)] || 0}" min="0">
-            </label>
-        `).join('');
-
-        const preparedInputs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(level => `
-            <label class="sheet-field small">
-                <span>Lvl ${level}</span>
-                <input type="number" class="sheet-prepared-override" data-level="${level}" value="${prepared[String(level)] || 0}" min="0">
+                ${numStepperHtml(`class="sheet-slot-override" data-level="${level}" min="0"`, slots[String(level)] || 0)}
             </label>
         `).join('');
 
@@ -2339,14 +2389,18 @@
         const skillModInputs = skillList.map(({ name }) => `
             <label class="sheet-field small">
                 <span>${escapeHtml(name)}</span>
-                <input type="number" class="sheet-skill-mod" data-skill="${escapeHtml(name)}" value="${skillMods[name] || 0}">
+                ${numStepperHtml(`class="sheet-skill-mod" data-skill="${escapeHtml(name)}"`, skillMods[name] || 0)}
             </label>
+        `).join('');
+
+        const rulesetButtons = Object.entries(RULESETS).map(([key, label]) => `
+            <button type="button" class="ruleset-btn${key === ruleset ? ' active' : ''}" data-ruleset="${key}" aria-pressed="${key === ruleset}">${label}</button>
         `).join('');
 
         container.innerHTML = `
             <div class="sheet-header">
                 <h2>Character Sheet</h2>
-                <p>Edit values here; changes are saved locally in the browser.</p>
+                <p>Changes are saved automatically in this browser.</p>
             </div>
             <div class="sheet-form">
                 <div class="sheet-section">
@@ -2355,9 +2409,13 @@
                         <span>Name</span>
                         <input type="text" id="sheet-name" value="${escapeHtml(SHEET_CHARACTER.name || '')}">
                     </label>
+                    <div class="sheet-field">
+                        <span>Ruleset</span>
+                        <div class="ruleset-toggle" role="group" aria-label="Ruleset">${rulesetButtons}</div>
+                    </div>
                     <label class="sheet-field">
                         <span>Max HP</span>
-                        <input type="number" id="sheet-hp" value="${stats.hp || 1}" min="1">
+                        ${numStepperHtml('id="sheet-hp" min="1"', stats.hp || 1)}
                     </label>
                 </div>
 
@@ -2397,11 +2455,11 @@
                     <div class="sheet-grid">
                         <label class="sheet-field">
                             <span>Spell DC Mod</span>
-                            <input type="number" id="sheet-dc-mod" value="${override.spell_dc_mod || 0}">
+                            ${numStepperHtml('id="sheet-dc-mod"', override.spell_dc_mod || 0)}
                         </label>
                         <label class="sheet-field">
                             <span>Spell Attack Mod</span>
-                            <input type="number" id="sheet-attack-mod" value="${override.spell_attack_mod || 0}">
+                            ${numStepperHtml('id="sheet-attack-mod"', override.spell_attack_mod || 0)}
                         </label>
                     </div>
                 </div>
@@ -2415,25 +2473,29 @@
                 </div>
 
                 <div class="sheet-section">
-                    <h3>Custom Mods: Prepared Spells (per level)</h3>
-                    <p class="sheet-hint">Added on top of the prepared-spell count calculated from your class &amp; level.</p>
-                    <div class="sheet-grid small">
-                        ${preparedInputs}
+                    <h3>Custom Mods: Prepared Spells</h3>
+                    <p class="sheet-hint">Added on top of the total prepared spells allowed by your class, level &amp; ruleset.</p>
+                    <div class="sheet-grid">
+                        <label class="sheet-field">
+                            <span>Prepared Spells Mod</span>
+                            ${numStepperHtml('id="sheet-prepared-mod"', override.prepared_mod || 0)}
+                        </label>
                     </div>
                 </div>
 
                 <div class="sheet-actions">
-                    <button id="save-sheet" class="btn btn-primary">Save Changes</button>
                     <button id="reset-sheet" class="btn btn-danger">Reset to Generated</button>
                 </div>
             </div>
         `;
 
-        container.querySelector('#save-sheet').addEventListener('click', () => {
+        // Read the whole form back into SHEET_CHARACTER and persist it.
+        function commitSheet() {
             const name = container.querySelector('#sheet-name').value.trim() || SHEET_CHARACTER.name;
             const hp = parseInt(container.querySelector('#sheet-hp').value) || 1;
             const dcMod = parseInt(container.querySelector('#sheet-dc-mod').value) || 0;
             const attackMod = parseInt(container.querySelector('#sheet-attack-mod').value) || 0;
+            const preparedMod = parseInt(container.querySelector('#sheet-prepared-mod').value) || 0;
 
             const newClasses = {};
             container.querySelectorAll('.sheet-class-level').forEach(input => {
@@ -2451,11 +2513,6 @@
                 newSlots[input.dataset.level] = parseInt(input.value) || 0;
             });
 
-            const newPrepared = {};
-            container.querySelectorAll('.sheet-prepared-override').forEach(input => {
-                newPrepared[input.dataset.level] = parseInt(input.value) || 0;
-            });
-
             const newSkillProficiencies = [];
             container.querySelectorAll('.sheet-skill-prof').forEach(input => {
                 if (input.checked) newSkillProficiencies.push(input.dataset.skill);
@@ -2470,25 +2527,53 @@
             SHEET_CHARACTER.name = name;
             SHEET_CHARACTER.classes = newClasses;
             SHEET_CHARACTER.attributes = newAttrs;
-            SHEET_CHARACTER.stats = { hp };
+            SHEET_CHARACTER.stats = { ...(SHEET_CHARACTER.stats || {}), hp };
             SHEET_CHARACTER.skill_proficiencies = newSkillProficiencies;
             SHEET_CHARACTER.custom_mods = {
                 spell_dc_mod: dcMod,
                 spell_attack_mod: attackMod,
                 slots: newSlots,
-                prepared: newPrepared,
+                prepared_mod: preparedMod,
                 skills: newSkillMods
             };
 
             saveSheetData();
-            renderCharSheet();
-            renderSpellbook();
-            renderClassFilters();
-            renderCatalog();
+            scheduleSheetDependentsRefresh();
+        }
+
+        // Auto-save on every edit (typing, checkboxes, step buttons). The
+        // container outlives re-renders, so swap out the previous listener.
+        if (container._commitSheet) container.removeEventListener('input', container._commitSheet);
+        container._commitSheet = commitSheet;
+        container.addEventListener('input', commitSheet);
+
+        container.querySelectorAll('.num-step').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                // The buttons sit inside <label>s; don't let the click
+                // fall through to the input.
+                event.preventDefault();
+                const input = btn.parentElement.querySelector('input');
+                if (Number(btn.dataset.step) > 0) input.stepUp();
+                else input.stepDown();
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+            });
+        });
+
+        container.querySelectorAll('.ruleset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                SHEET_CHARACTER.ruleset = btn.dataset.ruleset;
+                container.querySelectorAll('.ruleset-btn').forEach(b => {
+                    const active = b === btn;
+                    b.classList.toggle('active', active);
+                    b.setAttribute('aria-pressed', String(active));
+                });
+                commitSheet();
+            });
         });
 
         container.querySelector('#reset-sheet').addEventListener('click', () => {
             if (confirm('Reset sheet to generated values? This will discard local edits.')) {
+                clearTimeout(sheetRefreshTimer);
                 localStorage.removeItem(SHEET_KEY);
                 SHEET_CHARACTER = loadSheetData();
                 renderCharSheet();

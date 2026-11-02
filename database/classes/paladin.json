@@ -5,6 +5,7 @@
   "prepared_caster": true,
   "spells_prepared_formula": "charisma_modifier + floor(level / 2)",
   "ritual_caster": false,
+  "spells_prepared_2024": [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15],
   "progression": {
     "1": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [0, 0, 0, 0, 0, 0, 0, 0, 0] },
     "2": { "cantrips": 0, "spells_known": null, "spells_prepared": null, "spell_slots": [2, 0, 0, 0, 0, 0, 0, 0, 0] },

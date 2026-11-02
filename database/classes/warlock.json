@@ -4,6 +4,7 @@
   "spellcasting": "pact",
   "prepared_caster": false,
   "ritual_caster": false,
+  "spells_prepared_2024": [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15],
   "progression": {
     "1": { "cantrips": 2, "spells_known": 2, "spells_prepared": 2, "pact_slot_level": 1, "pact_slots": 1 },
     "2": { "cantrips": 2, "spells_known": 3, "spells_prepared": 3, "pact_slot_level": 1, "pact_slots": 2 },

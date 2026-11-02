@@ -1239,12 +1239,88 @@ body.theme-parchment .skills-section {
 
 .sheet-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 0.75rem;
 }
 
 .sheet-grid.small {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+/* Number field + square step buttons, all the same height. */
+.num-stepper {
+    --stepper-size: 2.6rem;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.sheet-field .num-stepper input {
+    flex: 1 1 auto;
+    width: 100%;
+    height: var(--stepper-size);
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.num-stepper input::-webkit-inner-spin-button,
+.num-stepper input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.num-step {
+    flex: 0 0 var(--stepper-size);
+    width: var(--stepper-size);
+    height: var(--stepper-size);
+    padding: 0;
+    background: var(--surface-2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.num-step:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.num-step:active {
+    background: var(--bg);
+}
+
+.ruleset-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.ruleset-btn {
+    padding: 0.6rem 1rem;
+    background: var(--bg);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.ruleset-btn:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+.ruleset-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #1a1c23;
+    font-weight: bold;
 }
 
 .sheet-field {
@@ -1369,9 +1445,18 @@ body.theme-parchment {
 
 .spellbook-header {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 1rem;
+}
+
+.spellbook-prepared {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.spellbook-prepared[hidden] {
+    display: none;
 }
 
 .immersive-modal {

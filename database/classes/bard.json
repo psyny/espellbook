@@ -4,6 +4,7 @@
   "spellcasting": "full",
   "prepared_caster": false,
   "ritual_caster": false,
+  "spells_prepared_2024": [4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 16, 17, 17, 18, 18, 19, 20, 21, 22],
   "progression": {
     "1": { "cantrips": 2, "spells_known": 4, "spells_prepared": 4, "spell_slots": [2, 0, 0, 0, 0, 0, 0, 0, 0] },
     "2": { "cantrips": 2, "spells_known": 5, "spells_prepared": 5, "spell_slots": [3, 0, 0, 0, 0, 0, 0, 0, 0] },
