@@ -18,12 +18,14 @@ The lead check exists because essence scores are flat, so the top essence is oft
 
 ## How a style is drawn
 
+A style must not draw its element. Fire does not catch fire and lightning does not throw bolts, in the same way that sigil symbols avoid literal pictures: the theme is carried by how and in what order the sigil itself goes away.
+
 Each style is up to three branches on the `u_vanishStyle` uniform in the sigil fragment shader, all gated on `u_fadeOut > 0` so idle and static (immersive page) renders are untouched:
 
 - `vanishWarp()` (called at the top of `displacedUV()`): where each output pixel samples the sigil from. It is an inverse map: to move the image up, the lookup moves down.
 - the themed block at the top of `fadeOutErosionMask()`: the order in which pixels are removed. Every style feeds a per-pixel value into `vanishSweep()`, which sweeps a soft front across it as `u_fadeOut` goes 0 to 1 and is exactly 1 at 0 and 0 at 1. The result is multiplied by the idle erosion so the sigil does not pop when fade-out starts.
 
-- optionally, in `main()`: an extra premultiplied layer added over the sigil, for styles that paint where it has no ink (burn, phantasm, tesla).
+- optionally, in `main()`: an extra premultiplied layer added over the sigil, for styles that paint where it has no ink (phantasm, radiate).
 
 Adding a style means adding an id to `VANISH_STYLE`, a branch in the first two places, and a mapping entry. Its length defaults to `SIGIL_FADE_OUT_TOTAL`; `VANISH_SECONDS` overrides it per style, and `startCastFadeOut()` stores the result as `entry.fadeOutTotal`.
 
@@ -35,22 +37,17 @@ The mask branch runs in unbroken-sigil space (it receives the warped lookup), so
 
 ### Ash
 
-`ashWarp()` reuses the same rigid-piece machinery at a much finer grid (`ASH`), with different motion: every flake only falls. `ashProgress()` gives each flake a release moment (top of the sigil first, roughened by a per-flake hash) and a fixed fall duration; the flake accelerates from rest, sways and tumbles, and the mask fades it over the second half of its fall. Because flakes only move down, the search for which flake covers a pixel is a column of cells above it rather than a square neighbourhood, and `ASH_FALL` must stay below the height that column covers. Flakes are tried bottom row first so falling ash paints over the part of the sigil that is still intact.
+The light dies first, then the sigil falls apart into dust. `ashRelease()` gives every grain a release moment (top of the sigil first, roughened by a per-grain hash). `main()` darkens each point over the quarter of the fade-out before its grain lets go. The glow needs its own step: it is a CSS drop-shadow on the alpha, so it would keep burning around dark ink, and `startCastFadeOut()` adds the modal class `vanish-glow-out` to run it down.
+
+`ashWarp()` moves the grains: each accelerates from rest, sways, tumbles and shrinks, and the mask fades it over the last third of its fall. The grid is too fine for the Voronoi test the other rigid styles use, so grains are plain squares of the `ASH` grid. Because grains only move down, the search for which grain covers a pixel is a band of cells above it rather than a square neighbourhood, and `ASH_FALL` must stay below the height that band covers. Grains are tried bottom row first so falling dust paints over the part of the sigil that is still intact.
 
 ### Burn
 
-The sigil does not move. `burnTime()` gives every point the moment the fire front reaches it: the front closes in from the rim to the centre, with soft noise for a ragged edge, and the mask cuts the sigil off sharply there. The front starts at `u_inkRadius` (`sigilInkRadius()`, measured at fade-out start), not at the canvas edge, because sigils fill only about half the canvas radius and would otherwise spend the first quarter of the fade-out burning nothing. The unburnt edge heats up through `brightnessOverlay()`, which `main()` already uses to blend towards the bright colour, and the last sliver of ink turns white-hot.
-
-The flames are a separate layer, `flameOverlay()`, because fire must appear where the sigil has no ink, which no warp can do. Each pixel looks down a short wobbling column; burning lines below it (`burnBand()`) heat it, and two upward-scrolling noises cut the heat into small tongues. The column samples the alpha of `u_vanishMap`, here a 128px blurred copy of the sigil built once at fade-out start (`buildSigilFlameCanvas()`), because the real lines are thin enough to fall between samples. `burnBand()` must stay narrow: it decides how much of the ring burns at once, and a wide band turns the small flames into one large blaze.
+The sigil does not move and no fire is drawn: it goes the way burning paper goes, and the order of disappearance is the whole effect. `burnTime()` gives every point the moment the front reaches it: the front closes in from the rim to the centre, with soft noise for a ragged edge, and the mask cuts the sigil off sharply there. The front starts at `u_inkRadius` (`sigilInkRadius()`, measured at fade-out start), not at the canvas edge, because sigils fill only about half the canvas radius and would otherwise spend the first quarter of the fade-out burning nothing. The unburnt edge heats up through `brightnessOverlay()`, which `main()` already uses to blend towards the bright colour, and the last sliver of ink turns white-hot.
 
 ### Tesla
 
-Lightning's style. Arcs must start and end on the sigil's ink, which the shader cannot search for, so `buildTeslaArcs()` plans the discharge once at fade-out start, seeded by `alphaSeed` so a spell always discharges the same way. It reads the sigil's alpha, picks `TESLA_ARC_COUNT` arcs (ink to ink, or ink out into the air), and returns two things:
-
-- the bite map, in the red channel of `u_vanishMap`: the fade-out progress at which each point is eaten. Every arc end stamps a radial gradient with canvas `darken` compositing, so the earliest bite wins. The mask only compares this with `u_fadeOut`, so 34 arcs cost one texture read. Whatever no arc reached fades over the last 18% of the fade-out.
-- `params.teslaArcs`. `teslaArcSlots()` packs the arcs alive right now into the `u_arcs` uniform each frame. `TESLA_SLOTS` must cover the most arcs alive at once (4 with the current count and `TESLA_ARC_LIFE`), and it is repeated as a literal in the shader.
-
-`teslaOverlay()` draws each live arc as a segment bent by two piecewise-linear zigzags (`arcZigzag()`), reseeded 45 times a second. Smooth noise here reads as a thread, not electricity. The line width is corrected for the zigzag's slope; the halo deliberately is not, because the slope jumps at each kink and would throw hard streaks across a wide glow.
+Lightning's style. No bolt or arc is drawn: the sigil loses pieces in sudden jumps, at two places at once. The bites must land on the sigil's ink, which the shader cannot search for, so `buildTeslaBiteMap()` plans them once at fade-out start, seeded by `alphaSeed` so a spell always goes the same way. It reads the sigil's alpha and picks pairs of points until no ink is left, each point on ink no earlier bite reached, then spreads the pairs evenly over the fade-out. Picking from the leftovers matters: sampling all the ink lets dense interiors soak up the bites while thin outer rings sit untouched. Each point stamps a radial gradient with canvas `darken` compositing, so the earliest bite wins. The result is `u_vanishMap`, whose red channel is the fade-out progress at which each point is eaten. The mask only compares this with `u_fadeOut`; whatever no bite reached fades over the last 18% of the fade-out, and `main()` lights the ink just before it goes.
 
 ### Wind
 
@@ -60,9 +57,13 @@ Lightning's style. Arcs must start and end on the sigil's ink, which the shader 
 
 Replaced a scanline-glitch strobe that read as technological. `phantasmRipple()` runs soft rings through the sigil, the real image fades, and `phantasmOverlay()` paints four ghost copies that drift apart, each at its own scale. It stands for Sound and Illusion.
 
+### Radiate
+
+Two beats: the sigil flares in place, then comes apart. `radiateFlare()` runs over the first third of the fade-out: `main()` pushes the lines towards white and `radiateBloom()` spills soft light off them. `radiateProgress()` starts just as the flare peaks and drives the expansion and the centre-out mask, so nothing moves or erodes before then. The mask measures distance against `u_inkRadius`, or a small sigil would lie entirely inside the first part of the sweep and vanish all at once. The expansion is modest because large sigils nearly fill the canvas and the rim goes last. The page's glow is a CSS drop-shadow, so `startCastFadeOut()` adds the modal class `vanish-glow-flare`, whose keyframes peak at the same moment; they repeat the numbers from the shader and from `VANISH_SECONDS` by hand.
+
 ### Vortex
 
-No erosion at all: the lookup rotates (centre faster than rim, which winds straight lines into spiral arms) while scaling down to a point by 90% of the fade-out, then the mask switches it off.
+The sigil cracks, then its shards are drawn down a whirlpool to a point. `vortexWarp()` uses the rigid-shard machinery of fracture at a finer grid (`VORTEX_SHARDS`), but the motion is the swirl: each site is carried round by `vortexAngle()` (centre faster than rim, which winds the shards into spiral arms) and scaled towards the centre by `vortexPull()`, reaching a point by 90% of the fade-out. Each shard turns with the flow plus a little of its own, and shrinks so gaps open. Shards can travel far from where they started, so a fixed neighbourhood around the pixel would miss them; undoing the swirl at the pixel gives the place in the unbroken sigil to search around instead, which works because all shards follow the same flow. The mask draws crack lines with `nearestShard()`, as fracture does, and switches everything off once it has collapsed.
 
 `crumble` is the older, cheaper cousin: square blocks on a fixed grid whose contents slide. It reads as stone breaking up rather than glass.
 
@@ -72,4 +73,4 @@ Fade-out normally replays the fade-in reveal timing backwards (`u_castProgress` 
 
 ## Not covered
 
-The CSS glow and the bokeh are the same for every style.
+The bokeh is the same for every style, and so is the CSS glow except for ash and radiate.

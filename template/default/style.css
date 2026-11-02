@@ -1893,6 +1893,17 @@ body.theme-parchment {
         cast-sigil-pulse 2s ease-in-out var(--sigil-draw-duration, 5s) infinite;
 }
 
+/* Themed vanish, ash: the glow dies with the sigil's light. */
+.cast-modal.casting.fading-out.vanish-glow-out .cast-sigil {
+    animation: cast-sigil-glow-out 1.6s ease-out forwards;
+}
+
+/* Themed vanish, radiate: the glow swells with the flare, then goes. Keep the
+   peak in step with radiateFlare() in the sigil shader (0.36 of 2.2s). */
+.cast-modal.casting.fading-out.vanish-glow-flare .cast-sigil {
+    animation: cast-sigil-glow-flare 2.2s linear forwards;
+}
+
 /* Default state: visible, no animation. */
 .sigil-part {
     opacity: 1;
@@ -2001,6 +2012,17 @@ body.theme-parchment {
     70% { --glow-intensity: 0.35; }
     92% { --glow-intensity: 1.0; }
     100% { --glow-intensity: 0.9; }
+}
+
+@keyframes cast-sigil-glow-out {
+    from { --glow-intensity: 0.9; }
+    to { --glow-intensity: 0; }
+}
+
+@keyframes cast-sigil-glow-flare {
+    0% { --glow-intensity: 0.9; }
+    36% { --glow-intensity: 2.5; }
+    100% { --glow-intensity: 0; }
 }
 
 /* Pulsating glow after the initial glow-in completes. */
