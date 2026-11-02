@@ -593,6 +593,252 @@
         localStorage.setItem(BOKEH_CAST_KEY, JSON.stringify(value === true));
     }
 
+    const THEMED_VANISH_CAST_KEY = 'espellbook_themed_vanish_cast';
+
+    function showThemedVanishCast() {
+        const raw = localStorage.getItem(THEMED_VANISH_CAST_KEY);
+        return raw === null ? true : JSON.parse(raw) === true;
+    }
+
+    function saveShowThemedVanishCast(value) {
+        localStorage.setItem(THEMED_VANISH_CAST_KEY, JSON.stringify(value === true));
+    }
+
+    // --- Themed vanish ---
+    // How a cast sigil leaves the screen depends on what the spell is. The
+    // spell's dominant essence picks the style, but only when it clearly
+    // leads (VANISH_ESSENCE_MIN_LEAD); essences with no physical character
+    // of their own (Magic, Mind) and unknown ones defer to the school. Ids match the u_vanishStyle branches in the sigil fragment
+    // shader (vanishWarp / fadeOutErosionMask).
+    const VANISH_STYLE = {
+        dissolve: 0, // the original noise dissolve
+        burn:     1, // burns in from the rim to the centre under small flames
+        melt:     2, // runs down in drips, top goes first
+        crumble:  3, // breaks into square blocks that slide apart and drop out
+        phantasm: 4, // ripples and peels apart into ghost copies that fade
+        vortex:   5, // spins into a spiral and is sucked down to a point
+        ash:      6, // crumbles from the top into flakes that drift down
+        radiate:  7, // bursts outward from the centre
+        wind:     8, // torn off piece by piece and carried away sideways
+        fracture: 9, // cracks like glass, then the shards drift apart, turning
+        tesla:   10, // electric arcs jump across it, each one biting a piece off
+    };
+
+    const VANISH_BY_ESSENCE = {
+        fire: 'burn',
+        radiance: 'radiate', light: 'radiate', life: 'radiate',
+        acid: 'melt', poison: 'melt', water: 'melt',
+        thunder: 'fracture', cold: 'fracture',
+        stone: 'crumble', earth: 'crumble', metal: 'crumble', force: 'crumble',
+        lightning: 'tesla', sound: 'phantasm',
+        space: 'vortex', time: 'vortex',
+        necrosis: 'ash', shadow: 'ash', soul: 'ash',
+        air: 'wind', plant: 'wind',
+    };
+
+    const VANISH_BY_SCHOOL = {
+        evocation: 'radiate',
+        conjuration: 'vortex',
+        transmutation: 'melt',
+        abjuration: 'crumble',
+        enchantment: 'wind',
+        illusion: 'phantasm',
+        necromancy: 'ash',
+        divination: 'dissolve',
+    };
+
+    // Essence scores are flat (about 0.04 to 0.06), so the winner is often
+    // decided by noise: Find Familiar's top essence is Poison by 0.0005. Below
+    // this lead over the runner-up the essence says nothing and the school
+    // decides. Set from the catalog's distribution.
+    const VANISH_ESSENCE_MIN_LEAD = 0.001;
+
+    // Lowercase name of the essence that clearly leads, or '' if none does.
+    function clearLeadingEssence(sp) {
+        const ranked = Object.entries(sp.essence || {}).sort((a, b) => b[1] - a[1]);
+        if (!ranked.length) return '';
+        const lead = ranked.length > 1 ? ranked[0][1] - ranked[1][1] : Infinity;
+        return lead >= VANISH_ESSENCE_MIN_LEAD ? ranked[0][0].toLowerCase() : '';
+    }
+
+    function sigilVanishStyle(spell) {
+        const sp = (spell && spell.sigil_params) || {};
+        const essence = clearLeadingEssence(sp);
+        const school = String(sp.school || spell.school || '').toLowerCase();
+        const name = VANISH_BY_ESSENCE[essence] || VANISH_BY_SCHOOL[school] || 'dissolve';
+        return VANISH_STYLE[name] || 0;
+    }
+
+    // Fade-out length in seconds, for styles that need other than
+    // SIGIL_FADE_OUT_TOTAL. Glass snaps; flames need time to be seen.
+    const VANISH_SECONDS = { burn: 2.2, fracture: 1.0, phantasm: 1.8, tesla: 1.8 };
+
+    function vanishSeconds(styleId) {
+        const name = Object.keys(VANISH_STYLE).find(key => VANISH_STYLE[key] === styleId);
+        return VANISH_SECONDS[name] || SIGIL_FADE_OUT_TOTAL;
+    }
+
+    // Small blurred copy of the sigil for the flame layer (u_vanishMap, alpha):
+    // shrunk, then stacked at small offsets, which works in every browser
+    // where canvas filters do not.
+    function buildSigilFlameCanvas(img) {
+        const size = 128;
+        const small = document.createElement('canvas');
+        small.width = size;
+        small.height = size;
+        small.getContext('2d').drawImage(img, 0, 0, size, size);
+
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.globalAlpha = 0.25;
+        for (let y = -1; y <= 1; y++) {
+            for (let x = -1; x <= 1; x++) {
+                ctx.drawImage(small, x, y);
+            }
+        }
+        return canvas;
+    }
+
+    // Distance from the canvas centre to the farthest ink, in canvas units.
+    // Sigils leave a wide margin, so the fire front starts from here rather
+    // than from the canvas edge.
+    function sigilInkRadius(canvas) {
+        const size = canvas.width;
+        const alpha = canvas.getContext('2d').getImageData(0, 0, size, size).data;
+        let radius = 0;
+        for (let i = 3; i < alpha.length; i += 4) {
+            if (alpha[i] > 40) {
+                const x = ((i >> 2) % size + 0.5) / size - 0.5;
+                const y = (Math.floor((i >> 2) / size) + 0.5) / size - 0.5;
+                radius = Math.max(radius, Math.hypot(x, y));
+            }
+        }
+        return radius || 0.5;
+    }
+
+    // Tesla vanish. Arcs have to land on the sigil's ink, which only JS can
+    // see, so the discharge is planned once at fade-out start.
+    const TESLA_ARC_COUNT = 34;
+    const TESLA_ARC_LIFE = 0.09;    // of the fade-out; one arc is on screen this long
+    const TESLA_BITE_RADIUS = 0.053; // canvas units, how far one arc end eats
+    const TESLA_BITE_TIME = 0.1;    // of the fade-out, to eat that far
+    const TESLA_SLOTS = 5;          // u_arcs size; must cover the arcs alive at once
+
+    // Plans the arcs from the alpha of img. Returns them as { start, ends }
+    // (ends in shader uv, y up) plus the bite map for u_vanishMap, whose red
+    // channel is the fade-out progress at which each point gets eaten.
+    function buildTeslaArcs(img, seed) {
+        const size = 256;
+        const source = document.createElement('canvas');
+        source.width = size;
+        source.height = size;
+        const sourceCtx = source.getContext('2d', { willReadFrequently: true });
+        sourceCtx.drawImage(img, 0, 0, size, size);
+        const alpha = sourceCtx.getImageData(0, 0, size, size).data;
+        const ink = [];
+        for (let i = 3; i < alpha.length; i += 4) {
+            if (alpha[i] > 64) ink.push([((i >> 2) % size) / size, ((i >> 2) >> 8) / size]);
+        }
+
+        const map = document.createElement('canvas');
+        map.width = size;
+        map.height = size;
+        const ctx = map.getContext('2d');
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, size, size);
+        ctx.globalCompositeOperation = 'darken'; // keeps the earliest bite
+        if (!ink.length) return { arcs: [], map };
+
+        // Same spell, same discharge.
+        let state = Math.floor(Math.abs(seed || 0) * 10000) % 2147483646 + 1;
+        const rand = () => (state = state * 16807 % 2147483647) / 2147483647;
+        const between = (low, high) => low + (high - low) * rand();
+        const pick = () => ink[Math.floor(rand() * ink.length)];
+        const gray = t => {
+            const v = Math.round(Math.min(t, 1) * 255);
+            return `rgb(${v},${v},${v})`;
+        };
+        const bite = (p, start) => {
+            const x = p[0] * size;
+            const y = p[1] * size;
+            const r = TESLA_BITE_RADIUS * size;
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, r);
+            gradient.addColorStop(0, gray(start));
+            gradient.addColorStop(1, gray(start + TESLA_BITE_TIME));
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fill();
+        };
+
+        const arcs = [];
+        for (let i = 0; i < TESLA_ARC_COUNT; i++) {
+            const start = 0.02 + 0.8 * i / TESLA_ARC_COUNT;
+            const a = pick();
+            let b;
+            if (rand() < 0.35) {
+                // An arc that lashes outward into empty air
+                const dx = a[0] - 0.5;
+                const dy = a[1] - 0.5;
+                const out = Math.max(Math.hypot(dx, dy), 0.001);
+                const reach = between(0.1, 0.2);
+                b = [
+                    a[0] + dx / out * reach + between(-0.055, 0.055),
+                    a[1] + dy / out * reach + between(-0.055, 0.055),
+                ];
+            } else {
+                // An arc to another point of the sigil, kept short
+                b = pick();
+                const dist = Math.hypot(b[0] - a[0], b[1] - a[1]);
+                if (dist > 0.36) {
+                    b = [a[0] + (b[0] - a[0]) * 0.36 / dist, a[1] + (b[1] - a[1]) * 0.36 / dist];
+                }
+            }
+            bite(a, start);
+            bite(b, start);
+            arcs.push({ start, ends: [a[0], 1 - a[1], b[0], 1 - b[1]] });
+        }
+        return { arcs, map };
+    }
+
+    // The arcs alive at fade-out progress f, packed for the u_arcs uniform.
+    // Unused slots stay zero, which the shader skips.
+    const teslaSlots = new Float32Array(TESLA_SLOTS * 4);
+
+    function teslaArcSlots(arcs, f) {
+        teslaSlots.fill(0);
+        let used = 0;
+        for (const arc of arcs) {
+            if (used < TESLA_SLOTS && f >= arc.start && f - arc.start < TESLA_ARC_LIFE) {
+                teslaSlots.set(arc.ends, used * 4);
+                used++;
+            }
+        }
+        return teslaSlots;
+    }
+
+    // A timing texture that says "everything was revealed at time 0". A
+    // themed vanish owns the whole fade-out; swapping this in at fade-out
+    // start stops the per-part reveal timing (which fade-out otherwise
+    // replays backwards) from hiding parts before the style has played,
+    // while still guaranteeing nothing is left once u_castProgress hits 0.
+    let sigilFlatTimingCanvas = null;
+
+    function getSigilFlatTimingCanvas() {
+        if (!sigilFlatTimingCanvas) {
+            sigilFlatTimingCanvas = document.createElement('canvas');
+            sigilFlatTimingCanvas.width = 1;
+            sigilFlatTimingCanvas.height = 1;
+            const ctx = sigilFlatTimingCanvas.getContext('2d');
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, 1, 1);
+        }
+        return sigilFlatTimingCanvas;
+    }
+
     // The flip-speed slider is a 1-100 "speed" dial, not a raw duration: higher
     // value = faster flip. FLIP_SPEED_MAX is a hard stop that disables the page
     // turn animation entirely (an explicit "off" position, not just a very fast
@@ -1779,6 +2025,14 @@
             });
         }
 
+        const themedVanishCastToggle = document.getElementById('themed-vanish-cast-toggle');
+        if (themedVanishCastToggle) {
+            themedVanishCastToggle.checked = showThemedVanishCast();
+            themedVanishCastToggle.addEventListener('change', () => {
+                saveShowThemedVanishCast(themedVanishCastToggle.checked);
+            });
+        }
+
         theme.addEventListener('change', () => {
             document.body.classList.remove('theme-dark', 'theme-light', 'theme-parchment');
             document.body.classList.add('theme-' + theme.value);
@@ -2703,6 +2957,7 @@
     let sigilGlTexture = null;
     let sigilGlSchoolTexture = null;
     let sigilGlTimingTexture = null;
+    let sigilGlVanishTexture = null;
     let sigilSourceCanvas = null;
     let sigilSourceCtx = null;
     let sigilGlReady = false;
@@ -2723,9 +2978,15 @@
 
         varying vec2 v_uv;
 
+        // Themed vanish style (VANISH_STYLE in JS); 0 = original dissolve.
+        uniform float u_vanishStyle;
+
         uniform sampler2D u_shape;
         uniform sampler2D u_schoolShape;
         uniform sampler2D u_timing;
+        uniform sampler2D u_vanishMap;  // burn: blurred sigil; tesla: bite times
+        uniform vec4 u_arcs[5];         // tesla: live arcs, ax ay bx by
+        uniform float u_inkRadius;      // burn: see sigilInkRadius in JS
         uniform vec2  u_resolution;
         uniform float u_castProgress;
         uniform float u_fadeOut;
@@ -2802,7 +3063,351 @@
             return total / max(normalization, 0.0001);
         }
 
+        // Rigid pieces for the "fracture" and "ash" vanishes: a Voronoi
+        // partition of the canvas, one jittered site per cell of an n x n
+        // grid. u_alphaSeed varies the pattern per spell.
+        const float SHARDS = 7.0;  // fracture: a few large glass shards
+        const float ASH = 34.0;    // ash: many small flakes
+
+        vec2 shardSite(vec2 cell, float n) {
+            vec2 jitter = vec2(hash21(cell + u_alphaSeed), hash21(cell + u_alphaSeed + 31.7));
+            return (cell + 0.5 + (jitter - 0.5) * 0.8) / n;
+        }
+
+        // 1.0 when x lies inside the piece whose site lives in cell, i.e.
+        // no neighbouring site is closer to x than that one.
+        float inShard(vec2 x, vec2 cell, float n) {
+            float own = length(x - shardSite(cell, n));
+            float inside = step(own, 1.5 / n);
+            for (int j = -1; j <= 1; j++) {
+                for (int i = -1; i <= 1; i++) {
+                    if (i != 0 || j != 0) {
+                        vec2 other = shardSite(cell + vec2(float(i), float(j)), n);
+                        inside *= step(own, length(x - other));
+                    }
+                }
+            }
+            return inside;
+        }
+
+        // Where output pixel uv samples from once the glass has broken, or
+        // (-1, -1) for the gaps that open between shards. Each shard is
+        // rigid: its site moves away from the centre (so shards separate
+        // instead of growing), it sags and drifts a little, and it turns
+        // about its own site. A pixel is covered by a shard only if undoing
+        // that shard's motion lands back inside the shard, so every nearby
+        // shard is tried. m is the motion amount, 0 -> 1.
+        vec2 fractureWarp(vec2 uv, float m) {
+            vec2 centre = vec2(0.5);
+            float spread = 1.0 + 0.9 * m;
+            // Undo the average motion to guess which shard this pixel shows.
+            vec2 guess = centre + (uv - centre + vec2(0.0, 0.06 * m)) / spread;
+            vec2 base = floor(guess * SHARDS);
+            vec2 found = vec2(-1.0);
+            for (int j = -2; j <= 2; j++) {
+                for (int i = -2; i <= 2; i++) {
+                    vec2 cell = base + vec2(float(i), float(j));
+                    vec2 site = shardSite(cell, SHARDS);
+                    float h = hash21(cell + 7.1);
+                    float h2 = hash21(cell + 19.4);
+                    vec2 moved = centre + (site - centre) * spread
+                        + vec2((h2 - 0.5) * 0.06, -0.12 * h) * m;
+                    float a = (h2 - 0.5) * 2.0 * m;
+                    vec2 q = uv - moved;
+                    vec2 x = site + vec2(cos(a) * q.x + sin(a) * q.y, -sin(a) * q.x + cos(a) * q.y);
+                    if (inShard(x, cell, SHARDS) > 0.5) found = x;
+                }
+            }
+            return found;
+        }
+
+        // Ash: how far along its fall (0 = still attached, 1 = gone) the
+        // flake in cell is at fade-out progress f. Flakes let go from the
+        // top of the sigil downward, in a ragged order, and each takes the
+        // same time to fall, so the last ones finish just before f = 1.
+        float ashProgress(vec2 cell, float f) {
+            vec2 site = shardSite(cell, ASH);
+            float order = clamp((0.85 - site.y) / 0.7, 0.0, 1.0);
+            float release = 0.62 * mix(order, hash21(cell + 5.9), 0.35);
+            return clamp((f - release) / 0.36, 0.0, 1.0);
+        }
+
+        // Longest fall of a flake, in canvas units. ashWarp looks this far
+        // above each pixel for flakes that could have landed on it, so it
+        // must stay under 6 / ASH (the rows that loop covers).
+        const float ASH_FALL = 0.15;
+
+        // Like fractureWarp, but every flake only goes down: it accelerates
+        // from rest, sways a little and tumbles. Flakes are tried bottom row
+        // first, so one falling from above paints over what is still intact
+        // beneath it. Returns (-1, -1) where a flake has left a hole.
+        vec2 ashWarp(vec2 uv, float f) {
+            vec2 base = floor(uv * ASH);
+            vec2 found = vec2(-1.0);
+            for (int j = -1; j <= 6; j++) {
+                for (int i = -1; i <= 1; i++) {
+                    vec2 cell = base + vec2(float(i), float(j));
+                    vec2 site = shardSite(cell, ASH);
+                    float p = ashProgress(cell, f);
+                    float h = hash21(cell + 7.1);
+                    vec2 moved = site + vec2(
+                        (h - 0.5) * 0.03 * p + sin(p * 5.0 + h * 6.28) * 0.004 * p,
+                        -ASH_FALL * p * p * (0.6 + 0.4 * h)
+                    );
+                    float a = (h - 0.5) * 3.0 * p;
+                    vec2 q = uv - moved;
+                    vec2 x = site + vec2(cos(a) * q.x + sin(a) * q.y, -sin(a) * q.x + cos(a) * q.y);
+                    if (inShard(x, cell, ASH) > 0.5) found = x;
+                }
+            }
+            return found;
+        }
+
+        // Cell of the piece (on an n x n grid) that contains uv.
+        vec2 nearestCell(vec2 uv, float n) {
+            vec2 base = floor(uv * n);
+            vec2 best = base;
+            float nearest = 10.0;
+            for (int j = -1; j <= 1; j++) {
+                for (int i = -1; i <= 1; i++) {
+                    vec2 cell = base + vec2(float(i), float(j));
+                    float d = length(uv - shardSite(cell, n));
+                    if (d < nearest) {
+                        nearest = d;
+                        best = cell;
+                    }
+                }
+            }
+            return best;
+        }
+
+        // Burn: the fade-out progress at which the fire front reaches uv.
+        // It closes in from the rim to the centre; soft noise makes the
+        // front ragged, like paper catching. Always within [0.04, 0.80].
+        float burnTime(vec2 uv) {
+            float ragged = valueNoise(uv * 24.0 + u_alphaSeed) - 0.5;
+            float d = length(uv - vec2(0.5)) + ragged * 0.084;
+            return 0.04 + 0.76 * (1.0 - clamp(d / (u_inkRadius + 0.045), 0.0, 1.0));
+        }
+
+        // Burn: how strongly the fire sits on point p at progress f. It
+        // catches just ahead of the front and dies out behind it; the
+        // latest burnTime plus this tail ends before f = 1.
+        float burnBand(vec2 p, float f) {
+            float since = f - burnTime(p);
+            return smoothstep(-0.02, 0.0, since) * (1.0 - smoothstep(0.04, 0.17, since));
+        }
+
+        // Burn: the flame layer, premultiplied. Fire has to exist where the
+        // sigil has no ink, so this looks down from each pixel along a
+        // wobbling column: burning lines below it heat it, the nearer the
+        // more. Sampled from u_vanishMap, a small blurred copy of the
+        // sigil, because the real lines are thin enough to slip between
+        // the samples. Two noises scrolling upward cut the heat into tongues.
+        const float FLAME_HEIGHT = 0.06;
+
+        vec4 flameOverlay(vec2 uv, float f) {
+            float heat = 0.0;
+            for (int i = 0; i < 12; i++) {
+                float s = (float(i) + 0.5) / 12.0;
+                float wobble = valueNoise(vec2(uv.x * 22.0 + 3.0, uv.y * 16.0 - u_time * 3.6)) - 0.5;
+                vec2 p = uv + vec2(wobble * 0.035 * s, -s * FLAME_HEIGHT);
+                heat += texture2D(u_vanishMap, p).a * burnBand(p, f) * (1.0 - s);
+            }
+            heat /= 7.0;
+
+            float fine = valueNoise(vec2(uv.x * 64.0, uv.y * 26.0 - u_time * 8.0));
+            float broad = valueNoise(vec2(uv.x * 26.0, uv.y * 13.0 - u_time * 5.0 + 9.0));
+            float body = heat * (0.15 + 3.6 * fine * broad);
+            float a = smoothstep(0.1, 0.42, body);
+            float core = smoothstep(0.4, 1.0, body);
+
+            vec3 outer = u_color * vec3(0.75, 0.45, 0.3);
+            vec3 flame = mix(mix(outer, u_color, a), vec3(1.0, 0.92, 0.6), core);
+            return vec4(flame * a, a);
+        }
+
+        // Tesla: a zigzag through a random height at each whole x, as
+        // (value, slope). Straight pieces are what make an arc look like
+        // electricity; smooth noise reads as a thread.
+        vec2 arcZigzag(float x, float seed) {
+            float i = floor(x);
+            float a = hash21(vec2(i, seed));
+            float b = hash21(vec2(i + 1.0, seed));
+            return vec2(mix(a, b, x - i) - 0.5, b - a);
+        }
+
+        // Tesla: the live arcs, premultiplied. Each is a segment bent by two
+        // zigzags that vanish at its ends, redrawn 45 times a second.
+        vec4 teslaOverlay(vec2 uv) {
+            float core = 0.0;
+            float halo = 0.0;
+            for (int i = 0; i < 5; i++) {
+                vec2 a = u_arcs[i].xy;
+                vec2 d = u_arcs[i].zw - a;
+                float len = length(d);
+                if (len > 0.001) {
+                    vec2 q = uv - a;
+                    float t = dot(q, d) / (len * len);
+                    float along = clamp(t, 0.0, 1.0);
+                    float side = (q.x * d.y - q.y * d.x) / len;
+
+                    float tick = floor(u_time * 45.0) + float(i) * 7.0;
+                    float n = floor(len * 28.0) + 3.0;
+                    float amp = 0.3 * len;
+                    vec2 z1 = arcZigzag(along * n, tick);
+                    vec2 z2 = arcZigzag(along * n * 3.0, tick + 3.0);
+                    float taper = sin(along * 3.14159);
+                    float bend = (z1.x + z2.x * 0.35) * amp * taper;
+                    float slope = (z1.y + z2.y * 1.05) * amp * n * taper / len;
+
+                    // Distance to the bent line, corrected for its slope so
+                    // steep stretches do not come out thinner.
+                    float dist = abs(side - bend) / sqrt(1.0 + slope * slope);
+                    dist = length(vec2(dist, (t - along) * len));
+                    core = max(core, 1.0 - smoothstep(0.0012, 0.0028, dist));
+                    // Uncorrected: the slope jumps at each kink, which
+                    // would throw hard streaks across a wide glow.
+                    halo += exp(-abs(side - bend) * 110.0) * step(t, 1.0) * step(0.0, t);
+                }
+            }
+            float a = min(core + halo * 0.4, 1.0);
+            return vec4(mix(u_color, vec3(1.0, 1.0, 0.92), core) * a, a);
+        }
+
+        // Phantasm: soft rings travelling out from the centre, as if the
+        // sigil were a reflection on water. Identity at f = 0 and f = 1.
+        vec2 phantasmRipple(vec2 uv, float f) {
+            vec2 p = uv - vec2(0.5);
+            float r = max(length(p), 0.0001);
+            float wave = sin(r * 46.0 - f * 16.0) * 0.012;
+            return uv + p / r * wave * smoothstep(0.0, 0.25, f) * (1.0 - smoothstep(0.7, 1.0, f));
+        }
+
+        // Phantasm: ghost copies of the sigil that peel away from it, each
+        // in its own direction and at its own scale, and thin out. Premultiplied.
+        vec4 phantasmOverlay(vec2 uv, float f) {
+            vec2 q = phantasmRipple(uv, f);
+            float ghosts = 0.0;
+            for (int k = 0; k < 4; k++) {
+                float angle = float(k) * 1.5708 + 0.6 + u_alphaSeed;
+                vec2 offset = vec2(cos(angle), sin(angle)) * (0.03 + 0.1 * f) * sqrt(f) * 1.2;
+                float grow = mod(float(k), 2.0) > 0.5 ? 1.0 : -0.6;
+                vec2 s = vec2(0.5) + (q - vec2(0.5)) / (1.0 + 0.18 * f * grow) - offset;
+                ghosts += texture2D(u_shape, s).a;
+            }
+            float a = min(ghosts * 0.6 * smoothstep(0.02, 0.2, f) * (1.0 - smoothstep(0.45, 0.95, f)), 1.0);
+            return vec4(u_color * a, a);
+        }
+
+        // Wind: coarser pieces than ash, torn off from the upwind (left)
+        // side first and carried right, accelerating along a wavy path.
+        const float WIND = 22.0;
+        // Longest travel; must stay under 7 / WIND (see windWarp).
+        const float WIND_REACH = 0.3;
+
+        float windProgress(vec2 cell, float f) {
+            vec2 site = shardSite(cell, WIND);
+            float order = clamp((site.x - 0.15) / 0.7, 0.0, 1.0);
+            float release = 0.6 * mix(order, hash21(cell + 5.9), 0.3);
+            return clamp((f - release) / 0.38, 0.0, 1.0);
+        }
+
+        // Columns are tried from just downwind back to far upwind, so the
+        // piece that has travelled farthest lands on top.
+        vec2 windWarp(vec2 uv, float f) {
+            vec2 base = floor(uv * WIND);
+            vec2 found = vec2(-1.0);
+            for (int k = 0; k <= 8; k++) {
+                for (int j = -1; j <= 1; j++) {
+                    vec2 cell = base + vec2(float(1 - k), float(j));
+                    vec2 site = shardSite(cell, WIND);
+                    float p = windProgress(cell, f);
+                    float h = hash21(cell + 7.1);
+                    vec2 moved = site + vec2(
+                        WIND_REACH * p * p * (0.7 + 0.3 * h),
+                        sin(p * 7.0 + h * 6.28) * 0.025 * p
+                    );
+                    float a = (h - 0.5) * 4.0 * p;
+                    vec2 q = uv - moved;
+                    vec2 x = site + vec2(cos(a) * q.x + sin(a) * q.y, -sin(a) * q.x + cos(a) * q.y);
+                    if (inShard(x, cell, WIND) > 0.5) found = x;
+                }
+            }
+            return found;
+        }
+
+        // Themed vanish, part 1: where each output pixel samples the sigil
+        // from during fade-out. This is an inverse map, so to move the
+        // image one way the lookup moves the other way. uv.y points up.
+        // Identity while u_fadeOut is 0, so idle and static renders are
+        // untouched. Style ids: see VANISH_STYLE in JS.
+        vec2 vanishWarp(vec2 uv) {
+            if (u_vanishStyle < 0.5 || u_fadeOut <= 0.0) return uv;
+
+            float f = u_fadeOut;
+            float e = f * f;
+            vec2 centre = vec2(0.5);
+            vec2 p = uv - centre;
+            float r = length(p);
+
+            if (u_vanishStyle < 1.5) {
+                // burn: the sigil stays put while the front eats it (see
+                // the mask); the flames are a layer of their own
+            } else if (u_vanishStyle < 2.5) {
+                // melt: each column runs down by its own drip length
+                float drip = 0.3 + valueNoise(vec2(uv.x * 24.0, 3.1));
+                uv.y += e * 0.22 * drip;
+            } else if (u_vanishStyle < 3.5) {
+                // crumble: square blocks slide away from the centre and fall
+                vec2 cell = floor(uv * 9.0);
+                float h = hash21(cell);
+                float h2 = hash21(cell + 17.3);
+                vec2 away = normalize((cell + 0.5) / 9.0 - centre + vec2(0.0001));
+                vec2 moved = away * e * 0.10 * (0.4 + h) + vec2(0.0, -1.0) * e * 0.10 * h2;
+                uv -= moved;
+            } else if (u_vanishStyle < 4.5) {
+                // phantasm: ripples (the ghosts are a layer of their own)
+                uv = phantasmRipple(uv, f);
+            } else if (u_vanishStyle < 5.5) {
+                // vortex: the whole sigil spins, the middle faster than
+                // the rim so straight lines wind into spiral arms, while it
+                // is drawn all the way down to a point by 90% of the fade
+                float pull = smoothstep(0.0, 0.9, f);
+                pull *= pull;
+                float angle = pull * 7.0 * (1.0 - 0.6 * smoothstep(0.0, 0.7, r));
+                float s = sin(angle);
+                float c = cos(angle);
+                p = vec2(c * p.x - s * p.y, s * p.x + c * p.y);
+                uv = centre + p / max(1.0 - pull, 0.02);
+            } else if (u_vanishStyle < 6.5) {
+                // ash: small flakes let go from the top and drift down
+                uv = ashWarp(uv, f);
+            } else if (u_vanishStyle < 7.5) {
+                // radiate: the whole sigil expands outward
+                uv = centre + p * (1.0 - e * 0.45);
+            } else if (u_vanishStyle < 8.5) {
+                // wind: pieces are torn off and carried away to the right
+                uv = windWarp(uv, f);
+            } else if (u_vanishStyle < 9.5) {
+                // fracture: the cracks show first (see the mask), then the
+                // shards fly apart at once
+                uv = fractureWarp(uv, clamp((f - 0.1) / 0.9, 0.0, 1.0));
+            }
+            // tesla: the sigil stays put while arcs bite pieces off it
+            return uv;
+        }
+
+        // Shared by the themed vanish masks: 1 = keep, 0 = gone. As f runs
+        // 0 -> 1 a soft front (half-width s) sweeps across v in [0, 1];
+        // low v disappears first. Fully 1 at f = 0 and fully 0 at f = 1.
+        float vanishSweep(float v, float f, float s) {
+            float a = mix(-s * 1.5, 1.0 + s * 1.5, f);
+            return smoothstep(a - s, a + s, v);
+        }
+
         vec2 displacedUV(vec2 uv) {
+            uv = vanishWarp(uv);
             float baseFreq = max(u_dispFrequency, 0.0001) * 16.0;
             float freq = mix(baseFreq, baseFreq + 10.0, u_fadeOut);
             float scale = mix(u_dispScale, 3.0, u_fadeOut);
@@ -2847,6 +3452,82 @@
         // Fade-out erosion: threshold ramps 0→1, frequency ramps 200→180.
         // Applied to all pixels, not just school geometry.
         float fadeOutErosionMask(vec2 uv) {
+            // Themed vanish, part 2: the order in which the sigil is eaten
+            // away. Each style sweeps a front across a per-pixel value v
+            // (see vanishSweep); mixing in noise roughens the front. The
+            // result is multiplied by the idle erosion (this function's
+            // original output at u_fadeOut = 0) so nothing pops when the
+            // fade-out begins.
+            if (u_vanishStyle > 0.5 && u_fadeOut > 0.0) {
+                float f = u_fadeOut;
+                float idle = smoothstep(-0.25, 0.25,
+                    octaveNoise(uv * 200.0, u_alphaOctaves, u_alphaSeed, u_alphaTurbulence));
+                float grain = octaveNoise(uv * 60.0, u_alphaOctaves, u_alphaSeed, u_alphaTurbulence);
+                float r = clamp(length(uv - vec2(0.5)) * 1.6, 0.0, 1.0);
+                float keep;
+
+                if (u_vanishStyle < 1.5) {
+                    // burn: cut off sharply where the front has passed
+                    keep = smoothstep(0.0, 0.012, burnTime(uv) - f);
+                } else if (u_vanishStyle < 2.5) {
+                    // melt: top first
+                    keep = vanishSweep(mix(grain, 1.0 - uv.y, 0.6), f, 0.10);
+                } else if (u_vanishStyle < 3.5) {
+                    // crumble: whole blocks drop out at random moments
+                    keep = vanishSweep(mix(hash21(floor(uv * 9.0)), grain, 0.15), f, 0.03);
+                } else if (u_vanishStyle < 4.5) {
+                    // phantasm: the real sigil fades as its ghosts take over
+                    keep = 1.0 - smoothstep(0.1, 0.6, f);
+                } else if (u_vanishStyle < 5.5) {
+                    // vortex: nothing is eaten away; it just winks out
+                    // once it has collapsed to a point
+                    keep = 1.0 - smoothstep(0.75, 0.95, f);
+                } else if (u_vanishStyle < 6.5) {
+                    // ash: uv is in unbroken-sigil space, so the nearest
+                    // site names the flake; it fades over the second half
+                    // of its own fall.
+                    keep = 1.0 - smoothstep(0.45, 1.0, ashProgress(nearestCell(uv, ASH), f));
+                } else if (u_vanishStyle < 7.5) {
+                    // radiate: centre out
+                    keep = vanishSweep(mix(grain, r, 0.6), f, 0.10);
+                } else if (u_vanishStyle < 8.5) {
+                    // wind: each piece fades over the second half of its flight
+                    keep = 1.0 - smoothstep(0.5, 1.0, windProgress(nearestCell(uv, WIND), f));
+                } else if (u_vanishStyle > 9.5) {
+                    // tesla: each point goes at the time baked into the bite
+                    // map; whatever no arc reached fades at the very end
+                    keep = smoothstep(0.0, 0.02, texture2D(u_vanishMap, uv).r - f)
+                        * (1.0 - smoothstep(0.82, 1.0, f));
+                } else {
+                    // fracture: uv is already in unbroken-sigil space here,
+                    // so the nearest site names the shard. Dark crack lines
+                    // open along shard borders right away; later each shard
+                    // winks out whole, at its own moment.
+                    vec2 base = floor(uv * SHARDS);
+                    vec2 shard = base;
+                    float d1 = 10.0;
+                    float d2 = 10.0;
+                    for (int j = -1; j <= 1; j++) {
+                        for (int i = -1; i <= 1; i++) {
+                            vec2 cell = base + vec2(float(i), float(j));
+                            float d = length(uv - shardSite(cell, SHARDS));
+                            if (d < d1) {
+                                d2 = d1;
+                                d1 = d;
+                                shard = cell;
+                            } else if (d < d2) {
+                                d2 = d;
+                            }
+                        }
+                    }
+                    float crack = mix(1.0, smoothstep(0.0, 0.008, d2 - d1), min(f * 8.0, 1.0));
+                    float gone = vanishSweep(mix(hash21(shard + 3.3), grain, 0.1),
+                        smoothstep(0.35, 1.0, f), 0.05);
+                    keep = crack * gone;
+                }
+                return idle * keep;
+            }
+
             float freq = mix(200.0, 180.0, u_fadeOut);
 
             float n = octaveNoise(uv * freq, u_alphaOctaves, u_alphaSeed, u_alphaTurbulence);
@@ -2860,7 +3541,14 @@
         }
 
         float brightnessOverlay(vec2 uv) {
-            if (u_brightnessStrength < 0.001) return 0.0;
+            // Themed vanish, burn only: the unburnt edge heats up as the
+            // front nears. main() blends towards the bright colour by this
+            // function's result, so the glow rides on it.
+            float hot = 0.0;
+            if (u_vanishStyle > 0.5 && u_vanishStyle < 1.5 && u_fadeOut > 0.0) {
+                hot = 1.0 - smoothstep(0.0, 0.06, burnTime(uv) - u_fadeOut);
+            }
+            if (u_brightnessStrength < 0.001) return hot;
 
             // Offset animation: scroll downward
             vec2 brightnessUV = uv + vec2(0.0, -u_time * u_brightnessOffsetSpeed);
@@ -2881,7 +3569,7 @@
                 n
             );
 
-            return mask * u_brightnessStrength;
+            return max(mask * u_brightnessStrength, hot);
         }
 
         void main() {
@@ -2926,7 +3614,23 @@
             float tip = u_drawTip * traced * (1.0 - smoothstep(0.0, 0.05, sinceDrawn));
             color = mix(color, mix(u_brightnessColor, vec3(1.0), 0.7), tip);
 
-            gl_FragColor = vec4(color * alpha, alpha);
+            // Themed vanish, part 3: for the styles that paint where the
+            // sigil has no ink.
+            vec4 extra = vec4(0.0);
+            if (u_fadeOut > 0.0) {
+                if (u_vanishStyle > 0.5 && u_vanishStyle < 1.5) {
+                    // the last sliver of ink before the front glows white-hot
+                    float ember = burnTime(v_uv) - u_fadeOut;
+                    color = mix(color, vec3(1.0, 0.92, 0.6), 1.0 - smoothstep(0.0, 0.02, ember));
+                    extra = flameOverlay(v_uv, u_fadeOut);
+                } else if (u_vanishStyle > 3.5 && u_vanishStyle < 4.5) {
+                    extra = phantasmOverlay(v_uv, u_fadeOut);
+                } else if (u_vanishStyle > 9.5) {
+                    extra = teslaOverlay(v_uv);
+                }
+            }
+
+            gl_FragColor = vec4(color * alpha + extra.rgb * fade, min(alpha + extra.a * fade, 1.0));
         }
     `;
 
@@ -3006,9 +3710,13 @@
 
         sigilGlUniforms = {};
         [
+            'u_vanishStyle',
             'u_shape',
             'u_schoolShape',
             'u_timing',
+            'u_vanishMap',
+            'u_arcs',
+            'u_inkRadius',
             'u_resolution',
             'u_castProgress',
             'u_fadeOut',
@@ -3074,6 +3782,15 @@
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
         gl.uniform1i(sigilGlUniforms.u_timing, 2);
+
+        sigilGlVanishTexture = gl.createTexture();
+        gl.activeTexture(gl.TEXTURE3);
+        gl.bindTexture(gl.TEXTURE_2D, sigilGlVanishTexture);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.uniform1i(sigilGlUniforms.u_vanishMap, 3);
 
         sigilGlReady = true;
         return true;
@@ -3476,6 +4193,11 @@
     }
 
     function setSigilUniforms(gl, params, time) {
+        gl.uniform1f(sigilGlUniforms.u_vanishStyle, params.vanishStyle || 0);
+        gl.uniform1f(sigilGlUniforms.u_inkRadius, params.inkRadius || 0.5);
+        if (params.teslaArcs) {
+            gl.uniform4fv(sigilGlUniforms.u_arcs, teslaArcSlots(params.teslaArcs, params.fadeOut || 0));
+        }
         gl.uniform2f(sigilGlUniforms.u_resolution, SIGIL_MASK_SIZE, SIGIL_MASK_SIZE);
         gl.uniform1f(sigilGlUniforms.u_dispFrequency, params.dispFrequency);
         gl.uniform1f(sigilGlUniforms.u_dispOctaves, params.dispOctaves);
@@ -3690,6 +4412,13 @@
             gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, entry.timingImg);
         }
 
+        if (entry.vanishImg) {
+            gl.activeTexture(gl.TEXTURE3);
+            gl.bindTexture(gl.TEXTURE_2D, sigilGlVanishTexture);
+            gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, entry.vanishImg);
+        }
+
         setSigilUniforms(gl, entry.params, time);
 
         gl.clearColor(0, 0, 0, 0);
@@ -3802,9 +4531,9 @@
                     }
                 } else if (entry.fadePhase === 'out') {
                     const fadeElapsed = (timestamp - entry.fadeOutStartTime) * 0.001;
-                    entry.params.castProgress = Math.max(0, 1 - fadeElapsed / SIGIL_FADE_OUT_TOTAL);
+                    entry.params.castProgress = Math.max(0, 1 - fadeElapsed / entry.fadeOutTotal);
                     entry.params.fadeIn = 1;
-                    entry.params.fadeOut = Math.min(1, fadeElapsed / SIGIL_FADE_OUT_TOTAL);
+                    entry.params.fadeOut = Math.min(1, fadeElapsed / entry.fadeOutTotal);
                 } else {
                     entry.params.castProgress = 1;
                     entry.params.fadeIn = 1;
@@ -4133,16 +4862,31 @@
     function startCastFadeOut(modal, onDone) {
         // Trigger fade-out phase on all active sigil animation entries
         const now = performance.now();
+        let longest = SIGIL_FADE_OUT_TOTAL;
         for (const entry of sigilAnimationEntries) {
             clearIdleSymbolPulse(entry);
             entry.fadePhase = 'out';
             entry.fadeOutStartTime = now;
+            if (!showThemedVanishCast()) entry.params.vanishStyle = 0;
+            entry.fadeOutTotal = vanishSeconds(entry.params.vanishStyle);
+            longest = Math.max(longest, entry.fadeOutTotal);
+            if (entry.params.vanishStyle === VANISH_STYLE.burn) {
+                entry.vanishImg = buildSigilFlameCanvas(entry.fullImg);
+                entry.params.inkRadius = sigilInkRadius(entry.vanishImg);
+            } else if (entry.params.vanishStyle === VANISH_STYLE.tesla) {
+                const { arcs, map } = buildTeslaArcs(entry.fullImg, entry.params.alphaSeed);
+                entry.params.teslaArcs = arcs;
+                entry.vanishImg = map;
+            }
+            // See getSigilFlatTimingCanvas: the style, not the reveal
+            // timing, decides what disappears when.
+            if (entry.params.vanishStyle > 0) entry.timingImg = getSigilFlatTimingCanvas();
         }
         modal.classList.add('fading-out');
         castFadeOutTimer = setTimeout(() => {
             castFadeOutTimer = null;
             if (onDone) onDone();
-        }, SIGIL_FADE_OUT_TOTAL * 1000 + 200);
+        }, longest * 1000 + 200);
     }
 
     function cancelCastFadeOut() {
@@ -4296,6 +5040,9 @@
         const isCastBuild = (className === 'cast-sigil');
         const colorVec = isCastBuild && spellStyle.color_1 ? parseColorToVec3(spellStyle.color_1) : null;
         const renderParams = getSigilRenderParams(spellStyle, colorVec);
+        // Only matters during a cast fade-out (the shader ignores it while
+        // u_fadeOut is 0); startCastFadeOut zeroes it if the option is off.
+        renderParams.vanishStyle = sigilVanishStyle(spell);
         const paramsAttr = JSON.stringify(renderParams).replace(/"/g, '&quot;');
 
         // The rasterized mask (full/school/timing shape) below is styled flat
