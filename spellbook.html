@@ -2915,7 +2915,7 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000087006": 
     // spell's dominant essence picks the style, but only when it clearly
     // leads (VANISH_ESSENCE_MIN_LEAD); essences with no physical character
     // of their own (Magic, Mind) and unknown ones defer to the school. Ids match the u_vanishStyle branches in the sigil fragment
-    // shader (vanishWarp / fadeOutErosionMask).
+    // shader (vanishWarp / fadeOutErosionMask). See code_map/cast_vanish_styles.md.
     const VANISH_STYLE = {
         dissolve: 0, // the original noise dissolve
         burn:     1, // burns in from the rim to the centre under small flames
@@ -2956,7 +2956,7 @@ const SIGIL_ENTITY_MAPS = {"sig-essence-acid-100": {"entities": {"10000087006": 
     // Essence scores are flat (about 0.04 to 0.06), so the winner is often
     // decided by noise: Find Familiar's top essence is Poison by 0.0005. Below
     // this lead over the runner-up the essence says nothing and the school
-    // decides. Set from the catalog's distribution.
+    // decides. Set from the catalog's distribution, see code_map.
     const VANISH_ESSENCE_MIN_LEAD = 0.001;
 
     // Lowercase name of the essence that clearly leads, or '' if none does.

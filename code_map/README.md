@@ -11,4 +11,5 @@ Notes on how the non-obvious parts of this codebase actually work, and where eac
 ## Index
 
 - [html_sigil_gen.md](html_sigil_gen.md) — server-side sigil `<symbol>` library generation and client-side sigil composition (`buildSigilSvg()`).
+- [cast_vanish_styles.md](cast_vanish_styles.md) — how a cast sigil's fade-out style is chosen per spell and implemented in the sigil shader.
 - [spell_rand_factors.md](spell_rand_factors.md) — the five deterministic `rand_factor_*` seeds per spell: how they're derived and where each one is consumed.
