@@ -2,14 +2,15 @@
   "metadata": {
     "base_svg_filename": "divination_level_0.svg",
     "type": "school",
+    "version": 0,
     "school": "Divination",
     "level": 0,
     "subtype": "divination"
   },
   "entity_map": {
     "entities": {
-      "10000089168": {
-        "id": "10000089168",
+      "10000131885": {
+        "id": "10000131885",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -18,8 +19,8 @@
           3
         ]
       },
-      "10000089169": {
-        "id": "10000089169",
+      "10000131886": {
+        "id": "10000131886",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -28,8 +29,8 @@
           0
         ]
       },
-      "10000089170": {
-        "id": "10000089170",
+      "10000131887": {
+        "id": "10000131887",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -38,8 +39,8 @@
           4
         ]
       },
-      "10000089172": {
-        "id": "10000089172",
+      "10000131889": {
+        "id": "10000131889",
         "category": "main",
         "is_stroke": true,
         "random_group": [
@@ -50,13 +51,13 @@
       }
     },
     "groups": {
-      "10000089167": {
-        "id": "10000089167",
+      "10000131884": {
+        "id": "10000131884",
         "category": "main",
         "entities": [
-          "10000089168",
-          "10000089169",
-          "10000089170"
+          "10000131885",
+          "10000131886",
+          "10000131887"
         ],
         "random_group": [
           5,
@@ -64,11 +65,11 @@
           5
         ]
       },
-      "10000089171": {
-        "id": "10000089171",
+      "10000131888": {
+        "id": "10000131888",
         "category": "main",
         "entities": [
-          "10000089172"
+          "10000131889"
         ],
         "random_group": [
           2,
@@ -81,7 +82,7 @@
   "topology": {
     "essence": [
       {
-        "source_id": "10000089136",
+        "source_id": "10000131853",
         "x": 500.0,
         "y": 500.0,
         "rotation": 0.0,
@@ -90,7 +91,7 @@
     ],
     "reach": [
       {
-        "source_id": "10000089149",
+        "source_id": "10000131866",
         "x": 596.9949,
         "y": 556.0,
         "rotation": 120.0,
@@ -99,7 +100,7 @@
     ],
     "flow": [
       {
-        "source_id": "10000089145",
+        "source_id": "10000131862",
         "x": 403.0052,
         "y": 556.0,
         "rotation": 240.0,
@@ -108,7 +109,7 @@
     ],
     "intent": [
       {
-        "source_id": "10000089141",
+        "source_id": "10000131858",
         "x": 500.0,
         "y": 388.0,
         "rotation": 0.0,
@@ -117,21 +118,21 @@
     ],
     "ornamentation_m": [
       {
-        "source_id": "10000089154",
+        "source_id": "10000131871",
         "x": 556.2917,
         "y": 467.5,
         "rotation": 60.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000089158",
+        "source_id": "10000131875",
         "x": 500.0,
         "y": 565.0,
         "rotation": 180.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000089162",
+        "source_id": "10000131879",
         "x": 443.7083,
         "y": 467.5,
         "rotation": 300.0,

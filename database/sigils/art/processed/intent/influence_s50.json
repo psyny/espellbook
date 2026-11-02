@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "base_svg_filename": "influence_02_s50.svg",
+    "type": "intent",
+    "version": 2,
+    "subtype": "influence"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129781": {
+        "id": "10000129781",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          4,
+          2
+        ]
+      },
+      "10000129782": {
+        "id": "10000129782",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          0,
+          2
+        ]
+      },
+      "10000129783": {
+        "id": "10000129783",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          4,
+          5
+        ]
+      },
+      "10000129784": {
+        "id": "10000129784",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          3,
+          1
+        ]
+      }
+    },
+    "groups": {
+      "10000129781": {
+        "id": "10000129781",
+        "category": "main",
+        "entities": [
+          "10000129781"
+        ],
+        "random_group": [
+          1,
+          2,
+          0
+        ]
+      },
+      "10000129782": {
+        "id": "10000129782",
+        "category": "main",
+        "entities": [
+          "10000129782"
+        ],
+        "random_group": [
+          2,
+          2,
+          0
+        ]
+      },
+      "10000129783": {
+        "id": "10000129783",
+        "category": "main",
+        "entities": [
+          "10000129783"
+        ],
+        "random_group": [
+          4,
+          2,
+          3
+        ]
+      },
+      "10000129784": {
+        "id": "10000129784",
+        "category": "main",
+        "entities": [
+          "10000129784"
+        ],
+        "random_group": [
+          0,
+          4,
+          1
+        ]
+      }
+    }
+  }
+}

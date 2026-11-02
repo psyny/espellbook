@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_radiance_01_s50.svg",
+    "type": "essence",
+    "version": 1,
+    "subtype": "radiance"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129372": {
+        "id": "10000129372",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          4,
+          0
+        ]
+      },
+      "10000129373": {
+        "id": "10000129373",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          2,
+          4
+        ]
+      }
+    },
+    "groups": {
+      "10000129372": {
+        "id": "10000129372",
+        "category": "main",
+        "entities": [
+          "10000129372"
+        ],
+        "random_group": [
+          0,
+          1,
+          3
+        ]
+      },
+      "10000129373": {
+        "id": "10000129373",
+        "category": "main",
+        "entities": [
+          "10000129373"
+        ],
+        "random_group": [
+          2,
+          5,
+          0
+        ]
+      }
+    }
+  }
+}

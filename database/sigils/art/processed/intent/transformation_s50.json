@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "base_svg_filename": "transformation_02_s50.svg",
+    "type": "intent",
+    "version": 2,
+    "subtype": "transformation"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129838": {
+        "id": "10000129838",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          1,
+          0
+        ]
+      },
+      "10000129839": {
+        "id": "10000129839",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          4,
+          3
+        ]
+      },
+      "10000129840": {
+        "id": "10000129840",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          2,
+          1
+        ]
+      }
+    },
+    "groups": {
+      "10000129838": {
+        "id": "10000129838",
+        "category": "main",
+        "entities": [
+          "10000129838"
+        ],
+        "random_group": [
+          1,
+          4,
+          4
+        ]
+      },
+      "10000129839": {
+        "id": "10000129839",
+        "category": "main",
+        "entities": [
+          "10000129839"
+        ],
+        "random_group": [
+          3,
+          4,
+          4
+        ]
+      },
+      "10000129840": {
+        "id": "10000129840",
+        "category": "main",
+        "entities": [
+          "10000129840"
+        ],
+        "random_group": [
+          4,
+          1,
+          5
+        ]
+      }
+    }
+  }
+}

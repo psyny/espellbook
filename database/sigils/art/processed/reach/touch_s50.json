@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "base_svg_filename": "touch_03_s50.svg",
+    "type": "reach",
+    "version": 3,
+    "subtype": "touch"
+  },
+  "entity_map": {
+    "entities": {
+      "10000130753": {
+        "id": "10000130753",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          4,
+          1
+        ]
+      },
+      "10000130754": {
+        "id": "10000130754",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          1,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000130753": {
+        "id": "10000130753",
+        "category": "main",
+        "entities": [
+          "10000130753"
+        ],
+        "random_group": [
+          0,
+          1,
+          5
+        ]
+      },
+      "10000130754": {
+        "id": "10000130754",
+        "category": "main",
+        "entities": [
+          "10000130754"
+        ],
+        "random_group": [
+          0,
+          3,
+          0
+        ]
+      }
+    }
+  }
+}

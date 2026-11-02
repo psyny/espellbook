@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_sound_01_s100.svg",
+    "type": "essence",
+    "version": 1,
+    "subtype": "sound"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129467": {
+        "id": "10000129467",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000129467": {
+        "id": "10000129467",
+        "category": "main",
+        "entities": [
+          "10000129467"
+        ],
+        "random_group": [
+          2,
+          0,
+          5
+        ]
+      }
+    }
+  }
+}

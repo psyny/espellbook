@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "flair_geo_triangle_l_s50.svg",
+    "type": "ornamentation",
+    "version": 0,
+    "subtype": "geo"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129932": {
+        "id": "10000129932",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          4,
+          3
+        ]
+      }
+    },
+    "groups": {
+      "10000129932": {
+        "id": "10000129932",
+        "category": "main",
+        "entities": [
+          "10000129932"
+        ],
+        "random_group": [
+          0,
+          4,
+          1
+        ]
+      }
+    }
+  }
+}

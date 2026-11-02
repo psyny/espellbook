@@ -94,17 +94,36 @@ Processed art assets live under `database/sigils/art/processed/<category>/`
 carries a `metadata` block:
 
 ```json
-{ "metadata": { "base_svg_filename": "...", "type": "essence", "subtype": "fire" } }
+{ "metadata": { "base_svg_filename": "e_fire_02_s100.svg", "type": "essence", "subtype": "fire", "version": 2 } }
 ```
 
-(`ornamentation/runes` assets additionally carry `"variant": "<letter>"`.)
+(`ornamentation/runes` assets additionally carry `"variant": "<letter>"` and
+`"size_class": "s" | "m" | "l"`.)
+
+**Rune sizes.** Each rune letter has three files, one per ornamentation slot:
+`flair_rune_<letter>_s.svg`, `_m.svg` and `_l.svg`. All three use the same
+50-unit canvas and the same letterform; the slot still scales them
+(`ornamentation_s` 0.3, `ornamentation_m` 0.5, `ornamentation_l` 1.0). What
+differs is stroke weight: `_m` strokes are 90% and `_l` strokes 56% (70%,
+then thinned another 20%) of the thickness plain scaling of `_s` would give, so bigger slots don't get heavy,
+blocky runes. `ornamentation_s` uses `_s`, `ornamentation_m` uses `_m`, and the
+rune fallback in `ornamentation_l` uses `_l` (falling back to the nearest size
+if one is missing).
 
 To find the asset for a given name, match on `metadata.type` /
 `metadata.subtype` (subtype = the name lowercased), not by re-deriving a
-filename — the filename encoding (`e_fire_01_s100.svg`) contains extra
-housekeeping tokens (like the `_01`) that are not meaningful for selection.
-If more than one asset matches the same `type` + `subtype` + size, pick the
-lexicographically first `base_svg_filename` so selection stays deterministic.
+filename.
+
+**Versions.** Raw art may keep several versions of the same symbol side by
+side. The version is the number right before the size suffix:
+`e_fire_01_s100.svg`, `e_fire_02_s100.svg`, `burst_01_s50.svg`,
+`burst_02_s50.svg`. `generate_processed_symbols.py` processes only the
+highest version of each symbol (per folder, name and size) and writes it
+under an unversioned name (`e_fire_s100`, `burst_s50`); processed files from
+older versions are removed. So the processed folders, and the generated HTML,
+only ever hold one version of each symbol. `metadata.base_svg_filename` and
+`metadata.version` record which raw file it came from. To try a new version,
+add `<name>_<NN+1>_s<size>.svg` to `raw/`; to roll back, delete it.
 
 Size suffix (`_s100` vs `_s50`) is selected per the rules in each section
 below, not by name.

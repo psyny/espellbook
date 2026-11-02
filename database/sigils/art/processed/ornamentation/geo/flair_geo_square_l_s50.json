@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "flair_geo_square_l_s50.svg",
+    "type": "ornamentation",
+    "version": 0,
+    "subtype": "geo"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129912": {
+        "id": "10000129912",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          4,
+          4
+        ]
+      }
+    },
+    "groups": {
+      "10000129912": {
+        "id": "10000129912",
+        "category": "main",
+        "entities": [
+          "10000129912"
+        ],
+        "random_group": [
+          2,
+          2,
+          5
+        ]
+      }
+    }
+  }
+}

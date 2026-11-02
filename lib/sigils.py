@@ -212,9 +212,13 @@ def build_sigil_library(root_dir):
             if layer is None:
                 continue
             size = int(round(width))
-            symbol_id = f"sig-rune-{_slugify(variant)}-{size}"
+            # Each rune can have one file per ornamentation slot size
+            # (s / m / l), drawn with progressively thinner strokes so they
+            # keep a similar weight once the slot scales them up.
+            size_class = metadata.get("size_class", "s")
+            symbol_id = f"sig-rune-{_slugify(variant)}-{size_class}"
             register(symbol_id, width, layer, data.get("entity_map"))
-            runes[variant] = {"id": symbol_id, "size": size}
+            runes.setdefault(variant, {})[size_class] = {"id": symbol_id, "size": size}
 
     geo = []
     geo_folder = art_root / "ornamentation" / "geo"

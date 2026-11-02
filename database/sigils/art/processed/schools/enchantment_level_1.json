@@ -2,14 +2,15 @@
   "metadata": {
     "base_svg_filename": "enchantment_level_1.svg",
     "type": "school",
+    "version": 0,
     "school": "Enchantment",
     "level": 1,
     "subtype": "enchantment"
   },
   "entity_map": {
     "entities": {
-      "10000089714": {
-        "id": "10000089714",
+      "10000132431": {
+        "id": "10000132431",
         "category": "main",
         "is_stroke": true,
         "random_group": [
@@ -18,8 +19,8 @@
           5
         ]
       },
-      "10000089716": {
-        "id": "10000089716",
+      "10000132433": {
+        "id": "10000132433",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -28,8 +29,8 @@
           3
         ]
       },
-      "10000089718": {
-        "id": "10000089718",
+      "10000132435": {
+        "id": "10000132435",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -38,8 +39,8 @@
           1
         ]
       },
-      "10000089719": {
-        "id": "10000089719",
+      "10000132436": {
+        "id": "10000132436",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -48,8 +49,8 @@
           3
         ]
       },
-      "10000089720": {
-        "id": "10000089720",
+      "10000132437": {
+        "id": "10000132437",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -58,8 +59,8 @@
           5
         ]
       },
-      "10000089721": {
-        "id": "10000089721",
+      "10000132438": {
+        "id": "10000132438",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -68,8 +69,8 @@
           2
         ]
       },
-      "10000089722": {
-        "id": "10000089722",
+      "10000132439": {
+        "id": "10000132439",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -78,8 +79,8 @@
           4
         ]
       },
-      "10000089723": {
-        "id": "10000089723",
+      "10000132440": {
+        "id": "10000132440",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -88,8 +89,8 @@
           5
         ]
       },
-      "10000089724": {
-        "id": "10000089724",
+      "10000132441": {
+        "id": "10000132441",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -98,8 +99,8 @@
           4
         ]
       },
-      "10000089725": {
-        "id": "10000089725",
+      "10000132442": {
+        "id": "10000132442",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -110,11 +111,11 @@
       }
     },
     "groups": {
-      "10000089713": {
-        "id": "10000089713",
+      "10000132430": {
+        "id": "10000132430",
         "category": "main",
         "entities": [
-          "10000089714"
+          "10000132431"
         ],
         "random_group": [
           0,
@@ -122,11 +123,11 @@
           3
         ]
       },
-      "10000089715": {
-        "id": "10000089715",
+      "10000132432": {
+        "id": "10000132432",
         "category": "sub",
         "entities": [
-          "10000089716"
+          "10000132433"
         ],
         "random_group": [
           3,
@@ -134,18 +135,18 @@
           2
         ]
       },
-      "10000089717": {
-        "id": "10000089717",
+      "10000132434": {
+        "id": "10000132434",
         "category": "sub",
         "entities": [
-          "10000089718",
-          "10000089719",
-          "10000089720",
-          "10000089721",
-          "10000089722",
-          "10000089723",
-          "10000089724",
-          "10000089725"
+          "10000132435",
+          "10000132436",
+          "10000132437",
+          "10000132438",
+          "10000132439",
+          "10000132440",
+          "10000132441",
+          "10000132442"
         ],
         "random_group": [
           1,
@@ -158,7 +159,7 @@
   "topology": {
     "essence": [
       {
-        "source_id": "10000089653",
+        "source_id": "10000132370",
         "x": 500.0,
         "y": 500.0,
         "rotation": 0.0,
@@ -167,7 +168,7 @@
     ],
     "reach": [
       {
-        "source_id": "10000089649",
+        "source_id": "10000132366",
         "x": 420.0,
         "y": 580.0,
         "rotation": 359.967,
@@ -176,7 +177,7 @@
     ],
     "flow": [
       {
-        "source_id": "10000089645",
+        "source_id": "10000132362",
         "x": 580.0,
         "y": 580.0,
         "rotation": 0.0,
@@ -185,7 +186,7 @@
     ],
     "intent": [
       {
-        "source_id": "10000089641",
+        "source_id": "10000132358",
         "x": 500.0,
         "y": 419.5875,
         "rotation": 0.0,
@@ -194,28 +195,28 @@
     ],
     "ornamentation_s": [
       {
-        "source_id": "10000089696",
+        "source_id": "10000132413",
         "x": 381.0,
         "y": 380.75,
         "rotation": 315.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089700",
+        "source_id": "10000132417",
         "x": 380.75,
         "y": 619.0,
         "rotation": 225.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089704",
+        "source_id": "10000132421",
         "x": 619.0,
         "y": 619.25,
         "rotation": 135.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089708",
+        "source_id": "10000132425",
         "x": 619.25,
         "y": 381.0,
         "rotation": 45.0,
@@ -224,28 +225,28 @@
     ],
     "ornamentation_m": [
       {
-        "source_id": "10000089679",
+        "source_id": "10000132396",
         "x": 452.5,
         "y": 452.5,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089683",
+        "source_id": "10000132400",
         "x": 547.5,
         "y": 452.5,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089687",
+        "source_id": "10000132404",
         "x": 547.5,
         "y": 547.5,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089691",
+        "source_id": "10000132408",
         "x": 452.5,
         "y": 547.5,
         "rotation": 0.0,
@@ -254,35 +255,35 @@
     ],
     "ornamentation_l": [
       {
-        "source_id": "10000089658",
+        "source_id": "10000132375",
         "x": 420.0,
         "y": 500.0,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089662",
+        "source_id": "10000132379",
         "x": 500.0,
         "y": 580.0,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089666",
+        "source_id": "10000132383",
         "x": 580.0,
         "y": 500.0,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089670",
+        "source_id": "10000132387",
         "x": 580.0,
         "y": 420.0,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089674",
+        "source_id": "10000132391",
         "x": 420.0,
         "y": 420.0,
         "rotation": 0.0,

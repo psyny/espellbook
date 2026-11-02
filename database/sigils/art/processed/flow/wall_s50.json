@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "base_svg_filename": "wall_02_s50.svg",
+    "type": "flow",
+    "version": 2,
+    "subtype": "wall"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129741": {
+        "id": "10000129741",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          1,
+          3
+        ]
+      },
+      "10000129742": {
+        "id": "10000129742",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          5,
+          1
+        ]
+      },
+      "10000129743": {
+        "id": "10000129743",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          3,
+          2
+        ]
+      },
+      "10000129744": {
+        "id": "10000129744",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          0,
+          1
+        ]
+      },
+      "10000129745": {
+        "id": "10000129745",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          4,
+          3
+        ]
+      }
+    },
+    "groups": {
+      "10000129741": {
+        "id": "10000129741",
+        "category": "main",
+        "entities": [
+          "10000129741"
+        ],
+        "random_group": [
+          2,
+          0,
+          0
+        ]
+      },
+      "10000129742": {
+        "id": "10000129742",
+        "category": "main",
+        "entities": [
+          "10000129742"
+        ],
+        "random_group": [
+          5,
+          4,
+          3
+        ]
+      },
+      "10000129743": {
+        "id": "10000129743",
+        "category": "main",
+        "entities": [
+          "10000129743"
+        ],
+        "random_group": [
+          1,
+          0,
+          5
+        ]
+      },
+      "10000129744": {
+        "id": "10000129744",
+        "category": "main",
+        "entities": [
+          "10000129744"
+        ],
+        "random_group": [
+          5,
+          1,
+          4
+        ]
+      },
+      "10000129745": {
+        "id": "10000129745",
+        "category": "main",
+        "entities": [
+          "10000129745"
+        ],
+        "random_group": [
+          1,
+          3,
+          3
+        ]
+      }
+    }
+  }
+}

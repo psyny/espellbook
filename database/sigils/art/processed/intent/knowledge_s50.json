@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "base_svg_filename": "knowledge_01_s50.svg",
+    "type": "intent",
+    "version": 1,
+    "subtype": "knowledge"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129794": {
+        "id": "10000129794",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          5,
+          3
+        ]
+      },
+      "10000129795": {
+        "id": "10000129795",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          0,
+          3
+        ]
+      },
+      "10000129796": {
+        "id": "10000129796",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          4,
+          1
+        ]
+      }
+    },
+    "groups": {
+      "10000129794": {
+        "id": "10000129794",
+        "category": "main",
+        "entities": [
+          "10000129794"
+        ],
+        "random_group": [
+          2,
+          0,
+          0
+        ]
+      },
+      "10000129795": {
+        "id": "10000129795",
+        "category": "main",
+        "entities": [
+          "10000129795"
+        ],
+        "random_group": [
+          3,
+          3,
+          0
+        ]
+      },
+      "10000129796": {
+        "id": "10000129796",
+        "category": "main",
+        "entities": [
+          "10000129796"
+        ],
+        "random_group": [
+          3,
+          2,
+          4
+        ]
+      }
+    }
+  }
+}

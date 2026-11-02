@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_acid_02_s50.svg",
+    "type": "essence",
+    "version": 2,
+    "subtype": "acid"
+  },
+  "entity_map": {
+    "entities": {
+      "10000128920": {
+        "id": "10000128920",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          3,
+          0
+        ]
+      },
+      "10000128921": {
+        "id": "10000128921",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          3,
+          2
+        ]
+      },
+      "10000128922": {
+        "id": "10000128922",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          5,
+          0
+        ]
+      },
+      "10000128923": {
+        "id": "10000128923",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          0,
+          3
+        ]
+      }
+    },
+    "groups": {
+      "10000128920": {
+        "id": "10000128920",
+        "category": "main",
+        "entities": [
+          "10000128920"
+        ],
+        "random_group": [
+          4,
+          3,
+          3
+        ]
+      },
+      "10000128921": {
+        "id": "10000128921",
+        "category": "main",
+        "entities": [
+          "10000128921"
+        ],
+        "random_group": [
+          1,
+          5,
+          3
+        ]
+      },
+      "10000128922": {
+        "id": "10000128922",
+        "category": "main",
+        "entities": [
+          "10000128922"
+        ],
+        "random_group": [
+          3,
+          0,
+          0
+        ]
+      },
+      "10000128923": {
+        "id": "10000128923",
+        "category": "main",
+        "entities": [
+          "10000128923"
+        ],
+        "random_group": [
+          4,
+          1,
+          5
+        ]
+      }
+    }
+  }
+}

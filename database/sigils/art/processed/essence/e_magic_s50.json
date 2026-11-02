@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_magic_02_s50.svg",
+    "type": "essence",
+    "version": 2,
+    "subtype": "magic"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129196": {
+        "id": "10000129196",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          3,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000129196": {
+        "id": "10000129196",
+        "category": "main",
+        "entities": [
+          "10000129196"
+        ],
+        "random_group": [
+          2,
+          5,
+          4
+        ]
+      }
+    }
+  }
+}

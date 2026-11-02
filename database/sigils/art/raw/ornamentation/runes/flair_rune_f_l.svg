@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="50mm"
+   height="50mm"
+   viewBox="0 0 50 50"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="flair_rune_f_l.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1" /><g
+     inkscape:label="symbol_art"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:none"
+       d="M 11.69,44.09 L 13.88,44.09 L 13.88,31.16 L 17.44,30.33 L 19.58,29.74 L 21.65,28.98 L 23.68,28.04 L 25.64,26.95 L 27.52,25.71 L 29.30,24.36 L 30.97,22.89 L 32.52,21.33 L 33.94,19.68 L 35.20,17.97 L 36.30,16.21 L 37.22,14.42 L 37.96,12.61 L 38.50,10.79 L 38.83,8.99 L 38.95,7.18 L 38.95,6.87 L 38.94,6.56 L 38.93,6.32 L 38.93,6.18 L 38.81,6.18 L 38.57,6.17 L 38.27,6.16 L 36.79,6.16 L 36.58,8.19 L 36.39,9.52 L 36.09,10.88 L 35.68,12.21 L 35.16,13.52 L 34.55,14.81 L 33.86,16.07 L 33.07,17.30 L 32.20,18.49 L 31.25,19.63 L 30.23,20.74 L 29.14,21.78 L 27.97,22.77 L 26.75,23.70 L 25.46,24.57 L 24.11,25.36 L 22.74,26.06 L 22.31,26.26 L 21.89,26.45 L 21.47,26.64 L 21.04,26.82 L 20.62,27.00 L 20.20,27.17 L 19.80,27.34 L 19.39,27.49 L 19.01,27.64 L 18.64,27.79 L 18.29,27.91 L 17.96,28.02 L 17.65,28.12 L 17.36,28.20 L 17.09,28.28 L 16.86,28.33 L 13.88,28.92 L 13.88,24.50 L 13.89,24.07 L 13.90,23.69 L 13.92,23.33 L 13.97,22.98 L 14.03,22.67 L 14.14,22.34 L 14.29,22.02 L 14.50,21.72 L 14.76,21.47 L 15.03,21.27 L 15.33,21.13 L 15.61,21.00 L 15.92,20.87 L 16.24,20.77 L 16.58,20.65 L 17.90,20.19 L 19.14,19.66 L 20.32,19.08 L 21.44,18.43 L 22.50,17.74 L 23.49,17.00 L 24.40,16.20 L 25.24,15.37 L 26.02,14.49 L 26.71,13.57 L 27.33,12.62 L 27.87,11.63 L 28.33,10.60 L 28.70,9.56 L 28.98,8.49 L 29.18,7.37 L 29.34,6.16 L 28.34,6.16 L 28.04,6.17 L 27.78,6.17 L 27.56,6.19 L 27.37,6.20 L 27.23,6.21 L 27.13,6.23 L 27.07,7.06 L 26.86,8.12 L 26.52,9.18 L 26.06,10.23 L 25.51,11.26 L 24.88,12.27 L 24.18,13.24 L 23.41,14.16 L 22.60,15.03 L 21.73,15.83 L 20.83,16.54 L 19.89,17.17 L 18.94,17.69 L 17.98,18.08 L 16.99,18.34 L 16.04,18.43 L 15.74,18.42 L 15.45,18.38 L 15.10,18.28 L 14.75,18.07 L 14.46,17.76 L 14.26,17.42 L 14.13,17.06 L 14.06,16.69 L 14.00,16.29 L 13.96,15.83 L 13.93,15.31 L 13.91,14.70 L 13.89,14.00 L 13.89,13.20 L 13.88,12.29 L 13.88,6.16 L 11.69,6.16 Z"
+       id="rune_f_l" />
+  </g><g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="general_boundaries"
+     sodipodi:insensitive="true"><g
+       id="g3"
+       style="display:inline"
+       inkscape:label="_helper_center_mark"><circle
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:0.495;stroke-opacity:0.1"
+         id="helper_circle"
+         cx="25"
+         cy="25"
+         r="24.75" /><path
+         style="fill:none;stroke:#000000;stroke-width:0.5;stroke-opacity:0.1"
+         d="M 0,25 H 50"
+         id="helper_h" /><path
+         style="fill:none;stroke:#000000;stroke-width:0.5;stroke-opacity:0.1"
+         d="M 25,50 V 0"
+         id="helper_v" /></g></g></svg>

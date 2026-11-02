@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_lightning_05_s50.svg",
+    "type": "essence",
+    "version": 5,
+    "subtype": "lightning"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129169": {
+        "id": "10000129169",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          4,
+          5
+        ]
+      },
+      "10000129170": {
+        "id": "10000129170",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          1,
+          1
+        ]
+      },
+      "10000129171": {
+        "id": "10000129171",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          2,
+          5
+        ]
+      },
+      "10000129172": {
+        "id": "10000129172",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          3,
+          5
+        ]
+      }
+    },
+    "groups": {
+      "10000129169": {
+        "id": "10000129169",
+        "category": "main",
+        "entities": [
+          "10000129169"
+        ],
+        "random_group": [
+          0,
+          0,
+          2
+        ]
+      },
+      "10000129170": {
+        "id": "10000129170",
+        "category": "main",
+        "entities": [
+          "10000129170"
+        ],
+        "random_group": [
+          0,
+          4,
+          0
+        ]
+      },
+      "10000129171": {
+        "id": "10000129171",
+        "category": "main",
+        "entities": [
+          "10000129171"
+        ],
+        "random_group": [
+          4,
+          1,
+          5
+        ]
+      },
+      "10000129172": {
+        "id": "10000129172",
+        "category": "main",
+        "entities": [
+          "10000129172"
+        ],
+        "random_group": [
+          4,
+          0,
+          3
+        ]
+      }
+    }
+  }
+}

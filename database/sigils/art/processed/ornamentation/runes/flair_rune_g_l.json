@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "base_svg_filename": "flair_rune_g_l.svg",
+    "type": "ornamentation",
+    "version": 0,
+    "subtype": "runes",
+    "variant": "g",
+    "size_class": "l"
+  },
+  "entity_map": {
+    "entities": {
+      "10000130125": {
+        "id": "10000130125",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          0,
+          5
+        ]
+      }
+    },
+    "groups": {
+      "10000130125": {
+        "id": "10000130125",
+        "category": "main",
+        "entities": [
+          "10000130125"
+        ],
+        "random_group": [
+          3,
+          2,
+          2
+        ]
+      }
+    }
+  }
+}

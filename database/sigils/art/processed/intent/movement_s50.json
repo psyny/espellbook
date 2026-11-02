@@ -1,0 +1,212 @@
+{
+  "metadata": {
+    "base_svg_filename": "movement_02_s50.svg",
+    "type": "intent",
+    "version": 2,
+    "subtype": "movement"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129806": {
+        "id": "10000129806",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          1,
+          5
+        ]
+      },
+      "10000129807": {
+        "id": "10000129807",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          2,
+          5
+        ]
+      },
+      "10000129808": {
+        "id": "10000129808",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          2,
+          0
+        ]
+      },
+      "10000129809": {
+        "id": "10000129809",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          2,
+          5
+        ]
+      },
+      "10000129810": {
+        "id": "10000129810",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          3,
+          3
+        ]
+      },
+      "10000129811": {
+        "id": "10000129811",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          4,
+          3
+        ]
+      },
+      "10000129812": {
+        "id": "10000129812",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          3,
+          1
+        ]
+      },
+      "10000129813": {
+        "id": "10000129813",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          5,
+          4
+        ]
+      },
+      "10000129814": {
+        "id": "10000129814",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          2,
+          3
+        ]
+      }
+    },
+    "groups": {
+      "10000129806": {
+        "id": "10000129806",
+        "category": "main",
+        "entities": [
+          "10000129806"
+        ],
+        "random_group": [
+          5,
+          5,
+          5
+        ]
+      },
+      "10000129807": {
+        "id": "10000129807",
+        "category": "main",
+        "entities": [
+          "10000129807"
+        ],
+        "random_group": [
+          3,
+          0,
+          4
+        ]
+      },
+      "10000129808": {
+        "id": "10000129808",
+        "category": "main",
+        "entities": [
+          "10000129808"
+        ],
+        "random_group": [
+          4,
+          1,
+          1
+        ]
+      },
+      "10000129809": {
+        "id": "10000129809",
+        "category": "main",
+        "entities": [
+          "10000129809"
+        ],
+        "random_group": [
+          3,
+          3,
+          3
+        ]
+      },
+      "10000129810": {
+        "id": "10000129810",
+        "category": "main",
+        "entities": [
+          "10000129810"
+        ],
+        "random_group": [
+          4,
+          2,
+          3
+        ]
+      },
+      "10000129811": {
+        "id": "10000129811",
+        "category": "main",
+        "entities": [
+          "10000129811"
+        ],
+        "random_group": [
+          2,
+          1,
+          2
+        ]
+      },
+      "10000129812": {
+        "id": "10000129812",
+        "category": "main",
+        "entities": [
+          "10000129812"
+        ],
+        "random_group": [
+          3,
+          0,
+          5
+        ]
+      },
+      "10000129813": {
+        "id": "10000129813",
+        "category": "main",
+        "entities": [
+          "10000129813"
+        ],
+        "random_group": [
+          3,
+          4,
+          1
+        ]
+      },
+      "10000129814": {
+        "id": "10000129814",
+        "category": "main",
+        "entities": [
+          "10000129814"
+        ],
+        "random_group": [
+          3,
+          2,
+          5
+        ]
+      }
+    }
+  }
+}

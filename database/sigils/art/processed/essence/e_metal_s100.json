@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_metal_01_s100.svg",
+    "type": "essence",
+    "version": 1,
+    "subtype": "metal"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129207": {
+        "id": "10000129207",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          2,
+          4
+        ]
+      }
+    },
+    "groups": {
+      "10000129207": {
+        "id": "10000129207",
+        "category": "main",
+        "entities": [
+          "10000129207"
+        ],
+        "random_group": [
+          4,
+          4,
+          4
+        ]
+      }
+    }
+  }
+}

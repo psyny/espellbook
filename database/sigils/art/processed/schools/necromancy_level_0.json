@@ -2,14 +2,15 @@
   "metadata": {
     "base_svg_filename": "necromancy_level_0.svg",
     "type": "school",
+    "version": 0,
     "school": "Necromancy",
     "level": 0,
     "subtype": "necromancy"
   },
   "entity_map": {
     "entities": {
-      "10000090900": {
-        "id": "10000090900",
+      "10000133617": {
+        "id": "10000133617",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -18,8 +19,8 @@
           4
         ]
       },
-      "10000090901": {
-        "id": "10000090901",
+      "10000133618": {
+        "id": "10000133618",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -28,8 +29,8 @@
           0
         ]
       },
-      "10000090902": {
-        "id": "10000090902",
+      "10000133619": {
+        "id": "10000133619",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -38,8 +39,8 @@
           4
         ]
       },
-      "10000090904": {
-        "id": "10000090904",
+      "10000133621": {
+        "id": "10000133621",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -48,8 +49,8 @@
           1
         ]
       },
-      "10000090905": {
-        "id": "10000090905",
+      "10000133622": {
+        "id": "10000133622",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -58,8 +59,8 @@
           4
         ]
       },
-      "10000090906": {
-        "id": "10000090906",
+      "10000133623": {
+        "id": "10000133623",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -68,8 +69,8 @@
           2
         ]
       },
-      "10000090908": {
-        "id": "10000090908",
+      "10000133625": {
+        "id": "10000133625",
         "category": "main",
         "is_stroke": true,
         "random_group": [
@@ -80,13 +81,13 @@
       }
     },
     "groups": {
-      "10000090899": {
-        "id": "10000090899",
+      "10000133616": {
+        "id": "10000133616",
         "category": "main",
         "entities": [
-          "10000090900",
-          "10000090901",
-          "10000090902"
+          "10000133617",
+          "10000133618",
+          "10000133619"
         ],
         "random_group": [
           0,
@@ -94,13 +95,13 @@
           0
         ]
       },
-      "10000090903": {
-        "id": "10000090903",
+      "10000133620": {
+        "id": "10000133620",
         "category": "sub",
         "entities": [
-          "10000090904",
-          "10000090905",
-          "10000090906"
+          "10000133621",
+          "10000133622",
+          "10000133623"
         ],
         "random_group": [
           4,
@@ -108,11 +109,11 @@
           0
         ]
       },
-      "10000090907": {
-        "id": "10000090907",
+      "10000133624": {
+        "id": "10000133624",
         "category": "main",
         "entities": [
-          "10000090908"
+          "10000133625"
         ],
         "random_group": [
           5,
@@ -125,7 +126,7 @@
   "topology": {
     "essence": [
       {
-        "source_id": "10000090843",
+        "source_id": "10000133560",
         "x": 500.0,
         "y": 500.0,
         "rotation": 0.0,
@@ -134,7 +135,7 @@
     ],
     "reach": [
       {
-        "source_id": "10000090856",
+        "source_id": "10000133573",
         "x": 596.9949,
         "y": 556.0,
         "rotation": 120.0,
@@ -143,7 +144,7 @@
     ],
     "flow": [
       {
-        "source_id": "10000090852",
+        "source_id": "10000133569",
         "x": 403.0052,
         "y": 556.0,
         "rotation": 240.0,
@@ -152,7 +153,7 @@
     ],
     "intent": [
       {
-        "source_id": "10000090848",
+        "source_id": "10000133565",
         "x": 500.0,
         "y": 388.0,
         "rotation": 0.0,
@@ -161,42 +162,42 @@
     ],
     "ornamentation_m": [
       {
-        "source_id": "10000090861",
+        "source_id": "10000133578",
         "x": 532.5,
         "y": 443.7083,
         "rotation": 30.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000090865",
+        "source_id": "10000133582",
         "x": 565.0,
         "y": 500.0,
         "rotation": 90.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000090869",
+        "source_id": "10000133586",
         "x": 532.5,
         "y": 556.2917,
         "rotation": 150.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000090873",
+        "source_id": "10000133590",
         "x": 467.5,
         "y": 556.2917,
         "rotation": 210.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000090877",
+        "source_id": "10000133594",
         "x": 435.0,
         "y": 500.0,
         "rotation": 270.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000090881",
+        "source_id": "10000133598",
         "x": 467.5,
         "y": 443.7083,
         "rotation": 330.0,
@@ -205,21 +206,21 @@
     ],
     "ornamentation_l": [
       {
-        "source_id": "10000090886",
+        "source_id": "10000133603",
         "x": 596.9961,
         "y": 443.9978,
         "rotation": 60.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000090890",
+        "source_id": "10000133607",
         "x": 500.0051,
         "y": 612.0001,
         "rotation": 180.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000090894",
+        "source_id": "10000133611",
         "x": 403.0064,
         "y": 444.0022,
         "rotation": 300.0,

@@ -2,14 +2,15 @@
   "metadata": {
     "base_svg_filename": "conjuration_level_2.svg",
     "type": "school",
+    "version": 0,
     "school": "Conjuration",
     "level": 2,
     "subtype": "conjuration"
   },
   "entity_map": {
     "entities": {
-      "10000089113": {
-        "id": "10000089113",
+      "10000131830": {
+        "id": "10000131830",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -18,8 +19,8 @@
           3
         ]
       },
-      "10000089115": {
-        "id": "10000089115",
+      "10000131832": {
+        "id": "10000131832",
         "category": "main",
         "is_stroke": true,
         "random_group": [
@@ -28,8 +29,8 @@
           4
         ]
       },
-      "10000089116": {
-        "id": "10000089116",
+      "10000131833": {
+        "id": "10000131833",
         "category": "main",
         "is_stroke": true,
         "random_group": [
@@ -40,11 +41,11 @@
       }
     },
     "groups": {
-      "10000089112": {
-        "id": "10000089112",
+      "10000131829": {
+        "id": "10000131829",
         "category": "sub",
         "entities": [
-          "10000089113"
+          "10000131830"
         ],
         "random_group": [
           0,
@@ -52,12 +53,12 @@
           4
         ]
       },
-      "10000089114": {
-        "id": "10000089114",
+      "10000131831": {
+        "id": "10000131831",
         "category": "main",
         "entities": [
-          "10000089115",
-          "10000089116"
+          "10000131832",
+          "10000131833"
         ],
         "random_group": [
           2,
@@ -70,7 +71,7 @@
   "topology": {
     "essence": [
       {
-        "source_id": "10000088717",
+        "source_id": "10000131434",
         "x": 500.0,
         "y": 500.0,
         "rotation": 0.0,
@@ -79,7 +80,7 @@
     ],
     "reach": [
       {
-        "source_id": "10000088730",
+        "source_id": "10000131447",
         "x": 580.0,
         "y": 500.0,
         "rotation": 90.0,
@@ -88,7 +89,7 @@
     ],
     "flow": [
       {
-        "source_id": "10000088726",
+        "source_id": "10000131443",
         "x": 420.0,
         "y": 500.0,
         "rotation": 270.0,
@@ -97,7 +98,7 @@
     ],
     "intent": [
       {
-        "source_id": "10000088722",
+        "source_id": "10000131439",
         "x": 500.0,
         "y": 420.0,
         "rotation": 0.0,
@@ -106,504 +107,504 @@
     ],
     "ornamentation_s": [
       {
-        "source_id": "10000088822",
+        "source_id": "10000131539",
         "x": 370.5187,
         "y": 392.4528,
         "rotation": 260.3941,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088826",
+        "source_id": "10000131543",
         "x": 374.1783,
         "y": 416.8898,
         "rotation": 262.5715,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088830",
+        "source_id": "10000131547",
         "x": 379.1634,
         "y": 476.1736,
         "rotation": 267.8155,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088834",
+        "source_id": "10000131551",
         "x": 379.6359,
         "y": 500.9597,
         "rotation": 270.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088838",
+        "source_id": "10000131555",
         "x": 379.1511,
         "y": 526.0637,
         "rotation": 272.2125,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088842",
+        "source_id": "10000131559",
         "x": 374.1849,
         "y": 584.9795,
         "rotation": 277.424,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088846",
+        "source_id": "10000131563",
         "x": 370.4803,
         "y": 609.6933,
         "rotation": 279.6261,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088850",
+        "source_id": "10000131567",
         "x": 365.8124,
         "y": 634.325,
         "rotation": 229.5412,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088854",
+        "source_id": "10000131571",
         "x": 392.4527,
         "y": 629.4813,
         "rotation": 170.3941,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088858",
+        "source_id": "10000131575",
         "x": 416.8898,
         "y": 625.8217,
         "rotation": 172.5715,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088862",
+        "source_id": "10000131579",
         "x": 476.1736,
         "y": 620.8366,
         "rotation": 177.8155,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088866",
+        "source_id": "10000131583",
         "x": 500.9598,
         "y": 620.3641,
         "rotation": 180.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088870",
+        "source_id": "10000131587",
         "x": 526.0636,
         "y": 620.8489,
         "rotation": 182.2125,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088874",
+        "source_id": "10000131591",
         "x": 584.9795,
         "y": 625.8151,
         "rotation": 187.424,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088878",
+        "source_id": "10000131595",
         "x": 609.6934,
         "y": 629.5196,
         "rotation": 189.6261,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088882",
+        "source_id": "10000131599",
         "x": 634.325,
         "y": 634.1876,
         "rotation": 139.5412,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088886",
+        "source_id": "10000131603",
         "x": 629.4813,
         "y": 607.5473,
         "rotation": 80.3941,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088890",
+        "source_id": "10000131607",
         "x": 625.8217,
         "y": 583.1102,
         "rotation": 82.5715,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088894",
+        "source_id": "10000131611",
         "x": 620.8366,
         "y": 523.8264,
         "rotation": 87.8155,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088898",
+        "source_id": "10000131615",
         "x": 620.3641,
         "y": 499.0403,
         "rotation": 90.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088902",
+        "source_id": "10000131619",
         "x": 620.8489,
         "y": 473.9364,
         "rotation": 92.2125,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088906",
+        "source_id": "10000131623",
         "x": 625.8151,
         "y": 415.0205,
         "rotation": 97.424,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088910",
+        "source_id": "10000131627",
         "x": 629.5197,
         "y": 390.3067,
         "rotation": 99.6261,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088914",
+        "source_id": "10000131631",
         "x": 634.1876,
         "y": 365.675,
         "rotation": 49.5412,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088918",
+        "source_id": "10000131635",
         "x": 607.5473,
         "y": 370.5187,
         "rotation": 350.3941,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088922",
+        "source_id": "10000131639",
         "x": 583.1102,
         "y": 374.1783,
         "rotation": 352.5715,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088926",
+        "source_id": "10000131643",
         "x": 523.8264,
         "y": 379.1634,
         "rotation": 357.8155,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088930",
+        "source_id": "10000131647",
         "x": 499.0403,
         "y": 379.6359,
         "rotation": 0.0,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088934",
+        "source_id": "10000131651",
         "x": 473.9363,
         "y": 379.1512,
         "rotation": 2.2125,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088938",
+        "source_id": "10000131655",
         "x": 415.0205,
         "y": 374.1849,
         "rotation": 7.424,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088942",
+        "source_id": "10000131659",
         "x": 390.3067,
         "y": 370.4804,
         "rotation": 9.6261,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088946",
+        "source_id": "10000131663",
         "x": 365.675,
         "y": 365.8125,
         "rotation": 319.5412,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088951",
+        "source_id": "10000131668",
         "x": 483.6798,
         "y": 333.5333,
         "rotation": 305.5172,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088955",
+        "source_id": "10000131672",
         "x": 467.645,
         "y": 355.0461,
         "rotation": 307.8816,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088959",
+        "source_id": "10000131676",
         "x": 450.7362,
         "y": 375.8793,
         "rotation": 310.2459,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088963",
+        "source_id": "10000131680",
         "x": 432.9824,
         "y": 395.9971,
         "rotation": 312.6103,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088967",
+        "source_id": "10000131684",
         "x": 414.4649,
         "y": 415.3077,
         "rotation": 314.9683,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088971",
+        "source_id": "10000131688",
         "x": 394.9724,
         "y": 434.0339,
         "rotation": 317.3498,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088975",
+        "source_id": "10000131692",
         "x": 374.9927,
         "y": 451.6949,
         "rotation": 319.6997,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088979",
+        "source_id": "10000131696",
         "x": 354.3058,
         "y": 468.5219,
         "rotation": 322.0495,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088983",
+        "source_id": "10000131700",
         "x": 332.9463,
         "y": 484.4867,
         "rotation": 324.3994,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088987",
+        "source_id": "10000131704",
         "x": 310.1329,
         "y": 500.0972,
         "rotation": 274.5412,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088991",
+        "source_id": "10000131708",
         "x": 333.5332,
         "y": 516.3202,
         "rotation": 215.5172,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088995",
+        "source_id": "10000131712",
         "x": 355.0461,
         "y": 532.3551,
         "rotation": 217.8816,
         "variable_rotation": false
       },
       {
-        "source_id": "10000088999",
+        "source_id": "10000131716",
         "x": 375.8793,
         "y": 549.2638,
         "rotation": 220.2459,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089003",
+        "source_id": "10000131720",
         "x": 395.9971,
         "y": 567.0176,
         "rotation": 222.6103,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089007",
+        "source_id": "10000131724",
         "x": 415.3077,
         "y": 585.5351,
         "rotation": 224.9683,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089011",
+        "source_id": "10000131728",
         "x": 434.0339,
         "y": 605.0276,
         "rotation": 227.3498,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089015",
+        "source_id": "10000131732",
         "x": 451.6949,
         "y": 625.0073,
         "rotation": 229.6997,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089019",
+        "source_id": "10000131736",
         "x": 468.5219,
         "y": 645.6942,
         "rotation": 232.0495,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089023",
+        "source_id": "10000131740",
         "x": 484.4867,
         "y": 667.0537,
         "rotation": 234.3994,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089027",
+        "source_id": "10000131744",
         "x": 500.0972,
         "y": 689.8671,
         "rotation": 184.5412,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089031",
+        "source_id": "10000131748",
         "x": 516.3201,
         "y": 666.4668,
         "rotation": 125.5172,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089035",
+        "source_id": "10000131752",
         "x": 532.3551,
         "y": 644.9539,
         "rotation": 127.8816,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089039",
+        "source_id": "10000131756",
         "x": 549.2638,
         "y": 624.1207,
         "rotation": 130.2459,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089043",
+        "source_id": "10000131760",
         "x": 567.0176,
         "y": 604.0029,
         "rotation": 132.6103,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089047",
+        "source_id": "10000131764",
         "x": 585.5351,
         "y": 584.6924,
         "rotation": 134.9683,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089051",
+        "source_id": "10000131768",
         "x": 605.0276,
         "y": 565.9661,
         "rotation": 137.3498,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089055",
+        "source_id": "10000131772",
         "x": 625.0073,
         "y": 548.3051,
         "rotation": 139.6997,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089059",
+        "source_id": "10000131776",
         "x": 645.6942,
         "y": 531.4781,
         "rotation": 142.0495,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089063",
+        "source_id": "10000131780",
         "x": 667.0537,
         "y": 515.5133,
         "rotation": 144.3994,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089067",
+        "source_id": "10000131784",
         "x": 689.8671,
         "y": 499.9028,
         "rotation": 94.5412,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089071",
+        "source_id": "10000131788",
         "x": 666.4667,
         "y": 483.6799,
         "rotation": 35.5172,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089075",
+        "source_id": "10000131792",
         "x": 644.9538,
         "y": 467.6449,
         "rotation": 37.8816,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089079",
+        "source_id": "10000131796",
         "x": 624.1207,
         "y": 450.7363,
         "rotation": 40.2459,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089083",
+        "source_id": "10000131800",
         "x": 604.0029,
         "y": 432.9824,
         "rotation": 42.6103,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089087",
+        "source_id": "10000131804",
         "x": 584.6923,
         "y": 414.465,
         "rotation": 44.9683,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089091",
+        "source_id": "10000131808",
         "x": 565.9661,
         "y": 394.9724,
         "rotation": 47.3498,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089095",
+        "source_id": "10000131812",
         "x": 548.3051,
         "y": 374.9928,
         "rotation": 49.6997,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089099",
+        "source_id": "10000131816",
         "x": 531.4781,
         "y": 354.3058,
         "rotation": 52.0495,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089103",
+        "source_id": "10000131820",
         "x": 515.5133,
         "y": 332.9463,
         "rotation": 54.3994,
         "variable_rotation": false
       },
       {
-        "source_id": "10000089107",
+        "source_id": "10000131824",
         "x": 499.9028,
         "y": 310.133,
         "rotation": 4.5412,
@@ -612,112 +613,112 @@
     ],
     "ornamentation_m": [
       {
-        "source_id": "10000088735",
+        "source_id": "10000131452",
         "x": 538.8424,
         "y": 406.2262,
         "rotation": 22.5,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088739",
+        "source_id": "10000131456",
         "x": 593.7738,
         "y": 461.1576,
         "rotation": 67.5,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088743",
+        "source_id": "10000131460",
         "x": 593.7738,
         "y": 538.8424,
         "rotation": 112.5,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088747",
+        "source_id": "10000131464",
         "x": 538.8424,
         "y": 593.7738,
         "rotation": 157.5,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088751",
+        "source_id": "10000131468",
         "x": 461.1577,
         "y": 593.7738,
         "rotation": 202.5,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088755",
+        "source_id": "10000131472",
         "x": 406.2262,
         "y": 538.8424,
         "rotation": 247.5,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088759",
+        "source_id": "10000131476",
         "x": 406.2262,
         "y": 461.1576,
         "rotation": 292.5,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088763",
+        "source_id": "10000131480",
         "x": 461.1576,
         "y": 406.2262,
         "rotation": 337.5,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088768",
+        "source_id": "10000131485",
         "x": 500.0,
         "y": 355.5,
         "rotation": 0.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088772",
+        "source_id": "10000131489",
         "x": 602.1769,
         "y": 397.8231,
         "rotation": 45.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088776",
+        "source_id": "10000131493",
         "x": 644.5,
         "y": 500.0,
         "rotation": 90.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088780",
+        "source_id": "10000131497",
         "x": 602.1769,
         "y": 602.1769,
         "rotation": 135.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088784",
+        "source_id": "10000131501",
         "x": 500.0,
         "y": 644.5,
         "rotation": 180.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088788",
+        "source_id": "10000131505",
         "x": 397.8231,
         "y": 602.1769,
         "rotation": 225.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088792",
+        "source_id": "10000131509",
         "x": 355.5,
         "y": 500.0,
         "rotation": 270.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088796",
+        "source_id": "10000131513",
         "x": 397.8231,
         "y": 397.8231,
         "rotation": 315.0,
@@ -726,35 +727,35 @@
     ],
     "ornamentation_l": [
       {
-        "source_id": "10000088801",
+        "source_id": "10000131518",
         "x": 556.5686,
         "y": 443.4315,
         "rotation": 45.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088805",
+        "source_id": "10000131522",
         "x": 556.5685,
         "y": 556.5686,
         "rotation": 135.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088809",
+        "source_id": "10000131526",
         "x": 500.0,
         "y": 580.0,
         "rotation": 180.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088813",
+        "source_id": "10000131530",
         "x": 443.4315,
         "y": 556.5686,
         "rotation": 225.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088817",
+        "source_id": "10000131534",
         "x": 443.4314,
         "y": 443.4315,
         "rotation": 315.0,

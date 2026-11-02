@@ -717,20 +717,64 @@ def subtype_from_base_filename(raw_folder, filename):
         if match:
             return match.group(1).lower()
     elif raw_folder in ("flow", "intent", "reach"):
-        # e.g. burst_s50 -> burst
-        match = re.match(r"^([a-zA-Z0-9]+)(?:_s\d+)?$", stem)
+        # e.g. burst_s50 or burst_02_s50 -> burst
+        match = re.match(r"^([a-zA-Z0-9]+)(?:_\d+)?(?:_s\d+)?$", stem)
         if match:
             return match.group(1).lower()
     return None
 
 
 def rune_variant_from_filename(filename):
-    """Extract the rune letter variant from filenames like flair_rune_a_s50.svg."""
+    """Extract the rune letter variant from filenames like flair_rune_a_s.svg."""
     stem = Path(filename).stem
     match = re.match(r"^flair_rune_([a-zA-Z])_", stem)
     if match:
         return match.group(1).lower()
     return None
+
+
+def rune_size_class_from_filename(filename):
+    """Which ornamentation slot a rune file is drawn for: 's', 'm' or 'l'.
+
+    flair_rune_a_s.svg -> 's', flair_rune_a_02_l.svg -> 'l'. The old
+    single-file naming (flair_rune_a_s50.svg) counts as 's'.
+    """
+    stem = Path(filename).stem
+    match = re.search(r"_([sml])$", stem)
+    return match.group(1) if match else "s"
+
+
+# Raw art can keep several versions of a symbol side by side, e.g.
+# e_fire_01_s100.svg and e_fire_02_s100.svg, burst_01_s50.svg, or
+# flair_rune_a_02_l.svg. The version is the number right before the size
+# suffix (a pixel size like s100, or a rune slot size s / m / l).
+VERSIONED_STEM_RE = re.compile(r"^(?P<base>.+?)_(?P<version>\d+)_(?P<size>s\d+|[sml])$")
+
+
+def split_version(stem):
+    """Split a raw stem into (unversioned stem, version).
+
+    'e_fire_02_s100' -> ('e_fire_s100', 2). Stems without a version number
+    (schools, runes, geo, legacy 'burst_s50') come back unchanged as version 0.
+    """
+    match = VERSIONED_STEM_RE.match(stem)
+    if not match:
+        return stem, 0
+    return f"{match['base']}_{match['size']}", int(match["version"])
+
+
+def latest_versions(svg_files):
+    """Keep only the highest version of each symbol (same folder, name and size).
+
+    Returns a list of (raw_svg_path, output_stem, version).
+    """
+    best = {}
+    for svg_file in svg_files:
+        out_stem, version = split_version(svg_file.stem)
+        key = (svg_file.parent, out_stem)
+        if key not in best or version > best[key][2]:
+            best[key] = (svg_file, out_stem, version)
+    return sorted(best.values(), key=lambda item: str(item[0]))
 
 
 def build_metadata(input_svg, definitions):
@@ -741,6 +785,7 @@ def build_metadata(input_svg, definitions):
     metadata = {
         "base_svg_filename": input_svg.name,
         "type": raw_folder,
+        "version": split_version(input_svg.stem)[1],
     }
 
     if raw_folder == "schools":
@@ -756,6 +801,7 @@ def build_metadata(input_svg, definitions):
             variant = rune_variant_from_filename(input_svg.name)
             if variant:
                 metadata["variant"] = variant
+            metadata["size_class"] = rune_size_class_from_filename(input_svg.name)
     else:
         subtype = subtype_from_base_filename(raw_folder, input_svg.name)
         if subtype:
@@ -764,12 +810,17 @@ def build_metadata(input_svg, definitions):
     return metadata
 
 
-def process_svg_file(input_svg, output_dir, definitions, next_id):
-    """Create the processed SVG and JSON for a single raw SVG."""
+def process_svg_file(input_svg, output_dir, definitions, next_id, out_stem=None):
+    """Create the processed SVG and JSON for a single raw SVG.
+
+    *out_stem* is the unversioned output name; it defaults to the raw stem.
+    Returns the paths written.
+    """
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    output_svg = output_dir / f"{input_svg.stem}.svg"
-    output_json = output_dir / f"{input_svg.stem}.json"
+    out_stem = out_stem or input_svg.stem
+    output_svg = output_dir / f"{out_stem}.svg"
+    output_json = output_dir / f"{out_stem}.json"
 
     entities, groups, topology = process_svg(input_svg, output_svg, next_id)
 
@@ -788,6 +839,18 @@ def process_svg_file(input_svg, output_dir, definitions, next_id):
         data["topology"] = topology
 
     output_json.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    return output_svg, output_json
+
+
+def remove_stale_outputs(folder_out_dir, written):
+    """Delete processed .svg/.json files this run did not produce (old
+    versioned names, symbols whose raw file was removed)."""
+    if not folder_out_dir.exists():
+        return
+    for path in sorted(folder_out_dir.rglob("*")):
+        if path.suffix in (".svg", ".json") and path.resolve() not in written:
+            print(f"Removing stale: {path.relative_to(ROOT_DIR)}")
+            path.unlink()
 
 
 # ---------------------------------------------------------------------------
@@ -808,15 +871,21 @@ def process_all():
             if not folder.is_dir() or folder.name not in ALLOWED_FOLDERS:
                 continue
 
-            for svg_file in sorted(folder.rglob("*.svg")):
-                if any(part in SKIP_SUBFOLDERS for part in svg_file.parts):
-                    continue
-
+            svg_files = [
+                f for f in folder.rglob("*.svg")
+                if not any(part in SKIP_SUBFOLDERS for part in f.parts)
+            ]
+            written = set()
+            # Only the latest version of each symbol is processed, and it is
+            # written under its unversioned name.
+            for svg_file, out_stem, version in latest_versions(svg_files):
                 rel = svg_file.relative_to(folder)
                 out_dir = PROCESSED_DIR / folder.name / rel.parent
 
-                print(f"Processing: {svg_file.relative_to(ROOT_DIR)}")
-                process_svg_file(svg_file, out_dir, definitions, counter)
+                print(f"Processing: {svg_file.relative_to(ROOT_DIR)} -> {out_stem}")
+                for path in process_svg_file(svg_file, out_dir, definitions, counter, out_stem):
+                    written.add(path.resolve())
+            remove_stale_outputs(PROCESSED_DIR / folder.name, written)
     finally:
         save_id_counter(counter.next_id)
 

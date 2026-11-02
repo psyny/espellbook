@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="50mm"
+   height="50mm"
+   viewBox="0 0 50 50"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="flair_rune_e_l.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1" /><g
+     inkscape:label="symbol_art"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:none"
+       d="M 13.24,44.09 L 16.02,44.09 L 15.86,28.07 L 15.84,26.33 L 15.83,24.64 L 15.82,23.01 L 15.81,21.44 L 15.81,17.22 L 15.82,16.01 L 15.82,14.90 L 15.83,13.91 L 15.85,13.04 L 15.87,12.32 L 15.88,11.73 L 15.91,11.27 L 15.94,10.89 L 16.27,9.79 L 17.37,10.00 L 17.59,10.11 L 17.73,10.21 L 17.85,10.30 L 17.94,10.40 L 18.03,10.48 L 18.12,10.58 L 18.20,10.67 L 18.29,10.78 L 18.38,10.89 L 18.47,11.00 L 18.56,11.13 L 18.65,11.26 L 18.72,11.37 L 18.82,11.51 L 18.90,11.64 L 19.25,12.19 L 19.65,12.76 L 20.11,13.37 L 20.58,14.01 L 21.10,14.64 L 21.62,15.29 L 22.16,15.91 L 22.70,16.51 L 23.21,17.08 L 23.71,17.60 L 24.17,18.06 L 24.59,18.46 L 24.95,18.77 L 25.11,18.90 L 25.12,18.89 L 25.38,18.69 L 25.69,18.42 L 26.05,18.08 L 26.45,17.67 L 26.90,17.20 L 27.37,16.68 L 27.89,16.10 L 28.43,15.47 L 28.99,14.79 L 29.58,14.06 L 30.19,13.30 L 30.82,12.50 L 31.47,11.65 L 34.51,7.64 L 34.54,27.93 L 34.57,44.09 L 36.75,44.09 L 36.75,6.18 L 35.40,6.18 L 35.14,6.20 L 34.92,6.22 L 34.75,6.26 L 34.57,6.31 L 34.42,6.38 L 34.24,6.49 L 34.02,6.64 L 33.77,6.86 L 33.47,7.14 L 33.13,7.49 L 32.74,7.91 L 32.29,8.42 L 31.79,9.01 L 31.21,9.69 L 30.56,10.47 L 30.18,10.94 L 29.79,11.41 L 29.40,11.87 L 29.03,12.31 L 28.67,12.74 L 28.33,13.15 L 28.01,13.53 L 27.72,13.89 L 27.45,14.22 L 27.19,14.53 L 26.96,14.80 L 26.76,15.04 L 26.60,15.23 L 26.47,15.39 L 26.37,15.51 L 26.11,15.82 L 25.43,16.02 L 24.91,15.84 L 24.62,15.68 L 24.38,15.49 L 24.13,15.28 L 23.86,15.04 L 23.58,14.77 L 23.26,14.45 L 22.93,14.11 L 22.58,13.72 L 22.21,13.32 L 21.81,12.89 L 21.40,12.43 L 20.99,11.94 L 20.56,11.43 L 20.12,10.91 L 19.40,10.04 L 18.77,9.27 L 18.21,8.62 L 17.72,8.05 L 17.30,7.57 L 16.93,7.19 L 16.61,6.89 L 16.34,6.66 L 16.12,6.50 L 15.93,6.39 L 15.76,6.31 L 15.59,6.26 L 15.38,6.23 L 15.14,6.20 L 14.83,6.19 L 14.46,6.19 L 13.24,6.18 Z"
+       id="rune_e_l" />
+  </g><g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="general_boundaries"
+     sodipodi:insensitive="true"><g
+       id="g3"
+       style="display:inline"
+       inkscape:label="_helper_center_mark"><circle
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:0.495;stroke-opacity:0.1"
+         id="helper_circle"
+         cx="25"
+         cy="25"
+         r="24.75" /><path
+         style="fill:none;stroke:#000000;stroke-width:0.5;stroke-opacity:0.1"
+         d="M 0,25 H 50"
+         id="helper_h" /><path
+         style="fill:none;stroke:#000000;stroke-width:0.5;stroke-opacity:0.1"
+         d="M 25,50 V 0"
+         id="helper_v" /></g></g></svg>

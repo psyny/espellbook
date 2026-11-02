@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "flair_geo_circle_l_s50.svg",
+    "type": "ornamentation",
+    "version": 0,
+    "subtype": "geo"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129850": {
+        "id": "10000129850",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          5,
+          5
+        ]
+      }
+    },
+    "groups": {
+      "10000129850": {
+        "id": "10000129850",
+        "category": "main",
+        "entities": [
+          "10000129850"
+        ],
+        "random_group": [
+          3,
+          1,
+          5
+        ]
+      }
+    }
+  }
+}

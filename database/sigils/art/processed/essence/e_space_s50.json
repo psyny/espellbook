@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_space_02_s50.svg",
+    "type": "essence",
+    "version": 2,
+    "subtype": "space"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129509": {
+        "id": "10000129509",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          2,
+          3
+        ]
+      },
+      "10000129510": {
+        "id": "10000129510",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          1,
+          4
+        ]
+      },
+      "10000129511": {
+        "id": "10000129511",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          5,
+          3
+        ]
+      },
+      "10000129512": {
+        "id": "10000129512",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          5,
+          5
+        ]
+      }
+    },
+    "groups": {
+      "10000129509": {
+        "id": "10000129509",
+        "category": "main",
+        "entities": [
+          "10000129509"
+        ],
+        "random_group": [
+          4,
+          4,
+          2
+        ]
+      },
+      "10000129510": {
+        "id": "10000129510",
+        "category": "main",
+        "entities": [
+          "10000129510"
+        ],
+        "random_group": [
+          2,
+          1,
+          4
+        ]
+      },
+      "10000129511": {
+        "id": "10000129511",
+        "category": "main",
+        "entities": [
+          "10000129511"
+        ],
+        "random_group": [
+          3,
+          3,
+          5
+        ]
+      },
+      "10000129512": {
+        "id": "10000129512",
+        "category": "main",
+        "entities": [
+          "10000129512"
+        ],
+        "random_group": [
+          2,
+          4,
+          3
+        ]
+      }
+    }
+  }
+}

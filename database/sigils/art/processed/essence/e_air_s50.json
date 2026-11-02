@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_air_01_s50.svg",
+    "type": "essence",
+    "version": 1,
+    "subtype": "air"
+  },
+  "entity_map": {
+    "entities": {
+      "10000128947": {
+        "id": "10000128947",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          0,
+          2
+        ]
+      }
+    },
+    "groups": {
+      "10000128947": {
+        "id": "10000128947",
+        "category": "main",
+        "entities": [
+          "10000128947"
+        ],
+        "random_group": [
+          5,
+          4,
+          0
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_sound_01_s50.svg",
+    "type": "essence",
+    "version": 1,
+    "subtype": "sound"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129478": {
+        "id": "10000129478",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          4,
+          4,
+          2
+        ]
+      },
+      "10000129479": {
+        "id": "10000129479",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          4,
+          3
+        ]
+      },
+      "10000129480": {
+        "id": "10000129480",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          2,
+          0
+        ]
+      },
+      "10000129481": {
+        "id": "10000129481",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          5,
+          1
+        ]
+      },
+      "10000129482": {
+        "id": "10000129482",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          1,
+          1,
+          3
+        ]
+      },
+      "10000129483": {
+        "id": "10000129483",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          5,
+          3
+        ]
+      },
+      "10000129484": {
+        "id": "10000129484",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          4,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000129478": {
+        "id": "10000129478",
+        "category": "main",
+        "entities": [
+          "10000129478"
+        ],
+        "random_group": [
+          5,
+          5,
+          4
+        ]
+      },
+      "10000129479": {
+        "id": "10000129479",
+        "category": "main",
+        "entities": [
+          "10000129479"
+        ],
+        "random_group": [
+          3,
+          2,
+          0
+        ]
+      },
+      "10000129480": {
+        "id": "10000129480",
+        "category": "main",
+        "entities": [
+          "10000129480"
+        ],
+        "random_group": [
+          5,
+          4,
+          5
+        ]
+      },
+      "10000129481": {
+        "id": "10000129481",
+        "category": "main",
+        "entities": [
+          "10000129481"
+        ],
+        "random_group": [
+          5,
+          5,
+          1
+        ]
+      },
+      "10000129482": {
+        "id": "10000129482",
+        "category": "main",
+        "entities": [
+          "10000129482"
+        ],
+        "random_group": [
+          5,
+          5,
+          0
+        ]
+      },
+      "10000129483": {
+        "id": "10000129483",
+        "category": "main",
+        "entities": [
+          "10000129483"
+        ],
+        "random_group": [
+          2,
+          5,
+          3
+        ]
+      },
+      "10000129484": {
+        "id": "10000129484",
+        "category": "main",
+        "entities": [
+          "10000129484"
+        ],
+        "random_group": [
+          1,
+          1,
+          4
+        ]
+      }
+    }
+  }
+}

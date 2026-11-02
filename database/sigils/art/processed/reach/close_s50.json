@@ -1,44 +1,100 @@
 {
   "metadata": {
-    "base_svg_filename": "close_s50.svg",
+    "base_svg_filename": "close_03_s50.svg",
     "type": "reach",
+    "version": 3,
     "subtype": "close"
   },
   "entity_map": {
     "entities": {
-      "10000088057": {
-        "id": "10000088057",
+      "10000130708": {
+        "id": "10000130708",
         "category": "main",
         "is_stroke": false,
         "random_group": [
           0,
-          0,
-          5
+          2,
+          4
         ]
       },
-      "10000088058": {
-        "id": "10000088058",
+      "10000130709": {
+        "id": "10000130709",
         "category": "main",
         "is_stroke": false,
         "random_group": [
           1,
           3,
+          3
+        ]
+      },
+      "10000130710": {
+        "id": "10000130710",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          0,
+          2,
+          1
+        ]
+      },
+      "10000130711": {
+        "id": "10000130711",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          5,
+          1,
           1
         ]
       }
     },
     "groups": {
-      "10000088056": {
-        "id": "10000088056",
+      "10000130708": {
+        "id": "10000130708",
         "category": "main",
         "entities": [
-          "10000088057",
-          "10000088058"
+          "10000130708"
         ],
         "random_group": [
           1,
+          5,
+          2
+        ]
+      },
+      "10000130709": {
+        "id": "10000130709",
+        "category": "main",
+        "entities": [
+          "10000130709"
+        ],
+        "random_group": [
+          2,
           1,
           0
+        ]
+      },
+      "10000130710": {
+        "id": "10000130710",
+        "category": "main",
+        "entities": [
+          "10000130710"
+        ],
+        "random_group": [
+          2,
+          3,
+          4
+        ]
+      },
+      "10000130711": {
+        "id": "10000130711",
+        "category": "main",
+        "entities": [
+          "10000130711"
+        ],
+        "random_group": [
+          2,
+          5,
+          3
         ]
       }
     }

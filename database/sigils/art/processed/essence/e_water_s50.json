@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_water_01_s50.svg",
+    "type": "essence",
+    "version": 1,
+    "subtype": "water"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129622": {
+        "id": "10000129622",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          2,
+          5,
+          0
+        ]
+      }
+    },
+    "groups": {
+      "10000129622": {
+        "id": "10000129622",
+        "category": "main",
+        "entities": [
+          "10000129622"
+        ],
+        "random_group": [
+          5,
+          1,
+          0
+        ]
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@ make install              # create venv/ and install requirements.txt
 make generate-catalog     # generate_spell_catalog.py: raw spell markdown -> database/spells/processed/spells.json (stable IDs from 1000000)
 make generate-html        # generate_html.py: processed catalog -> spellbook.html
 make generate-all         # catalog then html (the usual full pipeline)
-make generate-symbols     # generate_processed_symbols.py: raw sigil SVGs -> database/sigils/art/processed/*.svg + metadata JSON
+make generate-symbols     # generate_processed_symbols.py: raw sigil SVGs (latest version of each) -> database/sigils/art/processed/*.svg + metadata JSON
 make generate-check-symbols  # generate_check_symbols.py: renders topology-slot overlays for reviewing sigil art
 make clean / clean-kernel / clean-all   # remove pyc/caches / venv / both
 ```

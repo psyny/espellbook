@@ -2,12 +2,13 @@
   "metadata": {
     "base_svg_filename": "flair_geo_diamond_l_s50.svg",
     "type": "ornamentation",
+    "version": 0,
     "subtype": "geo"
   },
   "entity_map": {
     "entities": {
-      "10000087746": {
-        "id": "10000087746",
+      "10000129871": {
+        "id": "10000129871",
         "category": "main",
         "is_stroke": false,
         "random_group": [
@@ -18,11 +19,11 @@
       }
     },
     "groups": {
-      "10000087746": {
-        "id": "10000087746",
+      "10000129871": {
+        "id": "10000129871",
         "category": "main",
         "entities": [
-          "10000087746"
+          "10000129871"
         ],
         "random_group": [
           0,

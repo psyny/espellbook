@@ -2503,7 +2503,7 @@
     // -- Sigil building (see database/sigils/composition_def.md) ----------
     //
     // Every spell's sigil is assembled on the fly from the shared <symbol>
-    // defs written into the page (see {{ SIGIL_DEFS }} in index.html) plus
+    // defs written into the page (see the SIGIL_DEFS placeholder in index.html) plus
     // the per-school topology data in SIGIL_SCHOOLS. Art is intentionally
     // sparse right now (most essences/intents/reach/flow/schools have no
     // asset yet) — resolveNamedAsset()/resolveTopology() fall back to
@@ -2555,18 +2555,30 @@
     // Fill `slots` with runes spelling out `name`, cycling back to the start
     // of the name whenever it runs out before the slots do. Characters with
     // no matching rune are skipped without consuming a slot.
-    function fillWithRunesOnly(slots, name) {
+    function fillWithRunesOnly(slots, name, sizeClass) {
         slots = slots || [];
         const runes = SIGIL_ASSETS.runes || {};
         const chars = (name || '').toLowerCase().split('').filter(ch => runes[ch]);
         if (!chars.length) return slots.map(() => null);
-        return slots.map((_, i) => runes[chars[i % chars.length]]);
+        return slots.map((_, i) => pickRuneSize(runes[chars[i % chars.length]], sizeClass));
+    }
+
+    // Runes ship one file per ornamentation slot size ('s', 'm', 'l'); the
+    // bigger slots use versions drawn with thinner strokes. Fall back to the
+    // nearest smaller size if a letter is missing one.
+    function pickRuneSize(sizes, sizeClass) {
+        if (!sizes) return null;
+        const order = { l: ['l', 'm', 's'], m: ['m', 's', 'l'], s: ['s', 'm', 'l'] }[sizeClass] || ['s', 'm', 'l'];
+        for (const key of order) {
+            if (sizes[key]) return sizes[key];
+        }
+        return null;
     }
 
     // Fill `slots` walking the spell name letter by letter (wrapping around
     // the whole slot set, not just per slot): spaces become a geo ornament,
     // letters with a rune become that rune, anything else is skipped.
-    function fillWithRunesAndGeo(slots, name, randFactor) {
+    function fillWithRunesAndGeo(slots, name, randFactor, sizeClass) {
         slots = slots || [];
         const runes = SIGIL_ASSETS.runes || {};
         const chars = (name || '').split('');
@@ -2579,7 +2591,7 @@
                 cursor++;
                 if (ch === ' ') return pickGeoAsset(randFactor);
                 const lower = ch.toLowerCase();
-                if (runes[lower]) return runes[lower];
+                if (runes[lower]) return pickRuneSize(runes[lower], sizeClass);
             }
             return null;
         });
@@ -2647,15 +2659,15 @@
                 return pickSizedAsset(resolveNamedAsset(item.category, item.name), false);
             });
         } else {
-            const runeFills = fillWithRunesOnly(ornamentationL, spellName);
+            const runeFills = fillWithRunesOnly(ornamentationL, spellName, 'l');
             place('orn_l', ornamentationL, i => runeFills[i]);
         }
 
         const style = sp.style || {};
-        const mFills = fillWithRunesAndGeo(topology.ornamentation_m, spellName, style.rand_factor_1);
+        const mFills = fillWithRunesAndGeo(topology.ornamentation_m, spellName, style.rand_factor_1, 'm');
         place('orn_m', topology.ornamentation_m, i => mFills[i], ORNAMENTATION_SCALE.ornamentation_m);
 
-        const sFills = fillWithRunesAndGeo(topology.ornamentation_s, spellName, style.rand_factor_5);
+        const sFills = fillWithRunesAndGeo(topology.ornamentation_s, spellName, style.rand_factor_5, 's');
         place('orn_s', topology.ornamentation_s, i => sFills[i], ORNAMENTATION_SCALE.ornamentation_s);
 
         return groups;

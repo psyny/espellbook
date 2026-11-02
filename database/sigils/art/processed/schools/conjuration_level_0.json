@@ -2,14 +2,15 @@
   "metadata": {
     "base_svg_filename": "conjuration_level_0.svg",
     "type": "school",
+    "version": 0,
     "school": "Conjuration",
     "level": 0,
     "subtype": "conjuration"
   },
   "entity_map": {
     "entities": {
-      "10000088565": {
-        "id": "10000088565",
+      "10000131282": {
+        "id": "10000131282",
         "category": "sub",
         "is_stroke": true,
         "random_group": [
@@ -18,8 +19,8 @@
           5
         ]
       },
-      "10000088567": {
-        "id": "10000088567",
+      "10000131284": {
+        "id": "10000131284",
         "category": "main",
         "is_stroke": true,
         "random_group": [
@@ -30,11 +31,11 @@
       }
     },
     "groups": {
-      "10000088564": {
-        "id": "10000088564",
+      "10000131281": {
+        "id": "10000131281",
         "category": "sub",
         "entities": [
-          "10000088565"
+          "10000131282"
         ],
         "random_group": [
           5,
@@ -42,11 +43,11 @@
           5
         ]
       },
-      "10000088566": {
-        "id": "10000088566",
+      "10000131283": {
+        "id": "10000131283",
         "category": "main",
         "entities": [
-          "10000088567"
+          "10000131284"
         ],
         "random_group": [
           1,
@@ -59,7 +60,7 @@
   "topology": {
     "essence": [
       {
-        "source_id": "10000088508",
+        "source_id": "10000131225",
         "x": 500.0,
         "y": 500.0,
         "rotation": 0.0,
@@ -68,7 +69,7 @@
     ],
     "reach": [
       {
-        "source_id": "10000088521",
+        "source_id": "10000131238",
         "x": 580.0,
         "y": 500.0,
         "rotation": 90.0,
@@ -77,7 +78,7 @@
     ],
     "flow": [
       {
-        "source_id": "10000088517",
+        "source_id": "10000131234",
         "x": 420.0,
         "y": 500.0,
         "rotation": 270.0,
@@ -86,7 +87,7 @@
     ],
     "intent": [
       {
-        "source_id": "10000088513",
+        "source_id": "10000131230",
         "x": 500.0,
         "y": 420.0,
         "rotation": 0.0,
@@ -95,56 +96,56 @@
     ],
     "ornamentation_m": [
       {
-        "source_id": "10000088526",
+        "source_id": "10000131243",
         "x": 500.0,
         "y": 355.5,
         "rotation": 0.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088530",
+        "source_id": "10000131247",
         "x": 602.1769,
         "y": 397.8231,
         "rotation": 45.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088534",
+        "source_id": "10000131251",
         "x": 644.5,
         "y": 500.0,
         "rotation": 90.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088538",
+        "source_id": "10000131255",
         "x": 602.1769,
         "y": 602.1769,
         "rotation": 135.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088542",
+        "source_id": "10000131259",
         "x": 500.0,
         "y": 644.5,
         "rotation": 180.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088546",
+        "source_id": "10000131263",
         "x": 397.8231,
         "y": 602.1769,
         "rotation": 225.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088550",
+        "source_id": "10000131267",
         "x": 355.5,
         "y": 500.0,
         "rotation": 270.0,
         "variable_rotation": true
       },
       {
-        "source_id": "10000088554",
+        "source_id": "10000131271",
         "x": 397.8231,
         "y": 397.8231,
         "rotation": 315.0,
@@ -153,7 +154,7 @@
     ],
     "ornamentation_l": [
       {
-        "source_id": "10000088559",
+        "source_id": "10000131276",
         "x": 500.0,
         "y": 580.0,
         "rotation": 180.0,

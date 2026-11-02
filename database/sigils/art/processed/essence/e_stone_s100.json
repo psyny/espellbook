@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_stone_01_s100.svg",
+    "type": "essence",
+    "version": 1,
+    "subtype": "stone"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129523": {
+        "id": "10000129523",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          3,
+          4
+        ]
+      }
+    },
+    "groups": {
+      "10000129523": {
+        "id": "10000129523",
+        "category": "main",
+        "entities": [
+          "10000129523"
+        ],
+        "random_group": [
+          1,
+          3,
+          4
+        ]
+      }
+    }
+  }
+}

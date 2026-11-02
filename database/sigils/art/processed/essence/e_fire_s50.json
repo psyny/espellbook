@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "base_svg_filename": "e_fire_01_s50.svg",
+    "type": "essence",
+    "version": 1,
+    "subtype": "fire"
+  },
+  "entity_map": {
+    "entities": {
+      "10000129055": {
+        "id": "10000129055",
+        "category": "main",
+        "is_stroke": false,
+        "random_group": [
+          3,
+          2,
+          3
+        ]
+      }
+    },
+    "groups": {
+      "10000129055": {
+        "id": "10000129055",
+        "category": "main",
+        "entities": [
+          "10000129055"
+        ],
+        "random_group": [
+          0,
+          4,
+          4
+        ]
+      }
+    }
+  }
+}
