@@ -6,115 +6,109 @@ applies it to essence symbols.
 ## 1. Role
 
 The essence is **what the spell is made of**: the element, energy or domain at
-its core. It is the heart of the sigil:
+its core.
 
 - It sits at the centre of every school drawing, in the largest slot, drawn at
   `_s100`.
 - Secondary essences (`essence_top[1:]`) appear again as `_s50` symbols in
   `ornamentation_l` slots.
 
-Because it is the biggest and most central mark, the essence sets the mood of
-the whole sigil. It must be the strongest symbol in the set, and it must still
-read when reduced to `_s50`.
+It sets the mood of the whole sigil, so it's the boldest symbol, and it must
+still read when reduced to `_s50`. Essences are the one symbol category where
+asymmetry is allowed.
 
-## 2. Approved reference set
+## 2. Current set (latest versions)
 
-These nine are approved. Each is described by the **verb** it draws, **how**
-it draws it, and **why it isn't literal**.
+Every essence below is in use. The "Verb" and "Drawn as" columns are the idea
+each one carries; keep that idea if you redraw one.
 
-| Essence | Verb | How it's drawn | Why it works |
+### Hand-drawn originals (version 01): the reference set
+
+These set the style. New essences should feel like they belong next to them.
+
+| Essence | Verb | Drawn as | Why it works |
 |---|---|---|---|
-| **Fire** | rises, curls, flickers | A central S-spiral climbing upward, four tapered tendrils flicking outward in rotational balance, scattered spark dots | No flame silhouette anywhere. The *motion* of flame (curl, flick, sparks) is all that's there. |
-| **Air** | streams, swirls | Long horizontal currents that end in curled eddies, in several parallel layers | No cloud or breath icon. It is the path wind *takes*. |
-| **Water** | flows, swirls around a centre | Stacked wave strokes under a whirl with a dot "eye" | Shares air's current language but heavier and lower, with a still centre. Reads as tide or current, not a droplet. |
-| **Metal** | is folded, forged, interlocked | Two nested square links folded into each other, rigid right angles, an inner hook, two studs | No sword or ingot. It is the *workmanship* of metal: folding, joining, rigidity. |
-| **Radiance** | emanates in sacred order | Concentric rings crossed by radial spokes, rose-window or mandala-like, dots at the ray ends | No sun with rays. Light given *structure and order*, which is what makes it holy rather than just bright. |
-| **Sound** | propagates outward | A solid source dot with arcs echoing out on both sides, getting longer as they go | No speaker, note or ear. It is the *spreading of a vibration*. |
-| **Stone** | stacks, rests, balances | A cairn of three ellipses, heavy base, thick-thin strokes | The most literal of the set, but it shows *placed, balanced weight* (a cairn), not "a rock". |
-| **Thunder** | shatters outward | Nested hexagonal rings broken at the corners, like a concussion front cracking | No bolt (that's lightning) and no cloud. It is the *shockwave*. |
-| **Time** | loops back on itself | Two looping, nested lobes pinched at a single point, like an hourglass turned into a lemniscate or butterfly | No clock or hourglass icon. It is *recurrence*: going around and returning to one point. |
+| **Fire** | rises, curls, flickers | A central S-spiral climbing upward, four tapered tendrils flicking outward, spark dots | No flame silhouette; only the *motion* of flame |
+| **Air** | streams, swirls | Long horizontal currents ending in curled eddies, in layers | The path wind takes, not a cloud |
+| **Water** | flows around a centre | Stacked wave strokes under a whirl with a dot "eye" | Heavier and lower than air, with a still centre |
+| **Metal** | is folded, forged, interlocked | Two nested square links folded into each other, rigid corners, two studs | The *workmanship* of metal, not a sword |
+| **Radiance** | emanates in sacred order | Concentric rings crossed by spokes, like a rose window | Light given *order*, which makes it holy |
+| **Sound** | propagates outward | A source dot with arcs echoing out on both sides | The *spreading* of a vibration |
+| **Stone** | stacks, rests, balances | A cairn of three ellipses, heavy base | *Placed, balanced weight*, not "a rock" |
+| **Thunder** | shatters outward | Nested hexagonal rings broken at the corners | The *shockwave*, not the bolt |
+| **Time** | loops back on itself | Two looping lobes pinched at one point | *Recurrence*, not a clock |
 
-### What the set teaches
+### Generated designs (versions 02–05)
 
-- **Organic essences** (fire, air, water, time, sound) use swelling, tapering
-  gesture strokes and curls.
-- **Structured essences** (metal, radiance, thunder) use even, engraved
-  strokes, straight segments and crisp corners.
-- **Weighted essences** (stone) use closed, bold forms with a heavy base.
-- Almost all of them use **echo** (nested or parallel repeats) and **accent
-  dots**.
+| Essence | Version | Verb | Drawn as |
+|---|---|---|---|
+| **Earth** | 02 | settles, compacts | Loose grains at the top settling into heavier and heavier layers |
+| **Cold** | 03 | contracts, locks still | Six faceted ice shards closing in on a small hexagon, long and short alternating, with thin facet splinters beside the long ones |
+| **Magic** | 02 | refers to itself | One continuous line that knots into three loops, swelling and thinning; open arm points north, centre dot, three accent dots between the loops |
+| **Light** | 02 | opens, reveals | Shutter-like curved blades around an empty centre |
+| **Lightning** | 05 | jumps, snaps | Three strokes from a core, each changing direction twice (alternating left/right) before sweeping into an arc; the arcs form a broken circle ("ball lightning") |
+| **Acid** | 02 | dissolves, eats away | A clean double ring crumbling into fragments and dots on one side |
+| **Poison** | 02 | multiplies, spreads | Contagion: a core ring splits open to release smaller rings, which split again and fade into specks |
+| **Force** | 02 | pushes, presses | A grid bulging outward around an unseen body |
+| **Necrosis** | 02 | withers, unravels | A spiral that comes apart into dashes and dots toward its end |
+| **Life** | 03 | renews itself | Two strands braided into one ring around a seed |
+| **Plant** | 02 | grows outward | A seed with three shoots unfurling and curling at their tips, short dashes between them |
+| **Mind** | 02 | thinks in loops | Nested open arcs turning around a centre, each ending in a node |
+| **Soul** | 02 | separates from itself | The self (a ring and dot) below a veil line, its dashed double above |
+| **Space** | 02 | folds distance | Shrinking circles that all touch at one point |
+| **Shadow** | 02 | conceals | Diagonal hatching around an empty, unseen shape |
 
-Choosing which family a new essence belongs to is the first design decision.
+## 3. What the families teach
 
-## 3. Rejected (redo)
+- **Organic essences** (fire, air, water, time, sound, plant, life) use
+  swelling, tapering gesture strokes and curls.
+- **Structured essences** (metal, radiance, thunder, cold, space) use even,
+  engraved strokes, straight segments and crisp corners.
+- **Weighted essences** (stone, earth) use bold, closed or stacked forms with a
+  heavy base.
+- Almost all of them use **echo** and a few **accent dots**.
 
-| Essence | File | Why it fails |
-|---|---|---|
-| **Earth** | `e_earth_01` | Reads as contour lines on a map or a diagram. The linework is shaky and uneven, and the mass is lopsided, not centred. There's no verb. |
-| **Cold** | `e_cold_01` | A segmented cross with diamond ends: reads as a religious or heraldic cross or a generic snowflake tile. It says nothing about *cold*. |
-| **Magic** | `e_magic_01` | A generic diamond-and-triangles tile. Swap the name with any other essence and it would fit equally well, so it has no idea in it. |
+Choosing the family is the first design decision.
 
-## 4. Placeholders (not yet drawn)
-
-These files exist so the pipeline works, but they are **byte-identical copies
-of other essences** and need original art:
-
-| Placeholder | Copy of |
-|---|---|
-| `light`, `lightning` | `fire` |
-| `acid`, `life`, `poison`, `shadow` | `water` |
-| `force`, `mind`, `necrosis` | `cold` |
-| `plant`, `soul`, `space` | `magic` |
-
-## 5. Sibling pairs (keep them distinct)
-
-Several essences are close in meaning, so their symbols must be clearly
-different at a glance:
+## 4. Sibling pairs (keep them distinct)
 
 | Siblings | Distinction |
 |---|---|
-| Fire / Light / Radiance | Fire = consuming motion. Light = revealing, an opening. Radiance = sacred order. |
-| Lightning / Thunder | Lightning = a single sudden, branching *path*. Thunder = the *pressure wave* around it. |
-| Thunder / Sound | Thunder = broken, violent, angular. Sound = clean, rhythmic, curved. |
-| Air / Water | Air = light, high, open currents. Water = heavy, low, with a centre. |
-| Earth / Stone / Metal | Earth = continuous, granular, settling. Stone = discrete, stacked, balanced. Metal = worked, folded, joined. |
-| Acid / Poison / Necrosis | Acid = eats from the outside in. Poison = spreads from the inside out. Necrosis = fades, unravels, ends. |
-| Life / Plant | Life = pulse, closing, restoring. Plant = growing outward, branching, reaching. |
-| Mind / Soul | Mind = connections and loops of thought. Soul = a self and its displaced echo, separating from the body. |
-| Space / Time | Space = folding distance so two points meet. Time = looping back to the same point. |
-| Light / Shadow | Shadow is defined by absence: strokes interrupted by something unseen. |
-| Force / Magic | Force = invisible pressure bending lines. Magic = a mark that refers to itself. |
+| Fire / Light / Radiance | Fire = consuming motion. Light = an opening. Radiance = sacred order. |
+| Lightning / Thunder | Lightning = sudden, snapping strokes. Thunder = the pressure wave. |
+| Thunder / Sound | Thunder = broken, angular. Sound = clean, curved, rhythmic. |
+| Air / Water | Air = light, high currents. Water = heavy, low, with a centre. |
+| Earth / Stone / Metal | Earth = granular, settling. Stone = stacked, balanced. Metal = worked, folded. |
+| Acid / Poison / Necrosis | Acid = eats from outside in. Poison = multiplies from within. Necrosis = unravels and ends. |
+| Life / Plant | Life = a renewing cycle. Plant = growing outward. |
+| Mind / Soul | Mind = loops of thought. Soul = a self and its displaced double. |
+| Space / Time | Space = distance folding to one point. Time = looping back. |
+| Cold / Plant / Magic | All three-or-six-fold: cold closes *inward* with straight shards; plant grows *outward* with curls; magic is one *continuous* knotted line. |
+| Force / Magic | Force = invisible pressure deforming lines. Magic = a mark referring to itself. |
 
-## 6. Briefs for essences still to draw
+## 5. Lessons from rejected drafts
 
-These are **starting proposals**, not final decisions. Each gives a verb, a
-direction, and the literal trap to avoid.
+| Essence | Rejected idea | Why |
+|---|---|---|
+| Earth | Wobbly contour lines | Read as a topographic map; shaky, lopsided |
+| Cold | Segmented cross with diamonds; three curved claws | A cross / generic tile; claws felt elegant but not *cold* |
+| Magic | Diamond-and-triangles tile | No idea in it: it fits any essence |
+| Lightning | Jagged forks, five nodes with erratic lines, two charged poles with field lines | Too close to a bolt; then too scientific. Lightning needed a simple, symbolic structure with alternating direction changes |
+| Poison | Veins inside a ring; a stain of wobbly rings; fangs over ripples | Meaning unclear (rose, tree, lotus). "Budding" contagion was the readable idea |
+| Life | Vesica with dot; braid with curls; ring with curling ends plus an inner arc | Eye; DNA; smiley face |
+| Plant | Twig with curls; sunflower seed head | Literal plant; galaxy or showerhead |
+| Mind | Three overlapping loops; arcs around a dot | Biohazard sign; smiley face |
+| Soul | Open loop with dashed echo; bowl with rising smoke | Weak; "hot food" steam icon |
+| Force | Field lines parting around a dashed circle | Didn't beat the bulging grid |
 
-| Essence | Verb | Direction | Avoid |
-|---|---|---|---|
-| **Earth** | settles, compacts, holds | Wide, low, horizontal strokes that sag toward a heavy base, with grain dots between the layers. Continuous and granular, not stacked. | Contour or map lines, hills, mountains |
-| **Cold** | slows, contracts, locks in place | Strokes that start fluid and end in sharp needle points; branching only at fixed angles (crystal growth); weight drawn inward, the opposite of fire's outward flick. | Snowflakes, crosses, icicles |
-| **Magic** | refers to itself | One continuous line that knots or folds back into itself, or a mark annotating another mark. Glyph-of-a-glyph. | Generic diamond or star tiles, sparkles |
-| **Light** | opens, reveals | An aperture: strokes parting around an empty centre, rays formed by the *gaps* (negative space) rather than drawn lines. | Sun with rays, light bulb, star burst |
-| **Lightning** | jumps, forks | A single stroke that changes direction abruptly, with hairline branches that end in discharge dots. | The zig-zag bolt icon |
-| **Acid** | dissolves, eats away | A solid, clean form whose outline breaks down on one side into fragments and dots. | Drips, droplets, bubbling flasks |
-| **Poison** | seeps, spreads inside | Vein-like tendrils branching through or coiling inside another shape, slowly taking it over. | Skull, drop, bottle, snake |
-| **Force** | pushes, presses | Parallel lines bending around an empty, unseen shape, so the force is implied by deformation. | Fists, arrows, impact stars |
-| **Necrosis** | withers, unravels | Strokes that begin full and end broken, or a spiral that unwinds and fragments toward the edge. | Skulls, bones, wilted flowers |
-| **Life** | pulses, restores, closes | Two halves stitching together, or a rhythmic beat repeated in echo; a seed-like form opening. | Hearts, crosses, ECG line |
-| **Plant** | grows, branches, reaches | An unfurling spiral (like a fern's fiddlehead) or a phyllotaxis pattern of dots. Growth along a curve. | Leaves, trees, flowers |
-| **Mind** | connects, thinks in loops | Interwoven open spirals with nodes where they cross, so thought is shown as a network. | Brains, eyes |
-| **Soul** | separates from itself | A rising vertical form with its echo drawn slightly displaced, the self and its double. | Ghosts, wisps, flame shapes (too close to fire) |
-| **Space** | folds, collapses distance | Two points joined by a folded line, or nested shapes receding in perspective. | Portal rings, stars, galaxies |
-| **Shadow** | conceals, takes away | Strokes cut off by an invisible shape, or the only symbol where a solid mass is the main form, defined by what's missing. | Crescent moons, clouds, plain black blobs |
+## 6. Essence-specific rules
 
-## 7. Essence-specific rules
-
-- **The essence is the boldest symbol in the sigil.** It is the largest slot,
-  so give it the heaviest stroke weight of any symbol.
-- **It must read on any school.** It sits at the centre of triangles, squares,
-  circles and stars, so avoid a silhouette that only fits one frame (for
-  example a strongly triangular essence fights a square school).
-- **The `_s50` keeps the spine.** Secondary essences show up small in
-  ornament slots next to intent symbols, so the reduction must still read as
-  that essence. See the general doc, section 7.
+- **Boldest symbol in the sigil.** Give it the heaviest stroke weight of any
+  symbol.
+- **Must read on any school.** It sits inside triangles, squares, circles and
+  stars, so avoid a silhouette that only fits one frame.
+- **The `_s50` keeps the spine.** Secondary essences appear small next to
+  intents in ornament slots, so the reduction must still read as that
+  essence. Drop accent dots and secondary echoes first.
+- **Asymmetry is allowed**, but if the symbol has a defining feature (an open
+  arm, a gap), face it north.

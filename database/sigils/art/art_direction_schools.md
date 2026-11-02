@@ -108,7 +108,10 @@ Guidelines:
   merge them.
 - **Rotation:** slots may carry a rotation that orients symbols along the
   frame. Slots flagged as variable rotation (`_r_` in the layer label) may be
-  reset to upright per spell (see `code_map/html_sigil_gen.md`).
+  reset to upright per spell (see `code_map/html_sigil_gen.md`). Symbols are
+  authored **north-aligned** (see the general doc, section 5), so a slot's
+  rotation is the direction the symbol's "up" will face: point it outward,
+  along the frame, or upright, deliberately.
 
 **Open issue:** Abjuration and Divination have **no `ornamentation_l` slots**,
 so secondary essences and intents (`essence_top[1:]`, `intent_top[1:]`) are
